@@ -5,6 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+/*
+import javafx.scene.control.TabPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+*/
 
 import java.io.IOException;
 
@@ -19,6 +26,9 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
+        stage.setTitle("PROJ2");
+        stage.getIcons().add(new Image("file:src/main/resources/com/gui/logo.jpg"));
+        stage.setResizable(false);
         stage.show();
     }
 
