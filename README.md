@@ -2,7 +2,7 @@ Groep A
 Klas 4
 
 Eric Bull  
-Burton Braam - aanwezig  
+Burton Braam
 Wouter Swijnenburg  
 Lucas Clavel  
 Wessel Horsthuis
