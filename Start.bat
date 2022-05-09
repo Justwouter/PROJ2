@@ -1,0 +1,1 @@
+java -jar 2122-Projectgroep-4a.jar
