@@ -23,7 +23,6 @@
 hs_err_pid*
 
 ### VisualStudioCode ###
-
 .vscode
 .vscode/*
 .vscode/tasks.json
