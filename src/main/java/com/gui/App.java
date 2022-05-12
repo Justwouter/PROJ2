@@ -12,12 +12,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 */
-
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
