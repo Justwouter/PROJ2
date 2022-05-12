@@ -1,4 +1,4 @@
-module com.tempid {
+module com.gui {
     requires transitive javafx.controls;
     requires javafx.fxml;
 
