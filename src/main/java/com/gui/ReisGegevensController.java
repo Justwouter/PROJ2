@@ -25,6 +25,8 @@ public class ReisGegevensController implements Initializable, IController {
 
     private int kosten;
 
+    private int uitstoot;
+
     @FXML
     private TextField kilometers;
 
@@ -34,14 +36,25 @@ public class ReisGegevensController implements Initializable, IController {
     private ArrayList<Transportmiddel> transportmiddelen;
 
 
-    // Gaat terug naar het dashboard en past de punten aan.
+
+    /**
+     * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
+     * @throws IOException <- Hier zeurt java om dus laat het lekker zitten.
+     */
     @FXML
     private void switchToDash() throws IOException {
+        berekenUitstoot();
+        Main.show("dashboard", user);
+    }
+
+    /**
+     * Berekent en slaat de uitstoot op.
+     */
+    private void berekenUitstoot(){
         if (!kilometers.getText().isBlank()){
             int km = Integer.parseInt(kilometers.getText());
             user.getPoint().subtractPoints(km*kosten/10);
         }
-        Main.show("dashboard", user);
     }
 
     // Gaat terug naar het dashboard en past de punten NIET aan.
@@ -50,22 +63,26 @@ public class ReisGegevensController implements Initializable, IController {
         Main.show("dashboard", user);
     }
 
-    // Doet voorbereidende zaken.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addVehicles();
+        addNumberLimiter();
+        addTextLimiter(9);
+    }
 
-        // Sets vehicles in ComboBox
+    /**
+     * Deze methode voegt alle aanwezige transportmiddelen toe aan de ComboBox zodat deze geselecteerd kunnen worden.
+     */
+    public void addVehicles(){
         transportmiddelen = Transportmiddel.getTransportmiddelen();
         for (Transportmiddel t : transportmiddelen) {
             transportmiddel.getItems().add(t.getNaam());
         }
-
-        // Only allows numeric value's in Textfield
-        addNumberLimiter();
-
-        addTextLimiter(9);
     }
 
+    /**
+     * Deze methode zorgt ervoor dat het invoerveld van de kilometers louter cijfers kan bevatten.
+     */
     public void addNumberLimiter(){
         kilometers.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -73,6 +90,11 @@ public class ReisGegevensController implements Initializable, IController {
             }
         });
     }
+
+    /**
+     * Deze methode zorgt voor een maximaal aantal tekens die het invoerveld van de kilometers kan bevatten.
+     * @param maxLength aantal maximale tekens
+     */
 
     public void addTextLimiter(int maxLength) {
         kilometers.textProperty().addListener(new ChangeListener<String>() {
@@ -86,32 +108,41 @@ public class ReisGegevensController implements Initializable, IController {
         });
     }
 
-    // Checkt geselecteerde transportmiddel.
+    /**
+     * Deze methode checkt de gekozen waarde van de ComboBox en geeft daarbij berekeningswaardes mee.
+     * TODO Het toevoegen van de berekeningen zelf zodat ze zichtbaar worden voor de gebruiker vóór het opslaan.
+     */
     @FXML
     public void printItem(){
         String s = transportmiddel.getValue();
         for (Transportmiddel t : transportmiddelen){
             if (t.getNaam().equals(s)){
-                /* TODO Berekeningen maken of doorgeven aan berekeningen.
-                Dit is voorbereid zodat hiermee berekend kan worden.
-                Er wordt hier de geselecteerde item naar voren gehaald
-                 */
+                uitstoot = t.getUitstoot();
                 kosten = t.getKosten();
             }
         }
     }
 
+    /**
+     * Deze methode geeft een user mee aan de controller die de reisgegevens invoert.
+     * @param u De gebruiker die zijn reisgegevens invoert.
+     */
     public void setUser(User u){
         this.user = u;
     }
 
+    /**
+     * Deze methode geeft een user mee aan de controller waarvan punten opgehaald worden.
+     * @param user De gebruiker die zijn reisgegevens invoert.
+     */
     @Override
     public void setPoints(User user) {
         points.setText(user.getPoint().getPointsString());
     }
-
+  
     public void setKostenTotaal(){
         //TODO maak hier de berekening
     }
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
 }
+
