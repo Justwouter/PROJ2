@@ -39,4 +39,8 @@ public class Transportmiddel {
     public static ArrayList<Transportmiddel> getTransportmiddelen(){
         return transportmiddelen;
     }
+
+    public int berekenReispuntenKosten(int Afstand){
+        return ((Afstand)*(this.kosten));
+    }
 }
