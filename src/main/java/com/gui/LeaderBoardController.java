@@ -27,7 +27,7 @@ public class LeaderBoardController implements Initializable, IController {
     private TableView<User> leaderboard;
 
     @FXML
-    private final TableColumn<Object, Object> rankKolom = new TableColumn();
+    private final TableColumn<Object, Object> rankKolom = new TableColumn<>();
 
     @FXML
     private final TableColumn<Object, Object> namesKolom = new TableColumn<>();
