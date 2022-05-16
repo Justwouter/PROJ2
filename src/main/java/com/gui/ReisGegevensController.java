@@ -1,7 +1,7 @@
 package com.gui;
 
-import com.logic.Point;
 import com.logic.Transportmiddel;
+import com.logic.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -18,6 +18,8 @@ public class ReisGegevensController implements Initializable {
     @FXML
     private Label points;
 
+    private User user;
+
     @FXML
     private TextField kilometers;
 
@@ -30,14 +32,13 @@ public class ReisGegevensController implements Initializable {
     // Gaat terug naar het dashboard.
     @FXML
     private void switchToDash() throws IOException {
-        App.setRoot("dashboard");
+        Main.showDashView(user);
     }
 
 
     // Doet voorbereidende zaken.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        points.setText(Point.getPointsValue());
         transportmiddelen = Transportmiddel.getTransportmiddelen();
         for (Transportmiddel t : transportmiddelen) {
             transportmiddel.getItems().add(t.getNaam());
@@ -57,6 +58,14 @@ public class ReisGegevensController implements Initializable {
                  */
             }
         }
+    }
+
+    public void setUser(User user){
+        this.user = user;
+    }
+
+    public void setPointValue(String value){
+        points.setText(value);
     }
 
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.

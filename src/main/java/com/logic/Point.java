@@ -1,24 +1,24 @@
 package com.logic;
 public class Point {
-    private static int points;
+    private Integer points;
 
-    public static void setPoints(int amount){
+    public void setPoints(int amount){
         points = amount;
     }
 
-    public static int getPoints(){
+    public int getPoints(){
         return points;
     }
 
-    public static void addPoints(int amount){
+    public void addPoints(int amount){
         points += amount;
     }
 
-    public static void subtractPoints(int amount){
+    public void subtractPoints(int amount){
         points -= amount;
     }
 
-    public static String getPointsValue(){
+    public String getPointsValue(){
         return "" + points;
     }
 }
