@@ -2,24 +2,20 @@ package com.gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.logic.User;
 
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
 
 public class DashController implements Initializable, IController{
 
@@ -75,7 +71,7 @@ public class DashController implements Initializable, IController{
     private void updateWeeklyChart(){
 
         co2ThisWeekChart.getData().clear();
-        ArrayList<Object> historicUserData = new ArrayList<>();
+        //ArrayList<Object> historicUserData = new ArrayList<>();
         String[] daysOfTheWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"};
         XYChart.Series<String,Number> series = new XYChart.Series<String, Number>();
 
