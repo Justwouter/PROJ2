@@ -21,4 +21,6 @@ mvn jacoco:prepare-agent test install jacoco:report
 
 Puntensysteem excel document:
 https://dehaagsehogeschool-my.sharepoint.com/:x:/r/personal/21093830_student_hhs_nl/Documents/PROJ2/H-1-SE%204A%20-%20Uitstoot%20Tabel.xlsx?d=we395177a3f804f67b41da75d29d8cf67&csf=1&web=1&e=NvRUB4
+
 Laatst aangepast op 16-5-2022 15:36
+Link ziet er gek uit maar werkt wel. Github verandert de visuals van sommige lettercombinaties
