@@ -30,4 +30,8 @@ public class User {
     public int getRank(){
         return this.rank;
     }
+
+    public Point getKostenTotaal() {
+        return null;
+    }
 }

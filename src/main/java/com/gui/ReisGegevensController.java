@@ -9,9 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -19,6 +21,7 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     private Label points;
+    //private Label kostenTotaal;
 
     private User user;
 
@@ -33,7 +36,7 @@ public class ReisGegevensController implements Initializable, IController {
     private ArrayList<Transportmiddel> transportmiddelen;
 
 
-    // Gaat terug naar het dashboard.
+    // Gaat terug naar het dashboard en past de punten aan.
     @FXML
     private void switchToDash() throws IOException {
         if (!kilometers.getText().isBlank()){
@@ -43,6 +46,11 @@ public class ReisGegevensController implements Initializable, IController {
         Main.show("dashboard", user);
     }
 
+    // Gaat terug naar het dashboard en past de punten NIET aan.
+    @FXML
+    private void switchToDash2() throws IOException {
+        Main.show("dashboard", user);
+    }
 
     // Doet voorbereidende zaken.
     @Override
@@ -80,7 +88,6 @@ public class ReisGegevensController implements Initializable, IController {
         });
     }
 
-
     // Checkt geselecteerde transportmiddel.
     @FXML
     public void printItem(){
@@ -105,6 +112,8 @@ public class ReisGegevensController implements Initializable, IController {
         points.setText(user.getPoint().getPointsString());
     }
 
-
+    public void setKostenTotaal(){
+        //TODO maak hier de berekening
+    }
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
 }
