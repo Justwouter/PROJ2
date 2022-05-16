@@ -19,6 +19,7 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     private Label points;
+    //private Label kostenTotaal;
 
     private User user;
 
@@ -33,6 +34,7 @@ public class ReisGegevensController implements Initializable, IController {
     private ComboBox<String> transportmiddel;
 
     private ArrayList<Transportmiddel> transportmiddelen;
+
 
 
     /**
@@ -53,6 +55,12 @@ public class ReisGegevensController implements Initializable, IController {
             int km = Integer.parseInt(kilometers.getText());
             user.getPoint().subtractPoints(km*kosten/10);
         }
+    }
+
+    // Gaat terug naar het dashboard en past de punten NIET aan.
+    @FXML
+    private void switchToDash2() throws IOException {
+        Main.show("dashboard", user);
     }
 
     @Override
@@ -100,7 +108,6 @@ public class ReisGegevensController implements Initializable, IController {
         });
     }
 
-
     /**
      * Deze methode checkt de gekozen waarde van de ComboBox en geeft daarbij berekeningswaardes mee.
      * TODO Het toevoegen van de berekeningen zelf zodat ze zichtbaar worden voor de gebruiker vóór het opslaan.
@@ -132,5 +139,10 @@ public class ReisGegevensController implements Initializable, IController {
     public void setPoints(User user) {
         points.setText(user.getPoint().getPointsString());
     }
-
+  
+    public void setKostenTotaal(){
+        //TODO maak hier de berekening
+    }
+    // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
 }
+
