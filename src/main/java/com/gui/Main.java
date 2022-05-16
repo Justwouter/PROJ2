@@ -33,10 +33,10 @@ public class Main extends Application {
         new Transportmiddel("Openbaar Vervoer gecombineerd", 39, 10);
         new Transportmiddel("Fiets/Lopen", 0, 0);
 
+        //moest even voorbeelden hebben voor menu'tje
         new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25);
-        new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(1), 25);
-        new Reizen("Vriendin", Transportmiddel.getTransportmiddelen().get(1), 25);
-        new Reizen("School", Transportmiddel.getTransportmiddelen().get(1), 25);
+        new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(1), 50);
+        new Reizen("School", Transportmiddel.getTransportmiddelen().get(1), 75);
 
     }
 

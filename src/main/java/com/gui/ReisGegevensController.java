@@ -119,4 +119,42 @@ public class ReisGegevensController implements Initializable, IController {
 
 
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
+
+
+
+    @FXML
+    public void buttenOne(){
+        invullenPreSet(0);
+    }
+
+    @FXML
+    public void buttenTwo(){
+        invullenPreSet(1);
+    }
+
+    @FXML
+    public void buttenThree(){
+        invullenPreSet(2);
+    }
+
+    @FXML
+    public void buttenFor(){
+        invullenPreSet(3);
+    }
+
+    @FXML
+    public void buttenFive(){
+        invullenPreSet(4);
+    }
+
+    //TODO auto in plaats van naam
+    public void invullenPreSet(Integer button){
+        kilometers.setText(preSets.get(button).getKilometers().toString());
+        transportmiddel.setValue(preSets.get(button).getNaam());
+    }
+
+    @FXML
+    public void toevoegenPreSet(){
+        
+    }
 }
