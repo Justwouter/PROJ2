@@ -18,7 +18,7 @@ public class Point {
         points -= amount;
     }
 
-    public String getPointsValue(){
+    public String getPointsString(){
         return "" + points;
     }
 }

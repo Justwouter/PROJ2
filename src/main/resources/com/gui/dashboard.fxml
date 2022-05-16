@@ -4,10 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="249.0" prefWidth="226.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.DashController">
    <children>
-      <Label layoutX="79.0" layoutY="57.0" text="Primary View" />
-      <Button layoutX="37.0" layoutY="125.0" onAction="#switchToReisGegevens" text="Switch to Secondary View" />
+      <Label layoutX="79.0" layoutY="57.0" text="Dashboard" />
+      <Button layoutX="43.0" layoutY="125.0" onAction="#switchToReisGegevens" text="Switch to Reisgegevens" />
+      <Button layoutX="45.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchToLeaderboard" text="Switch to Leaderboard" />
    </children>
 </AnchorPane>

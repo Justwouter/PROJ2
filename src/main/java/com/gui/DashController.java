@@ -12,21 +12,33 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class DashController implements Initializable {
+public class DashController implements Initializable, IController{
 
-    @FXML
+
     private User user;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
     }
 
     @FXML
     private void switchToReisGegevens() throws IOException {
-        Main.showRankView();
+        Main.show("reisgegevens", user);
     }
 
-    public void setUser(User user){
-        this.user = user;
+    @FXML
+    private void switchToLeaderboard() throws IOException {
+        Main.show("leaderboard", user);
     }
+
+    public void setUser(User u){
+        this.user = u;
+    }
+
+    @Override
+    public void setPoints(User user) {
+
+    }
+
 }

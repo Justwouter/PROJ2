@@ -1,17 +1,14 @@
 package com.logic;
 
-import com.gui.LeaderBoardController;
-
 public class User {
     private String naam;
-    private int points;
+    private int rank;
     private Point point = new Point();
 
     public User(String naam){
         this.naam = naam;
-        this.points = 2000;
         point.setPoints(1000);
-        LeaderBoardController.addUser(this);
+        Leaderboard.addUser(this);
     }
 
     public String getNaam(){
@@ -19,10 +16,18 @@ public class User {
     }
 
     public Integer getPoints(){
-        return Integer.parseInt(point.getPointsValue());
+        return point.getPoints();
     }
 
     public Point getPoint(){
         return point;
+    }
+
+    public void setRank(int rank){
+        this.rank = rank;
+    }
+
+    public int getRank(){
+        return this.rank;
     }
 }

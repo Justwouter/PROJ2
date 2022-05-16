@@ -1,10 +1,12 @@
 package com.gui;
 
+import com.logic.Leaderboard;
 import com.logic.Transportmiddel;
 import com.logic.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -17,72 +19,47 @@ public class Main extends Application {
     private static AnchorPane mainLayout;
 
         public static void initialize(){
-        User user = new User("Testnaam Eric");
-        user.getPoint().setPoints(20000);
-        user = new User("Testnaam Burton");
-        user.getPoint().setPoints(20);
+        new User("Testnaam Eric").getPoint().setPoints(2000);
+        new User("Testnaam Burton").getPoint().setPoints(20);
         new User("Testnaam Damnn...Daniël");
-        new Transportmiddel("Benzine auto", 200, 50);
-        new Transportmiddel("Diesel auto", 250, 75);
-        new Transportmiddel("Electrische auto", 100, 25);
-        new Transportmiddel("Openbaar Vervoer", 50, 10);
+        new User("Wouter").getPoint().setPoints(2500);
+        new User("Lucas").getPoint().setPoints(1500);
+        new Transportmiddel("Benzine auto", 68, 50);
+        new Transportmiddel("Diesel auto", 58, 75);
+        new Transportmiddel("Electrische auto", 5, 25);
+        new Transportmiddel("Trein", 2, 10);
+        new Transportmiddel("Bus", 37, 10);
+        new Transportmiddel("Openbaar Vervoer gecombineerd", 39, 10);
         new Transportmiddel("Fiets/Lopen", 0, 0);
     }
 
     public static void main(String[] args) {
-        initialize();
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        this.primaryStage = primaryStage;
-        showLoginView();
+    public void start(Stage ps) throws Exception {
+        primaryStage = ps;
+        initialize();
+        User user = new User("Main man");
+        show("login", user);
     }
 
-    public static void show(String fxml) throws IOException {
+    public static void show(String fxml, User user) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource(fxml + ".fxml"));
         mainLayout = loader.load();
-        Scene scene = new Scene(mainLayout, 480, 640);
 
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-        primaryStage.show();
-    }
-
-    public static void showLoginView() throws IOException {
-        Main.show("login");
-    }
-
-    public static void showRankView() throws IOException {
-        Main.show("leaderboard");
-    }
-
-    public static void showDashView(User user) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("dashboard.fxml"));
-        mainLayout = loader.load();
-
-        DashController dc = loader.getController();
-        dc.setUser(user);
+        IController controller = loader.getController();
+        controller.setUser(user);
+        controller.setPoints(user);
 
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void showReisGegevens(User user) throws IOException { // Taking the user-object as an argument from LoginViewController
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("reisgegevens.fxml"));
-        mainLayout = loader.load();
-
-        ReisGegevensController cvc = loader.getController(); // This did the "trick"
-        cvc.setUser(user); // Passing the user-object to the ClientViewController
-        cvc.setPointValue(user.getPoint().getPointsValue()); // Setting pointvalue
-
-        Scene scene = new Scene(mainLayout, 480, 640);
-        primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/logo.jpg"));
+        String c = fxml.substring(0, 1).toUpperCase();
+        String title = c + fxml.substring(1);
+        primaryStage.setTitle(title);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

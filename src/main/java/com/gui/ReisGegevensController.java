@@ -2,6 +2,8 @@ package com.gui;
 
 import com.logic.Transportmiddel;
 import com.logic.User;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -13,12 +15,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ReisGegevensController implements Initializable {
+public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     private Label points;
 
     private User user;
+
+    private int kosten;
 
     @FXML
     private TextField kilometers;
@@ -32,17 +36,48 @@ public class ReisGegevensController implements Initializable {
     // Gaat terug naar het dashboard.
     @FXML
     private void switchToDash() throws IOException {
-        Main.showDashView(user);
+        if (!kilometers.getText().isBlank()){
+            int km = Integer.parseInt(kilometers.getText());
+            user.getPoint().subtractPoints(km*kosten/10);
+        }
+        Main.show("dashboard", user);
     }
 
 
     // Doet voorbereidende zaken.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // Sets vehicles in ComboBox
         transportmiddelen = Transportmiddel.getTransportmiddelen();
         for (Transportmiddel t : transportmiddelen) {
             transportmiddel.getItems().add(t.getNaam());
         }
+
+        // Only allows numeric value's in Textfield
+        addNumberLimiter();
+
+        addTextLimiter(9);
+    }
+
+    public void addNumberLimiter(){
+        kilometers.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                kilometers.setText(newValue.replaceAll("\\D", ""));
+            }
+        });
+    }
+
+    public void addTextLimiter(int maxLength) {
+        kilometers.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+                if (kilometers.getText().length() > maxLength) {
+                    String s = kilometers.getText().substring(0, maxLength);
+                    kilometers.setText(s);
+                }
+            }
+        });
     }
 
 
@@ -56,17 +91,20 @@ public class ReisGegevensController implements Initializable {
                 Dit is voorbereid zodat hiermee berekend kan worden.
                 Er wordt hier de geselecteerde item naar voren gehaald
                  */
+                kosten = t.getKosten();
             }
         }
     }
 
-    public void setUser(User user){
-        this.user = user;
+    public void setUser(User u){
+        this.user = u;
     }
 
-    public void setPointValue(String value){
-        points.setText(value);
+    @Override
+    public void setPoints(User user) {
+        points.setText(user.getPoint().getPointsString());
     }
+
 
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
 }
