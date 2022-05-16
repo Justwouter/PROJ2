@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="640.0" minWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.ReisGegevensController">
     <Button layoutX="172.0" layoutY="454.0" onAction="#switchToDash" text="Switch to Primary View" />
@@ -24,4 +25,12 @@
       </font>
    </Label>
    <ComboBox fx:id="transportmiddel" layoutX="106.0" layoutY="296.0" onAction="#printItem" prefHeight="49.0" prefWidth="269.0" promptText="Selecteer uw transportmethode" />
+   <Button fx:id="pre_set_toevoegen" layoutX="322.0" layoutY="365.0" mnemonicParsing="false" text="Voeg pre-set toe" />
+   <Button fx:id="Pre_set_1" layoutX="95.0" layoutY="532.0" mnemonicParsing="false" text="1" />
+   <Button fx:id="Pre_set_2" layoutX="161.0" layoutY="532.0" mnemonicParsing="false" text="2" />
+   <Button fx:id="Pre_set_3" layoutX="229.0" layoutY="532.0" mnemonicParsing="false" text="3" />
+   <Button fx:id="Pre_set_4" layoutX="298.0" layoutY="532.0" mnemonicParsing="false" text="4" />
+   <Button fx:id="Pre_set_5" layoutX="364.0" layoutY="532.0" mnemonicParsing="false" text="5" />
+   <Text layoutX="95.0" layoutY="519.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pre-sets:" />
+   <ComboBox fx:id="pre_set" layoutX="182.0" layoutY="365.0" prefHeight="25.0" prefWidth="117.0" promptText="Kies pre-set " />
 </AnchorPane>

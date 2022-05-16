@@ -1,6 +1,7 @@
 package com.gui;
 
 import com.logic.Leaderboard;
+import com.logic.Reizen;
 import com.logic.Transportmiddel;
 import com.logic.User;
 import javafx.application.Application;
@@ -31,6 +32,12 @@ public class Main extends Application {
         new Transportmiddel("Bus", 37, 10);
         new Transportmiddel("Openbaar Vervoer gecombineerd", 39, 10);
         new Transportmiddel("Fiets/Lopen", 0, 0);
+
+        new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25);
+        new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(1), 25);
+        new Reizen("Vriendin", Transportmiddel.getTransportmiddelen().get(1), 25);
+        new Reizen("School", Transportmiddel.getTransportmiddelen().get(1), 25);
+
     }
 
     public static void main(String[] args) {

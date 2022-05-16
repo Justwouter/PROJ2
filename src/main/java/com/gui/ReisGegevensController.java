@@ -1,5 +1,6 @@
 package com.gui;
 
+import com.logic.Reizen;
 import com.logic.Transportmiddel;
 import com.logic.User;
 import javafx.beans.value.ChangeListener;
@@ -32,6 +33,11 @@ public class ReisGegevensController implements Initializable, IController {
 
     private ArrayList<Transportmiddel> transportmiddelen;
 
+    @FXML
+    private ComboBox<String> pre_set;
+
+    private ArrayList<Reizen> preSets;
+
 
     // Gaat terug naar het dashboard.
     @FXML
@@ -52,6 +58,12 @@ public class ReisGegevensController implements Initializable, IController {
         transportmiddelen = Transportmiddel.getTransportmiddelen();
         for (Transportmiddel t : transportmiddelen) {
             transportmiddel.getItems().add(t.getNaam());
+        }
+
+        // Sets preSets in ComboBox
+        preSets = Reizen.getReis();
+        for (Reizen r : preSets) {
+            pre_set.getItems().add(r.getNaam());
         }
 
         // Only allows numeric value's in Textfield
