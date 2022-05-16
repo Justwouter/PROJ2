@@ -40,7 +40,7 @@ public class Transportmiddel {
         return transportmiddelen;
     }
 
-    public int berekenReispunten(int Afstand){
+    public int berekenReispuntenKosten(int Afstand){
         return ((Afstand)*(this.kosten));
     }
 }
