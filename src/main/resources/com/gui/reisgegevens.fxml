@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="640.0" minWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.ReisGegevensController">
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.ReisGegevensController">=======
     <Button layoutX="171.0" layoutY="453.0" onAction="#switchToDash" prefHeight="56.0" prefWidth="138.0" text="Opslaan" />
     <Button layoutX="171.0" layoutY="526.0" onAction="#switchToDash2" prefHeight="56.0" prefWidth="138.0" text="Terug" />
     <Pane layoutX="349.0" layoutY="14.0" prefHeight="49.0" prefWidth="117.0" style="-fx-background-color: f8da32; -fx-background-radius: 18 18 18 18;">
