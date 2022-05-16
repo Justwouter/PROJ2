@@ -1,5 +1,7 @@
 package com.gui;
 
+import com.logic.Point;
+import com.logic.Transportmiddel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,7 +40,17 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        start();
         launch();
+    }
+
+    public static void start(){
+        Point.setPoints(500);
+        new Transportmiddel("Benzine auto", 200, 50);
+        new Transportmiddel("Diesel auto", 250, 75);
+        new Transportmiddel("Electrische auto", 100, 25);
+        new Transportmiddel("Openbaar Vervoer", 50, 10);
+        new Transportmiddel("Fiets/Lopen", 0, 0);
     }
 
 }
