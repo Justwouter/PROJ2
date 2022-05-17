@@ -37,6 +37,7 @@ public class Main extends Application {
         new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25);
         new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(3), 50);
         new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75);
+        
 
     }
 

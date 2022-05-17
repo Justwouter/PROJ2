@@ -8,10 +8,10 @@ public class Reizen {
     private Transportmiddel transportmiddel;
     private Integer kilometers;
 
-    private static final ArrayList<Reizen> reizen = new ArrayList<>();
+    public static final ArrayList<Reizen> reizen = new ArrayList<>();
 
 
-    public Reizen(String naam, Transportmiddel transportmiddel, int kilometers) {
+    public Reizen(String naam, Transportmiddel transportmiddel, Integer kilometers) {
         this.naam = naam;
         this.transportmiddel = transportmiddel;
         this.kilometers = kilometers;
@@ -38,13 +38,15 @@ public class Reizen {
         return kilometers;
     }
 
-    public void setKilometers(int kilometers) {
+    public void setKilometers(Integer kilometers) {
         this.kilometers = kilometers;
     }
 
     public static ArrayList<Reizen> getReis(){
         return reizen;
     }
+
+    
 
     
 

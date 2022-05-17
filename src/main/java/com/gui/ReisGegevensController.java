@@ -123,7 +123,7 @@ public class ReisGegevensController implements Initializable, IController {
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
 
 
-
+    //Geven de knoppen 1,2,3,4 en 5 een functie
     @FXML
     public void buttenOne(){
         invullenPreSet(0);
@@ -149,19 +149,36 @@ public class ReisGegevensController implements Initializable, IController {
         invullenPreSet(4);
     }
 
-    //TODO auto in plaats van naam
+    //zet de opgeslagen waarde in de juiste vakken voor de berekening
     public void invullenPreSet(Integer button){
         if(button < preSets.size()){
             kilometers.setText(preSets.get(button).getKilometers().toString());
             transportmiddel.setValue(preSets.get(button).getTransportmiddel().getNaam());
         }else{
             kilometers.clear();
-            transportmiddel.setSelectionModel(null);
+            transportmiddel.setValue(null);
         }   
     }
 
     @FXML
-    public void toevoegenPreSet(){
-        
+    public void toevoegenPreSet() {
+        int gekozen = 1;
+        switch (gekozen) {
+            case (1):
+                preSets.set(0, new Reizen("nieuw 1", Transportmiddel.getTransportmiddelen().get(1), 25));
+                break;
+            case (2):
+                preSets.set(1, new Reizen("nieuw 2", Transportmiddel.getTransportmiddelen().get(1), 25));
+                break;
+            case (3):
+                preSets.set(2, new Reizen("neiuw 3", Transportmiddel.getTransportmiddelen().get(1), 25));
+                break;
+            case (4):
+                preSets.set(3, new Reizen("neiuw 4", Transportmiddel.getTransportmiddelen().get(1), 25));
+                break;
+            case (5):
+                preSets.set(4, new Reizen("nieuw 5", Transportmiddel.getTransportmiddelen().get(1), 25));
+                break;
+        }
     }
 }
