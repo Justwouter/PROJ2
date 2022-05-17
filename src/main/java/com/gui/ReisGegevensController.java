@@ -19,7 +19,7 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     private Label points;
-    //private Label kostenTotaal;
+    private Label kostenTotaal;
 
     private User user;
 
@@ -57,7 +57,10 @@ public class ReisGegevensController implements Initializable, IController {
         }
     }
 
-    // Gaat terug naar het dashboard en past de punten NIET aan.
+    /**
+     * Gaat terug naar het dashboard en past de punten NIET aan.
+     * @throws IOException
+     */
     @FXML
     private void switchToDash2() throws IOException {
         Main.show("dashboard", user);
@@ -143,6 +146,5 @@ public class ReisGegevensController implements Initializable, IController {
     public void setKostenTotaal(){
         //TODO maak hier de berekening
     }
-    // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
 }
 
