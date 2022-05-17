@@ -1,11 +1,13 @@
 package com.gui;
 
+import com.logic.Reizen;
 import com.logic.Transportmiddel;
 import com.logic.User;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -34,6 +36,18 @@ public class ReisGegevensController implements Initializable, IController {
     private ComboBox<String> transportmiddel;
 
     private ArrayList<Transportmiddel> transportmiddelen;
+
+    @FXML
+    private ComboBox<String> pre_set;
+
+    private ArrayList<Reizen> preSets;
+
+    @FXML
+    private TextField hernoemen;
+
+    @FXML
+    private Button checkReis;
+    
 
 
 
@@ -69,6 +83,20 @@ public class ReisGegevensController implements Initializable, IController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addVehicles();
+      // Sets preSets in ComboBox
+        int tellerPreSet = 1;
+        preSets = Reizen.getReis();
+        for (Reizen r : preSets) {
+            if (preSets.get(tellerPreSet - 1).getNaamReis() != null) {
+                pre_set.getItems().add(tellerPreSet + ". " + r.getNaamReis());
+
+            } else {
+                pre_set.getItems().add(tellerPreSet + ". ");
+            }
+            tellerPreSet++;
+        }
+
+        // Only allows numeric value's in Textfield
         addNumberLimiter();
         addTextLimiter(9);
     }
@@ -145,6 +173,91 @@ public class ReisGegevensController implements Initializable, IController {
   
     public void setKostenTotaal(){
         //TODO maak hier de berekening
+    }
+}
+
+
+    // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
+
+
+    //Geven de knoppen 1,2,3,4 en 5 een functie
+    @FXML
+    public void buttenOne(){
+        invullenPreSet(0);
+    }
+
+    @FXML
+    public void buttenTwo(){
+        invullenPreSet(1);
+    }
+
+    @FXML
+    public void buttenThree(){
+        invullenPreSet(2);
+    }
+
+    @FXML
+    public void buttenFor(){
+        invullenPreSet(3);
+    }
+
+    @FXML
+    public void buttenFive(){
+        invullenPreSet(4);
+    }
+
+    //zet de opgeslagen waarde in de juiste vakken voor de berekening
+    public void invullenPreSet(Integer button){
+        if(preSets.get(button).getNaamReis() != null){
+            kilometers.setText(preSets.get(button).getKilometers().toString());
+            transportmiddel.setValue(preSets.get(button).getTransportmiddel().getNaam());
+            hernoemen.setText(preSets.get(button).getNaamReis());
+        }else{
+            kilometers.clear();
+            transportmiddel.getSelectionModel().clearSelection();
+            hernoemen.clear();
+        }   
+    }
+
+    @FXML
+    public void toevoegenPreSet() {
+        // gekozen optie voor preset inlezen
+        String selected = pre_set.getValue();
+        int gekozen = pre_set.getItems().indexOf(selected);
+
+        //ingevulde kilometers inlezen
+        Integer km = Integer.parseInt(kilometers.getText());
+
+        //gekozen transportmiddel inlezen
+        String transport = transportmiddel.getValue();
+        int gekozen2 = transportmiddel.getItems().indexOf(transport);
+
+        //hernoemen naam pre-set
+        String naam = hernoemen.getText();
+
+        switch (gekozen) {
+            case (0):
+                preSets.set(0, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "1. " + naam);
+                break;
+            case (1):
+                preSets.set(1, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "2. " + naam);
+                break;
+            case (2):
+                preSets.set(2, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "3. " + naam);
+                break;
+            case (3):
+                preSets.set(3, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "4. " + naam);
+                break;
+            case (4):
+                preSets.set(4, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "5. " + naam);
+                break;
+        }
+        pre_set.getSelectionModel().clearSelection();
     }
 }
 
