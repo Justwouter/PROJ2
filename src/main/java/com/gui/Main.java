@@ -1,7 +1,11 @@
 package com.gui;
 
+
+import com.logic.Leaderboard;
+import com.logic.Reizen;
 import com.logic.Transportmiddel;
 import com.logic.User;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,6 +30,15 @@ public class Main extends Application {
         new Transportmiddel("Elektrische auto", 87, 25);
         new Transportmiddel("Openbaar Vervoer", 1, 10);
         new Transportmiddel("Fiets/Lopen", 0, 0);
+
+        //moest even voorbeelden hebben voor menu'tje
+        Reizen.reizen.add(new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
+        Reizen.reizen.add(new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
+        Reizen.reizen.add(new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75));
+        Reizen.reizen.add(new Reizen(null, null, null));
+        Reizen.reizen.add(new Reizen(null, null, null));
+        
+
     }
 
     public static void main(String[] args) {
