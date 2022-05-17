@@ -35,8 +35,8 @@ public class Main extends Application {
 
         //moest even voorbeelden hebben voor menu'tje
         new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25);
-        new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(1), 50);
-        new Reizen("School", Transportmiddel.getTransportmiddelen().get(1), 75);
+        new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(3), 50);
+        new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75);
 
     }
 

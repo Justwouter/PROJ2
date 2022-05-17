@@ -61,9 +61,11 @@ public class ReisGegevensController implements Initializable, IController {
         }
 
         // Sets preSets in ComboBox
+        int tellerPreSet = 1;
         preSets = Reizen.getReis();
         for (Reizen r : preSets) {
-            pre_set.getItems().add(r.getNaam());
+            pre_set.getItems().add(tellerPreSet + ". " + r.getNaamReis());
+            tellerPreSet ++;
         }
 
         // Only allows numeric value's in Textfield
@@ -149,8 +151,13 @@ public class ReisGegevensController implements Initializable, IController {
 
     //TODO auto in plaats van naam
     public void invullenPreSet(Integer button){
-        kilometers.setText(preSets.get(button).getKilometers().toString());
-        transportmiddel.setValue(preSets.get(button).getNaam());
+        if(button < preSets.size()){
+            kilometers.setText(preSets.get(button).getKilometers().toString());
+            transportmiddel.setValue(preSets.get(button).getTransportmiddel().getNaam());
+        }else{
+            kilometers.clear();
+            transportmiddel.setSelectionModel(null);
+        }   
     }
 
     @FXML

@@ -18,7 +18,7 @@ public class Reizen {
         reizen.add(this);
     }
     
-    public String getNaam() {
+    public String getNaamReis() {
         return naam;
     }
 
