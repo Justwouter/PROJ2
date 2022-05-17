@@ -1,6 +1,5 @@
 package com.gui;
 
-import com.logic.Leaderboard;
 import com.logic.Transportmiddel;
 import com.logic.User;
 import javafx.application.Application;
