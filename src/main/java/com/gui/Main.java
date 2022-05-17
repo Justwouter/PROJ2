@@ -1,16 +1,16 @@
 package com.gui;
 
+
 import com.logic.Leaderboard;
 import com.logic.Reizen;
 import com.logic.Transportmiddel;
 import com.logic.User;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,12 +25,10 @@ public class Main extends Application {
         new User("Testnaam Damnn...Daniël");
         new User("Wouter").getPoint().setPoints(2500);
         new User("Lucas").getPoint().setPoints(1500);
-        new Transportmiddel("Benzine auto", 68, 50);
-        new Transportmiddel("Diesel auto", 58, 75);
-        new Transportmiddel("Electrische auto", 5, 25);
-        new Transportmiddel("Trein", 2, 10);
-        new Transportmiddel("Bus", 37, 10);
-        new Transportmiddel("Openbaar Vervoer gecombineerd", 39, 10);
+        new Transportmiddel("Benzine auto", 147, 50);
+        new Transportmiddel("Diesel auto", 179, 75);
+        new Transportmiddel("Elektrische auto", 87, 25);
+        new Transportmiddel("Openbaar Vervoer", 1, 10);
         new Transportmiddel("Fiets/Lopen", 0, 0);
 
         //moest even voorbeelden hebben voor menu'tje
@@ -50,6 +48,7 @@ public class Main extends Application {
     @Override
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
+        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/logo.jpg"));
         initialize();
         User user = new User("Main man");
         show("login", user);
@@ -66,7 +65,6 @@ public class Main extends Application {
 
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/logo.jpg"));
         String c = fxml.substring(0, 1).toUpperCase();
         String title = c + fxml.substring(1);
         primaryStage.setTitle(title);
