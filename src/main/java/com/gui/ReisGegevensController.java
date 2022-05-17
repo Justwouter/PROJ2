@@ -7,6 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -38,6 +39,13 @@ public class ReisGegevensController implements Initializable, IController {
 
     private ArrayList<Reizen> preSets;
 
+    @FXML
+    private TextField hernoemen;
+
+    @FXML
+    private Button checkReis;
+    
+
 
     // Gaat terug naar het dashboard.
     @FXML
@@ -64,8 +72,13 @@ public class ReisGegevensController implements Initializable, IController {
         int tellerPreSet = 1;
         preSets = Reizen.getReis();
         for (Reizen r : preSets) {
-            pre_set.getItems().add(tellerPreSet + ". " + r.getNaamReis());
-            tellerPreSet ++;
+            if (preSets.get(tellerPreSet - 1).getNaamReis() != null) {
+                pre_set.getItems().add(tellerPreSet + ". " + r.getNaamReis());
+
+            } else {
+                pre_set.getItems().add(tellerPreSet + ". ");
+            }
+            tellerPreSet++;
         }
 
         // Only allows numeric value's in Textfield
@@ -151,12 +164,14 @@ public class ReisGegevensController implements Initializable, IController {
 
     //zet de opgeslagen waarde in de juiste vakken voor de berekening
     public void invullenPreSet(Integer button){
-        if(button < preSets.size()){
+        if(preSets.get(button).getNaamReis() != null){
             kilometers.setText(preSets.get(button).getKilometers().toString());
             transportmiddel.setValue(preSets.get(button).getTransportmiddel().getNaam());
+            hernoemen.setText(preSets.get(button).getNaamReis());
         }else{
             kilometers.clear();
-            transportmiddel.setValue(null);
+            transportmiddel.getSelectionModel().clearSelection();
+            hernoemen.clear();
         }   
     }
 
@@ -173,22 +188,31 @@ public class ReisGegevensController implements Initializable, IController {
         String transport = transportmiddel.getValue();
         int gekozen2 = transportmiddel.getItems().indexOf(transport);
 
+        //hernoemen naam pre-set
+        String naam = hernoemen.getText();
+
         switch (gekozen) {
             case (0):
-                preSets.set(0, new Reizen("nieuw 1", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                preSets.set(0, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "1. " + naam);
                 break;
             case (1):
-                preSets.set(1, new Reizen("nieuw 2", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                preSets.set(1, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "2. " + naam);
                 break;
             case (2):
-                preSets.set(2, new Reizen("neiuw 3", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                preSets.set(2, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "3. " + naam);
                 break;
             case (3):
-                preSets.set(3, new Reizen("neiuw 4", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                preSets.set(3, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "4. " + naam);
                 break;
             case (4):
-                preSets.set(4, new Reizen("nieuw 5", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                preSets.set(4, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+                pre_set.getItems().set(gekozen, "5. " + naam);
                 break;
         }
+        pre_set.getSelectionModel().clearSelection();
     }
 }
