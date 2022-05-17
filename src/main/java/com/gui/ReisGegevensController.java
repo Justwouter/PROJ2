@@ -174,7 +174,6 @@ public class ReisGegevensController implements Initializable, IController {
     public void setKostenTotaal(){
         //TODO maak hier de berekening
     }
-}
 
 
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
