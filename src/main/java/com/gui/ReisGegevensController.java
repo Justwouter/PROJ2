@@ -162,23 +162,32 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     public void toevoegenPreSet() {
+        // gekozen optie voor preset inlezen
         String selected = pre_set.getValue();
         int gekozen = pre_set.getItems().indexOf(selected);
+
+        //ingevulde kilometers inlezen
+        Integer km = Integer.parseInt(kilometers.getText());
+
+        //gekozen transportmiddel inlezen
+        String transport = transportmiddel.getValue();
+        int gekozen2 = transportmiddel.getItems().indexOf(transport);
+
         switch (gekozen) {
             case (0):
-                preSets.set(0, new Reizen("nieuw 1", Transportmiddel.getTransportmiddelen().get(1), 25));
+                preSets.set(0, new Reizen("nieuw 1", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
                 break;
             case (1):
-                preSets.set(1, new Reizen("nieuw 2", Transportmiddel.getTransportmiddelen().get(1), 25));
+                preSets.set(1, new Reizen("nieuw 2", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
                 break;
             case (2):
-                preSets.set(2, new Reizen("neiuw 3", Transportmiddel.getTransportmiddelen().get(1), 25));
+                preSets.set(2, new Reizen("neiuw 3", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
                 break;
             case (3):
-                preSets.set(3, new Reizen("neiuw 4", Transportmiddel.getTransportmiddelen().get(1), 25));
+                preSets.set(3, new Reizen("neiuw 4", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
                 break;
             case (4):
-                preSets.set(4, new Reizen("nieuw 5", Transportmiddel.getTransportmiddelen().get(1), 25));
+                preSets.set(4, new Reizen("nieuw 5", Transportmiddel.getTransportmiddelen().get(gekozen2), km));
                 break;
         }
     }
