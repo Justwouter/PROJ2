@@ -34,9 +34,9 @@ public class Main extends Application {
         new Transportmiddel("Fiets/Lopen", 0, 0);
 
         //moest even voorbeelden hebben voor menu'tje
-        new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25);
-        new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(3), 50);
-        new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75);
+        Reizen.reizen.add(new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
+        Reizen.reizen.add(new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
+        Reizen.reizen.add(new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75));
         
 
     }

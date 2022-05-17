@@ -15,7 +15,6 @@ public class Reizen {
         this.naam = naam;
         this.transportmiddel = transportmiddel;
         this.kilometers = kilometers;
-        reizen.add(this);
     }
     
     public String getNaamReis() {

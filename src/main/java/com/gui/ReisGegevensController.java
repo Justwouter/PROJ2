@@ -162,21 +162,22 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     public void toevoegenPreSet() {
-        int gekozen = 1;
+        String selected = pre_set.getValue();
+        int gekozen = pre_set.getItems().indexOf(selected);
         switch (gekozen) {
-            case (1):
+            case (0):
                 preSets.set(0, new Reizen("nieuw 1", Transportmiddel.getTransportmiddelen().get(1), 25));
                 break;
-            case (2):
+            case (1):
                 preSets.set(1, new Reizen("nieuw 2", Transportmiddel.getTransportmiddelen().get(1), 25));
                 break;
-            case (3):
+            case (2):
                 preSets.set(2, new Reizen("neiuw 3", Transportmiddel.getTransportmiddelen().get(1), 25));
                 break;
-            case (4):
+            case (3):
                 preSets.set(3, new Reizen("neiuw 4", Transportmiddel.getTransportmiddelen().get(1), 25));
                 break;
-            case (5):
+            case (4):
                 preSets.set(4, new Reizen("nieuw 5", Transportmiddel.getTransportmiddelen().get(1), 25));
                 break;
         }
