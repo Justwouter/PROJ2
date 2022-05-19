@@ -68,30 +68,34 @@ public class DashController implements Initializable, IController{
      * Temporary uses random numbers until a storage class is available
      */
     private void updateWeeklyChart(){
-
-        co2ThisWeekChart.getData().clear();
         //ArrayList<Object> historicUserData = new ArrayList<>();
-        String[] daysOfTheWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"};
+        String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
         XYChart.Series<String,Number> series = new XYChart.Series<String, Number>();
 
         System.out.println("Parsing data");//Debug
 
         for(int i=0;i< daysOfTheWeek.length;i++){
-            Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],Math.round(Math.random()*10));
+            Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],Math.round(Math.random()*100));
             vars.setNode(createDataNode(vars.YValueProperty()));
             series.getData().add(vars);
         }
+
         System.out.println("Displaying data");
         //series.setName("Weekly CO2 Discharge");
-        co2ThisWeekChart.getXAxis().setLabel("Month");
+        
+        co2ThisWeekChart.getXAxis().setLabel("Day");
         co2ThisWeekChart.getYAxis().setLabel("Value");
-        co2ThisWeekChart.getData().add(series); 
+        
+        co2ThisWeekChart.setAnimated(false);
+        co2ThisWeekChart.getData().clear();
+        co2ThisWeekChart.getData().add(series);
+        co2ThisWeekChart.setAnimated(true);
         co2ThisWeekChart.setLegendVisible(false);
     }
 
 
     /**
-     * Creates lables containing the bar values for the Dashboard co2ThisWeek Chart
+     * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart
      * @param value
      */
     private static Node createDataNode(ObjectExpression<Number> value) {
