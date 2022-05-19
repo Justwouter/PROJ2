@@ -9,7 +9,7 @@ public class testUser {
     @Test
     public void testVergelijkPuntMetUitstoot1(){
         //arrange
-        User Albert = new User("Albert");
+        User Albert = new User("Albert Heijn");
         Albert.getPoint().setPoints(1000);
         //act
         String expected = "Je hebt nauwelijks CO2 uitgestoten!";
