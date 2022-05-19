@@ -23,21 +23,18 @@ public class Main extends Application {
         new User("Testnaam Damnn...Daniël");
         new User("Wouter").getPoint().setPoints(2500);
         new User("Lucas").getPoint().setPoints(1500);
-        new Transportmiddel("Benzine auto", 147, 50);
-        new Transportmiddel("Diesel auto", 179, 75);
-        new Transportmiddel("Elektrische auto", 87, 25);
-        new Transportmiddel("Openbaar Vervoer", 1, 10);
-        new Transportmiddel("Fiets/Lopen", 0, 0);
+        new Transportmiddel("Benzine auto", 147, 50);       //147 g\km
+        new Transportmiddel("Diesel auto", 179, 75);        //179 g\km
+        new Transportmiddel("Elektrische auto", 87, 25);    //87 g\km
+        new Transportmiddel("Openbaar Vervoer", 50, 10);    //50 g\km
+        new Transportmiddel("Fiets/Lopen", 5, 0);           //5
 
         //moest even voorbeelden hebben voor menu'tje
         Reizen.reizen.add(new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
         Reizen.reizen.add(new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
         Reizen.reizen.add(new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75));
         Reizen.reizen.add(new Reizen(null, null, null));
-        Reizen.reizen.add(new Reizen(null, null, null));
-    
-    
-    
+        Reizen.reizen.add(new Reizen(null, null, null)); 
     }
 
     public static void main(String[] args) {

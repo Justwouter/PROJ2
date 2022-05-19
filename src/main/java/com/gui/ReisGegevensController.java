@@ -21,13 +21,17 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     private Label points;
-    private Label kostenTotaal; //is voor het uitprinten van de kosten bij reisgegevens doet nu nog niks
 
+    @FXML
+    private Label kostenTotaal; 
+    
     private User user;
 
-    private int kosten;
+    private int kostenVanVoertuig;
 
-    private int uitstoot;
+    private int uitstootVanVoertuig;
+
+    private int puntenVerlies;
 
     @FXML
     private TextField kilometers;
@@ -54,8 +58,13 @@ public class ReisGegevensController implements Initializable, IController {
      */
     @FXML
     private void switchToDash() throws IOException {
-        berekenUitstoot();
+        opslaanUitstoot();
         Main.show("dashboard", user);
+    }
+
+    private void opslaanUitstoot(){
+        berekenUitstoot();
+        user.getPoint().subtractPoints(uitstootVanVoertuig);
     }
 
     /**
@@ -64,7 +73,8 @@ public class ReisGegevensController implements Initializable, IController {
     private void berekenUitstoot(){
         if (!kilometers.getText().isBlank()){
             int km = Integer.parseInt(kilometers.getText());
-            user.getPoint().subtractPoints(km*kosten/10);
+//            user.getPoint().subtractPoints(km*kosten/10);
+            puntenVerlies = (km* uitstootVanVoertuig) / 89;
         }
     }
 
@@ -145,8 +155,9 @@ public class ReisGegevensController implements Initializable, IController {
         String s = transportmiddel.getValue();
         for (Transportmiddel t : transportmiddelen){
             if (t.getNaam().equals(s)){
-                uitstoot = t.getUitstoot();
-                kosten = t.getKosten();
+                uitstootVanVoertuig = t.getUitstoot();
+                kostenVanVoertuig = t.getKosten();
+                setKostenTotaal();
             }
         }
     }
@@ -167,9 +178,11 @@ public class ReisGegevensController implements Initializable, IController {
     public void setPoints(User user) {
         points.setText(user.getPoint().getPointsString());
     }
-  
+
+    @FXML
     public void setKostenTotaal(){
-        //TODO maak hier de berekening
+        berekenUitstoot();
+        kostenTotaal.setText("- " + puntenVerlies);
     }
 
 
