@@ -12,5 +12,4 @@
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0">
 
     <Button fx:id="Login" text="Log lekker in" onAction="#switchToDashboard" />
-
 </AnchorPane>

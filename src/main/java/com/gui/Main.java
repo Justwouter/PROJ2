@@ -1,7 +1,5 @@
 package com.gui;
 
-
-import com.logic.Leaderboard;
 import com.logic.Reizen;
 import com.logic.Transportmiddel;
 import com.logic.User;
@@ -37,8 +35,6 @@ public class Main extends Application {
         Reizen.reizen.add(new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75));
         Reizen.reizen.add(new Reizen(null, null, null));
         Reizen.reizen.add(new Reizen(null, null, null));
-        
-
     }
 
     public static void main(String[] args) {
@@ -73,10 +69,8 @@ public class Main extends Application {
     }
 }
 
-
 //
 //}
-
 //    @Override
 //    public void start(Stage stage) throws IOException {
 //        scene = new Scene(loadFXML("dashboard"), 480, 640);

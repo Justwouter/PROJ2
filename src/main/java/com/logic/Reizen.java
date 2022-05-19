@@ -10,7 +10,6 @@ public class Reizen {
 
     public static final ArrayList<Reizen> reizen = new ArrayList<>();
 
-
     public Reizen(String naam, Transportmiddel transportmiddel, Integer kilometers) {
         this.naam = naam;
         this.transportmiddel = transportmiddel;
@@ -44,9 +43,4 @@ public class Reizen {
     public static ArrayList<Reizen> getReis(){
         return reizen;
     }
-
-    
-
-    
-
 }
