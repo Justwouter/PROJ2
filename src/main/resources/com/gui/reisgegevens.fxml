@@ -49,11 +49,11 @@
       </AnchorPane>
       <AnchorPane layoutX="93.0" layoutY="584.0">
          <children>
-             <Button fx:id="Pre_set_1" layoutX="70.0" mnemonicParsing="false" onAction="#buttenOne" text="1" />
-             <Button fx:id="Pre_set_2" layoutX="120.0" mnemonicParsing="false" onAction="#buttenTwo" text="2" />
-             <Button fx:id="Pre_set_3" layoutX="170.0" mnemonicParsing="false" onAction="#buttenThree" text="3" />
-             <Button fx:id="Pre_set_4" layoutX="220.0" mnemonicParsing="false" onAction="#buttenFor" text="4" />
-             <Button fx:id="Pre_set_5" layoutX="270.0" mnemonicParsing="false" onAction="#buttenFive" text="5" />
+             <Button fx:id="Pre_set_1" layoutX="70.0" mnemonicParsing="false" onAction="#buttonOne" text="1" />
+             <Button fx:id="Pre_set_2" layoutX="120.0" mnemonicParsing="false" onAction="#buttonTwo" text="2" />
+             <Button fx:id="Pre_set_3" layoutX="170.0" mnemonicParsing="false" onAction="#buttonThree" text="3" />
+             <Button fx:id="Pre_set_4" layoutX="220.0" mnemonicParsing="false" onAction="#buttonFour" text="4" />
+             <Button fx:id="Pre_set_5" layoutX="270.0" mnemonicParsing="false" onAction="#buttonFive" text="5" />
              <Text layoutX="9.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pre-sets:" />
          </children>
       </AnchorPane>
