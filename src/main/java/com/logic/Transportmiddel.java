@@ -15,7 +15,8 @@ public class Transportmiddel {
         this.kosten = kosten;
         transportmiddelen.add(this);
     }
-
+    
+    //gemiddelde uitstoot CO2 in g/km
     public void setUitstoot(int uitstoot){
         this.uitstoot = uitstoot;
     }
