@@ -14,3 +14,7 @@
         url("file:src/main/resources/com/gui/Images/layer_02.png"),
         url("file:src/main/resources/com/gui/Images/layer_01.png");
 }
+
+.stacked-bar-chart:vertical .chart-content .chart-plot-background{
+	-fx-region-background: transparant;
+}
