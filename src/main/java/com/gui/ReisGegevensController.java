@@ -59,7 +59,7 @@ public class ReisGegevensController implements Initializable, IController {
     
     /**
      * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
-     * @throws IOException <- Hier zeurt java om dus laat het lekker zitten.
+     * @throws IOException
      */
     @FXML
     private void switchToDash() throws IOException {
@@ -191,14 +191,16 @@ public class ReisGegevensController implements Initializable, IController {
         berekenPunten();
         kostenPunten.setText("- " + puntenVerlies);
     }
-    //Zorgt ervoor dat de reiskosten in gram CO2 wordt uitgeprint
+    /**Zorgt ervoor dat de reiskosten in gram CO2 wordt uitgeprint
+    */
     @FXML
     public void setKostenCO2(){
         berekenUitstoot();
         kostenCO2.setText(uitstootCO2 + "g CO2");
     }
 
-    //Geven de knoppen 1,2,3,4 en 5 een functie
+    /**Geven de knoppen 1,2,3,4 en 5 een functie
+    */
     @FXML
     public void buttonOne(){
         invullenPreSet(0);
@@ -224,7 +226,8 @@ public class ReisGegevensController implements Initializable, IController {
         invullenPreSet(4);
     }
 
-    //zet de opgeslagen waarde in de juiste vakken voor de berekening
+    /**zet de opgeslagen waarde in de juiste vakken voor de berekening
+    */
     public void invullenPreSet(Integer button){
         if(preSets.get(button).getNaamReis() != null){
             kilometers.setText(preSets.get(button).getKilometers().toString());
