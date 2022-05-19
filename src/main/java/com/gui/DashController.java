@@ -23,7 +23,6 @@ import javafx.scene.layout.Pane;
 
 public class DashController implements Initializable, IController{
 
-
     private User user;
 
     @FXML
@@ -35,11 +34,10 @@ public class DashController implements Initializable, IController{
     @FXML
     private NumberAxis weekChartY;
 
-
+  
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateWeeklyChart();
-
     }
 
     @FXML
@@ -68,8 +66,6 @@ public class DashController implements Initializable, IController{
     public void triggerChartUpdate(){
         updateWeeklyChart();
     }
-
-
 
     /**
      *Updates the Bar Graph on the dashboard with the weekly values of the currently logged in user
@@ -123,7 +119,6 @@ public class DashController implements Initializable, IController{
         co2ThisWeekChart.setLegendVisible(false);
     }
 
-
     /**
      * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart
      * @param value
@@ -137,7 +132,6 @@ public class DashController implements Initializable, IController{
 
         return pane;
     }
-
 
     /**
      * Generates node colors for the given XYChart data values

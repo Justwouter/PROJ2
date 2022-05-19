@@ -21,13 +21,22 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     private Label points;
-    private Label kostenTotaal;
 
+    @FXML
+    private Label kostenPunten; 
+
+    @FXML
+    private Label kostenCO2; 
+    
     private User user;
 
-    private int kosten;
+    private int kostenVanVoertuig;
 
-    private int uitstoot;
+    private int uitstootVanVoertuig;
+
+    private int puntenVerlies;
+
+    private int uitstootCO2;
 
     @FXML
     private TextField kilometers;
@@ -48,29 +57,16 @@ public class ReisGegevensController implements Initializable, IController {
     @FXML
     private Button checkReis;
     
-
-
-
     /**
      * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
      * @throws IOException <- Hier zeurt java om dus laat het lekker zitten.
      */
     @FXML
     private void switchToDash() throws IOException {
-        berekenUitstoot();
+        opslaanUitstoot();
         Main.show("dashboard", user);
     }
-
-    /**
-     * Berekent en slaat de uitstoot op.
-     */
-    private void berekenUitstoot(){
-        if (!kilometers.getText().isBlank()){
-            int km = Integer.parseInt(kilometers.getText());
-            user.getPoint().subtractPoints(km*kosten/10);
-        }
-    }
-
+    
     /**
      * Gaat terug naar het dashboard en past de punten NIET aan.
      * @throws IOException
@@ -78,6 +74,28 @@ public class ReisGegevensController implements Initializable, IController {
     @FXML
     private void switchToDash2() throws IOException {
         Main.show("dashboard", user);
+    }
+
+    private void opslaanUitstoot(){
+        berekenPunten();
+        user.getPoint().subtractPoints(uitstootVanVoertuig);
+    }
+
+    /**
+     * Berekent en slaat de uitstoot op.
+     */
+    private void berekenPunten(){
+        if (!kilometers.getText().isBlank()){
+            int km = Integer.parseInt(kilometers.getText());
+            puntenVerlies = (km* uitstootVanVoertuig) / 89;
+        }
+    }
+
+    private void berekenUitstoot(){
+        if (!kilometers.getText().isBlank()){
+            int km = Integer.parseInt(kilometers.getText());
+            uitstootCO2 = (km* uitstootVanVoertuig);
+        }
     }
 
     @Override
@@ -148,8 +166,10 @@ public class ReisGegevensController implements Initializable, IController {
         String s = transportmiddel.getValue();
         for (Transportmiddel t : transportmiddelen){
             if (t.getNaam().equals(s)){
-                uitstoot = t.getUitstoot();
-                kosten = t.getKosten();
+                uitstootVanVoertuig = t.getUitstoot();
+                kostenVanVoertuig = t.getKosten();
+                setKostenTotaal();
+                setKostenCO2();
             }
         }
     }
@@ -170,14 +190,26 @@ public class ReisGegevensController implements Initializable, IController {
     public void setPoints(User user) {
         points.setText(user.getPoint().getPointsString());
     }
-  
-    public void setKostenTotaal(){
-        //TODO maak hier de berekening
+
+    @FXML
+    public void setTotaalAndCO2(){
+        setKostenCO2();
+        setKostenTotaal();
     }
 
+    @FXML
+    public void setKostenTotaal(){
+        berekenPunten();
+        kostenPunten.setText("- " + puntenVerlies);
+    }
+
+    @FXML
+    public void setKostenCO2(){
+        berekenUitstoot();
+        kostenCO2.setText(uitstootCO2 + "g CO2");
+    }
 
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
-
 
     //Geven de knoppen 1,2,3,4 en 5 een functie
     @FXML
@@ -234,28 +266,8 @@ public class ReisGegevensController implements Initializable, IController {
         //hernoemen naam pre-set
         String naam = hernoemen.getText();
 
-        switch (gekozen) {
-            case (0):
-                preSets.set(0, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "1. " + naam);
-                break;
-            case (1):
-                preSets.set(1, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "2. " + naam);
-                break;
-            case (2):
-                preSets.set(2, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "3. " + naam);
-                break;
-            case (3):
-                preSets.set(3, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "4. " + naam);
-                break;
-            case (4):
-                preSets.set(4, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "5. " + naam);
-                break;
-        }
+        preSets.set(gekozen, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+        pre_set.getItems().set(gekozen, gekozen + 1 + ". " + naam);
         pre_set.getSelectionModel().clearSelection();
     }
 }
