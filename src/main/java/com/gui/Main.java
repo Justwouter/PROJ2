@@ -47,7 +47,7 @@ public class Main extends Application {
     @Override
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
-        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/logo.jpg"));
+        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo.jpg"));
         User user = seed();
         show("login", user);
     }

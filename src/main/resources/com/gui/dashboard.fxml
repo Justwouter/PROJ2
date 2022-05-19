@@ -9,14 +9,14 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/dash.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.DashController">
    <children>
-      <AnchorPane layoutX="259.0" layoutY="127.0" prefHeight="149.0" prefWidth="143.0" AnchorPane.bottomAnchor="364.0" AnchorPane.leftAnchor="259.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="127.0">
+      <AnchorPane layoutX="333.0" layoutY="64.0">
          <children>
-            <Button layoutY="68.0" onAction="#switchToReisGegevens" text="Switch to Reisgegevens" />
-            <Button layoutX="2.0" layoutY="123.0" mnemonicParsing="false" onAction="#switchToLeaderboard" text="Switch to Leaderboard" />
+            <Button onAction="#switchToReisGegevens" text="Switch to Reisgegevens" />
+            <Button layoutX="2.0" layoutY="55.0" mnemonicParsing="false" onAction="#switchToLeaderboard" text="Switch to Leaderboard" />
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutY="44.0" minWidth="454.0" prefHeight="18.0" prefWidth="480.0" text="Dashboard" />
-      <StackedBarChart fx:id="co2ThisWeekChart" layoutX="31.0" layoutY="320.0" prefHeight="303.0" prefWidth="418.0">
+      <Label alignment="CENTER" layoutY="4.0" minWidth="454.0" prefHeight="18.0" prefWidth="480.0" text="Dashboard" />
+      <StackedBarChart fx:id="co2ThisWeekChart" layoutX="31.0" layoutY="168.0" prefHeight="303.0" prefWidth="418.0">
         <xAxis>
           <CategoryAxis fx:id="weekChartX" cache="true" side="BOTTOM" />
         </xAxis>
@@ -24,8 +24,8 @@
           <NumberAxis fx:id="weekChartY" cache="true" side="LEFT" />
         </yAxis>
       </StackedBarChart>
-      <Button layoutX="33.0" layoutY="230.0" mnemonicParsing="false" onAction="#triggerChartUpdate" text="Force Chart Update" />
-   <AnchorPane layoutX="302.0" layoutY="28.0" prefHeight="49.0" prefWidth="117.0" style="-fx-background-color: f8da32; -fx-background-radius: 18 18 18 18;">
+      <Button layoutX="31.0" layoutY="119.0" mnemonicParsing="false" onAction="#triggerChartUpdate" text="Force Chart Update" />
+   <AnchorPane layoutX="356.0" layoutY="4.0" prefHeight="49.0" prefWidth="117.0" style="-fx-background-color: f8da32; -fx-background-radius: 18 18 18 18;">
          <children>
          <Label fx:id="pointsDash" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="117.0" style="-fx-font-size: 20px;" text="punten aantal" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
          </children>
