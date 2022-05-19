@@ -1,6 +1,6 @@
 package com.gui;
 
-import com.logic.Reizen;
+import com.logic.Reis;
 import com.logic.Transportmiddel;
 import com.logic.User;
 import javafx.beans.value.ChangeListener;
@@ -40,7 +40,7 @@ public class ReisGegevensController implements Initializable, IController {
     @FXML
     private ComboBox<String> pre_set;
 
-    private ArrayList<Reizen> preSets;
+    private ArrayList<Reis> preSets;
 
     @FXML
     private TextField hernoemen;
@@ -81,17 +81,6 @@ public class ReisGegevensController implements Initializable, IController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addVehicles();
       // Sets preSets in ComboBox
-        int tellerPreSet = 1;
-        preSets = Reizen.getReis();
-        for (Reizen r : preSets) {
-            if (preSets.get(tellerPreSet - 1).getNaamReis() != null) {
-                pre_set.getItems().add(tellerPreSet + ". " + r.getNaamReis());
-
-            } else {
-                pre_set.getItems().add(tellerPreSet + ". ");
-            }
-            tellerPreSet++;
-        }
 
         // Only allows numeric value's in Textfield
         addNumberLimiter();
@@ -178,27 +167,27 @@ public class ReisGegevensController implements Initializable, IController {
 
     //Geven de knoppen 1,2,3,4 en 5 een functie
     @FXML
-    public void buttenOne(){
+    public void buttonOne(){
         invullenPreSet(0);
     }
 
     @FXML
-    public void buttenTwo(){
+    public void buttonTwo(){
         invullenPreSet(1);
     }
 
     @FXML
-    public void buttenThree(){
+    public void buttonThree(){
         invullenPreSet(2);
     }
 
     @FXML
-    public void buttenFor(){
+    public void buttonFour(){
         invullenPreSet(3);
     }
 
     @FXML
-    public void buttenFive(){
+    public void buttonFive(){
         invullenPreSet(4);
     }
 
@@ -231,9 +220,26 @@ public class ReisGegevensController implements Initializable, IController {
         //hernoemen naam pre-set
         String naam = hernoemen.getText();
 
-        preSets.set(gekozen, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+        preSets.set(gekozen, new Reis(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+        user.setReis(gekozen, preSets.get(gekozen));
+        System.out.println(user.getReis(gekozen).getNaamReis());
         pre_set.getItems().set(gekozen, gekozen + 1 + ". " + naam);
         pre_set.getSelectionModel().clearSelection();
+    }
+
+    @Override
+    public void setPresets(User user){
+        int tellerPreSet = 1;
+        preSets = user.getReizen();
+        for (Reis r : preSets) {
+            if (preSets.get(tellerPreSet - 1).getNaamReis() != null) {
+                pre_set.getItems().add(tellerPreSet + ". " + r.getNaamReis());
+
+            } else {
+                pre_set.getItems().add(tellerPreSet + ". ");
+            }
+            tellerPreSet++;
+        }
     }
 }
 

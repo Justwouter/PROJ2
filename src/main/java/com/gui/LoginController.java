@@ -31,4 +31,9 @@ public class LoginController implements Initializable, IController {
     public void setPoints(User user) {
 
     }
+
+    @Override
+    public void setPresets(User user){
+        
+    }
 }

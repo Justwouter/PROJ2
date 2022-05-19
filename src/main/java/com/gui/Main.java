@@ -1,6 +1,6 @@
 package com.gui;
 
-import com.logic.Reizen;
+import com.logic.Reis;
 import com.logic.Transportmiddel;
 import com.logic.User;
 
@@ -17,7 +17,7 @@ public class Main extends Application {
     private static Stage primaryStage;
     private static AnchorPane mainLayout;
 
-        public static void initialize(){
+        public static User seed(){
         new User("Testnaam Eric").getPoint().setPoints(2000);
         new User("Testnaam Burton").getPoint().setPoints(20);
         new User("Testnaam Damnn...Daniël");
@@ -29,15 +29,15 @@ public class Main extends Application {
         new Transportmiddel("Openbaar Vervoer", 1, 10);
         new Transportmiddel("Fiets/Lopen", 0, 0);
 
-        //moest even voorbeelden hebben voor menu'tje
-        Reizen.reizen.add(new Reizen("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
-        Reizen.reizen.add(new Reizen("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
-        Reizen.reizen.add(new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75));
-        Reizen.reizen.add(new Reizen(null, null, null));
-        Reizen.reizen.add(new Reizen(null, null, null));
-    
-    
-    
+        //voorbeeld inlog
+        User user = new User("Main man");
+        user.setReis(0, new Reis("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
+        user.setReis(1, new Reis("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
+        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
+        user.setReis(3, new Reis(null, null, null));
+        user.setReis(4, new Reis(null, null, null));
+
+        return user;
     }
 
     public static void main(String[] args) {
@@ -48,8 +48,7 @@ public class Main extends Application {
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
         primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/logo.jpg"));
-        initialize();
-        User user = new User("Main man");
+        User user = seed();
         show("login", user);
     }
 
@@ -61,6 +60,7 @@ public class Main extends Application {
         IController controller = loader.getController();
         controller.setUser(user);
         controller.setPoints(user);
+        controller.setPresets(user);
 
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);

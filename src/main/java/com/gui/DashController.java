@@ -98,4 +98,9 @@ public class DashController implements Initializable, IController{
 
         return pane;
     }
+
+    @Override
+    public void setPresets(User user){
+        
+    }
 }
