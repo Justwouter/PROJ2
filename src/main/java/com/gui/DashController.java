@@ -132,6 +132,10 @@ public class DashController implements Initializable, IController{
 
         return pane;
     }
+  
+    @Override
+    public void setPresets(User user){} //Empty on purpose, needed to implement the interface
+        
 
     /**
      * Generates node colors for the given XYChart data values
