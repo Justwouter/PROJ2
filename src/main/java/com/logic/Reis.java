@@ -2,15 +2,15 @@ package com.logic;
 
 import java.util.ArrayList;
 
-public class Reizen {
+public class Reis {
 
     private String naam;
     private Transportmiddel transportmiddel;
     private Integer kilometers;
 
-    public static final ArrayList<Reizen> reizen = new ArrayList<>();
+    public static final ArrayList<Reis> reizen = new ArrayList<>();
 
-    public Reizen(String naam, Transportmiddel transportmiddel, Integer kilometers) {
+    public Reis(String naam, Transportmiddel transportmiddel, Integer kilometers) {
         this.naam = naam;
         this.transportmiddel = transportmiddel;
         this.kilometers = kilometers;
@@ -40,7 +40,7 @@ public class Reizen {
         this.kilometers = kilometers;
     }
 
-    public static ArrayList<Reizen> getReis(){
+    public static ArrayList<Reis> getReis(){
         return reizen;
     }
 }
