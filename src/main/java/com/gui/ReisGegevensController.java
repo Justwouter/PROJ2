@@ -30,7 +30,7 @@ public class ReisGegevensController implements Initializable, IController {
     
     private User user;
 
-    private int kostenVanVoertuig;
+    public int kostenVanVoertuig;
 
     private int uitstootVanVoertuig;
 
@@ -113,7 +113,6 @@ public class ReisGegevensController implements Initializable, IController {
             }
             tellerPreSet++;
         }
-
         // Only allows numeric value's in Textfield
         addNumberLimiter();
         addTextLimiter(9);
@@ -159,7 +158,6 @@ public class ReisGegevensController implements Initializable, IController {
 
     /**
      * Deze methode checkt de gekozen waarde van de ComboBox en geeft daarbij berekeningswaardes mee.
-     * TODO Het toevoegen van de berekeningen zelf zodat ze zichtbaar worden voor de gebruiker vóór het opslaan.
      */
     @FXML
     public void printItem(){
@@ -191,47 +189,44 @@ public class ReisGegevensController implements Initializable, IController {
         points.setText(user.getPoint().getPointsString());
     }
 
+    /**
+     * Wrapper method to call both methods. thx javafx
+     */
     @FXML
     public void setTotaalAndCO2(){
         setKostenCO2();
         setKostenTotaal();
     }
-
+    //Zorgt ervoor dat de reiskosten in punten worden uitgeprint
     @FXML
     public void setKostenTotaal(){
         berekenPunten();
         kostenPunten.setText("- " + puntenVerlies);
     }
-
+    //Zorgt ervoor dat de reiskosten in gram CO2 wordt uitgeprint
     @FXML
     public void setKostenCO2(){
         berekenUitstoot();
         kostenCO2.setText(uitstootCO2 + "g CO2");
     }
 
-    // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
-
     //Geven de knoppen 1,2,3,4 en 5 een functie
     @FXML
     public void buttenOne(){
         invullenPreSet(0);
     }
-
     @FXML
     public void buttenTwo(){
         invullenPreSet(1);
     }
-
     @FXML
     public void buttenThree(){
         invullenPreSet(2);
     }
-
     @FXML
     public void buttenFor(){
         invullenPreSet(3);
     }
-
     @FXML
     public void buttenFive(){
         invullenPreSet(4);
