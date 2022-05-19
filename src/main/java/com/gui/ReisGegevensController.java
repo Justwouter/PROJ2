@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,8 +57,13 @@ public class ReisGegevensController implements Initializable, IController {
      */
     @FXML
     private void switchToDash() throws IOException {
-        berekenUitstoot();
+        opslaanUitstoot();
         Main.show("dashboard", user);
+    }
+
+    private void opslaanUitstoot(){
+        berekenUitstoot();
+        user.getPoint().subtractPoints(uitstoot);
     }
 
     /**
@@ -66,7 +72,8 @@ public class ReisGegevensController implements Initializable, IController {
     private void berekenUitstoot(){
         if (!kilometers.getText().isBlank()){
             int km = Integer.parseInt(kilometers.getText());
-            user.getPoint().subtractPoints(km*kosten/10);
+//            user.getPoint().subtractPoints(km*kosten/10);
+            uitstoot = (km*kosten);
         }
     }
 
@@ -149,6 +156,7 @@ public class ReisGegevensController implements Initializable, IController {
             if (t.getNaam().equals(s)){
                 uitstoot = t.getUitstoot();
                 kosten = t.getKosten();
+                setKostenTotaal();
             }
         }
     }
@@ -172,8 +180,8 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     public void setKostenTotaal(){
-        String invoer = kilometers.getText();
-        kostenTotaal.setText(invoer);
+        berekenUitstoot();
+        kostenTotaal.setText("- " + uitstoot);
     }
 
 
