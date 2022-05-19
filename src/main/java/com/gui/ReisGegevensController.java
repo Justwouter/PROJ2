@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,9 +27,11 @@ public class ReisGegevensController implements Initializable, IController {
 
     private User user;
 
-    private int kosten;
+    private int kostenVanVoertuig;
 
-    private int uitstoot;
+    private int uitstootVanVoertuig;
+
+    private int puntenVerlies;
 
     @FXML
     private TextField kilometers;
@@ -63,7 +64,7 @@ public class ReisGegevensController implements Initializable, IController {
 
     private void opslaanUitstoot(){
         berekenUitstoot();
-        user.getPoint().subtractPoints(uitstoot);
+        user.getPoint().subtractPoints(uitstootVanVoertuig);
     }
 
     /**
@@ -73,7 +74,7 @@ public class ReisGegevensController implements Initializable, IController {
         if (!kilometers.getText().isBlank()){
             int km = Integer.parseInt(kilometers.getText());
 //            user.getPoint().subtractPoints(km*kosten/10);
-            uitstoot = (km*kosten);
+            puntenVerlies = (km* uitstootVanVoertuig) / 89;
         }
     }
 
@@ -154,8 +155,8 @@ public class ReisGegevensController implements Initializable, IController {
         String s = transportmiddel.getValue();
         for (Transportmiddel t : transportmiddelen){
             if (t.getNaam().equals(s)){
-                uitstoot = t.getUitstoot();
-                kosten = t.getKosten();
+                uitstootVanVoertuig = t.getUitstoot();
+                kostenVanVoertuig = t.getKosten();
                 setKostenTotaal();
             }
         }
@@ -181,7 +182,7 @@ public class ReisGegevensController implements Initializable, IController {
     @FXML
     public void setKostenTotaal(){
         berekenUitstoot();
-        kostenTotaal.setText("- " + uitstoot);
+        kostenTotaal.setText("- " + puntenVerlies);
     }
 
 
