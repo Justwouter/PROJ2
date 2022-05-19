@@ -231,28 +231,8 @@ public class ReisGegevensController implements Initializable, IController {
         //hernoemen naam pre-set
         String naam = hernoemen.getText();
 
-        switch (gekozen) {
-            case (0):
-                preSets.set(0, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "1. " + naam);
-                break;
-            case (1):
-                preSets.set(1, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "2. " + naam);
-                break;
-            case (2):
-                preSets.set(2, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "3. " + naam);
-                break;
-            case (3):
-                preSets.set(3, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "4. " + naam);
-                break;
-            case (4):
-                preSets.set(4, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
-                pre_set.getItems().set(gekozen, "5. " + naam);
-                break;
-        }
+        preSets.set(gekozen, new Reizen(naam, Transportmiddel.getTransportmiddelen().get(gekozen2), km));
+        pre_set.getItems().set(gekozen, gekozen + 1 + ". " + naam);
         pre_set.getSelectionModel().clearSelection();
     }
 }
