@@ -84,7 +84,7 @@ public class DashController implements Initializable, IController{
             Long userDataValue = Math.round(Math.random()*100);
             averageList.add(userDataValue);
             Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],userDataValue);
-            vars.setNode(createDataNode(vars.YValueProperty()));
+            vars.setNode(createValueLabel(vars.YValueProperty()));
             colorSwitch(vars);
             series.getData().add(vars);
         }
@@ -123,7 +123,7 @@ public class DashController implements Initializable, IController{
      * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart
      * @param value
      */
-    private static Node createDataNode(ObjectExpression<Number> value) {
+    private static Node createValueLabel(ObjectExpression<Number> value) {
         var label = new Label();
         label.textProperty().bind(value.asString());
         var pane = new Pane(label);
