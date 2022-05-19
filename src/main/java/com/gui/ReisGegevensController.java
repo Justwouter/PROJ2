@@ -101,8 +101,6 @@ public class ReisGegevensController implements Initializable, IController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addVehicles();
-      // Sets preSets in ComboBox
-
         // Only allows numeric value's in Textfield
         addNumberLimiter();
         addTextLimiter(9);
