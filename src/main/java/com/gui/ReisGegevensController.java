@@ -203,18 +203,22 @@ public class ReisGegevensController implements Initializable, IController {
     public void buttonOne(){
         invullenPreSet(0);
     }
+    
     @FXML
     public void buttonTwo(){
         invullenPreSet(1);
     }
+    
     @FXML
     public void buttonThree(){
         invullenPreSet(2);
     }
+    
     @FXML
     public void buttonFour(){
         invullenPreSet(3);
     }
+    
     @FXML
     public void buttonFive(){
         invullenPreSet(4);
