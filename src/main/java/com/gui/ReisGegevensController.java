@@ -23,7 +23,10 @@ public class ReisGegevensController implements Initializable, IController {
     private Label points;
 
     @FXML
-    private Label kostenTotaal; 
+    private Label kostenPunten; 
+
+    @FXML
+    private Label kostenCO2; 
     
     private User user;
 
@@ -32,6 +35,8 @@ public class ReisGegevensController implements Initializable, IController {
     private int uitstootVanVoertuig;
 
     private int puntenVerlies;
+
+    private int uitstootCO2;
 
     @FXML
     private TextField kilometers;
@@ -61,23 +66,7 @@ public class ReisGegevensController implements Initializable, IController {
         opslaanUitstoot();
         Main.show("dashboard", user);
     }
-
-    private void opslaanUitstoot(){
-        berekenUitstoot();
-        user.getPoint().subtractPoints(uitstootVanVoertuig);
-    }
-
-    /**
-     * Berekent en slaat de uitstoot op.
-     */
-    private void berekenUitstoot(){
-        if (!kilometers.getText().isBlank()){
-            int km = Integer.parseInt(kilometers.getText());
-//            user.getPoint().subtractPoints(km*kosten/10);
-            puntenVerlies = (km* uitstootVanVoertuig) / 89;
-        }
-    }
-
+    
     /**
      * Gaat terug naar het dashboard en past de punten NIET aan.
      * @throws IOException
@@ -85,6 +74,28 @@ public class ReisGegevensController implements Initializable, IController {
     @FXML
     private void switchToDash2() throws IOException {
         Main.show("dashboard", user);
+    }
+
+    private void opslaanUitstoot(){
+        berekenPunten();
+        user.getPoint().subtractPoints(uitstootVanVoertuig);
+    }
+
+    /**
+     * Berekent en slaat de uitstoot op.
+     */
+    private void berekenPunten(){
+        if (!kilometers.getText().isBlank()){
+            int km = Integer.parseInt(kilometers.getText());
+            puntenVerlies = (km* uitstootVanVoertuig) / 89;
+        }
+    }
+
+    private void berekenUitstoot(){
+        if (!kilometers.getText().isBlank()){
+            int km = Integer.parseInt(kilometers.getText());
+            uitstootCO2 = (km* uitstootVanVoertuig);
+        }
     }
 
     @Override
@@ -158,6 +169,7 @@ public class ReisGegevensController implements Initializable, IController {
                 uitstootVanVoertuig = t.getUitstoot();
                 kostenVanVoertuig = t.getKosten();
                 setKostenTotaal();
+                setKostenCO2();
             }
         }
     }
@@ -180,14 +192,24 @@ public class ReisGegevensController implements Initializable, IController {
     }
 
     @FXML
-    public void setKostenTotaal(){
-        berekenUitstoot();
-        kostenTotaal.setText("- " + puntenVerlies);
+    public void setTotaalAndCO2(){
+        setKostenCO2();
+        setKostenTotaal();
     }
 
+    @FXML
+    public void setKostenTotaal(){
+        berekenPunten();
+        kostenPunten.setText("- " + puntenVerlies);
+    }
+
+    @FXML
+    public void setKostenCO2(){
+        berekenUitstoot();
+        kostenCO2.setText(uitstootCO2 + "g CO2");
+    }
 
     // TODO Maak check die invoerveld van kilometers limiteerd tot cijfers.
-
 
     //Geven de knoppen 1,2,3,4 en 5 een functie
     @FXML
