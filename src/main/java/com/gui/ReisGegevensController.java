@@ -23,8 +23,8 @@ public class ReisGegevensController implements Initializable, IController {
     private Label points;
 
     @FXML
-    private Label kostenTotaal; //is voor het uitprinten van de kosten bij reisgegevens doet nu nog niks
-
+    private Label kostenTotaal; 
+    
     private User user;
 
     private int kostenVanVoertuig;
