@@ -49,7 +49,6 @@ public class User {
         }
         if(punten < 122000000){
             output += "wat de Ever Given uitstoot per " + (punten / 20459) + " km";
-            return output;
         }else{
             output += ""+(punten/122000000)+" keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
         }
