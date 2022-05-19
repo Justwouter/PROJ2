@@ -21,7 +21,7 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     private Label points;
-    private Label kostenTotaal;
+    private Label kostenTotaal; //is voor het uitprinten van de kosten bij reisgegevens doet nu nog niks
 
     private User user;
 
@@ -48,9 +48,6 @@ public class ReisGegevensController implements Initializable, IController {
     @FXML
     private Button checkReis;
     
-
-
-
     /**
      * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
      * @throws IOException <- Hier zeurt java om dus laat het lekker zitten.
