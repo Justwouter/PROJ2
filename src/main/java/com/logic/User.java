@@ -45,12 +45,12 @@ public class User {
             output += "wat een vrachtwagen uitstoot per " + (uitstoot / 9)+ " km";
             return output;
         }
-        if(uitstoot <1000-20459){
-            
+        if(uitstoot <20459){
+            //ja er kan staan "wat 1 bomen", en dat is niet heel mooi, maar ik heb geen zin in veel extra code
             output += "wat " + (uitstoot / 28) + " bomen per jaar opnemen";
             return output;
         }
-        if(uitstoot <1000-122000000){
+        if(uitstoot <122000000){
             output += "wat de Ever Given uitstoot per " + (uitstoot / 20459) + " km";
         }else{
             output += ""+(uitstoot/122000000)+" keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
