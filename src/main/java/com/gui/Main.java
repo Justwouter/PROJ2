@@ -23,11 +23,11 @@ public class Main extends Application {
         new User("Testnaam Damnn...Daniël");
         new User("Wouter").getPoint().setPoints(2500);
         new User("Lucas").getPoint().setPoints(1500);
-        new Transportmiddel("Benzine auto", 147, 50);
-        new Transportmiddel("Diesel auto", 179, 75);
-        new Transportmiddel("Elektrische auto", 87, 25);
-        new Transportmiddel("Openbaar Vervoer", 1, 10);
-        new Transportmiddel("Fiets/Lopen", 0, 0);
+        new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
+        new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
+        new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
+        new Transportmiddel("Openbaar Vervoer", 50, 10);    //50 g/km
+        new Transportmiddel("Fiets/Lopen", 5, 0);           //5
 
         //voorbeeld inlog
         User user = new User("Main man");
@@ -71,32 +71,3 @@ public class Main extends Application {
         primaryStage.show();
     }
 }
-
-//
-//}
-//    @Override
-//    public void start(Stage stage) throws IOException {
-//        scene = new Scene(loadFXML("dashboard"), 480, 640);
-//
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(App.class.getResource("dashboard.fxml"));
-//        BorderPane mainLayout = loader.load();
-//        User user = new User("TestUser");
-//        DashController dc = loader.getController();
-//        dc.setUser(user);
-//
-//        stage.setScene(scene);
-//        stage.setTitle("PROJ2");
-//        stage.getIcons().add(new Image("file:src/main/resources/com/gui/logo.jpg"));
-//        stage.setResizable(false);
-//        stage.show();
-//    }
-
-//    static void setRoot(String fxml) throws IOException {
-//        scene.setRoot(loadFXML(fxml));
-//    }
-
-//    private static Parent loadFXML(String fxml) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-//        return fxmlLoader.load();
-//    }

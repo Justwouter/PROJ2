@@ -14,7 +14,6 @@ public class LoginController implements Initializable, IController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    
     }
 
     @FXML
@@ -29,7 +28,6 @@ public class LoginController implements Initializable, IController {
 
     @Override
     public void setPoints(User user) {
-
     }
 
     @Override

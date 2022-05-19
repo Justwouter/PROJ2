@@ -16,13 +16,18 @@
       </Pane>
       <AnchorPane layoutX="77.0" layoutY="163.0">
          <children>
-              <Pane layoutX="122.0" layoutY="191.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;">
+              <Pane layoutX="218.0" layoutY="187.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;">
                <children>
-                  <Label fx:id="kostenTotaal" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+                  <Label fx:id="kostenPunten" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                </children></Pane>
+            <Pane layoutY="187.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: #FF0000; -fx-background-radius: 18 18 18 18;">
+               <children>
+                  <Label fx:id="kostenCO2" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Uitstoot" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+               </children>
+            </Pane>
             <Button alignment="CENTER" layoutY="262.0" onAction="#switchToDash" prefHeight="56.0" prefWidth="138.0" text="Opslaan" />
             <Button layoutX="218.0" layoutY="262.0" onAction="#switchToDash2" prefHeight="56.0" prefWidth="138.0" text="Terug" />
-            <TextField fx:id="kilometers" alignment="CENTER" layoutX="43.0" layoutY="50.0" onKeyPressed="#setKostenTotaal" prefHeight="49.0" prefWidth="269.0" promptText="Voer uw aantal gereden kilometers in">
+            <TextField fx:id="kilometers" alignment="CENTER" layoutX="43.0" layoutY="50.0" onKeyReleased="#setTotaalAndCO2" prefHeight="49.0" prefWidth="269.0" promptText="Voer uw aantal gereden kilometers in">
                <font>
                   <Font size="15.0" />
                </font>
