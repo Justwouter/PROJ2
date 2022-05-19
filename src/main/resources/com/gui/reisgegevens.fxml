@@ -16,7 +16,10 @@
       </Pane>
       <AnchorPane layoutX="77.0" layoutY="163.0">
          <children>
-              <Pane layoutX="122.0" layoutY="191.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;" />
+              <Pane layoutX="122.0" layoutY="191.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;">
+               <children>
+                  <Label fx:id="kostenTotaal" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+               </children></Pane>
             <Button alignment="CENTER" layoutY="262.0" onAction="#switchToDash" prefHeight="56.0" prefWidth="138.0" text="Opslaan" />
             <Button layoutX="218.0" layoutY="262.0" onAction="#switchToDash2" prefHeight="56.0" prefWidth="138.0" text="Terug" />
             <TextField fx:id="kilometers" alignment="CENTER" layoutX="43.0" layoutY="50.0" onKeyPressed="#setKostenTotaal" prefHeight="49.0" prefWidth="269.0" promptText="Voer uw aantal gereden kilometers in">
@@ -25,7 +28,6 @@
                </font>
             </TextField>
             <ComboBox fx:id="transportmiddel" layoutX="43.0" layoutY="122.0" onAction="#printItem" prefHeight="49.0" prefWidth="269.0" promptText="Selecteer uw transportmethode" />
-            <Label fx:id="kostenTotaal" alignment="CENTER" contentDisplay="CENTER" layoutX="122.0" layoutY="192.0" prefHeight="49.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
             <Label alignment="CENTER" layoutX="325.0" layoutY="50.0" prefHeight="49.0" prefWidth="51.0" text="Km" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
