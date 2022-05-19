@@ -28,6 +28,7 @@ public class DashController implements Initializable, IController{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    
     }
 
     @FXML

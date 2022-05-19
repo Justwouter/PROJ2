@@ -35,6 +35,9 @@ public class Main extends Application {
         Reizen.reizen.add(new Reizen("School", Transportmiddel.getTransportmiddelen().get(4), 75));
         Reizen.reizen.add(new Reizen(null, null, null));
         Reizen.reizen.add(new Reizen(null, null, null));
+    
+    
+    
     }
 
     public static void main(String[] args) {
