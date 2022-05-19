@@ -18,7 +18,7 @@
          <children>
               <Pane layoutX="122.0" layoutY="191.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;">
                <children>
-                  <Label fx:id="kostenTotaal" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+                  <Label fx:id="kostenTotaal" alignment="CENTER" contentDisplay="CENTER" onKeyTyped="#setKostenTotaal" prefHeight="49.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                </children></Pane>
             <Button alignment="CENTER" layoutY="262.0" onAction="#switchToDash" prefHeight="56.0" prefWidth="138.0" text="Opslaan" />
             <Button layoutX="218.0" layoutY="262.0" onAction="#switchToDash2" prefHeight="56.0" prefWidth="138.0" text="Terug" />

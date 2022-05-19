@@ -21,6 +21,8 @@ public class ReisGegevensController implements Initializable, IController {
 
     @FXML
     private Label points;
+
+    @FXML
     private Label kostenTotaal; //is voor het uitprinten van de kosten bij reisgegevens doet nu nog niks
 
     private User user;
@@ -167,9 +169,11 @@ public class ReisGegevensController implements Initializable, IController {
     public void setPoints(User user) {
         points.setText(user.getPoint().getPointsString());
     }
-  
+
+    @FXML
     public void setKostenTotaal(){
-        //TODO maak hier de berekening
+        String invoer = kilometers.getText();
+        kostenTotaal.setText(invoer);
     }
 
 
