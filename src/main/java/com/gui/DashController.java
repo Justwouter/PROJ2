@@ -41,7 +41,7 @@ public class DashController implements Initializable, IController{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateWeeklyChart();
-        setVergelijking();
+        
     }
 
     @FXML
@@ -74,6 +74,7 @@ public class DashController implements Initializable, IController{
     @FXML
     public void triggerChartUpdate(){
         updateWeeklyChart();
+        setVergelijking();
     }
 
     /**
