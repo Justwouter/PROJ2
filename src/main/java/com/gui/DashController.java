@@ -41,7 +41,7 @@ public class DashController implements Initializable, IController{
     private Label pointsDash;
 
     @FXML
-    private NumberAxis weekChartY = new NumberAxis();
+    private NumberAxis weekChartY = new NumberAxis(0,150,10);
 
     @FXML
     private CategoryAxis weekChartX = new CategoryAxis();
@@ -90,6 +90,9 @@ public class DashController implements Initializable, IController{
 
 
     private void updateMedianLine(List<Long> averageList){
+
+        medianLineChart.getXAxis().setLabel("Day");
+        medianLineChart.getYAxis().setLabel("Value");
 
         medianLineChart.setLegendVisible(false);
         medianLineChart.setAnimated(false);
@@ -204,7 +207,7 @@ public class DashController implements Initializable, IController{
         co2ThisWeekChart.getData().clear();
         co2ThisWeekChart.getData().add(series);
         //weekChartY.setUpperBound(highest+20.0);
-        co2ThisWeekChart.setAnimated(true);
+        //co2ThisWeekChart.setAnimated(true);
         return averageList;
     }
 
