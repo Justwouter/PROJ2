@@ -32,7 +32,7 @@
    </AnchorPane>
       <AnchorPane layoutX="3.0" layoutY="552.0" prefHeight="79.0" prefWidth="480.0">
          <children>
-            <Label fx:id="uitstootVergelijk" layoutX="-2.0" layoutY="24.0" prefHeight="50.0" prefWidth="470.0" text="Label" textAlignment="CENTER" wrapText="true" />
+            <Label fx:id="uitstootVergelijk" layoutX="-2.0" layoutY="24.0" prefHeight="50.0" prefWidth="470.0" text=" " textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
    </children>
