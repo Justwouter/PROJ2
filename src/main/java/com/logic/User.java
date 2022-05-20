@@ -49,8 +49,8 @@ public class User {
     public int getRank(){
         return this.rank;
     }
-
-    public String vergelijkPuntMetUitstoot(){
+//burton bakent vanaf hier territorium af
+    public String vergelijkPuntMetUitstoot(){ 
         long uitstoot = 1000-point.getPoints();
         if(uitstoot <= 1){
             return "Je hebt nauwelijks CO2 uitgestoten!";
