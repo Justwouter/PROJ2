@@ -26,6 +26,9 @@ public class DashController implements Initializable, IController{
     private User user;
 
     @FXML
+    private Label uitstootVergelijk;
+
+    @FXML
     private StackedBarChart<String,Number> co2ThisWeekChart;
 
     @FXML
@@ -38,6 +41,7 @@ public class DashController implements Initializable, IController{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateWeeklyChart();
+        setVergelijking();
     }
 
     @FXML
@@ -58,6 +62,11 @@ public class DashController implements Initializable, IController{
     public void setPoints(User user) {
         pointsDash.setText(user.getPoint().getPointsString());
 
+    }
+
+    @FXML
+    public void setVergelijking(){
+        uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
     }
     /**
      * Wrapper method to update the barchart on the dashboard
