@@ -52,28 +52,30 @@ public class User {
 
     public String vergelijkPuntMetUitstoot(){
         long uitstoot = 1000-point.getPoints();
-        String output = "";
         if(uitstoot <= 1){
-            output =  "Je hebt nauwelijks CO2 uitgestoten!";
+            return "Je hebt nauwelijks CO2 uitgestoten!";
         }
-        if(uitstoot < 9){
-            output = "Je stoot gemiddeld per kilometer net zo veel uit als een vrachtwagen.";
+        String output = "Je CO2 uitstoot komt overeen met ";
+        if(uitstoot<9){
+            output += "wat een vrachtwagen per km uitstoot";
+            return output;
         }
-        if(uitstoot < 28){
-            output = "";
+        if(uitstoot <28){
+            output += "wat een vrachtwagen uitstoot per " + (uitstoot / 9)+ " km";
+            return output;
         }
-        if(uitstoot < 20459){
-            if ((uitstoot / 28) > 1){
-                output = "Je uitstoot wordt door " + (uitstoot / 28) + " bomen in een jaar opgenomen.";
-            }else{
-                output = "Je CO2 uitstoot wordt door één boom in een jaar opgenomen.";
-            }
+        if(uitstoot <20459){
+            //ja er kan staan "wat 1 bomen", en dat is niet heel mooi, maar ik heb geen zin in veel extra code
+            output += "wat " + (uitstoot / 28) + " bomen per jaar opnemen";
+            return output;
         }
-        if(uitstoot < 122000000){
-            output = "Je stoot gemiddeld per kilometer net zo veel uit als de Ever Given per " + (uitstoot / 20459) + " kilometer uitstoot.";
+        if(uitstoot <122000000){
+            output += "wat de Ever Given uitstoot per " + (uitstoot / 20459) + " km";
         }else{
-            output = "Je CO2 uitstoot komt overeen met " + (uitstoot/122000000) + " keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
+            output += ""+(uitstoot/122000000)+" keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
         }
+
         return output;
     }
+
 }
