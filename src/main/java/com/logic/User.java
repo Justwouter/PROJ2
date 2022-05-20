@@ -49,7 +49,7 @@ public class User {
     public int getRank(){
         return this.rank;
     }
-//burton bakent vanaf hier territorium af
+    //Made By BarmanTurbo
     public String vergelijkPuntMetUitstoot(){ 
         long uitstoot = 1000-point.getPoints();
         if(uitstoot <= 1){
