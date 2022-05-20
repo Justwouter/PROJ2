@@ -4,9 +4,19 @@
 
 .root{
     -fx-background-size: contain, contain, contain, contain, contain, contain;
+        background-size: contain, contain, contain, contain, contain, contain;
     -fx-background-position: bottom, bottom, bottom, bottom, bottom, bottom;
+        background-position: bottom, bottom, bottom, bottom, bottom, bottom;
     -fx-background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
+        background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
     -fx-background-image:
+        url("file:src/main/resources/com/gui/Images/layer_06.png"),
+        url("file:src/main/resources/com/gui/Images/layer_05.png"),
+        url("file:src/main/resources/com/gui/Images/layer_04.png"),
+        url("file:src/main/resources/com/gui/Images/layer_03.png"),
+        url("file:src/main/resources/com/gui/Images/layer_02.png"),
+        url("file:src/main/resources/com/gui/Images/layer_01.png");
+        background-image: 
         url("file:src/main/resources/com/gui/Images/layer_06.png"),
         url("file:src/main/resources/com/gui/Images/layer_05.png"),
         url("file:src/main/resources/com/gui/Images/layer_04.png"),
@@ -15,6 +25,6 @@
         url("file:src/main/resources/com/gui/Images/layer_01.png");
 }
 
-.stacked-bar-chart:vertical .chart-content .chart-plot-background{
+/*.stacked-bar-chart:vertical .chart-content .chart-plot-background{
 	-fx-region-background: transparant;
-}
+}*/

@@ -72,7 +72,7 @@ public class DashController implements Initializable, IController{
         <p>
      * Temporary uses random numbers until a storage class is available
      */
-    private void updateWeeklyChart(){ //TODO lock the XAxis values horizontal, fix the weird scaling
+    private void updateWeeklyChart(){ //TODO lock the XAxis values horizontal, fix/lock the weird YAxis scaling
         //ArrayList<Object> historicUserData = new ArrayList<>();
         List<Long> averageList = new ArrayList<>();
         String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};

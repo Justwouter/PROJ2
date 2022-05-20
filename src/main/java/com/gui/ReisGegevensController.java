@@ -78,7 +78,7 @@ public class ReisGegevensController implements Initializable, IController {
 
     private void opslaanUitstoot(){
         berekenPunten();
-        user.getPoint().subtractPoints(uitstootVanVoertuig);
+        user.getPoint().subtractPoints(puntenVerlies);
     }
 
     /**
