@@ -1,14 +1,10 @@
 package com.logic;
 
-import java.util.ArrayList;
-
 public class Reis {
 
     private String naam;
     private Transportmiddel transportmiddel;
     private Integer kilometers;
-
-    public static final ArrayList<Reis> reizen = new ArrayList<>();
 
     public Reis(String naam, Transportmiddel transportmiddel, Integer kilometers) {
         this.naam = naam;
@@ -38,9 +34,5 @@ public class Reis {
 
     public void setKilometers(Integer kilometers) {
         this.kilometers = kilometers;
-    }
-
-    public static ArrayList<Reis> getReis(){
-        return reizen;
     }
 }
