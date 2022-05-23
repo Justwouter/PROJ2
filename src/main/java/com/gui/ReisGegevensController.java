@@ -240,6 +240,8 @@ public class ReisGegevensController implements Initializable, IController {
             kilometers.clear();
             transportmiddel.getSelectionModel().clearSelection();
             hernoemen.clear();
+            kostenCO2.setText("Uitstoot");
+            kostenPunten.setText("Kosten");
         }   
     }
 
