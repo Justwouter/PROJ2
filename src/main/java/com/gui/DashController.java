@@ -1,5 +1,6 @@
 package com.gui;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,22 +12,28 @@ import com.logic.User;
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+
+//Charts
+//import javafx.scene.chart.StackedBarChart;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
-//import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 
-import javafx.scene.control.Label;
+//Sound
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
-import javafx.scene.layout.Pane;
 
 public class DashController implements Initializable, IController{
 
     private User user;
+    private MediaPlayer jukebox = new MediaPlayer(LoadMusic());
 
     @FXML
     private Label uitstootVergelijk;
@@ -84,10 +91,21 @@ public class DashController implements Initializable, IController{
      */
     @FXML
     public void triggerChartUpdate(){
+        playMusic();
         updateMedianLine(updateWeeklyChart());
         setVergelijking();
     }
 
+
+    private Media LoadMusic(){
+        Media media = new Media(new File("src/main/resources/com/gui/Sounds/ding.wav").toURI().toString());
+        return media;
+    }
+    private void playMusic(){
+        jukebox.play();
+        jukebox.stop();
+        jukebox.play();
+    }
 
     private void updateMedianLine(List<Long> averageList){
 
@@ -96,7 +114,7 @@ public class DashController implements Initializable, IController{
 
         medianLineChart.setLegendVisible(false);
         medianLineChart.setAnimated(false);
-        medianLineChart.setCreateSymbols(true);
+        medianLineChart.setCreateSymbols(false);
         medianLineChart.setAlternativeRowFillVisible(false);
         medianLineChart.setAlternativeColumnFillVisible(false);
         medianLineChart.setHorizontalGridLinesVisible(false);
