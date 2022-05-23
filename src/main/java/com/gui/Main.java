@@ -28,6 +28,7 @@ public class Main extends Application {
         new User("Testnaam Damnn...Daniël");
         new User("Wouter").getPoint().setPoints(2500);
         new User("Lucas").getPoint().setPoints(1500);
+        
         new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
         new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
         new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
@@ -45,6 +46,11 @@ public class Main extends Application {
         return user;
     }
 
+
+    /**
+     * Savemanager test class
+     * @param seed
+     */
     public static void loadPeople(boolean seed){
         if(seed){
             seed();
@@ -72,9 +78,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        loadPeople(false);
-        
-        //launch(args);
+        //loadPeople(false);
+        launch(args);
     }
 
     @Override

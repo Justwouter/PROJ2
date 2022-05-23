@@ -76,24 +76,39 @@ public class SaveManager {
 
 
     public static void load(){
-        String dir = System.getProperty("user.dir")+"\\data\\";
-        File savefile = new File(dir+"Users.json");
-        ArrayList<String> saveFileContents = new ArrayList<>();
-        try {
-            Scanner james = new Scanner(savefile);
-            while (james.hasNextLine()) {
-                String contents = james.nextLine();
-                saveFileContents.add(contents);
-            }
-        }
-        catch(Exception e){}
         
-        for(String s : saveFileContents){
+        
+        for(String s : readFile("Users")){
             User newStudent = gson.fromJson(s, User.class);
             Leaderboard.addUser(newStudent);
             System.out.println(newStudent.naam);
         }
         System.out.println("==========");
 
+    }
+
+
+
+    /**
+     * Reads the lines of an JSON file located in ~\data and returns them as entries in an ArrayList
+     * @param file
+     * @return {@link ArrayList<String>}
+     */
+    private static ArrayList<String> readFile(String file) {
+        String dir = System.getProperty("user.dir")+"\\data\\";
+        File savefile = new File(dir+file+".json");
+        ArrayList<String> saveFileContents = new ArrayList<>();
+        try {
+            Scanner james = new Scanner(savefile);
+            while (james.hasNextLine()) {
+                String contents = james.nextLine();
+                if(!contents.equals("")){
+                    saveFileContents.add(contents);
+                }
+                
+            }
+        }
+        catch(Exception e){}
+        return saveFileContents;
     }
 }

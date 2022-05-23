@@ -19,6 +19,11 @@ public class User {
         }
     }
 
+    public User(String naam, Point point) {
+        this.naam = naam;
+        this.point = point;
+    }
+
     public void setReis(int index, Reis reis){
         PreSets.set(index, reis);
     }
