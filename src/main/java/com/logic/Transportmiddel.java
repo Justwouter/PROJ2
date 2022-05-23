@@ -3,11 +3,11 @@ package com.logic;
 import java.util.ArrayList;
 
 public class Transportmiddel {
-    private final String NAAM;
-    private int uitstoot;
-    private int kosten;
+    public final String NAAM;
+    public int uitstoot;
+    public int kosten;
 
-    private static final ArrayList<Transportmiddel> transportmiddelen = new ArrayList<>();
+    public static final ArrayList<Transportmiddel> transportmiddelen = new ArrayList<>();
 
     public Transportmiddel(String naam, int uitstoot, int kosten) {
         this.NAAM = naam;

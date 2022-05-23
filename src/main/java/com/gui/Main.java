@@ -1,6 +1,9 @@
 package com.gui;
 
+import com.google.gson.Gson;
+import com.logic.Leaderboard;
 import com.logic.Reis;
+import com.logic.SaveManager;
 import com.logic.Transportmiddel;
 import com.logic.User;
 
@@ -12,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main extends Application {
     private static Stage primaryStage;
@@ -41,7 +45,12 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        new User("Jerom");
+        SaveManager.load();
+        for(User u : Leaderboard.getUsers()){
+            System.out.println(u.naam);
+        }
+        //launch(args);
     }
 
     @Override

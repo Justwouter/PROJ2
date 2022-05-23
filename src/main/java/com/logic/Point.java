@@ -1,6 +1,6 @@
 package com.logic;
 public class Point {
-    private Integer points;
+    public Integer points;
 
     public void setPoints(int amount){
         points = amount;

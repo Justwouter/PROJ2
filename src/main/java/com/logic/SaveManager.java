@@ -2,6 +2,8 @@ package com.logic;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
 
@@ -64,5 +66,30 @@ public class SaveManager {
 
     public static String makeString(Object object) {
         return gson.toJson(object);
+    }
+
+
+
+    public static void load(){
+        Gson gson = new Gson();
+        String dir = System.getProperty("user.dir")+"\\data\\";
+        File savefile = new File(dir+"Users.json");
+        ArrayList<String> saveFileContents = new ArrayList<>();
+        try {
+            Scanner james = new Scanner(savefile);
+            while (james.hasNextLine()) {
+                String contents = james.nextLine();
+                saveFileContents.add(contents);
+            }
+        }
+        catch(Exception e){}
+        
+        for(String s : saveFileContents){
+            User newStudent = gson.fromJson(s, User.class);
+            Leaderboard.addUser(newStudent);
+            System.out.println(newStudent.naam);
+        }
+        System.out.println("==========");
+
     }
 }

@@ -3,12 +3,12 @@ package com.logic;
 import java.util.ArrayList;
 
 public class User {
-    private String naam;
-    private int rank;
-    private Point point = new Point();
+    public String naam;
+    public int rank;
+    public Point point = new Point();
     //private boolean isAdmin = false;
 
-    private ArrayList<Reis> PreSets = new ArrayList<>();
+    public ArrayList<Reis> PreSets = new ArrayList<>();
 
     public User(String naam){
         this.naam = naam;
