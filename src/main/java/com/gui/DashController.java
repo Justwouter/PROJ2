@@ -82,7 +82,7 @@ public class DashController implements Initializable, IController{
 
     }
     
-//TODO setVergelijking() weer functioneel weten te krijgen
+    //TODO setVergelijking() weer functioneel weten te krijgen
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
@@ -102,6 +102,7 @@ public class DashController implements Initializable, IController{
         Media media = new Media(new File("src/main/resources/com/gui/Sounds/ding.wav").toURI().toString());
         return media;
     }
+
     private void playMusic(){
         jukebox.play();
         jukebox.stop();
@@ -189,6 +190,7 @@ public class DashController implements Initializable, IController{
 
         System.out.println("Parsing data");//Debug
 
+        //Populate the XYchart with random value nodes & add floating lables to said nodes
         for(int i=0;i< daysOfTheWeek.length;i++){
             Long userDataValue = Math.round(Math.random()*100);
             averageList.add(userDataValue);
@@ -250,21 +252,12 @@ public class DashController implements Initializable, IController{
      */
     private void barColorSwitch(XYChart.Data<String, Number> data){
         Node node = data.getNode();
-        if (data.getYValue().intValue() > 99) {
-            node.setStyle("-fx-bar-fill: black");
-        } 
-        else if (data.getYValue().intValue() > 83) {
+        if (data.getYValue().intValue() > 75) {
             node.setStyle("-fx-bar-fill: red");
         } 
-        else if (data.getYValue().intValue() > 67) {
+        else if (data.getYValue().intValue() >= 25) {
             node.setStyle("-fx-bar-fill: orange");
         } 
-        else if (data.getYValue().intValue() > 50) {
-            node.setStyle("-fx-bar-fill: yellow");
-        }
-        else if (data.getYValue().intValue() > 33) {
-            node.setStyle("-fx-bar-fill: blue");
-        }
         else {
             node.setStyle("-fx-bar-fill: green");
         }
