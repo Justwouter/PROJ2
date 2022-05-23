@@ -6,6 +6,7 @@ public class User {
     private String naam;
     private int rank;
     private Point point = new Point();
+    private boolean isAdmin = false;
 
     private ArrayList<Reis> PreSets = new ArrayList<>();
 

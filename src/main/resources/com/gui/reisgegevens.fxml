@@ -27,7 +27,7 @@
             </Pane>
             <Button alignment="CENTER" layoutY="262.0" onAction="#switchToDash" prefHeight="56.0" prefWidth="138.0" text="Opslaan" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="218.0" />
             <Button alignment="CENTER" contentDisplay="CENTER" layoutX="218.0" layoutY="262.0" onAction="#switchToDash2" prefHeight="56.0" prefWidth="138.0" text="Terug" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="24.0" />
-            <TextField fx:id="kilometers" alignment="CENTER" layoutX="43.0" layoutY="50.0" onKeyPressed="#setTotaalAndCO2" onKeyReleased="#setTotaalAndCO2" onKeyTyped="#setTotaalAndCO2" prefHeight="49.0" prefWidth="269.0" promptText="Voer uw aantal gereden kilometers in" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+            <TextField fx:id="kilometers" alignment="CENTER" layoutX="43.0" layoutY="50.0" onInputMethodTextChanged="#setTotaalAndCO2" onKeyPressed="#setTotaalAndCO2" onKeyReleased="#setTotaalAndCO2" onKeyTyped="#setTotaalAndCO2" prefHeight="49.0" prefWidth="269.0" promptText="Voer uw aantal gereden kilometers in" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
                <font>
                   <Font size="15.0" />
                </font>
