@@ -106,7 +106,7 @@ public class ReisGegevensController implements Initializable, IController {
         addVehicles();
         // Only allows numeric value's in Textfield
         addNumberLimiter();
-        addTextLimiter(9);
+        addTextLimiter(5);
     }
 
     /**
