@@ -18,7 +18,7 @@ import javafx.scene.layout.Pane;
 //Charts
 //import javafx.scene.chart.StackedBarChart;
 import javafx.scene.Node;
-import javafx.scene.chart.BarChart;
+import javafx.scene.chart.BarChart;                     
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -215,7 +215,7 @@ public class DashController implements Initializable, IController{
         System.out.println("Displaying data");
 
         //Assign lables
-        co2ThisWeekChart.setTitle("Weekly CO2 Discharge");
+        co2ThisWeekChart.setTitle("Weekly CO2 Values");
         weekChartX.setLabel("Day");
         weekChartY.setLabel("Value");
         
