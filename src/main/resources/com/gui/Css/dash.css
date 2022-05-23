@@ -28,3 +28,8 @@
 /*.stacked-bar-chart:vertical .chart-content .chart-plot-background{
 	-fx-region-background: transparant;
 }*/
+
+.chart .chart-content .chart-plot-background{
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
