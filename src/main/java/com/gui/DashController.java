@@ -97,10 +97,6 @@ public class DashController implements Initializable, IController{
         setVergelijking();
     }
 
-    /**
-     *(zorgt ervoor dat de juiste muziek wordt ingeladen
-     * @return media
-     */
     private Media LoadMusic(){
         Media media = new Media(new File("src/main/resources/com/gui/Sounds/ding.wav").toURI().toString());
         return media;
@@ -182,6 +178,7 @@ public class DashController implements Initializable, IController{
 
     /**
      *Updates the Bar Graph on the dashboard with the weekly values of the currently logged in user
+     *<p>
      * Temporary uses random numbers until a storage class is available
      */
     private List<Long> updateWeeklyChart(){ //TODO lock the XAxis values horizontal, fix/lock the weird YAxis scaling
