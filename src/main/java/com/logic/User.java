@@ -81,7 +81,6 @@ public class User {
         }else{
             output += ""+(uitstoot/122000000)+" keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
         }
-
         return output;
     }
 
