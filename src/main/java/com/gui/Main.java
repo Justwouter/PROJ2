@@ -21,6 +21,7 @@ public class Main extends Application {
     private static Stage primaryStage;
     private static AnchorPane mainLayout;
 
+    //moet uiteindelijk weg
     public static User seed(){
         new User("Testnaam Eric").getPoint().setPoints(2000);
         new User("Testnaam Burton").getPoint().setPoints(20);
@@ -31,7 +32,7 @@ public class Main extends Application {
         new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
         new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
         new Transportmiddel("Openbaar Vervoer", 50, 10);    //50 g/km
-        new Transportmiddel("Fiets/Lopen", 5, 0);           //5
+        new Transportmiddel("Fiets/Lopen", 5, 0);           //5 g/km
 
         //voorbeeld inlog
         User user = new User("Main man");

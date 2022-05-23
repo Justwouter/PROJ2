@@ -26,8 +26,8 @@ public class ReisGegevensController implements Initializable, IController {
     private Label kostenPunten; 
 
     @FXML
-    private Label kostenCO2; 
-    
+    private Label kostenCO2;
+
     private User user;
 
     public int kostenVanVoertuig;
@@ -82,23 +82,28 @@ public class ReisGegevensController implements Initializable, IController {
     }
 
     /**
-     * Berekent en slaat de uitstoot op.
+     * Berekent en slaat de uitstoot op in punten en CO2 uitstoot.
      */
     private void berekenPunten(){
         if(kilometers.getText().isBlank()){
             puntenVerlies = 0;
+            uitstootCO2 = 0;
         }
         if (!kilometers.getText().isBlank()){
             int km = Integer.parseInt(kilometers.getText());
             puntenVerlies = (km* uitstootVanVoertuig) / 89;
+            uitstootCO2 = (km* uitstootVanVoertuig);
         }
     }
 
-    private void berekenUitstoot(){
-        if (!kilometers.getText().isBlank()){
-            int km = Integer.parseInt(kilometers.getText());
-            uitstootCO2 = (km* uitstootVanVoertuig);
-        }
+    /**
+     * Zorgt ervoor dat de kosten worden uitgeprint (zowel punten als CO2)
+     */
+    @FXML
+    public void setTotaalAndCO2(){
+        berekenPunten();
+        kostenCO2.setText(uitstootCO2 + "g CO2");
+        kostenPunten.setText("- " + puntenVerlies);
     }
 
     @Override
@@ -134,7 +139,6 @@ public class ReisGegevensController implements Initializable, IController {
      * Deze methode zorgt voor een maximaal aantal tekens die het invoerveld van de kilometers kan bevatten.
      * @param maxLength aantal maximale tekens
      */
-
     public void addTextLimiter(int maxLength) {
         kilometers.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -157,8 +161,7 @@ public class ReisGegevensController implements Initializable, IController {
             if (t.getNaam().equals(s)){
                 uitstootVanVoertuig = t.getUitstoot();
                 kostenVanVoertuig = t.getKosten();
-                setKostenTotaal();
-                setKostenCO2();
+                setTotaalAndCO2();
             }
         }
     }
@@ -181,28 +184,7 @@ public class ReisGegevensController implements Initializable, IController {
     }
 
     /**
-     * Wrapper method to call both methods. thx javafx
-     */
-    @FXML
-    public void setTotaalAndCO2(){
-        setKostenCO2();
-        setKostenTotaal();
-    }
-    //Zorgt ervoor dat de reiskosten in punten worden uitgeprint
-    @FXML
-    public void setKostenTotaal(){
-        berekenPunten();
-        kostenPunten.setText("- " + puntenVerlies);
-    }
-    /**Zorgt ervoor dat de reiskosten in gram CO2 wordt uitgeprint
-    */
-    @FXML
-    public void setKostenCO2(){
-        berekenUitstoot();
-        kostenCO2.setText(uitstootCO2 + "g CO2");
-    }
-
-    /**Geven de knoppen 1,2,3,4 en 5 een functie
+     * Geven de knoppen 1,2,3,4 en 5 een functie
     */
     @FXML
     public void buttonOne(){
@@ -229,7 +211,8 @@ public class ReisGegevensController implements Initializable, IController {
         invullenPreSet(4);
     }
 
-    /**zet de opgeslagen waarde in de juiste vakken voor de berekening
+    /**
+     * zet de opgeslagen waarde in de juiste vakken voor de berekening
     */
     public void invullenPreSet(Integer button){
         if(preSets.get(button).getNaamReis() != null){

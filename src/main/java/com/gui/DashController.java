@@ -97,11 +97,18 @@ public class DashController implements Initializable, IController{
         setVergelijking();
     }
 
-
+    /**
+     *(zorgt ervoor dat de juiste muziek wordt ingeladen
+     * @return media
+     */
     private Media LoadMusic(){
         Media media = new Media(new File("src/main/resources/com/gui/Sounds/ding.wav").toURI().toString());
         return media;
     }
+    /**
+     * Zorgt ervoor dat er een muziekje wordt afgespeeld
+     * de stop zorgt ervoor dat er geen
+     */
     private void playMusic(){
         jukebox.play();
         jukebox.stop();
@@ -178,7 +185,6 @@ public class DashController implements Initializable, IController{
 
     /**
      *Updates the Bar Graph on the dashboard with the weekly values of the currently logged in user
-        <p>
      * Temporary uses random numbers until a storage class is available
      */
     private List<Long> updateWeeklyChart(){ //TODO lock the XAxis values horizontal, fix/lock the weird YAxis scaling
@@ -252,13 +258,13 @@ public class DashController implements Initializable, IController{
         Node node = data.getNode();
         if (data.getYValue().intValue() > 99) {
             node.setStyle("-fx-bar-fill: black");
-        } 
+        }
         else if (data.getYValue().intValue() > 83) {
             node.setStyle("-fx-bar-fill: red");
         } 
         else if (data.getYValue().intValue() > 67) {
             node.setStyle("-fx-bar-fill: orange");
-        } 
+        }
         else if (data.getYValue().intValue() > 50) {
             node.setStyle("-fx-bar-fill: yellow");
         }
