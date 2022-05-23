@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.media.MediaPlayer?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/dash.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.DashController">
    <children>
@@ -24,14 +23,6 @@
          <children>
             <StackPane>
                <children>
-                  <LineChart fx:id="medianLineChart" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="303.0" prefWidth="418.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
-                     <xAxis>
-                        <CategoryAxis animated="false" cache="true" side="BOTTOM" />
-                      </xAxis>
-                      <yAxis>
-                        <NumberAxis animated="false" autoRanging="false" cache="true" side="LEFT" upperBound="125.0" />
-                      </yAxis>
-                  </LineChart>
                   <BarChart fx:id="co2ThisWeekChart" animated="false" legendVisible="false" prefHeight="400.0" prefWidth="376.0">
                     <xAxis>
                       <CategoryAxis fx:id="weekChartX" side="BOTTOM" />
@@ -40,6 +31,14 @@
                       <NumberAxis fx:id="weekChartY" side="LEFT" />
                     </yAxis>
                   </BarChart>
+                  <LineChart fx:id="medianLineChart" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="303.0" prefWidth="418.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" visible="false">
+                     <xAxis>
+                        <CategoryAxis animated="false" cache="true" side="BOTTOM" />
+                      </xAxis>
+                      <yAxis>
+                        <NumberAxis animated="false" autoRanging="false" cache="true" side="LEFT" upperBound="125.0" />
+                      </yAxis>
+                  </LineChart>
                </children>
             </StackPane>
          </children>

@@ -85,6 +85,9 @@ public class ReisGegevensController implements Initializable, IController {
      * Berekent en slaat de uitstoot op.
      */
     private void berekenPunten(){
+        if(kilometers.getText().isBlank()){
+            puntenVerlies = 0;
+        }
         if (!kilometers.getText().isBlank()){
             int km = Integer.parseInt(kilometers.getText());
             puntenVerlies = (km* uitstootVanVoertuig) / 89;

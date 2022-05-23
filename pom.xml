@@ -109,11 +109,11 @@
             </plugin>
         </plugins>
     </build>
-    <repositories>
+    <!--repositories>
         <repository>
           <id>central</id>
           <name>Maven repository</name>
           <url>http://repo1.maven.org/maven2</url>
         </repository>
-      </repositories>
+      </repositories-->
 </project>
