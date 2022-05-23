@@ -81,7 +81,8 @@ public class DashController implements Initializable, IController{
         pointsDash.setText(user.getPoint().getPointsString());
 
     }
-
+    
+//TODO setVergelijking() weer functioneel weten te krijgen
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
