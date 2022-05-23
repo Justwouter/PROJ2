@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import com.google.gson.Gson;
 
 public class SaveManager {
-    private static Gson gson = new Gson();
+    public static Gson gson = new Gson();
 
     /**
      * Writes the given {@link User} in JSON format to the Users file.
