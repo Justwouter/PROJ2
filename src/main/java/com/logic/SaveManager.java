@@ -37,6 +37,12 @@ public class SaveManager {
         write(savefile, transportmiddel);
     }
 
+    public static void writeToSave(Point point) {
+        String dir = System.getProperty("user.dir")+"\\data\\";
+        File savefile = new File(dir+"Points.json");
+        write(savefile, point);
+    }
+
     /**
      * Support method
      * <p>
@@ -48,10 +54,15 @@ public class SaveManager {
         try{
             FileWriter writer = new FileWriter(savefile,true);
             try{savefile.createNewFile();}catch(Exception e){} //Simple Onliners good?
-            writer.append(gson.toJson(object+"\n"));
+            writer.append(makeString(object)+"\n");
             writer.close();
         }
-        catch(Exception e){}
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
-    
+
+    public static String makeString(Object object) {
+        return gson.toJson(object);
+    }
 }
