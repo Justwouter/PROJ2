@@ -56,7 +56,7 @@ public class SaveManager {
         try{
             FileWriter writer = new FileWriter(savefile,true);
             try{savefile.createNewFile();}catch(Exception e){} //Simple Onliners good?
-            writer.append(makeString(object)+"\n");
+            writer.append("\n"+makeString(object)+"\n");
             writer.close();
         }
         catch(Exception e){
@@ -64,6 +64,11 @@ public class SaveManager {
         }
     }
 
+    /**
+     * Returns an object as a JSON-formatted string
+     * @param object
+     * @return String
+     */
     public static String makeString(Object object) {
         return gson.toJson(object);
     }
@@ -71,7 +76,6 @@ public class SaveManager {
 
 
     public static void load(){
-        Gson gson = new Gson();
         String dir = System.getProperty("user.dir")+"\\data\\";
         File savefile = new File(dir+"Users.json");
         ArrayList<String> saveFileContents = new ArrayList<>();

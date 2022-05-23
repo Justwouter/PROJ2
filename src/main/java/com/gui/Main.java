@@ -21,7 +21,7 @@ public class Main extends Application {
     private static Stage primaryStage;
     private static AnchorPane mainLayout;
 
-        public static User seed(){
+    public static User seed(){
         new User("Testnaam Eric").getPoint().setPoints(2000);
         new User("Testnaam Burton").getPoint().setPoints(20);
         new User("Testnaam Damnn...Daniël");
@@ -44,12 +44,35 @@ public class Main extends Application {
         return user;
     }
 
-    public static void main(String[] args) {
-        new User("Jerom");
-        SaveManager.load();
-        for(User u : Leaderboard.getUsers()){
-            System.out.println(u.naam);
+    public static void loadPeople(boolean seed){
+        if(seed){
+            seed();
+            for(User u : Leaderboard.getUsers()){
+                SaveManager.writeToSave(u);
+            }
         }
+        else{
+            SaveManager.load();
+            for(User u : Leaderboard.getUsers()){
+                System.out.println(u.naam);
+                System.out.println(u.rank);
+                System.out.println("=====");
+                for(Reis r : u.PreSets){
+                   
+                    System.out.println(r.naam);
+                    if(r.transportmiddel != null){
+                        System.out.println(r.transportmiddel.NAAM);
+                    }
+                    System.out.println(r.kilometers);
+                }
+                System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        loadPeople(false);
+        
         //launch(args);
     }
 
