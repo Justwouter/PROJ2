@@ -1,12 +1,15 @@
 package com.logic;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class User {
     private String naam;
     private int rank;
     private Point point = new Point();
     private boolean isAdmin = false;
+    private Calendar c;
+    private boolean weeklyPointsObtained = false;
 
     private ArrayList<Reis> PreSets = new ArrayList<>();
 
@@ -50,6 +53,28 @@ public class User {
     public int getRank(){
         return this.rank;
     }
+
+
+    public void addWeeklyPoints(){
+/*
+*Elke maandag krijg je 1000 punten mits je inlogt. Dat is maar één keer in de week.  Daarna wordt boolean
+*weeklyPointsObtained op true gezet zodat je niet nog een keer de punten kan krijgen.
+*Op zondag wordt je weeklypointsObtained op false gezet.
+*Alleen op maandag kan je je wekelijke punten krijgen.
+*/
+        c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_WEEK);
+        if(!weeklyPointsObtained){
+            if(day == 2){
+                point.addPoints(1000);
+                weeklyPointsObtained = true;
+            }
+        }
+
+        if(day == 1){
+            weeklyPointsObtained = false;
+        }
+    }
     
     //Made By BarmanTurbo
     public String vergelijkPuntMetUitstoot(){ 
@@ -67,7 +92,6 @@ public class User {
             return output;
         }
         if(uitstoot <20459){
-            //ja er kan staan "wat 1 bomen", en dat is niet heel mooi, maar ik heb geen zin in veel extra code
             if(uitstoot/28==1){
                 output += "wat 1 boom per jaar opneemt";
             } else {
