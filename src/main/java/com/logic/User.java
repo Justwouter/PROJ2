@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class User {
-    private String naam;
-    private int rank;
-    private Point point = new Point();
-    private boolean isAdmin = false;
-    private Calendar c;
-    private boolean weeklyPointsObtained = false;
+    public String naam;
+    public int rank;
+    public Point point = new Point();
+    public boolean isAdmin = false;
+    public Calendar c;
+    public boolean weeklyPointsObtained = false;
 
-    private ArrayList<Reis> PreSets = new ArrayList<>();
+    public ArrayList<Reis> PreSets = new ArrayList<>();
 
     public User(String naam){
         this.naam = naam;
