@@ -73,18 +73,19 @@ public class SaveManager {
         return gson.toJson(object);
     }
 
+    public static void saveUser(){
+        for(User a : Leaderboard.getUsers()){
+            writeToSave(a);
+        }
+    }
 
-
-    public static void load(){
-        
-        
+    public static void load(){  
         for(String s : readFile("Users")){
             User newStudent = gson.fromJson(s, User.class);
             Leaderboard.addUser(newStudent);
             System.out.println(newStudent.naam);
         }
         System.out.println("==========");
-
     }
 
 
@@ -104,8 +105,7 @@ public class SaveManager {
                 String contents = james.nextLine();
                 if(!contents.equals("")){
                     saveFileContents.add(contents);
-                }
-                
+                }                
             }
         }
         catch(Exception e){}

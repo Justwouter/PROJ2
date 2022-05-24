@@ -73,6 +73,7 @@ public class User {
         }
         if(uitstoot <20459){
             //ja er kan staan "wat 1 bomen", en dat is niet heel mooi, maar ik heb geen zin in veel extra code
+            //TODO fix this, anders pis ik over je code
             output += "wat " + (uitstoot / 28) + " bomen per jaar opnemen";
             return output;
         }
