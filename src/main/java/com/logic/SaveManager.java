@@ -36,7 +36,7 @@ public class SaveManager {
      */
     public static void writeToSave(Transportmiddel transportmiddel) {
         String dir = System.getProperty("user.dir")+"\\data\\";
-        File savefile = new File(dir+"Verhicles.json");
+        File savefile = new File(dir+"Verhicles.json");//wouter jij dyslect
         write(savefile, transportmiddel);
     }
 

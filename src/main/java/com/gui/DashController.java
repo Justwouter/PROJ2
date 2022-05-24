@@ -190,7 +190,7 @@ public class DashController implements Initializable, IController{
 
         System.out.println("Parsing data");//Debug
 
-        //Populate the XYchart with random value nodes & add floating lables to said nodes
+        //Populate the XYchart with random value nodes & add floating lables to said nodes //wouter jij dyslect
         for(int i=0;i< daysOfTheWeek.length;i++){
             Long userDataValue = Math.round(Math.random()*100);
             averageList.add(userDataValue);
@@ -217,7 +217,7 @@ public class DashController implements Initializable, IController{
         System.out.println("Highest: " +highest);
         System.out.println("Displaying data");
 
-        //Assign lables
+        //Assign lables //wouter jij dyslect
         co2ThisWeekChart.setTitle("Weekly CO2 Values");
         weekChartX.setLabel("Day");
         weekChartY.setLabel("Value");
@@ -233,7 +233,7 @@ public class DashController implements Initializable, IController{
     }
 
     /**
-     * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart
+     * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart //wouter jij dyslect
      * @param value
      */
     private static Node createValueLabel(ObjectExpression<Number> value) {
