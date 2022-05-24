@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class User {
-    public String naam;
-    public int rank;
-    public Point point = new Point();
-    public boolean isAdmin = false;
+    private String naam;
+    private int rank;
+    private Point point = new Point();
+    private boolean isAdmin = false;
     public Calendar c;
     public boolean weeklyPointsObtained = false;
 
