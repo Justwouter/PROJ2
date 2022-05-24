@@ -53,6 +53,8 @@ public class User {
     public int getRank(){
         return this.rank;
     }
+
+    //made by BarmanTurbo
     public String duurzaamsteUsers(){
         ArrayList<User> topUsers = Leaderboard.getUsers();
         Integer maxPoints = topUsers.get(1).getPoints();
