@@ -48,7 +48,7 @@ public class testUser {
         User Lidl = new User("Lidl");
         Lidl.getPoint().setPoints(972);
         //act
-        String expected = "Je CO2 uitstoot komt overeen met wat 1 bomen per jaar opnemen";
+        String expected = "Je CO2 uitstoot komt overeen met wat 1 boom per jaar opneemt";
         String actual = Lidl.vergelijkPuntMetUitstoot();
         //assert
         assertEquals(expected,actual);
