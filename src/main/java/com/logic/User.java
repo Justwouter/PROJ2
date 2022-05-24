@@ -56,16 +56,10 @@ public class User {
 
 
     public void addWeeklyPoints(){
-/*
-*Elke maandag krijg je 1000 punten mits je inlogt. Dat is maar één keer in de week.  Daarna wordt boolean
-*weeklyPointsObtained op true gezet zodat je niet nog een keer de punten kan krijgen.
-*Op zondag wordt je weeklypointsObtained op false gezet.
-*Alleen op maandag kan je je wekelijke punten krijgen.
-*/
-        c = Calendar.getInstance();
-        int day = c.get(Calendar.DAY_OF_WEEK);
-        if(!weeklyPointsObtained){
-            if(day == 2){
+        c = Calendar.getInstance();                 //Elke maandag krijg je 1000 punten mits je inlogt. Dat is maar één keer in de week.
+        int day = c.get(Calendar.DAY_OF_WEEK);      //Daarna wordt boolean weeklyPointsObtained op True gezet zodat je niet nog een keer
+        if(!weeklyPointsObtained){                  //de punten kan krijgen. Op zondag wordt je weeklyPoitnsObtained op false gezet.
+            if(day == 2){                           //Je kan je wekelijkse punten alleen op maandag krijgen.
                 point.addPoints(1000);
                 weeklyPointsObtained = true;
             }
