@@ -14,6 +14,10 @@ public class User {
     public ArrayList<Reis> PreSets = new ArrayList<>();
 
     public User(String naam){
+        this(naam, false);
+    }
+
+    public User(String naam, boolean isAdmin){
         this.naam = naam;
         point.setPoints(1000);
         Leaderboard.addUser(this);
@@ -52,6 +56,10 @@ public class User {
 
     public int getRank(){
         return this.rank;
+    }
+
+    public boolean getIsAdmin(){
+        return isAdmin;
     }
 
 

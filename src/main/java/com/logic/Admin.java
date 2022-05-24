@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 public class Admin extends User{
     public Admin(String naam) {
-        super(naam);
-        isAdmin = true;
+        super(naam, false);
     }
 
     //made by BarmanTurbo
     public String duurzaamsteUsersAsString(){
-        if(isAdmin){
+        if(getIsAdmin()){
             ArrayList<User> topUsers = Leaderboard.getUsers();
             Integer maxPoints = topUsers.get(1).getPoints();
             String highestRankingUsers = "";
