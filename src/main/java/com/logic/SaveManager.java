@@ -74,6 +74,11 @@ public class SaveManager {
         return gson.toJson(object);
     }
 
+    public static void saveUser(){
+        for(User a : Leaderboard.getUsers()){
+            writeToSave(a);
+        }
+    }
 
     /**
      * Makes users out of the read JSON Strings

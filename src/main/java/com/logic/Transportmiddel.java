@@ -16,7 +16,6 @@ public class Transportmiddel {
         transportmiddelen.add(this);
     }
     
-    //gemiddelde uitstoot CO2 in g/km
     public void setUitstoot(int uitstoot){
         this.uitstoot = uitstoot;
     }
@@ -39,9 +38,5 @@ public class Transportmiddel {
 
     public static ArrayList<Transportmiddel> getTransportmiddelen(){
         return transportmiddelen;
-    }
-
-    public int berekenReispuntenKosten(int Afstand){
-        return ((Afstand)*(this.kosten));
     }
 }
