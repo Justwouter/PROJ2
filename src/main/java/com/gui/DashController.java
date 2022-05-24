@@ -113,6 +113,7 @@ public class DashController implements Initializable, IController{
         medianLineChart.getXAxis().setLabel("Day");
         medianLineChart.getYAxis().setLabel("Value");
 
+        /*
         medianLineChart.setLegendVisible(false);
         medianLineChart.setAnimated(false);
         medianLineChart.setCreateSymbols(false);
@@ -122,7 +123,7 @@ public class DashController implements Initializable, IController{
         medianLineChart.setVerticalGridLinesVisible(false);
         medianLineChart.getXAxis().setVisible(false);
         medianLineChart.getYAxis().setVisible(false);
-
+        */
         medianLineChart.getData().clear();
 
 

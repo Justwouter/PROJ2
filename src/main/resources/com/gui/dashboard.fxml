@@ -23,20 +23,20 @@
          <children>
             <StackPane>
                <children>
-                  <BarChart fx:id="co2ThisWeekChart" animated="false" legendVisible="false" prefHeight="400.0" prefWidth="376.0">
+                  <BarChart fx:id="co2ThisWeekChart" animated="false" categoryGap="5.0" legendVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="376.0">
                     <xAxis>
                       <CategoryAxis fx:id="weekChartX" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="weekChartY" side="LEFT" />
+                      <NumberAxis fx:id="weekChartY" autoRanging="false" minorTickCount="10" minorTickLength="10.0" minorTickVisible="false" side="LEFT" tickUnit="10.0" upperBound="110.0" />
                     </yAxis>
                   </BarChart>
-                  <LineChart fx:id="medianLineChart" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="303.0" prefWidth="418.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" visible="false">
+                  <LineChart fx:id="medianLineChart" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="376.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                      <xAxis>
-                        <CategoryAxis animated="false" cache="true" side="BOTTOM" />
+                        <CategoryAxis animated="false" cache="true" side="BOTTOM" visible="false" />
                       </xAxis>
                       <yAxis>
-                        <NumberAxis animated="false" autoRanging="false" cache="true" side="LEFT" upperBound="125.0" />
+                        <NumberAxis animated="false" autoRanging="false" minorTickCount="10" minorTickLength="10.0" minorTickVisible="false" side="LEFT" tickUnit="10.0" upperBound="110.0" />
                       </yAxis>
                   </LineChart>
                </children>

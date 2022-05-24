@@ -2,6 +2,7 @@ package com.logic;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -74,17 +75,16 @@ public class SaveManager {
     }
 
 
-
+    /**
+     * Makes users out of the read JSON Strings
+     */
     public static void load(){
-        
-        
         for(String s : readFile("Users")){
             User newStudent = gson.fromJson(s, User.class);
             Leaderboard.addUser(newStudent);
             System.out.println(newStudent.naam);
         }
         System.out.println("==========");
-
     }
 
 
@@ -105,10 +105,33 @@ public class SaveManager {
                 if(!contents.equals("")){
                     saveFileContents.add(contents);
                 }
-                
             }
+            james.close();
         }
         catch(Exception e){}
         return saveFileContents;
+    }
+
+
+    /**
+     * Cleans a file by deleting & remaking it.
+     * @param savefile the {@link File} object to be cleaned.
+     * @param makefile If you wish to only create a file.
+     * @return boolean true if successfull, false if not.
+     */
+    public static boolean cleanFile(File savefile,boolean makefile) {
+        try{
+            if(savefile.delete()){
+                return savefile.createNewFile();
+            }
+            else if(makefile){
+                return savefile.createNewFile();
+            }
+            return false;
+        }
+        catch(IOException e){
+            System.out.println(e);
+            return false;
+        }
     }
 }

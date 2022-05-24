@@ -1,6 +1,5 @@
 package com.gui;
 
-import com.google.gson.Gson;
 import com.logic.Leaderboard;
 import com.logic.Reis;
 import com.logic.SaveManager;
@@ -15,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Main extends Application {
     private static Stage primaryStage;
