@@ -55,7 +55,7 @@ public class User {
     }
 
     //made by BarmanTurbo
-    public String duurzaamsteUsers(){
+    public String duurzaamsteUsersAsString(){
         if(isAdmin){
             ArrayList<User> topUsers = Leaderboard.getUsers();
             Integer maxPoints = topUsers.get(1).getPoints();
