@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Admin extends User{
     public Admin(String naam) {
-        super(naam, false);
+        super(naam, true);
     }
 
     //made by BarmanTurbo
