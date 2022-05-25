@@ -6,9 +6,14 @@ class PuntMutatie{
     private Integer puntVerandering;
     private Calendar datum;
 
-    public PuntMutatie(Integer puntVerandering, Integer puntTotaal){
+    public PuntMutatie(Integer puntVerandering){
         this.puntVerandering = puntVerandering;
         datum = Calendar.getInstance();   
+    }
+
+    public PuntMutatie(Integer puntVerandering, Calendar datum){
+        this.puntVerandering = puntVerandering;
+        this.datum = datum;   
     }
 
     public Calendar getDatum(){

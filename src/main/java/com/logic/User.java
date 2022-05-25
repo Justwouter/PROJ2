@@ -64,8 +64,11 @@ public class User {
     }
 
     public void addPuntMutatie(int amount){
-        Integer tPunt = getPoint().getPoints();
-        PuntMutatie p = new PuntMutatie(amount, tPunt);
+        PuntMutatie p = new PuntMutatie(amount);
+        puntVerandering.add(p);
+    }
+    public void addPuntMutatie(int amount, Calendar datum){
+        PuntMutatie p = new PuntMutatie(amount, datum);
         puntVerandering.add(p);
     }
 
