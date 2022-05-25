@@ -8,7 +8,7 @@ public class User {
     private int rank;
     private Point point = new Point();
     private boolean isAdmin = false;
-    private ArrayList<PuntMutatie> puntVerandering = new ArrayList();
+    protected ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
     public Calendar c;
     public boolean weeklyPointsObtained = false;
 
@@ -78,6 +78,20 @@ public class User {
                 puntVerandering.remove(puntVerandering.indexOf(pm));
             }
         }
+    }
+
+    public ArrayList<PuntMutatie> getPuntMutaties(){
+        puntMutatieCleanUp();
+        return this.puntVerandering;
+    }
+
+    public Integer getPuntMutatiesAsInteger(){
+        puntMutatieCleanUp();
+        Integer addedMutations = 0;
+        for (PuntMutatie pm: puntVerandering){
+            addedMutations += pm.getPuntVerandering();
+        }
+        return addedMutations;
     }
 
     //made by BarmanTurbo

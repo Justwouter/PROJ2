@@ -1,6 +1,8 @@
 package com.logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Admin extends User{
     public Admin(String naam) {
@@ -28,5 +30,12 @@ public class Admin extends User{
         return allUsers;
     }
 
+    public ArrayList<User> BesteUsersVanDeMaand(){
+        ArrayList<User> allUsers = Leaderboard.getUsers();
+        Comparator<User> vergelijker = Comparator.comparing(User::getPuntMutatiesAsInteger);
+        Collections.sort(allUsers, vergelijker);
+        return allUsers;
+    }
+    //TODO check of dit hier wel werkt!!
     
 }
