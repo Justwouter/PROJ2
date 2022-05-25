@@ -66,6 +66,15 @@ public class User {
     public void addPuntMutatie(int amount){
         Integer tPunt = getPoint().getPoints();
         PuntMutatie p = new PuntMutatie(amount, tPunt);
+        puntVerandering.add(p);
+    }
+
+    public void puntMutatieCleanUp(){
+        for(PuntMutatie pm : puntVerandering){
+            if(!pm.isFromLast4Weeks()){
+                puntVerandering.remove(puntVerandering.indexOf(pm));
+            }
+        }
     }
 
     //made by BarmanTurbo
