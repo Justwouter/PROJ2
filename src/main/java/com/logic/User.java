@@ -8,6 +8,7 @@ public class User {
     private int rank;
     private Point point = new Point();
     private boolean isAdmin = false;
+    private ArrayList<PuntMutatie> puntVerandering = new ArrayList();
     public Calendar c;
     public boolean weeklyPointsObtained = false;
 
@@ -62,6 +63,10 @@ public class User {
         return isAdmin;
     }
 
+    public void addPuntMutatie(int amount){
+        Integer tPunt = getPoint().getPoints();
+        PuntMutatie p = new PuntMutatie(amount, tPunt);
+    }
 
     //made by BarmanTurbo
     protected void addWeeklyPoints(){
