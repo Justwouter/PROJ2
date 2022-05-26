@@ -18,11 +18,11 @@ public class Main extends Application {
     private static AnchorPane mainLayout;
 
         public static User seed(){
-        new User("Testnaam Eric").getPoint().setPoints(2000);
-        new User("Testnaam Burton").getPoint().setPoints(20);
-        new User("Testnaam Damnn...Daniël");
-        new User("Wouter").getPoint().setPoints(2500);
-        new User("Lucas").getPoint().setPoints(1500);
+        new User("Testnaam Eric", "Eric", "Bull").getPoint().setPoints(2000);
+        new User("Testnaam Burton", "Burton","Braam").getPoint().setPoints(20);
+        new User("Testnaam Damnn...Daniël", "Wessel", "Horsthuis");
+        new User("Testnaam Wouter", "Wouter", "Swijnenburg").getPoint().setPoints(2500);
+        new User("Testnaam Lucas", "Lucas", "Clavel").getPoint().setPoints(1500);
         new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
         new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
         new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
@@ -30,14 +30,13 @@ public class Main extends Application {
         new Transportmiddel("Fiets/Lopen", 5, 0);           //5
 
         //voorbeeld inlog
-        User user = new User("Main man");
-        user.setReis(0, new Reis("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
-        user.setReis(1, new Reis("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
-        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
-        user.setReis(3, new Reis(null, null, null));
-        user.setReis(4, new Reis(null, null, null));
-
-        return user;
+//        User user = new User("Main man");
+//        user.setReis(0, new Reis("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
+//        user.setReis(1, new Reis("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
+//        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
+//        user.setReis(3, new Reis(null, null, null));
+//        user.setReis(4, new Reis(null, null, null));
+        return null;
     }
 
     public static void main(String[] args) {

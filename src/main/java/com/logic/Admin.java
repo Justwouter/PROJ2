@@ -3,8 +3,8 @@ package com.logic;
 import java.util.ArrayList;
 
 public class Admin extends User{
-    public Admin(String naam) {
-        super(naam, false);
+    public Admin(String naam, String username, String password) {
+        super(naam, false, username, password);
     }
 
     //made by BarmanTurbo

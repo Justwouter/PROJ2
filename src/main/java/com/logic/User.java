@@ -8,17 +8,22 @@ public class User {
     private int rank;
     private Point point = new Point();
     private boolean isAdmin = false;
-    public Calendar c;
-    public boolean weeklyPointsObtained = false;
+    public Calendar c; // TODO Why is this public?
+    public boolean weeklyPointsObtained = false; // TODO Why is this public?
 
-    public ArrayList<Reis> PreSets = new ArrayList<>();
+    public ArrayList<Reis> PreSets = new ArrayList<>(); // TODO Why is this public?
 
-    public User(String naam){
-        this(naam, false);
+    private String username;
+    private String password;
+
+    public User(String naam, String username, String password){
+        this(naam, false, username, password);
     }
 
-    public User(String naam, boolean isAdmin){
+    public User(String naam, boolean isAdmin, String username, String password){
         this.naam = naam;
+        this.username = username;
+        this.password = password;
         point.setPoints(1000);
         Leaderboard.addUser(this);
         for (int i = 0; i < 5; i++) {
@@ -60,6 +65,10 @@ public class User {
 
     public boolean getIsAdmin(){
         return isAdmin;
+    }
+
+    public String getUsername(){
+        return username;
     }
 
 
@@ -109,6 +118,10 @@ public class User {
         }
 
         return output;
+    }
+
+    public boolean checkPassword(String attempt){
+        return attempt.equals(password);
     }
 
 }

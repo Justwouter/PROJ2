@@ -9,7 +9,7 @@ public class TestPoint {
 
     @BeforeEach
     public void before(){
-        user = new User("Testnaam");
+        user = new User("Testnaam", "Username", "Password");
     }
 
     // Test of de punten goed toegevoegd worden.
