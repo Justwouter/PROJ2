@@ -9,7 +9,7 @@ import com.logic.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class InstellingenController extends AController  implements Initializable {
+public class InstellingenController extends AController implements Initializable {
 
     private User user;
 
