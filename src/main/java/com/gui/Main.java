@@ -17,7 +17,7 @@ public class Main extends Application {
     private static Stage primaryStage;
     private static AnchorPane mainLayout;
 
-        public static User seed(){
+        public static void seed(){
         new User("Testnaam Eric", "Eric", "Bull").getPoint().setPoints(2000);
         new User("Testnaam Burton", "Burton","Braam").getPoint().setPoints(20);
         new User("Testnaam Damnn...Daniël", "Wessel", "Horsthuis");
@@ -36,7 +36,6 @@ public class Main extends Application {
 //        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
 //        user.setReis(3, new Reis(null, null, null));
 //        user.setReis(4, new Reis(null, null, null));
-        return null;
     }
 
     public static void main(String[] args) {
@@ -47,7 +46,8 @@ public class Main extends Application {
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
         primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo.jpg"));
-        User user = seed();
+        seed();
+        User user = null;
         show("login", user);
     }
 
