@@ -4,6 +4,5 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.LoginController">
-
     <Button fx:id="Login" layoutX="198.0" layoutY="279.0" onAction="#switchToDashboard" text="Log lekker in" />
 </AnchorPane>
