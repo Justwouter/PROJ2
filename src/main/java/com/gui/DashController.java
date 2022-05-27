@@ -56,7 +56,7 @@ public class DashController implements Initializable, IController{
   
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateWeeklyChart();
+        updateMedianLine(updateWeeklyChart());
     }
 
     @Override
@@ -109,72 +109,58 @@ public class DashController implements Initializable, IController{
     }
 
     private void updateMedianLine(List<Long> averageList){
-
+        medianLineChart.setTitle("Weekly CO2 Values");
         medianLineChart.getXAxis().setLabel("Day");
         medianLineChart.getYAxis().setLabel("Value");
-
-        /*
-        medianLineChart.setLegendVisible(false);
-        medianLineChart.setAnimated(false);
         medianLineChart.setCreateSymbols(false);
-        medianLineChart.setAlternativeRowFillVisible(false);
-        medianLineChart.setAlternativeColumnFillVisible(false);
-        medianLineChart.setHorizontalGridLinesVisible(false);
-        medianLineChart.setVerticalGridLinesVisible(false);
-        medianLineChart.getXAxis().setVisible(false);
-        medianLineChart.getYAxis().setVisible(false);
-        */
         medianLineChart.getData().clear();
 
-
-
         String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-        long average = 0;
-        long highest = 0;
-        for(Long l : averageList){
-            average +=l;
-            if(l > highest){
-                highest = l;
-            }
-        }
-        average = average/averageList.size();
-        XYChart.Series<String,Number> series = new XYChart.Series<String, Number>();
-        for(int i=0;i< daysOfTheWeek.length;i++){
-            Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],averageList.get(i));
-            series.getData().add(vars);
-        }
-        medianLineChart.getData().add(series);
 
+        //Static average line
+        XYChart.Series<String,Number> averageLine = new XYChart.Series<String, Number>();
+        for(int i=0;i< daysOfTheWeek.length;i++){
+            Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],calculateRelativeAverage(averageList,daysOfTheWeek.length-1));
+            averageLine.getData().add(vars);
+        }
+        medianLineChart.getData().add(averageLine);
+        
+        //Dynamic relative average
+        XYChart.Series<String,Number> adjustingAverageLine = new XYChart.Series<String, Number>();
+        for(int i=0;i< daysOfTheWeek.length;i++){
+            Long yValue = calculateRelativeAverage(averageList,i);
+            System.out.println(yValue);
+            Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],yValue);
+            adjustingAverageLine.getData().add(vars);
+        }
+        medianLineChart.getData().add(adjustingAverageLine);
     }
 
+    /**
+     * Calculates the average amount of CO2 on a day relative to earlier days
+     * @param averageList
+     * @param days
+     * @return Long average
+     */
+    private Long calculateRelativeAverage(List<Long> averageList, int days){
+        //Division by 0 safety
+        // if(days == 0){
+        //     return averageList.get(0);
+        // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //Calculate the average
+        long average = 0;
+        long highest = 0;
+        for(int i=0;i<days+1 ;i++){
+            Long currentNumber = averageList.get(i);
+            average +=currentNumber;
+            if(currentNumber > highest){
+                highest = currentNumber;
+            }
+        }
+        return average/(days+1);
+        
+    }
 
 
     /**
@@ -190,7 +176,7 @@ public class DashController implements Initializable, IController{
 
         System.out.println("Parsing data");//Debug
 
-        //Populate the XYchart with random value nodes & add floating lables to said nodes //wouter jij dyslect
+        //Populate the XYchart with random value nodes & add floating lables to said nodes 
         for(int i=0;i< daysOfTheWeek.length;i++){
             Long userDataValue = Math.round(Math.random()*100);
             averageList.add(userDataValue);
@@ -217,7 +203,7 @@ public class DashController implements Initializable, IController{
         System.out.println("Highest: " +highest);
         System.out.println("Displaying data");
 
-        //Assign lables //wouter jij dyslect
+        //Assign lables 
         co2ThisWeekChart.setTitle("Weekly CO2 Values");
         weekChartX.setLabel("Day");
         weekChartY.setLabel("Value");
@@ -227,13 +213,12 @@ public class DashController implements Initializable, IController{
         co2ThisWeekChart.setAnimated(false);
         co2ThisWeekChart.getData().clear();
         co2ThisWeekChart.getData().add(series);
-        //weekChartY.setUpperBound(highest+20.0);
         //co2ThisWeekChart.setAnimated(true);
         return averageList;
     }
 
     /**
-     * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart //wouter jij dyslect
+     * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart 
      * @param value
      */
     private static Node createValueLabel(ObjectExpression<Number> value) {
@@ -241,8 +226,6 @@ public class DashController implements Initializable, IController{
         label.textProperty().bind(value.asString());
         var pane = new Pane(label);
         label.translateYProperty().bind(label.heightProperty().divide(-1.0));
-        //label.translateXProperty().bind(label.widthProperty().divide(-20));
-
         return pane;
     }
   

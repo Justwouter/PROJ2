@@ -2,6 +2,7 @@
 	-fx-background-color : lightgreen
 }*/
 
+/*Fancy wallpaper */
 .root{
     -fx-background-size: contain, contain, contain, contain, contain, contain;
         background-size: contain, contain, contain, contain, contain, contain;
@@ -25,11 +26,13 @@
         url("file:src/main/resources/com/gui/Images/layer_01.png");
 }
 
-/*.stacked-bar-chart:vertical .chart-content .chart-plot-background{
-	-fx-region-background: transparant;
-}*/
 
 .chart .chart-content .chart-plot-background{
     -fx-background-color: transparent;
     background-color: transparent;
+}
+
+/*Linechart Styling*/
+.chart-series-line {    
+    -fx-stroke-width: 2px;
 }
