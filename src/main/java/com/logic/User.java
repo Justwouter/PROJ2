@@ -12,14 +12,20 @@ public class User {
     public Calendar c;
     public boolean weeklyPointsObtained = false;
 
-    public ArrayList<Reis> PreSets = new ArrayList<>();
 
-    public User(String naam){
-        this(naam, false);
+    public ArrayList<Reis> PreSets = new ArrayList<>(); // TODO Why is this public?
+
+    private String username;
+    private String password;
+
+    public User(String naam, String username, String password){
+        this(naam, false, username, password);
     }
 
-    public User(String naam, boolean isAdmin){
+    public User(String naam, boolean isAdmin, String username, String password){
         this.naam = naam;
+        this.username = username;
+        this.password = password;
         point.setPoints(1000);
         Leaderboard.addUser(this);
         for (int i = 0; i < 5; i++) {
@@ -63,7 +69,11 @@ public class User {
         return isAdmin;
     }
 
-    public void addPuntMutatie(int amount){
+    public String getUsername(){
+        return username;
+    }
+
+public void addPuntMutatie(int amount){
         PuntMutatie p = new PuntMutatie(amount);
         puntVerandering.add(p);
     }
@@ -140,6 +150,10 @@ public class User {
         }
 
         return output;
+    }
+
+    public boolean checkPassword(String attempt){
+        return attempt.equals(password);
     }
 
 }
