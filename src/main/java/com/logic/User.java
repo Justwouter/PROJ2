@@ -8,17 +8,24 @@ public class User {
     private int rank;
     private Point point = new Point();
     private boolean isAdmin = false;
+    protected ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
     public Calendar c;
     public boolean weeklyPointsObtained = false;
 
-    public ArrayList<Reis> PreSets = new ArrayList<>();
 
-    public User(String naam){
-        this(naam, false);
+    public ArrayList<Reis> PreSets = new ArrayList<>(); // TODO Why is this public?
+
+    private String username;
+    private String password;
+
+    public User(String naam, String username, String password){
+        this(naam, false, username, password);
     }
 
-    public User(String naam, boolean isAdmin){
+    public User(String naam, boolean isAdmin, String username, String password){
         this.naam = naam;
+        this.username = username;
+        this.password = password;
         point.setPoints(1000);
         Leaderboard.addUser(this);
         for (int i = 0; i < 5; i++) {
@@ -62,6 +69,40 @@ public class User {
         return isAdmin;
     }
 
+    public String getUsername(){
+        return username;
+    }
+
+public void addPuntMutatie(int amount){
+        PuntMutatie p = new PuntMutatie(amount);
+        puntVerandering.add(p);
+    }
+    public void addPuntMutatie(int amount, Calendar datum){
+        PuntMutatie p = new PuntMutatie(amount, datum);
+        puntVerandering.add(p);
+    }
+
+    public void puntMutatieCleanUp(){
+        for(PuntMutatie pm : puntVerandering){
+            if(!pm.isFromLast4Weeks()){
+                puntVerandering.remove(puntVerandering.indexOf(pm));
+            }
+        }
+    }
+
+    public ArrayList<PuntMutatie> getPuntMutaties(){
+        puntMutatieCleanUp();
+        return this.puntVerandering;
+    }
+
+    public Integer getPuntMutatiesAsInteger(){
+        puntMutatieCleanUp();
+        Integer addedMutations = 0;
+        for (PuntMutatie pm: puntVerandering){
+            addedMutations += pm.getPuntVerandering();
+        }
+        return addedMutations;
+    }
 
     //made by BarmanTurbo
     protected void addWeeklyPoints(){
@@ -109,6 +150,10 @@ public class User {
         }
 
         return output;
+    }
+
+    public boolean checkPassword(String attempt){
+        return attempt.equals(password);
     }
 
 }
