@@ -55,6 +55,9 @@ public class Main extends Application {
             for(User u : Leaderboard.getUsers()){
                 SaveManager.writeToSave(u);
             }
+            for(Transportmiddel t : Transportmiddel.getTransportmiddelen()){
+                SaveManager.writeToSave(t);
+            }
         }
         else{
             SaveManager.load();
@@ -76,8 +79,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        //loadPeople(false);
-        launch(args);
+        loadPeople(true);
+        //launch(args);
     }
 
     @Override

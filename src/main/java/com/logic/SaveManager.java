@@ -16,8 +16,8 @@ public class SaveManager {
      * @param user the to be written User object
      */
     public static void writeToSave(User user) {
-        String dir = System.getProperty("user.dir")+"\\data\\";
-        File savefile = new File(dir+"Users.json");
+        String dir = System.getProperty("user.dir")+"\\data\\Users\\";
+        File savefile = new File(dir+user.naam+".json");
         write(savefile, user);
     }
 
@@ -36,7 +36,7 @@ public class SaveManager {
      */
     public static void writeToSave(Transportmiddel transportmiddel) {
         String dir = System.getProperty("user.dir")+"\\data\\";
-        File savefile = new File(dir+"Verhicles.json");//wouter jij dyslect
+        File savefile = new File(dir+"Verhicles.json");
         write(savefile, transportmiddel);
     }
 
@@ -55,9 +55,10 @@ public class SaveManager {
      */
     private static void write(File savefile, Object object) {
         try{
+            checkFS(savefile);
             FileWriter writer = new FileWriter(savefile,true);
             try{savefile.createNewFile();}catch(Exception e){} //Simple Onliners good?
-            writer.append("\n"+makeString(object)+"\n");
+            writer.append(makeString(object)+"\n");
             writer.close();
         }
         catch(Exception e){
@@ -123,6 +124,7 @@ public class SaveManager {
      * @param savefile the {@link File} object to be cleaned.
      * @param makefile If you wish to only create a file.
      * @return boolean true if successfull, false if not.
+     * @throws IOException If the file does not exist
      */
     public static boolean cleanFile(File savefile,boolean makefile) {
         try{
@@ -138,5 +140,53 @@ public class SaveManager {
             System.out.println(e);
             return false;
         }
+    }
+
+
+    /**
+     * Checks if the file/filesystem exists. If not it calls {@link #generateFS(File)}.
+     * @param file
+     * @return {@code true} if the filesystem was succesfully created or already exists.<p>
+     *         {@code false} if the filesystem couldn't be made.
+     */
+    public static boolean checkFS(File file){
+        try{
+            if(file.exists()){
+                return true;
+            }
+            else if(generateFS(file)){
+                file.createNewFile();
+                return true;
+            }
+            return false;
+        }
+        catch(Exception e){System.out.println(e);}
+        return false;
+        
+    }
+
+    /**
+     * Generates the Filesystem for a specified file.
+     * @param file
+     * @return {@code true} if the filesystem was succesfully created.<p>
+     *         {@code false} if the filesystem couldn't be made.
+     */
+    public static boolean generateFS(File file) {
+        //Split the actual file from the dirs
+        String path = file.getAbsolutePath();
+        String[] splitPath = path.split("\\\\");
+        //Recombine the split string, leaving the last object in the path
+        String newPath = "";
+        for(int i=0;i<splitPath.length-1;i++){
+            newPath += splitPath[i]+"\\";
+        }
+        //Make a new file with only the dir path & generate said path
+        File fsGenFile = new File(newPath);
+        if(fsGenFile.mkdirs()){
+            return true;
+        }
+        return false;
+
+        
     }
 }
