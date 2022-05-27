@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -25,14 +26,13 @@
                   <Label fx:id="kostenCO2" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Uitstoot" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                </children>
             </Pane>
-            <Button alignment="CENTER" layoutY="262.0" onAction="#switchToDash" prefHeight="56.0" prefWidth="138.0" text="Opslaan" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="218.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="218.0" layoutY="262.0" onAction="#switchToDash2" prefHeight="56.0" prefWidth="138.0" text="Terug" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="24.0" />
-            <TextField fx:id="kilometers" alignment="CENTER" layoutX="43.0" layoutY="50.0" onInputMethodTextChanged="#setTotaalAndCO2" onKeyPressed="#setTotaalAndCO2" onKeyReleased="#setTotaalAndCO2" onKeyTyped="#setTotaalAndCO2" prefHeight="49.0" prefWidth="269.0" promptText="Voer uw aantal gereden kilometers in" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+            <Button alignment="CENTER" layoutX="121.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToDashboardWithCO2" prefHeight="56.0" prefWidth="138.0" text="Opslaan" />
+            <TextField fx:id="kilometers" alignment="CENTER" layoutX="50.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setTotaalAndCO2" onKeyPressed="#setTotaalAndCO2" onKeyReleased="#setTotaalAndCO2" onKeyTyped="#setTotaalAndCO2" prefHeight="49.0" prefWidth="280.0" promptText="Voer uw aantal gereden kilometers in">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="transportmiddel" layoutX="43.0" layoutY="122.0" onAction="#printItem" prefHeight="49.0" prefWidth="269.0" promptText="Selecteer uw transportmethode" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" />
+            <ComboBox fx:id="transportmiddel" layoutX="60.0" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#printItem" prefHeight="49.0" prefWidth="260.0" promptText="Selecteer uw transportmethode" />
             <Label alignment="CENTER" layoutX="331.0" layoutY="50.0" prefHeight="49.0" prefWidth="51.0" text="Km" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
@@ -40,14 +40,14 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="181.0" layoutY="427.0" prefHeight="60.0" prefWidth="150.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0">
+      <AnchorPane layoutX="90.0" layoutY="402.0" prefHeight="60.0" prefWidth="150.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0">
          <children>
              <Button fx:id="pre_set_toevoegen" layoutX="99.0" layoutY="2.0" mnemonicParsing="false" onAction="#toevoegenPreSet" text="Voeg pre-set toe" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" />
              <ComboBox fx:id="pre_set" layoutX="94.0" layoutY="69.0" prefHeight="25.0" prefWidth="117.0" promptText="Kies pre-set " AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" />
              <TextField fx:id="hernoemen" alignment="CENTER" layoutX="78.0" layoutY="35.0" promptText="Nieuwe naam per-set" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="93.0" layoutY="584.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="90.0">
+      <AnchorPane layoutX="60.0" layoutY="514.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="90.0">
          <children>
              <Button fx:id="Pre_set_1" layoutX="70.0" mnemonicParsing="false" onAction="#buttonOne" text="1" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="238.0" />
              <Button fx:id="Pre_set_2" layoutX="120.0" mnemonicParsing="false" onAction="#buttonTwo" text="2" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="188.0" />
@@ -56,6 +56,25 @@
              <Button fx:id="Pre_set_5" layoutX="270.0" mnemonicParsing="false" onAction="#buttonFive" text="5" AnchorPane.leftAnchor="268.0" AnchorPane.rightAnchor="38.0" />
              <Text layoutX="9.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pre-sets:" />
          </children>
+      </AnchorPane>
+      <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToReisGegevens" prefHeight="70.0" prefWidth="70.0" text="Gegevens">
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLeaderboard" prefHeight="70.0" prefWidth="70.0" text="Leaderboard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="10.0" />
+               </font></Button>
+            <Button fx:id="dbButton1" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="70.0" text="Dashboard">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToInstellingen" prefHeight="70.0" prefWidth="70.0" text="Instellingen">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="70.0" prefWidth="70.0" text="Shop" />
+        </children>
       </AnchorPane>
    </children>
 </AnchorPane>

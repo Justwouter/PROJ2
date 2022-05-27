@@ -56,7 +56,7 @@ public class Main extends Application {
         loader.setLocation(Main.class.getResource(fxml + ".fxml"));
         mainLayout = loader.load();
 
-        IController controller = loader.getController();
+        AController controller = loader.getController();
         controller.setUser(user);
         controller.setPoints(user);
         controller.setPresets(user);

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable, IController {
+public class LoginController extends AController implements Initializable {
 
     private User user;
 
