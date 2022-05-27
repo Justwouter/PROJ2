@@ -8,11 +8,15 @@ import com.logic.User;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 
 public class ShopController extends AController  implements Initializable {
 
     private User user;
+
+    @FXML
+    private Label points;
 
     @FXML
     private void switchToReisGegevens() throws IOException {
@@ -41,19 +45,16 @@ public class ShopController extends AController  implements Initializable {
     
     @Override
     void setUser(User user) {
-        // TODO Auto-generated method stub
-        
+        this.user = user;
     }
 
     @Override
     void setPoints(User user) {
-        // TODO Auto-generated method stub
-        
+        //points.setText(user.getPoint().getPointsString());
     }
 
     @Override
     void setPresets(User user) {
-        // TODO Auto-generated method stub
         
     }
 
