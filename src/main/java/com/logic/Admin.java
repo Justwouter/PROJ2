@@ -1,6 +1,8 @@
 package com.logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Admin extends User{
     public Admin(String naam, String username, String password) {
@@ -8,32 +10,32 @@ public class Admin extends User{
     }
 
     //made by BarmanTurbo
-    public String duurzaamsteUsersAsString(){
+    public ArrayList<User> duurzaamsteUsers(){
+        ArrayList<User> allUsers = Leaderboard.getUsers();
         if(getIsAdmin()){
-            ArrayList<User> topUsers = Leaderboard.getUsers();
-            Integer maxPoints = topUsers.get(1).getPoints();
-            String highestRankingUsers = "";
-            for(User u : topUsers){
+            Integer maxPoints = allUsers.get(1).getPoints();
+            ArrayList<User> topUsers= new ArrayList<User>();
+            for(User u : allUsers){
                 if(u.getPoints()==maxPoints){
-                    highestRankingUsers += u.getNaam();
-                    if(topUsers.get(topUsers.indexOf(u)+1).getPoints() == maxPoints){
-                        highestRankingUsers += ", ";
-                    }else{
-                        if(topUsers.indexOf(u)>0){
-                            highestRankingUsers += " stoten het minste CO2 uit. Zij hebben elk " + maxPoints + " punten.";
-                        }else{
-                            highestRankingUsers += " stoot het minste CO2 uit. Hij/Zij heeft " + maxPoints + " punten.";
-                        }
-                    }
+                    topUsers.add(u);
                 }else{
                     break; //saves runtime, zodat je alleen over de users met de hoogste punten loopt.
                 }
             }
 
-            return highestRankingUsers;
         } else {
-            return "Requires non-mafklapper (also known as admin) rights.";
+            throw new IllegalArgumentException("Error in Admin.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");
         }
+
+        return allUsers;
     }
+
+    public ArrayList<User> BesteUsersVanDeMaand(){
+        ArrayList<User> allUsers = Leaderboard.getUsers();
+        Comparator<User> vergelijker = Comparator.comparing(User::getPuntMutatiesAsInteger);
+        Collections.sort(allUsers, vergelijker);
+        return allUsers;
+    }
+    //TODO check of dit hier wel werkt!!
     
 }

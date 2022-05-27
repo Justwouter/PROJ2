@@ -8,8 +8,10 @@ public class User {
     private int rank;
     private Point point = new Point();
     private boolean isAdmin = false;
-    public Calendar c; // TODO Why is this public?
-    public boolean weeklyPointsObtained = false; // TODO Why is this public?
+    protected ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
+    public Calendar c;
+    public boolean weeklyPointsObtained = false;
+
 
     public ArrayList<Reis> PreSets = new ArrayList<>(); // TODO Why is this public?
 
@@ -71,6 +73,36 @@ public class User {
         return username;
     }
 
+public void addPuntMutatie(int amount){
+        PuntMutatie p = new PuntMutatie(amount);
+        puntVerandering.add(p);
+    }
+    public void addPuntMutatie(int amount, Calendar datum){
+        PuntMutatie p = new PuntMutatie(amount, datum);
+        puntVerandering.add(p);
+    }
+
+    public void puntMutatieCleanUp(){
+        for(PuntMutatie pm : puntVerandering){
+            if(!pm.isFromLast4Weeks()){
+                puntVerandering.remove(puntVerandering.indexOf(pm));
+            }
+        }
+    }
+
+    public ArrayList<PuntMutatie> getPuntMutaties(){
+        puntMutatieCleanUp();
+        return this.puntVerandering;
+    }
+
+    public Integer getPuntMutatiesAsInteger(){
+        puntMutatieCleanUp();
+        Integer addedMutations = 0;
+        for (PuntMutatie pm: puntVerandering){
+            addedMutations += pm.getPuntVerandering();
+        }
+        return addedMutations;
+    }
 
     //made by BarmanTurbo
     protected void addWeeklyPoints(){
