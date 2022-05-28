@@ -29,7 +29,9 @@ public class SaveManager {
     }
 
 
-
+    /**
+     * Saves the currently existing Users & Transportmidddelen to their resective files
+     */
     public static void saveState() {
         System.out.println("================");//Debug
         System.out.println("Making savestate");//Debug
@@ -43,6 +45,9 @@ public class SaveManager {
         }
     }
 
+    /**
+     * Loads the saved data from the respective savefiles
+     */
     public static void loadAllFiles() {
         System.out.println("================");
         System.out.println("Loading files");
@@ -54,48 +59,19 @@ public class SaveManager {
                 //Not clean or efficient in the slightest but afaik its impossible to store Class.class .
                 if(f.getName().contains("Users")){
                     Leaderboard.addUser(gson.fromJson(s, User.class));
-                    //break;
                 }
                 else if(f.getName().contains("Verhicles")){
-                    Transportmiddel.transportmiddelen.add(gson.fromJson(s, Transportmiddel.class));
-                    //break;
-                    
+                    Transportmiddel.transportmiddelen.add(gson.fromJson(s, Transportmiddel.class));                    
                 }
                 else if(f.getName().contains("Travels")){
-                    gson.fromJson(s, Reis.class);
-                    //break;
-                    
+                    gson.fromJson(s, Reis.class);                    
                 }
                 else if(f.getName().contains("Points")){
                     gson.fromJson(s, Point.class);
-                    //break;
                 }
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Writes the given {@link User} in JSON format to the Users file.
@@ -157,27 +133,6 @@ public class SaveManager {
         return gson.toJson(object);
     }
 
-
-
-    
-    /**
-     * Makes users out of the read JSON Strings
-     */
-    /*
-    public static void load(){
-        for(String s : readFile("Users")){
-            User newStudent = gson.fromJson(s, User.class);
-            Leaderboard.addUser(newStudent);
-            System.out.println(newStudent.naam);
-        }
-        System.out.println("==========");
-    }
-    */
-
-
-
-
-
     /**
      * Reads the lines of an JSON file located in ~\data\ and returns them as entries in an ArrayList
      * @param file
@@ -198,13 +153,6 @@ public class SaveManager {
         catch(Exception e){}
         return saveFileContents;
     }
-
-
-    
-
-
-
-
 
     //FileSystem checks
 
@@ -230,10 +178,6 @@ public class SaveManager {
             return false;
         }
     }
-
-
-    
-
 
     /**
      * Cleans all the files made by SaveManager.
@@ -295,7 +239,5 @@ public class SaveManager {
             return true;
         }
         return false;
-
-        
     }
 }
