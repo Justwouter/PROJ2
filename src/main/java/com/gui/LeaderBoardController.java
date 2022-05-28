@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class LeaderBoardController implements Initializable, IController {
+public class LeaderBoardController extends AController implements Initializable {
 
     private List<User> users = new ArrayList<>();
 
@@ -63,10 +63,30 @@ public class LeaderBoardController implements Initializable, IController {
     }
 
     @FXML
-    public void onDBButtonClick() throws IOException {
+    private void switchToReisGegevens() throws IOException {
+        Main.show("reisgegevens", user);
+    }
+
+    @FXML
+    private void switchToLeaderboard() throws IOException {
+        Main.show("leaderboard", user);
+    }
+
+    @FXML
+    public void switchToDashboard() throws IOException {
         Main.show("dashboard", user);
     }
 
+    @FXML
+    public void switchToInstellingen() throws IOException {
+        Main.show("instellingen", user);
+    }
+
+    @FXML
+    public void switchToShop() throws IOException {
+        Main.show("shop", user);
+    }
+    
     public void setUser(User user){
         this.user = user;
     }

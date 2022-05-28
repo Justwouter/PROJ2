@@ -31,7 +31,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 
-public class DashController implements Initializable, IController{
+public class DashController extends AController implements Initializable{
 
     private User user;
     private MediaPlayer jukebox = new MediaPlayer(LoadMusic());
@@ -72,6 +72,21 @@ public class DashController implements Initializable, IController{
     @FXML
     private void switchToLeaderboard() throws IOException {
         Main.show("leaderboard", user);
+    }
+
+    @FXML
+    public void switchToDashboard() throws IOException {
+        Main.show("dashboard", user);
+    }
+
+    @FXML
+    public void switchToInstellingen() throws IOException {
+        Main.show("instellingen", user);
+    }
+
+    @FXML
+    public void switchToShop() throws IOException {
+        Main.show("shop", user);
     }
 
     public void setUser(User u){
