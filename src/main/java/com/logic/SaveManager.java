@@ -8,16 +8,101 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 
+/**
+ * Sizable class that contains all the logic for reading and writing saves
+ */
 public class SaveManager {
+    //Methods for points/reis may be unneccesary
     public static Gson gson = new Gson();
+    static String dir = System.getProperty("user.dir")+"\\data\\";
+    static ArrayList<File> fileList = new ArrayList<>(seedSaveFiles());
+
+
+    //Temp solution
+    public static ArrayList<File> seedSaveFiles() {
+        ArrayList<File> fileList = new ArrayList<>();
+        fileList.add(new File(dir+"Users.json"));
+        fileList.add(new File(dir+"Verhicles.json"));
+        fileList.add(new File(dir+"Travels.json"));
+        fileList.add(new File(dir+"Points.json")); 
+        return fileList;
+    }
+
+
+
+    public static void saveState() {
+        System.out.println("================");//Debug
+        System.out.println("Making savestate");//Debug
+        System.out.println(User.class);
+        cleanAllFiles();
+        for(User u : Leaderboard.getUsers()){
+            SaveManager.writeToSave(u);
+        }
+        for(Transportmiddel t : Transportmiddel.getTransportmiddelen()){
+            SaveManager.writeToSave(t);
+        }
+    }
+
+    public static void loadAllFiles() {
+        System.out.println("================");
+        System.out.println("Loading files");
+        
+        for(File f : fileList){
+            ArrayList<String> readLines = readFile(f);
+
+            for(String s : readLines){
+                //Not clean or efficient in the slightest but afaik its impossible to store Class.class .
+                if(f.getName().contains("Users")){
+                    Leaderboard.addUser(gson.fromJson(s, User.class));
+                    //break;
+                }
+                else if(f.getName().contains("Verhicles")){
+                    Transportmiddel.transportmiddelen.add(gson.fromJson(s, Transportmiddel.class));
+                    //break;
+                    
+                }
+                else if(f.getName().contains("Travels")){
+                    gson.fromJson(s, Reis.class);
+                    //break;
+                    
+                }
+                else if(f.getName().contains("Points")){
+                    gson.fromJson(s, Point.class);
+                    //break;
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Writes the given {@link User} in JSON format to the Users file.
      * @param user the to be written User object
      */
     public static void writeToSave(User user) {
-        String dir = System.getProperty("user.dir")+"\\data\\Users\\";
-        File savefile = new File(dir+user.naam+".json");
+        File savefile = new File(dir+"Users.json");
         write(savefile, user);
     }
 
@@ -26,7 +111,6 @@ public class SaveManager {
      * @param reis the to be written Reis object
      */
     public static void writeToSave(Reis reis) {
-        String dir = System.getProperty("user.dir")+"\\data\\";
         File savefile = new File(dir+"Travels.json");
         write(savefile, reis);
     }
@@ -35,13 +119,11 @@ public class SaveManager {
      * @param transportmiddel the to be written Transportmiddel object
      */
     public static void writeToSave(Transportmiddel transportmiddel) {
-        String dir = System.getProperty("user.dir")+"\\data\\";
         File savefile = new File(dir+"Verhicles.json");
         write(savefile, transportmiddel);
     }
 
     public static void writeToSave(Point point) {
-        String dir = System.getProperty("user.dir")+"\\data\\";
         File savefile = new File(dir+"Points.json");
         write(savefile, point);
     }
@@ -75,15 +157,13 @@ public class SaveManager {
         return gson.toJson(object);
     }
 
-    public static void saveUser(){
-        for(User a : Leaderboard.getUsers()){
-            writeToSave(a);
-        }
-    }
 
+
+    
     /**
      * Makes users out of the read JSON Strings
      */
+    /*
     public static void load(){
         for(String s : readFile("Users")){
             User newStudent = gson.fromJson(s, User.class);
@@ -92,17 +172,18 @@ public class SaveManager {
         }
         System.out.println("==========");
     }
+    */
+
+
 
 
 
     /**
-     * Reads the lines of an JSON file located in ~\data and returns them as entries in an ArrayList
+     * Reads the lines of an JSON file located in ~\data\ and returns them as entries in an ArrayList
      * @param file
      * @return {@link ArrayList<String>}
      */
-    private static ArrayList<String> readFile(String file) {
-        String dir = System.getProperty("user.dir")+"\\data\\";
-        File savefile = new File(dir+file+".json");
+    private static ArrayList<String> readFile(File savefile) {
         ArrayList<String> saveFileContents = new ArrayList<>();
         try {
             Scanner james = new Scanner(savefile);
@@ -118,6 +199,14 @@ public class SaveManager {
         return saveFileContents;
     }
 
+
+    
+
+
+
+
+
+    //FileSystem checks
 
     /**
      * Cleans a file by deleting & remaking it.
@@ -142,6 +231,26 @@ public class SaveManager {
         }
     }
 
+
+    
+
+
+    /**
+     * Cleans all the files made by SaveManager.
+     * @return {@code True} if succesfull.<p>
+     *         {@code False} if not.
+     */
+    public static boolean cleanAllFiles() {
+        try{
+            for(File f : fileList){
+                f.delete();
+                f.createNewFile();
+            }
+            return true;
+        }
+        catch(Exception e){System.out.println(e);}
+        return false;        
+    }
 
     /**
      * Checks if the file/filesystem exists. If not it calls {@link #generateFS(File)}.

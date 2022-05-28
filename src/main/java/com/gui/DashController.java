@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.logic.SaveManager;
 import com.logic.User;
 
 import javafx.beans.binding.ObjectExpression;
@@ -56,6 +57,7 @@ public class DashController implements Initializable, IController{
   
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        SaveManager.saveState();
         updateMedianLine(updateWeeklyChart());
     }
 
