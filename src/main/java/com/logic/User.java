@@ -5,18 +5,18 @@ import java.util.Calendar;
 
 public class User {
 
-    private String naam;
-    private int rank;
-    private Point point = new Point();
-    private boolean isAdmin = false;
-    protected ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
+    public String naam;
+    public int rank;
+    public Point point = new Point();
+    public boolean isAdmin = false;
+    public ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
     public Calendar c;
     public boolean weeklyPointsObtained = false;
 
     public ArrayList<Reis> PreSets = new ArrayList<>();
 
-    private String username;
-    private String password;
+    public String username;
+    public String password;
 
     public User(String naam, String username, String password){
         this(naam, false, username, password);

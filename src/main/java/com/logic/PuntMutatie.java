@@ -3,8 +3,8 @@ package com.logic;
 import java.util.Calendar;
 
 public class PuntMutatie{
-    private Integer puntVerandering;
-    private Calendar datum;
+    public Integer puntVerandering;
+    public Calendar datum;
 
     public PuntMutatie(Integer puntVerandering){
         this.puntVerandering = puntVerandering;

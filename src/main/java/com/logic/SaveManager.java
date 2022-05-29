@@ -35,7 +35,6 @@ public class SaveManager {
     public static void saveState() {
         System.out.println("================");//Debug
         System.out.println("Making savestate");//Debug
-        System.out.println(User.class);
         cleanAllFiles();
         for(User u : Leaderboard.getUsers()){
             SaveManager.writeToSave(u);

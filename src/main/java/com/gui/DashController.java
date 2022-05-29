@@ -62,17 +62,6 @@ public class DashController extends AController implements Initializable{
     @FXML
     private CategoryAxis weekChartX = new CategoryAxis();
 
-  
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        //SaveManager.saveState(); temp disable savestates
-        LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
-        updateMedianLine(updateWeeklyChart());
-    }
-
-    @Override
-    public void setPresets(User user){} //Parent class implementation
-
     @FXML
     private void switchToReisGegevens() throws IOException {
         Main.show("reisgegevens", user);
@@ -98,6 +87,18 @@ public class DashController extends AController implements Initializable{
         Main.show("shop", user);
     }
 
+    //Parent methods overrides
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        SaveManager.saveState();
+        LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
+        updateMedianLine(updateWeeklyChart());
+    }
+
+    @Override
+    public void setPresets(User user){} 
+    
+    @Override
     public void setUser(User u){
         this.user = u;
     }
@@ -105,8 +106,10 @@ public class DashController extends AController implements Initializable{
     @Override
     public void setPoints(User user) {
         pointsDash.setText(user.getPoint().getPointsString());
-
     }
+
+
+    
     
     //TODO setVergelijking() weer functioneel weten te krijgen
     @FXML
@@ -162,6 +165,7 @@ public class DashController extends AController implements Initializable{
         //Hide the lineChart if no lines are selected to be visible
         if(!staticAverage.selectedProperty().get() && !dynAverage.selectedProperty().get()){
             medianLineChart.setVisible(false);
+            System.out.println("Hiding chart"); //Debug
         }
         else{
             
@@ -175,13 +179,12 @@ public class DashController extends AController implements Initializable{
 
             //Dynamic relative average
             if(dynAverage.selectedProperty().get()){
+                System.out.println("Displaying dynAverage"); //Debug
                 
                 XYChart.Series<String,Number> adjustingAverageLine = new XYChart.Series<String, Number>();
                 for(int i=0;i< daysOfTheWeek.length;i++){
                     Long yValue = calculateRelativeAverage(averageList,i);
-                    System.out.println(yValue);
                     Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],yValue);
-                    vars.getNode().setStyle("-fx-stroke: green;");
                     adjustingAverageLine.getData().add(vars);
                 }
                 medianLineChart.getData().add(adjustingAverageLine);
@@ -189,6 +192,7 @@ public class DashController extends AController implements Initializable{
 
             //Static average line
             if(staticAverage.selectedProperty().get()){
+                System.out.println("Displaying staticAverage"); //Debug
 
                 XYChart.Series<String,Number> averageLine = new XYChart.Series<String, Number>();
                 for(int i=0;i< daysOfTheWeek.length;i++){
@@ -262,7 +266,7 @@ public class DashController extends AController implements Initializable{
         //Debug
         System.out.println("Average: "+average);
         System.out.println("Highest: " +highest);
-        System.out.println("Displaying data");
+        System.out.println("Displaying bar"); //Debug
 
         //Assign lables 
         co2ThisWeekChart.setTitle("Weekly CO2 Values");
