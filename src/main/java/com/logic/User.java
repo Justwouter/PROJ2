@@ -13,7 +13,7 @@ public class User {
     public Calendar c;
     public boolean weeklyPointsObtained = false;
 
-    public ArrayList<Reis> PreSets = new ArrayList<>(); // TODO Why is this public?
+    public ArrayList<Reis> PreSets = new ArrayList<>();
 
     private String username;
     private String password;

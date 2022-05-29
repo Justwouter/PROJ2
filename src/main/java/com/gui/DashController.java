@@ -13,6 +13,7 @@ import com.logic.User;
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
@@ -35,6 +36,7 @@ public class DashController extends AController implements Initializable{
 
     private User user;
     private MediaPlayer jukebox;
+    private List<Long> avList;
 
     @FXML
     private Label uitstootVergelijk;
@@ -47,6 +49,12 @@ public class DashController extends AController implements Initializable{
 
     @FXML
     private Label pointsDash;
+
+    @FXML
+    private CheckBox dynAverage;
+
+    @FXML
+    private CheckBox staticAverage;
 
     @FXML
     private NumberAxis weekChartY = new NumberAxis(0,150,10);
@@ -107,7 +115,15 @@ public class DashController extends AController implements Initializable{
     }
 
     /**
-     * Wrapper method to update the barchart on the dashboard
+     * Wrapper method to update the average lines on the dashboard when they are en/disabled.
+     */
+    @FXML
+    private void loadAverageLines(){
+        updateMedianLine(avList);
+    }
+
+    /**
+     * Wrapper method to update the barchart on the dashboard.
      */
     @FXML
     public void triggerChartUpdate(){
@@ -117,9 +133,9 @@ public class DashController extends AController implements Initializable{
     }
 
     /**
-     * Loads a file into the jukebox
-     * @param file the file to be loaded
-     * @return Media object containing the given file
+     * Loads a file into the jukebox.
+     * @param file the file to be loaded.
+     * @return Media object containing the given file.
      */
     private Media LoadMusic(File file){
         Media media = new Media(file.toURI().toString());
@@ -128,7 +144,7 @@ public class DashController extends AController implements Initializable{
     }
 
     /**
-     * Plays the file stored in jukebox & resets if called again
+     * Plays the file stored in jukebox & resets if called again.
      */
     private void playMusic(){
         jukebox.play();
@@ -136,32 +152,54 @@ public class DashController extends AController implements Initializable{
         jukebox.play();
     }
 
+
+    
+    /**
+     * Loads the average lines if they are enabled in the GUI.
+     * @param averageList List containing the barchart rng values. Can be removed when switching to stored userdata.
+     */
     private void updateMedianLine(List<Long> averageList){
-        medianLineChart.setTitle("Weekly CO2 Values");
-        medianLineChart.getXAxis().setLabel("Day");
-        medianLineChart.getYAxis().setLabel("Value");
-        medianLineChart.setCreateSymbols(false);
-        medianLineChart.getData().clear();
-
-        String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-
-        //Static average line
-        XYChart.Series<String,Number> averageLine = new XYChart.Series<String, Number>();
-        for(int i=0;i< daysOfTheWeek.length;i++){
-            Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],calculateRelativeAverage(averageList,daysOfTheWeek.length-1));
-            averageLine.getData().add(vars);
+        //Hide the lineChart if no lines are selected to be visible
+        if(!staticAverage.selectedProperty().get() && !dynAverage.selectedProperty().get()){
+            medianLineChart.setVisible(false);
         }
-        medianLineChart.getData().add(averageLine);
-        
-        //Dynamic relative average
-        XYChart.Series<String,Number> adjustingAverageLine = new XYChart.Series<String, Number>();
-        for(int i=0;i< daysOfTheWeek.length;i++){
-            Long yValue = calculateRelativeAverage(averageList,i);
-            System.out.println(yValue);
-            Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],yValue);
-            adjustingAverageLine.getData().add(vars);
+        else{
+            
+            medianLineChart.setTitle("Weekly CO2 Values");
+            medianLineChart.getXAxis().setLabel("Day");
+            medianLineChart.getYAxis().setLabel("Value");
+            medianLineChart.setCreateSymbols(false);
+            medianLineChart.getData().clear();
+
+            String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
+            //Dynamic relative average
+            if(dynAverage.selectedProperty().get()){
+                
+                XYChart.Series<String,Number> adjustingAverageLine = new XYChart.Series<String, Number>();
+                for(int i=0;i< daysOfTheWeek.length;i++){
+                    Long yValue = calculateRelativeAverage(averageList,i);
+                    System.out.println(yValue);
+                    Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],yValue);
+                    vars.getNode().setStyle("-fx-stroke: green;");
+                    adjustingAverageLine.getData().add(vars);
+                }
+                medianLineChart.getData().add(adjustingAverageLine);
+            }
+
+            //Static average line
+            if(staticAverage.selectedProperty().get()){
+
+                XYChart.Series<String,Number> averageLine = new XYChart.Series<String, Number>();
+                for(int i=0;i< daysOfTheWeek.length;i++){
+                    Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],calculateRelativeAverage(averageList,daysOfTheWeek.length-1));
+                    averageLine.getData().add(vars);
+                }
+                medianLineChart.getData().add(averageLine);
+            }
+            
+            medianLineChart.setVisible(true);
         }
-        medianLineChart.getData().add(adjustingAverageLine);
     }
 
     /**
@@ -171,11 +209,6 @@ public class DashController extends AController implements Initializable{
      * @return Long average
      */
     private Long calculateRelativeAverage(List<Long> averageList, int days){
-        //Division by 0 safety
-        // if(days == 0){
-        //     return averageList.get(0);
-        // }
-
         //Calculate the average
         long average = 0;
         long highest = 0;
@@ -196,7 +229,7 @@ public class DashController extends AController implements Initializable{
      *<p>
      * Temporary uses random numbers until a storage class is available
      */
-    private List<Long> updateWeeklyChart(){ //TODO lock the XAxis values horizontal, fix/lock the weird YAxis scaling
+    private List<Long> updateWeeklyChart(){                                                                         
         //ArrayList<Object> historicUserData = new ArrayList<>();
         List<Long> averageList = new ArrayList<>();
         String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
@@ -242,6 +275,7 @@ public class DashController extends AController implements Initializable{
         co2ThisWeekChart.getData().clear();
         co2ThisWeekChart.getData().add(series);
         //co2ThisWeekChart.setAnimated(true);
+        this.avList = averageList;
         return averageList;
     }
 
