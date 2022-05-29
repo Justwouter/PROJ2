@@ -23,7 +23,7 @@ public class Main extends Application {
         new User("Testnaam Eric", "Eric", "Bull").getPoint().setPoints(2000);
         new User("Testnaam Burton", "Burton","Braam").getPoint().setPoints(20);
         new User("Testnaam Damnn...Daniël", "Wessel", "Horsthuis");
-        new User("Testnaam Wouter", "Wouter", "Swijnenburg").getPoint().setPoints(2500);
+        new User("Testnaam Wouter", "jyn", "test").getPoint().setPoints(2500);
         new User("Testnaam Lucas", "Lucas", "Clavel").getPoint().setPoints(1500);
         new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
         new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
@@ -38,6 +38,7 @@ public class Main extends Application {
 //        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
 //        user.setReis(3, new Reis(null, null, null));
 //        user.setReis(4, new Reis(null, null, null));
+
         //SaveManager.loadAllFiles();
     }
 

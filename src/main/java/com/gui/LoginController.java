@@ -2,6 +2,8 @@ package com.gui;
 
 import com.logic.Leaderboard;
 import com.logic.User;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -68,6 +70,11 @@ public class LoginController extends AController implements Initializable {
             }
         }
         return false;
+    }
+
+    @FXML
+    private void onEnterPressed(ActionEvent event) throws IOException{
+        attemptLogin();
     }
 
     @Override

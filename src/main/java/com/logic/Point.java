@@ -1,4 +1,5 @@
 package com.logic;
+
 public class Point {
     public Integer points;
 

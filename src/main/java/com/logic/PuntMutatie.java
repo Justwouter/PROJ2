@@ -2,7 +2,7 @@ package com.logic;
 
 import java.util.Calendar;
 
-class PuntMutatie{
+public class PuntMutatie{
     private Integer puntVerandering;
     private Calendar datum;
 

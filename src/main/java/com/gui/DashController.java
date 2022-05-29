@@ -34,7 +34,7 @@ import javafx.scene.media.MediaPlayer;
 public class DashController extends AController implements Initializable{
 
     private User user;
-    private MediaPlayer jukebox = new MediaPlayer(LoadMusic());
+    private MediaPlayer jukebox;
 
     @FXML
     private Label uitstootVergelijk;
@@ -57,12 +57,13 @@ public class DashController extends AController implements Initializable{
   
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SaveManager.saveState();
+        //SaveManager.saveState(); temp disable savestates
+        LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
         updateMedianLine(updateWeeklyChart());
     }
 
     @Override
-    public void setPresets(User user){} //Empty on purpose, needed to implement the interface
+    public void setPresets(User user){} //Parent class implementation
 
     @FXML
     private void switchToReisGegevens() throws IOException {
@@ -104,6 +105,7 @@ public class DashController extends AController implements Initializable{
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
     }
+
     /**
      * Wrapper method to update the barchart on the dashboard
      */
@@ -114,11 +116,20 @@ public class DashController extends AController implements Initializable{
         setVergelijking();
     }
 
-    private Media LoadMusic(){
-        Media media = new Media(new File("src/main/resources/com/gui/Sounds/ding.wav").toURI().toString());
+    /**
+     * Loads a file into the jukebox
+     * @param file the file to be loaded
+     * @return Media object containing the given file
+     */
+    private Media LoadMusic(File file){
+        Media media = new Media(file.toURI().toString());
+        this.jukebox = new MediaPlayer(media);
         return media;
     }
 
+    /**
+     * Plays the file stored in jukebox & resets if called again
+     */
     private void playMusic(){
         jukebox.play();
         jukebox.stop();
