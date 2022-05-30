@@ -3,8 +3,8 @@ module com.gui {
     requires transitive javafx.base;
     requires transitive javafx.graphics;
     requires transitive javafx.media;
-    requires javafx.fxml;
-    requires com.google.gson;
+    requires transitive javafx.fxml;
+    requires transitive com.google.gson;
 
     opens com.gui to javafx.fxml;
     exports com.gui;

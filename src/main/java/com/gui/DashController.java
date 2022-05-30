@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.logic.SaveManager;
 import com.logic.User;
 
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
@@ -33,7 +35,8 @@ import javafx.scene.media.MediaPlayer;
 public class DashController extends AController implements Initializable{
 
     private User user;
-    private MediaPlayer jukebox = new MediaPlayer(LoadMusic());
+    private MediaPlayer jukebox;
+    private List<Long> avList;
 
     @FXML
     private Label uitstootVergelijk;
@@ -48,19 +51,16 @@ public class DashController extends AController implements Initializable{
     private Label pointsDash;
 
     @FXML
+    private CheckBox dynAverage;
+
+    @FXML
+    private CheckBox staticAverage;
+
+    @FXML
     private NumberAxis weekChartY = new NumberAxis(0,150,10);
 
     @FXML
     private CategoryAxis weekChartX = new CategoryAxis();
-
-  
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        updateWeeklyChart();
-    }
-
-    @Override
-    public void setPresets(User user){} //Empty on purpose, needed to implement the interface
 
     @FXML
     private void switchToReisGegevens() throws IOException {
@@ -87,6 +87,18 @@ public class DashController extends AController implements Initializable{
         Main.show("shop", user);
     }
 
+    //Parent methods overrides
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        SaveManager.saveState();
+        LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
+        updateMedianLine(updateWeeklyChart());
+    }
+
+    @Override
+    public void setPresets(User user){} 
+    
+    @Override
     public void setUser(User u){
         this.user = u;
     }
@@ -94,16 +106,27 @@ public class DashController extends AController implements Initializable{
     @Override
     public void setPoints(User user) {
         pointsDash.setText(user.getPoint().getPointsString());
-
     }
+
+
     
-//TODO setVergelijking() weer functioneel weten te krijgen
+    
+    //TODO setVergelijking() weer functioneel weten te krijgen
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
     }
+
     /**
-     * Wrapper method to update the barchart on the dashboard
+     * Wrapper method to update the average lines on the dashboard when they are en/disabled.
+     */
+    @FXML
+    private void loadAverageLines(){
+        updateMedianLine(avList);
+    }
+
+    /**
+     * Wrapper method to update the barchart on the dashboard.
      */
     @FXML
     public void triggerChartUpdate(){
@@ -112,91 +135,105 @@ public class DashController extends AController implements Initializable{
         setVergelijking();
     }
 
-
-    private Media LoadMusic(){
-        Media media = new Media(new File("src/main/resources/com/gui/Sounds/ding.wav").toURI().toString());
+    /**
+     * Loads a file into the jukebox.
+     * @param file the file to be loaded.
+     * @return Media object containing the given file.
+     */
+    private Media LoadMusic(File file){
+        Media media = new Media(file.toURI().toString());
+        this.jukebox = new MediaPlayer(media);
         return media;
     }
+
+    /**
+     * Plays the file stored in jukebox & resets if called again.
+     */
     private void playMusic(){
         jukebox.play();
         jukebox.stop();
         jukebox.play();
     }
 
+
+    
+    /**
+     * Loads the average lines if they are enabled in the GUI.
+     * @param averageList List containing the barchart rng values. Can be removed when switching to stored userdata.
+     */
     private void updateMedianLine(List<Long> averageList){
+        //Hide the lineChart if no lines are selected to be visible
+        if(!staticAverage.selectedProperty().get() && !dynAverage.selectedProperty().get()){
+            medianLineChart.setVisible(false);
+            System.out.println("Hiding chart"); //Debug
+        }
+        else{
+            
+            medianLineChart.setTitle("Weekly CO2 Values");
+            medianLineChart.getXAxis().setLabel("Day");
+            medianLineChart.getYAxis().setLabel("Value");
+            medianLineChart.setCreateSymbols(false);
+            medianLineChart.getData().clear();
 
-        medianLineChart.getXAxis().setLabel("Day");
-        medianLineChart.getYAxis().setLabel("Value");
+            String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
-        medianLineChart.setLegendVisible(false);
-        medianLineChart.setAnimated(false);
-        medianLineChart.setCreateSymbols(false);
-        medianLineChart.setAlternativeRowFillVisible(false);
-        medianLineChart.setAlternativeColumnFillVisible(false);
-        medianLineChart.setHorizontalGridLinesVisible(false);
-        medianLineChart.setVerticalGridLinesVisible(false);
-        medianLineChart.getXAxis().setVisible(false);
-        medianLineChart.getYAxis().setVisible(false);
-
-        medianLineChart.getData().clear();
-
-
-
-        String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-        long average = 0;
-        long highest = 0;
-        for(Long l : averageList){
-            average +=l;
-            if(l > highest){
-                highest = l;
+            //Dynamic relative average
+            if(dynAverage.selectedProperty().get()){
+                System.out.println("Displaying dynAverage"); //Debug
+                
+                XYChart.Series<String,Number> adjustingAverageLine = new XYChart.Series<String, Number>();
+                for(int i=0;i< daysOfTheWeek.length;i++){
+                    Long yValue = calculateRelativeAverage(averageList,i);
+                    Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],yValue);
+                    adjustingAverageLine.getData().add(vars);
+                }
+                medianLineChart.getData().add(adjustingAverageLine);
             }
-        }
-        average = average/averageList.size();
-        XYChart.Series<String,Number> series = new XYChart.Series<String, Number>();
-        for(int i=0;i< daysOfTheWeek.length;i++){
-            Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],averageList.get(i));
-            series.getData().add(vars);
-        }
-        medianLineChart.getData().add(series);
 
+            //Static average line
+            if(staticAverage.selectedProperty().get()){
+                System.out.println("Displaying staticAverage"); //Debug
+
+                XYChart.Series<String,Number> averageLine = new XYChart.Series<String, Number>();
+                for(int i=0;i< daysOfTheWeek.length;i++){
+                    Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],calculateRelativeAverage(averageList,daysOfTheWeek.length-1));
+                    averageLine.getData().add(vars);
+                }
+                medianLineChart.getData().add(averageLine);
+            }
+            
+            medianLineChart.setVisible(true);
+        }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * Calculates the average amount of CO2 on a day relative to earlier days
+     * @param averageList
+     * @param days
+     * @return Long average
+     */
+    private Long calculateRelativeAverage(List<Long> averageList, int days){
+        //Calculate the average
+        long average = 0;
+        long highest = 0;
+        for(int i=0;i<days+1 ;i++){
+            Long currentNumber = averageList.get(i);
+            average +=currentNumber;
+            if(currentNumber > highest){
+                highest = currentNumber;
+            }
+        }
+        return average/(days+1);
+        
+    }
 
 
     /**
      *Updates the Bar Graph on the dashboard with the weekly values of the currently logged in user
-        <p>
+     *<p>
      * Temporary uses random numbers until a storage class is available
      */
-    private List<Long> updateWeeklyChart(){ //TODO lock the XAxis values horizontal, fix/lock the weird YAxis scaling
+    private List<Long> updateWeeklyChart(){                                                                         
         //ArrayList<Object> historicUserData = new ArrayList<>();
         List<Long> averageList = new ArrayList<>();
         String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
@@ -204,6 +241,7 @@ public class DashController extends AController implements Initializable{
 
         System.out.println("Parsing data");//Debug
 
+        //Populate the XYchart with random value nodes & add floating lables to said nodes 
         for(int i=0;i< daysOfTheWeek.length;i++){
             Long userDataValue = Math.round(Math.random()*100);
             averageList.add(userDataValue);
@@ -228,9 +266,9 @@ public class DashController extends AController implements Initializable{
         //Debug
         System.out.println("Average: "+average);
         System.out.println("Highest: " +highest);
-        System.out.println("Displaying data");
+        System.out.println("Displaying bar"); //Debug
 
-        //Assign lables
+        //Assign lables 
         co2ThisWeekChart.setTitle("Weekly CO2 Values");
         weekChartX.setLabel("Day");
         weekChartY.setLabel("Value");
@@ -240,13 +278,13 @@ public class DashController extends AController implements Initializable{
         co2ThisWeekChart.setAnimated(false);
         co2ThisWeekChart.getData().clear();
         co2ThisWeekChart.getData().add(series);
-        //weekChartY.setUpperBound(highest+20.0);
         //co2ThisWeekChart.setAnimated(true);
+        this.avList = averageList;
         return averageList;
     }
 
     /**
-     * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart
+     * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart 
      * @param value
      */
     private static Node createValueLabel(ObjectExpression<Number> value) {
@@ -254,8 +292,6 @@ public class DashController extends AController implements Initializable{
         label.textProperty().bind(value.asString());
         var pane = new Pane(label);
         label.translateYProperty().bind(label.heightProperty().divide(-1.0));
-        //label.translateXProperty().bind(label.widthProperty().divide(-20));
-
         return pane;
     }
   
@@ -265,20 +301,11 @@ public class DashController extends AController implements Initializable{
      */
     private void barColorSwitch(XYChart.Data<String, Number> data){
         Node node = data.getNode();
-        if (data.getYValue().intValue() > 99) {
-            node.setStyle("-fx-bar-fill: black");
-        } 
-        else if (data.getYValue().intValue() > 83) {
+        if (data.getYValue().intValue() > 75) {
             node.setStyle("-fx-bar-fill: red");
         } 
-        else if (data.getYValue().intValue() > 67) {
+        else if (data.getYValue().intValue() >= 25) {
             node.setStyle("-fx-bar-fill: orange");
-        } 
-        else if (data.getYValue().intValue() > 50) {
-            node.setStyle("-fx-bar-fill: yellow");
-        }
-        else if (data.getYValue().intValue() > 33) {
-            node.setStyle("-fx-bar-fill: blue");
         }
         else {
             node.setStyle("-fx-bar-fill: green");

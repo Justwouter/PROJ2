@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class User {
-    private String naam;
-    private int rank;
-    private Point point = new Point();
-    private boolean isAdmin = false;
-    protected ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
+
+    //public omdat het dan gelezen en veranderd kan worden in JSon
+    public String naam;
+    public int rank;
+    public Point point = new Point();
+    public boolean isAdmin = false;
+    public ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
     public Calendar c;
     public boolean weeklyPointsObtained = false;
 
+    public ArrayList<Reis> PreSets = new ArrayList<>();
 
-    public ArrayList<Reis> PreSets = new ArrayList<>(); // TODO Why is this public?
-
-    private String username;
-    private String password;
+    public String username;
+    public String password;
 
     public User(String naam, String username, String password){
         this(naam, false, username, password);
@@ -31,6 +32,11 @@ public class User {
         for (int i = 0; i < 5; i++) {
             PreSets.add(new Reis(null, null, null));
         }
+    }
+
+    public User(String naam, Point point) {
+        this.naam = naam;
+        this.point = point;
     }
 
     public void setReis(int index, Reis reis){
@@ -148,7 +154,6 @@ public void addPuntMutatie(int amount){
         }else{
             output += ""+(uitstoot/122000000)+" keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
         }
-
         return output;
     }
 

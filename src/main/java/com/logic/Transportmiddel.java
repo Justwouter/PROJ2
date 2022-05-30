@@ -3,11 +3,11 @@ package com.logic;
 import java.util.ArrayList;
 
 public class Transportmiddel {
-    private final String NAAM;
-    private int uitstoot;
-    private int kosten;
+    public final String NAAM;
+    public int uitstoot;
+    public int kosten;
 
-    private static final ArrayList<Transportmiddel> transportmiddelen = new ArrayList<>();
+    public static final ArrayList<Transportmiddel> transportmiddelen = new ArrayList<>();
 
     public Transportmiddel(String naam, int uitstoot, int kosten) {
         this.NAAM = naam;
@@ -16,7 +16,6 @@ public class Transportmiddel {
         transportmiddelen.add(this);
     }
     
-    //gemiddelde uitstoot CO2 in g/km
     public void setUitstoot(int uitstoot){
         this.uitstoot = uitstoot;
     }
@@ -39,9 +38,5 @@ public class Transportmiddel {
 
     public static ArrayList<Transportmiddel> getTransportmiddelen(){
         return transportmiddelen;
-    }
-
-    public int berekenReispuntenKosten(int Afstand){
-        return ((Afstand)*(this.kosten));
     }
 }
