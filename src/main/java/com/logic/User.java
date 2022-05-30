@@ -89,6 +89,7 @@ public class User {
     }
 
     public void puntMutatieCleanUp(){
+        //Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen blijven.
         for(PuntMutatie pm : puntVerandering){
             if(!pm.isFromLast4Weeks()){
                 puntVerandering.remove(puntVerandering.indexOf(pm));
