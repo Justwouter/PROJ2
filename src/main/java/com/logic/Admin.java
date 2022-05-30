@@ -33,7 +33,5 @@ public class Admin extends User{
         Comparator<User> vergelijker = Comparator.comparing(User::getPuntMutatiesAsInteger);
         Collections.sort(allUsers, vergelijker);
         return vergelijker;
-    }
-    //TODO check of dit hier wel werkt!!
-    
+    }    
 }
