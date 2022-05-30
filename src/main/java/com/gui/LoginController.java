@@ -90,4 +90,10 @@ public class LoginController extends AController implements Initializable {
     public void setPresets(User user){
         
     }
+
+    @Override
+    void setMessage(User user) {
+        // TODO Auto-generated method stub
+        
+    }
 }

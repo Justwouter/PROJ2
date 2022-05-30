@@ -10,11 +10,15 @@ import java.util.ResourceBundle;
 import com.logic.SaveManager;
 import com.logic.User;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 //Charts
@@ -30,6 +34,7 @@ import javafx.scene.chart.XYChart.Data;
 //Sound
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 
 public class DashController extends AController implements Initializable{
@@ -37,6 +42,9 @@ public class DashController extends AController implements Initializable{
     private User user;
     private MediaPlayer jukebox;
     private List<Long> avList;
+
+    @FXML
+    private AnchorPane dashMainPane;
 
     @FXML
     private Label uitstootVergelijk;
@@ -64,7 +72,7 @@ public class DashController extends AController implements Initializable{
 
     @FXML
     private void switchToReisGegevens() throws IOException {
-        Main.show("reisgegevens", user);
+        exitAnim("reisgegevens", user);
     }
 
     @FXML
@@ -74,7 +82,7 @@ public class DashController extends AController implements Initializable{
 
     @FXML
     public void switchToDashboard() throws IOException {
-        Main.show("dashboard", user);
+        exitAnim("dashboard", user);
     }
 
     @FXML
@@ -85,6 +93,19 @@ public class DashController extends AController implements Initializable{
     @FXML
     public void switchToShop() throws IOException {
         Main.show("shop", user);
+    }
+
+
+
+    //Animation
+    private void exitAnim(String fxml, User user) {
+        KeyValue keyValue = new KeyValue(dashMainPane.rotateProperty(), 360);
+        // over the course of 5 seconds
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+        Timeline timeline = new Timeline(keyFrame);
+        timeline.play();
+        timeline.setOnFinished(e -> {try {Main.show(fxml, user);}catch(IOException e1){}
+        });
     }
 
     //Parent methods overrides
@@ -106,6 +127,11 @@ public class DashController extends AController implements Initializable{
     @Override
     public void setPoints(User user) {
         pointsDash.setText(user.getPoint().getPointsString());
+    }
+
+    @Override
+    public void setMessage(User user){
+        uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
     }
 
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/dash.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.DashController">
+<AnchorPane fx:id="dashMainPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/dash.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.DashController">
    <children>
       <Label alignment="CENTER" layoutY="4.0" minWidth="454.0" prefHeight="18.0" prefWidth="480.0" text="Dashboard" />
       <AnchorPane layoutX="7.0" layoutY="16.0" prefHeight="83.0" prefWidth="119.0">

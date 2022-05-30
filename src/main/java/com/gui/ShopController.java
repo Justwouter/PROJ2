@@ -62,5 +62,11 @@ public class ShopController extends AController  implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
                 
     }
+
+    @Override
+    void setMessage(User user) {
+        // TODO Auto-generated method stub
+        
+    }
     
 }

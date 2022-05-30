@@ -96,4 +96,10 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @Override
     public void setPresets(User user){} //just here because of the implementation
+
+    @Override
+    void setMessage(User user) {
+        // TODO Auto-generated method stub
+        
+    }
 }

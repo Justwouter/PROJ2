@@ -13,6 +13,7 @@ public abstract class AController {
     abstract void setUser(User user);
     abstract void setPoints(User user);
     abstract void setPresets(User user);
+    abstract void setMessage(User user);
 
     //laat dit even staan gaat mogelijk anders zodat het makkelijker wordt
     // @FXML
