@@ -24,6 +24,9 @@ public class PuntMutatie{
         return this.puntVerandering;
     }
 
+    /**
+    * Er hoeft hier niks meegegeven te worden omdat hij de datum opvraagt van het meegegeven object
+    */
     public boolean isFromLast4Weeks(){
         Calendar datumCheck = Calendar.getInstance();
         //check for last month date

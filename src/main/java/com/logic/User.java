@@ -79,7 +79,7 @@ public class User {
         return username;
     }
 
-public void addPuntMutatie(int amount){
+    public void addPuntMutatie(int amount){
         PuntMutatie p = new PuntMutatie(amount);
         puntVerandering.add(p);
     }
@@ -89,6 +89,7 @@ public void addPuntMutatie(int amount){
     }
 
     public void puntMutatieCleanUp(){
+        //Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen blijven.
         for(PuntMutatie pm : puntVerandering){
             if(!pm.isFromLast4Weeks()){
                 puntVerandering.remove(puntVerandering.indexOf(pm));
