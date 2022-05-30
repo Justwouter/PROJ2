@@ -45,7 +45,7 @@ public class AdminSettingsController extends AController implements Initializabl
     @FXML //TODO: kan iemand die goed is in fxml hier ff extra naar kijken?!
     public void switchToAdminActions() throws IOException{
         Main.show("adminaction", user);
-    }
+    } //er moet dus nog een adminaction.fxml komen
     
     @Override
     void setUser(User user) {
