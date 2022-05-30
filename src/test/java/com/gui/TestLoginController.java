@@ -13,7 +13,7 @@ public class TestLoginController{
 
     @BeforeAll
     static void seed(){
-        new User("Test Eric", false, "Eric", "Bull");
+        new User("Test Eric", false, "Eric", "Bull", null);
     }
 
     @Test

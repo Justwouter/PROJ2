@@ -18,25 +18,19 @@ public class User {
 
     public String username;
     public String password;
+    public String filiaal;
 
-    public User(String naam, String username, String password){
-        this(naam, false, username, password);
-    }
-
-    public User(String naam, boolean isAdmin, String username, String password){
+    public User(String naam, boolean isAdmin, String username, String password, String filiaal){
         this.naam = naam;
         this.username = username;
         this.password = password;
+        this.filiaal = filiaal;
         point.setPoints(1000);
         Leaderboard.addUser(this);
         for (int i = 0; i < 5; i++) {
             PreSets.add(new Reis(null, null, null));
         }
-    }
-
-    public User(String naam, Point point) {
-        this.naam = naam;
-        this.point = point;
+        SaveManager.writeToSave(this);
     }
 
     public void setReis(int index, Reis reis){

@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Admin extends User{
-    public Admin(String naam, String username, String password) {
-        super(naam, true, username, password);
+    public Admin(String naam, String username, String password, String filiaal) {
+        super(naam, true, username, password, filiaal);
     }
 
     //made by BarmanTurbo
