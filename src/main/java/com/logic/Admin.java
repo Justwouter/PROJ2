@@ -6,15 +6,15 @@ import java.util.Comparator;
 
 public class Admin extends User{
     public Admin(String naam, String username, String password) {
-        super(naam, false, username, password);
+        super(naam, true, username, password);
     }
 
     //made by BarmanTurbo
     public ArrayList<User> duurzaamsteUsers(){
         ArrayList<User> allUsers = Leaderboard.getUsers();
+        ArrayList<User> topUsers= new ArrayList<User>();
         if(getIsAdmin()){
-            Integer maxPoints = allUsers.get(1).getPoints();
-            ArrayList<User> topUsers= new ArrayList<User>();
+            Integer maxPoints = allUsers.get(0).getPoints();
             for(User u : allUsers){
                 if(u.getPoints()==maxPoints){
                     topUsers.add(u);
@@ -27,7 +27,7 @@ public class Admin extends User{
             throw new IllegalArgumentException("Error in Admin.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");
         }
 
-        return allUsers;
+        return topUsers;
     }
 
     public ArrayList<User> BesteUsersVanDeMaand(){
