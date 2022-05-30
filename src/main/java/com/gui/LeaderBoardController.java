@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -19,8 +18,6 @@ import java.util.ResourceBundle;
 
 public class LeaderBoardController extends AController implements Initializable {
 
-    @FXML
-    public Button dbButton1;
     private User user;
 
     @FXML
