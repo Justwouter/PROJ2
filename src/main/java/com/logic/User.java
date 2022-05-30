@@ -79,7 +79,7 @@ public class User {
         return username;
     }
 
-public void addPuntMutatie(int amount){
+    public void addPuntMutatie(int amount){
         PuntMutatie p = new PuntMutatie(amount);
         puntVerandering.add(p);
     }
