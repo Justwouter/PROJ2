@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 public class Admin extends User{
     public Admin(String naam, String username, String password) {
-        super(naam, false, username, password);
+        super(naam, true, username, password);
     }
 
     //made by BarmanTurbo
