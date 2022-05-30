@@ -1,0 +1,23 @@
+.root{
+    -fx-background-color: #74F180;
+}
+
+.table-view .table-column{
+    -fx-font-weight: bold;
+}
+
+.good{
+    -fx-background-color: #4ed35f;
+}
+
+.bad{
+    -fx-background-color: #e54c4c;
+}
+
+.warning{
+    -fx-background-color: #eeaf42;
+}
+
+.error{
+    -fx-background-color: #c067d0;
+}
