@@ -12,9 +12,9 @@ public class Admin extends User{
     //made by BarmanTurbo
     public ArrayList<User> duurzaamsteUsers(){
         ArrayList<User> allUsers = Leaderboard.getUsers();
+        ArrayList<User> topUsers= new ArrayList<User>();
         if(getIsAdmin()){
-            Integer maxPoints = allUsers.get(1).getPoints();
-            ArrayList<User> topUsers= new ArrayList<User>();
+            Integer maxPoints = allUsers.get(0).getPoints();
             for(User u : allUsers){
                 if(u.getPoints()==maxPoints){
                     topUsers.add(u);
@@ -22,19 +22,17 @@ public class Admin extends User{
                     break; //saves runtime, zodat je alleen over de users met de hoogste punten loopt.
                 }
             }
-
         } else {
             throw new IllegalArgumentException("Error in Admin.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");
         }
-
-        return allUsers;
+        return topUsers;
     }
 
-    public ArrayList<User> BesteUsersVanDeMaand(){
+    public Comparator<User> BesteUsersVanDeMaand(){
         ArrayList<User> allUsers = Leaderboard.getUsers();
         Comparator<User> vergelijker = Comparator.comparing(User::getPuntMutatiesAsInteger);
         Collections.sort(allUsers, vergelijker);
-        return allUsers;
+        return vergelijker;
     }
     //TODO check of dit hier wel werkt!!
     
