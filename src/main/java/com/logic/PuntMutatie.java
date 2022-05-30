@@ -25,6 +25,10 @@ public class PuntMutatie{
     }
 
     public boolean isFromLast4Weeks(){
+        //"Er word niks meegegeven?" vroeg Lucas.
+        //Burton zegt: Jazeker. hij geeft zichzelf mee. Ja, je kan het buiten de class proberen te vinden
+        //door een PuntMutatie object mee te geven aan een methode, of je kan de methode in het object zetten.
+        //In dit geval is er dus door mij de laatste optie gekozen
         Calendar datumCheck = Calendar.getInstance();
         //check for last month date
         if(datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR)){
