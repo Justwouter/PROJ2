@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 public class User {
 
+    //public omdat het dan gelezen en veranderd kan worden in JSon
     public String naam;
     public int rank;
     public Point point = new Point();
