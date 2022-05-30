@@ -12,7 +12,7 @@ public class TestUser {
     
     @BeforeEach
     public void seed(){
-        user = new User("TestGebruiker", false, "Username", "Password");
+        user = new User("TestGebruiker", false, "Username", "Password", null);
     }
     
     @Test
