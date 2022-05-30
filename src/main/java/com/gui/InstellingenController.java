@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.logic.Admin;
 import com.logic.User;
 
 import javafx.fxml.FXML;
@@ -40,6 +41,16 @@ public class InstellingenController extends AController implements Initializable
     @FXML
     public void switchToShop() throws IOException {
         Main.show("shop", user);
+    }
+    //TODO moet nog weg is tijdelijk voor functie testen
+    @FXML
+    public void makeUser() throws IOException {
+       new User("Test", false, "Test", "Horsthuis");
+    }
+    //TODO moet nog weg is tijdelijk voor functie testen
+    @FXML
+    public void makeAdmin() throws IOException {
+       new Admin("Test", "Test", "Horsthuis");
     }
     
     @Override
