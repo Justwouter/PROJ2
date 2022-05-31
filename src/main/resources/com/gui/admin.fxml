@@ -31,6 +31,7 @@
       </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="30.0" prefHeight="200.0" prefWidth="418.0">
          <children>
+         <!--TABEL BEGINT HIER, ERIC-->
             <TableView id="bestMonthlyUsers" prefHeight="200.0" prefWidth="418.0">
               <columns>
                   <TableColumn id="rankBestMonthlyUsers" prefWidth="53.5999755859375" text="Rank">
