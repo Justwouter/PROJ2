@@ -80,12 +80,10 @@ public class User {
     }
 
     public void addPuntMutatie(int amount){
-        PuntMutatie p = new PuntMutatie(amount);
-        puntVerandering.add(p);
+        puntVerandering.add(new PuntMutatie(amount));
     }
     public void addPuntMutatie(int amount, Calendar datum){
-        PuntMutatie p = new PuntMutatie(amount, datum);
-        puntVerandering.add(p);
+        puntVerandering.add(new PuntMutatie(amount, datum));
     }
 
     public void puntMutatieCleanUp(){
