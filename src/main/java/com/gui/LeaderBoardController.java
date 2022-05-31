@@ -1,11 +1,13 @@
 package com.gui;
 
+import com.logic.Filiaal;
 import com.logic.Leaderboard;
 import com.logic.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -14,6 +16,7 @@ import javafx.scene.control.skin.TableHeaderRow;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LeaderBoardController extends AController implements Initializable {
@@ -32,11 +35,27 @@ public class LeaderBoardController extends AController implements Initializable 
     @FXML
     private final TableColumn<Object, Object> puntenKolom = new TableColumn<>();
 
+    @FXML
+    private ComboBox<String> filiaal;
+
+    private ArrayList<Filiaal> filialen;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillBoard();
         colourBoard();
         preventRearranging();
+        addFilialen();
+    }
+
+    /**
+     * Deze methode voegt alle aanwezige fililalen toe aan de ComboBox zodat deze geselecteerd kunnen worden.
+     */
+    private void addFilialen() {
+        filialen = Filiaal.getFilialen();
+        for (Filiaal f : filialen) {
+            filiaal.getItems().add(f.getNaam());
+        }
     }
 
     /**

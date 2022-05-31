@@ -71,9 +71,17 @@ public class User {
 
     public String getUsername(){
         return username;
+    }    
+
+    public String getFiliaal() {
+        return filiaal;
     }
 
-public void addPuntMutatie(int amount){
+    public void setFiliaal(String filiaal) {
+        this.filiaal = filiaal;
+    }
+
+    public void addPuntMutatie(int amount){
         PuntMutatie p = new PuntMutatie(amount);
         puntVerandering.add(p);
     }
