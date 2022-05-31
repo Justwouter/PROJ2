@@ -202,7 +202,7 @@ public class User {
     public ArrayList<User> duurzaamsteUsers() {
         ArrayList<User> allUsers = Leaderboard.getUsers();
         ArrayList<User> topUsers = new ArrayList<User>();
-        if (isAdmin) {
+        if (this.isAdmin) {
             Integer maxPoints = allUsers.get(0).getPoints();
             for (User u : allUsers) {
                 if (u.getPoints() == maxPoints) {
@@ -222,7 +222,7 @@ public class User {
     
     // made by BarmanTurbo
     public Comparator<User> BesteUsersVanDeMaand() {
-        if(isAdmin){
+        if(this.isAdmin){
             ArrayList<User> allUsers = Leaderboard.getUsers();
             Comparator<User> vergelijker = Comparator.comparing(User::getUserPuntMutatiesAsInteger);
             Collections.sort(allUsers, vergelijker);
