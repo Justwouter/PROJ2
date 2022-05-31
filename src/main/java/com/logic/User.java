@@ -15,6 +15,7 @@ public class User {
     public ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
     public Calendar c;
     public boolean weeklyPointsObtained = false;
+    public ArrayList<PuntMutatie> userMonthlyPointStorage = new ArrayList<PuntMutatie>();
 
     public ArrayList<Reis> PreSets = new ArrayList<>();
 
@@ -89,23 +90,52 @@ public class User {
         puntVerandering.add(new PuntMutatie(amount, datum));
     }
 
-    public void userPuntMutatieCleanUp() {
+    public void user4weekPuntMutatieCleanUp() {
         // Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen
         // blijven.
+        Integer puntenOuderDan4Weken = 0;
+        int monthOfPuntenOuderDan4Weken = 13;
+
         for (PuntMutatie pm : puntVerandering) {
             if (!pm.isFromLast4Weeks()) {
+                puntenOuderDan4Weken += pm.getPuntVerandering();
+                monthOfPuntenOuderDan4Weken = pm.getDatum().get(Calendar.MONTH);
                 puntVerandering.remove(puntVerandering.indexOf(pm));
+            }
+        }
+
+        if(monthOfPuntenOuderDan4Weken<13){
+            monthlyPuntStorageAdd(puntenOuderDan4Weken, monthOfPuntenOuderDan4Weken);
+        }
+    }
+
+    public void monthlyPuntStorageAdd(Integer punten, int maand){
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, maand, 0);
+        userMonthlyPointStorage.add(new PuntMutatie(punten, calendar));
+    }
+
+    public void userMonthlyPuntMutatieCleanup(){
+        for (PuntMutatie pm : puntVerandering){
+            if(!pm.isFromLastYear()){
+                userMonthlyPointStorage.remove(puntVerandering.indexOf(pm));
             }
         }
     }
 
+    public void userPuntMutatieCleanupALLES(){
+        user4weekPuntMutatieCleanUp();
+        userMonthlyPuntMutatieCleanup();
+    }
+
     public ArrayList<PuntMutatie> getUserPuntMutaties() {
-        userPuntMutatieCleanUp();
+        userPuntMutatieCleanupALLES();
         return this.puntVerandering;
     }
 
     public Integer getUserPuntMutatiesAsInteger() {
-        userPuntMutatieCleanUp();
+        userPuntMutatieCleanupALLES();
         Integer addedMutations = 0;
         for (PuntMutatie pm : puntVerandering) {
             addedMutations += pm.getPuntVerandering();
