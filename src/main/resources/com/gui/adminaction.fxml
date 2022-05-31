@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<!--Dit FXML bestand is nog niet helemaal af-->
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.InstellingenController">
+    <children>
+      <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToReisGegevens" prefHeight="70.0" prefWidth="70.0" text="Gegevens">
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLeaderboard" prefHeight="70.0" prefWidth="70.0" text="Leaderboard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="10.0" />
+               </font></Button>
+            <Button fx:id="dbButton1" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="70.0" text="Dashboard">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToInstellingen" prefHeight="70.0" prefWidth="70.0" text="Instellingen">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="70.0" prefWidth="70.0" text="Shop" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
