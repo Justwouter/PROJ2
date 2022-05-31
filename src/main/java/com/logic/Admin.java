@@ -30,7 +30,7 @@ public class Admin extends User{
 
     public Comparator<User> BesteUsersVanDeMaand(){
         ArrayList<User> allUsers = Leaderboard.getUsers();
-        Comparator<User> vergelijker = Comparator.comparing(User::getPuntMutatiesAsInteger);
+        Comparator<User> vergelijker = Comparator.comparing(User::getUserPuntMutatiesAsInteger);
         Collections.sort(allUsers, vergelijker);
         return vergelijker;
     }    
