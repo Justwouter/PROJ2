@@ -202,7 +202,7 @@ public class User {
     public ArrayList<User> duurzaamsteUsers() {
         ArrayList<User> allUsers = Leaderboard.getUsers();
         ArrayList<User> topUsers = new ArrayList<User>();
-        if (getIsAdmin()) {
+        if (isAdmin) {
             Integer maxPoints = allUsers.get(0).getPoints();
             for (User u : allUsers) {
                 if (u.getPoints() == maxPoints) {
