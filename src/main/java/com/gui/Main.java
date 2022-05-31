@@ -1,5 +1,6 @@
 package com.gui;
 
+import com.logic.Filiaal;
 import com.logic.Leaderboard;
 import com.logic.Reis;
 import com.logic.SaveManager;
@@ -38,6 +39,12 @@ public class Main extends Application {
 //        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
 //        user.setReis(3, new Reis(null, null, null));
 //        user.setReis(4, new Reis(null, null, null));
+        // new Filiaal("Amsterdam");
+        // new Filiaal("Apeldoorn");
+        // new Filiaal("Den Haag");
+        // new Filiaal("Eindhoven");
+        // new Filiaal("Rotterdan HQ");
+        // new Filiaal("Utrecht");
 
         SaveManager.loadAllFiles();
     }
