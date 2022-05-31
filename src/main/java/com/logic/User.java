@@ -79,14 +79,14 @@ public class User {
         return username;
     }
 
-    public void addPuntMutatie(int amount){
+    public void userAddPuntMutatie(int amount){
         puntVerandering.add(new PuntMutatie(amount));
     }
-    public void addPuntMutatie(int amount, Calendar datum){
+    public void userAddPuntMutatie(int amount, Calendar datum){
         puntVerandering.add(new PuntMutatie(amount, datum));
     }
 
-    public void puntMutatieCleanUp(){
+    public void userPuntMutatieCleanUp(){
         //Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen blijven.
         for(PuntMutatie pm : puntVerandering){
             if(!pm.isFromLast4Weeks()){
@@ -95,13 +95,13 @@ public class User {
         }
     }
 
-    public ArrayList<PuntMutatie> getPuntMutaties(){
-        puntMutatieCleanUp();
+    public ArrayList<PuntMutatie> getUserPuntMutaties(){
+        userPuntMutatieCleanUp();
         return this.puntVerandering;
     }
 
-    public Integer getPuntMutatiesAsInteger(){
-        puntMutatieCleanUp();
+    public Integer getUserPuntMutatiesAsInteger(){
+        userPuntMutatieCleanUp();
         Integer addedMutations = 0;
         for (PuntMutatie pm: puntVerandering){
             addedMutations += pm.getPuntVerandering();
