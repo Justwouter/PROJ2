@@ -7,6 +7,7 @@ public class PuntMutatie{
     public Calendar datum;
 
     public PuntMutatie(Integer puntVerandering){
+        //geeft datum van vandaag
         this.puntVerandering = puntVerandering;
         datum = Calendar.getInstance();   
     }
