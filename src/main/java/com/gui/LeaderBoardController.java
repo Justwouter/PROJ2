@@ -150,6 +150,7 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @FXML
     public void filterLeaderboard(){
+        // herlaad het leaderboard en vult het met de gefilterde users
         leaderboard.getItems().clear();
         leaderboard.refresh();
         String s = filiaal.getValue();
