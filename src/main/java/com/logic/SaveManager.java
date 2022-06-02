@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 
+//TODO unstatic this class
+
 /**
  * Sizable class that contains all the logic for reading and writing saves
  */
@@ -16,6 +18,7 @@ public class SaveManager {
     public static Gson gson = new Gson();
     static String dir = System.getProperty("user.dir")+"\\data\\";
     static ArrayList<File> fileList = new ArrayList<>(seedSaveFiles());
+    Class<?> currentClass;
 
 
     //Temp solution
@@ -71,6 +74,36 @@ public class SaveManager {
             }
         }
     }
+
+    //Solution to long method/Switch smell
+
+    public boolean isUsersFile(String s){
+        currentClass = User.class;
+        return s.contains("Users");
+
+    }
+
+    public boolean isVerhiclesFile(String s){
+        currentClass = Transportmiddel.class;
+        return s.contains("Verhicles");
+    }
+
+    public boolean isTravelsFile(String s){
+        currentClass = Reis.class;
+        return s.contains("Travels");
+        
+    }
+
+    public boolean isPointsFile(String s){
+        currentClass = Point.class;
+        return s.contains("Points");
+
+    }
+
+
+
+
+
 
     /**
      * Writes the given {@link User} in JSON format to the Users file.
@@ -227,7 +260,7 @@ public class SaveManager {
         //Split the actual file from the dirs
         String path = file.getAbsolutePath();
         String[] splitPath = path.split("\\\\");
-        //Recombine the split string, leaving the last object in the path
+        //Recombine the split string, discarding the last object in the path
         String newPath = "";
         for(int i=0;i<splitPath.length-1;i++){
             newPath += splitPath[i]+"\\";
