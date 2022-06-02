@@ -37,7 +37,7 @@ public class SaveManager {
         System.out.println("================");//Debug
         System.out.println("Making savestate");//Debug
         cleanAllFiles();
-        for(User u : Leaderboard.getUsers()){
+        for(User u : Leaderboard.getUsers("")){
             SaveManager.writeToSave(u);
         }
         for(Transportmiddel t : Transportmiddel.getTransportmiddelen()){

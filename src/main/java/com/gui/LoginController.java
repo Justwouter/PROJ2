@@ -61,7 +61,7 @@ public class LoginController extends AController implements Initializable {
      * @return True/False
      */
     public boolean loginChecker(String username, String password) {
-        for (User user : Leaderboard.getUsers()){
+        for (User user : Leaderboard.getUsers("")){
             if (user.getUsername().equals(username)){
                 if (user.checkPassword(password)){
                     setUser(user);

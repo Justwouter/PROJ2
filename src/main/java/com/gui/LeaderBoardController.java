@@ -42,7 +42,7 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillBoard();
+        fillBoard("");
         colourBoard();
         preventRearranging();
         addFilialen();
@@ -61,11 +61,11 @@ public class LeaderBoardController extends AController implements Initializable 
     /**
      * Vult het boord met de data.
      */
-    private void fillBoard(){
+    private void fillBoard(String userFilter){
         rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
         namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
         puntenKolom.setCellValueFactory(new PropertyValueFactory<>("points"));
-        ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers());
+        ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers(userFilter));
         leaderboard.setItems(data);
     }
 
@@ -150,15 +150,9 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @FXML
     public void filterLeaderboard(){
+        leaderboard.getItems().clear();
+        leaderboard.refresh();
         String s = filiaal.getValue();
-        System.out.println(s);
-        // String s = transportmiddel.getValue();
-        // for (Transportmiddel t : transportmiddelen){
-        //     if (t.getNaam().equals(s)){
-        //         uitstootVanVoertuig = t.getUitstoot();
-        //         kostenVanVoertuig = t.getKosten();
-        //         setTotaalAndCO2();
-        //     }
-        // }
+        fillBoard(s);
     }
 }
