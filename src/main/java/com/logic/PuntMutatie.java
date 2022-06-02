@@ -31,7 +31,8 @@ public class PuntMutatie{
     public boolean isFromLast4Weeks(){
         Calendar datumCheck = Calendar.getInstance();
         //check for last month date
-        if((datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR))
+        if(
+        (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR))
         &&(
             (datumCheck.get(Calendar.DAY_OF_YEAR)-datum.get(Calendar.DAY_OF_YEAR)<28)
             ||
