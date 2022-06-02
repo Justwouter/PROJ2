@@ -22,13 +22,14 @@ public class TestPoint {
     }
 
     // Test of de punten goed afgetrokken worden.
-    @Test
+    /*@Test
     public void testSubtractPoints(){
         int expected = 950;
         user.getPoint().subtractPoints(50);
         int actual = user.getPoints();
         Assertions.assertEquals(expected, actual);
-    }
+    }*/
+    //has become obsolete
 
     // Test of de punten juist opgehaald worden als String.
     @Test
