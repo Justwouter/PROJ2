@@ -51,5 +51,5 @@
         </Button>
         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="70.0" prefWidth="70.0" text="Shop" />
     </AnchorPane>
-   <ComboBox fx:id="filiaal" layoutX="56.0" layoutY="8.0" prefWidth="150.0" promptText="Filter filialen" />
+   <ComboBox fx:id="filiaal" layoutX="56.0" layoutY="8.0" onAction="#filterLeaderboard" prefWidth="150.0" promptText="Filter filialen" />
 </AnchorPane>

@@ -137,6 +137,7 @@ public class LeaderBoardController extends AController implements Initializable 
         Main.show("shop", user);
     }
     
+    @Override
     public void setUser(User user){
         this.user = user;
     }
@@ -146,4 +147,18 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @Override
     public void setPresets(User user){} //just here because of the implementation
+
+    @FXML
+    public void filterLeaderboard(){
+        String s = filiaal.getValue();
+        System.out.println(s);
+        // String s = transportmiddel.getValue();
+        // for (Transportmiddel t : transportmiddelen){
+        //     if (t.getNaam().equals(s)){
+        //         uitstootVanVoertuig = t.getUitstoot();
+        //         kostenVanVoertuig = t.getKosten();
+        //         setTotaalAndCO2();
+        //     }
+        // }
+    }
 }
