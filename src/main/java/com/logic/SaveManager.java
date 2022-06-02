@@ -51,14 +51,14 @@ public class SaveManager {
      * Loads the saved data from the respective savefiles
      */
     public static void loadAllFiles() {
-        System.out.println("================");
-        System.out.println("Loading files");
+        System.out.println("================");//Debug
+        System.out.println("Loading files");//Debug
         
         for(File f : fileList){
             ArrayList<String> readLines = readFile(f);
 
             for(String s : readLines){
-                //Not clean or efficient in the slightest but afaik its impossible to store Class.class .
+                //TODO Not clean or efficient in the slightest but afaik its impossible to store Class.class. edit: it is possible, rewrite incoming.
                 if(f.getName().contains("Users")){
                     Leaderboard.addUser(gson.fromJson(s, User.class));
                 }
@@ -80,7 +80,6 @@ public class SaveManager {
     public boolean isUsersFile(String s){
         currentClass = User.class;
         return s.contains("Users");
-
     }
 
     public boolean isVerhiclesFile(String s){
