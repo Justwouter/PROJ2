@@ -99,7 +99,14 @@ public class ReisGegevensController extends AController implements Initializable
 
     private void opslaanUitstoot(){
         berekenPunten();
-        user.getPoint().subtractPoints(puntenVerlies);
+            //was: user.getPoint.substractPoints(puntenVerlies).
+            //maar door de variabele negatief mee te geven kan je
+            //ook addPoints daarvoor gebruiken zodat je niet twee
+            //dezelfde methoden gebruikt.
+        user.getPoint().addPoints(-puntenVerlies);
+        user.userAddPuntMutatie(-puntenVerlies);
+            //waarde into userAddPuntMutatie is negatief omdat
+            //er ook de wekelijkse punten in verwerkt worden.
     }
 
     /**

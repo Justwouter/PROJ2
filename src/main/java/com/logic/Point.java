@@ -15,10 +15,6 @@ public class Point {
         points += amount;
     }
 
-    public void subtractPoints(int amount){
-        points -= amount;
-    }
-
     public String getPointsString(){
         return "" + points;
     }
