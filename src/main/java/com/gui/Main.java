@@ -20,7 +20,7 @@ public class Main extends Application {
     private static AnchorPane mainLayout;
   
        public static void seed(){
-        SaveManager.loadAllFiles();
+        new SaveManager().loadAllFiles();
     }
 
     public static void main(String[] args) {

@@ -42,6 +42,7 @@ public class DashController extends AController implements Initializable{
     private User user;
     private MediaPlayer jukebox;
     private List<Long> avList;
+    private SaveManager saveManager = new SaveManager();
 
     @FXML
     private AnchorPane dashMainPane;
@@ -111,7 +112,7 @@ public class DashController extends AController implements Initializable{
     //Parent methods overrides
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SaveManager.saveState();
+        saveManager.saveState();
         LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
         updateMedianLine(updateWeeklyChart());
     }
