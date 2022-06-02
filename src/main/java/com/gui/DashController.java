@@ -87,6 +87,11 @@ public class DashController extends AController implements Initializable{
         Main.show("shop", user);
     }
 
+    @FXML
+    public void switchToAdminPage() throws IOException{
+        Main.show("admin", user);
+    }
+
     //Parent methods overrides
     @Override
     public void initialize(URL location, ResourceBundle resources) {
