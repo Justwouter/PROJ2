@@ -170,27 +170,23 @@ public class User {
         }
         String output = "Je CO2 uitstoot komt overeen met ";
         if (uitstoot < 9) {
-            output += "wat een vrachtwagen per km uitstoot";
-            return output;
+            return output += "wat een vrachtwagen per km uitstoot";
         }
         if (uitstoot < 28) {
-            output += "wat een vrachtwagen uitstoot per " + (uitstoot / 9) + " km";
-            return output;
+            return output += "wat een vrachtwagen uitstoot per " + (uitstoot / 9) + " km";
         }
         if (uitstoot < 20459) {
             if (uitstoot / 28 == 1) {
-                output += "wat 1 boom per jaar opneemt";
+               return output += "wat 1 boom per jaar opneemt";
             } else {
-                output += "wat " + (uitstoot / 28) + " bomen per jaar opnemen";
+               return output += "wat " + (uitstoot / 28) + " bomen per jaar opnemen";
             }
-            return output;
         }
         if (uitstoot < 122000000) {
-            output += "wat de Ever Given uitstoot per " + (uitstoot / 20459) + " km";
+            return output += "wat de Ever Given uitstoot per " + (uitstoot / 20459) + " km";
         } else {
-            output += "" + (uitstoot / 122000000) + " keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
+            return output += "" + (uitstoot / 122000000) + " keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
         }
-        return output;
     }
 
     public boolean checkPassword(String attempt) {
