@@ -32,13 +32,17 @@ public class PuntMutatie{
         Calendar datumCheck = Calendar.getInstance();
         //check for last month date
         if(
-        (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR))
-        &&(
+            (
+            (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR))
+            &&
             (datumCheck.get(Calendar.DAY_OF_YEAR)-datum.get(Calendar.DAY_OF_YEAR)<28)
-            ||
-            (datum.get(Calendar.DAY_OF_YEAR)-datumCheck.get(Calendar.DAY_OF_YEAR)>328&&datumCheck.get(Calendar.YEAR)-datum.get(Calendar.YEAR)==1)
+            )
+        ||
+            (
+            datum.get(Calendar.DAY_OF_YEAR)-datumCheck.get(Calendar.DAY_OF_YEAR)>328&&datumCheck.get(Calendar.YEAR)-datum.get(Calendar.YEAR)==1
+            )
         )
-        ){
+        {
             return true;
         } else{
             return false;
