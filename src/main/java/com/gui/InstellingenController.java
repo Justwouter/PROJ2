@@ -42,16 +42,6 @@ public class InstellingenController extends AController implements Initializable
     public void switchToShop() throws IOException {
         Main.show("shop", user);
     }
-    //TODO moet nog weg is tijdelijk voor functie testen
-    @FXML
-    public void makeUser() throws IOException {
-       new User("Test", false, "Test", "Horsthuis", "Den Haag");
-    }
-    //TODO moet nog weg is tijdelijk voor functie testen
-    @FXML
-    public void makeAdmin() throws IOException {
-       new Admin("Test", "Test", "Horsthuis", "Amsterdam");
-    }
     
     @Override
     void setUser(User user) {
