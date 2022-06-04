@@ -45,12 +45,12 @@ public class InstellingenController extends AController implements Initializable
     //TODO moet nog weg is tijdelijk voor functie testen
     @FXML
     public void makeUser() throws IOException {
-       new User("Test", false, "Test", "Horsthuis", "test1");
+       new User("Test", false, "Test", "Horsthuis", "Den Haag");
     }
     //TODO moet nog weg is tijdelijk voor functie testen
     @FXML
     public void makeAdmin() throws IOException {
-       new Admin("Test", "Test", "Horsthuis", "test2");
+       new Admin("Test", "Test", "Horsthuis", "Amsterdam");
     }
     
     @Override
