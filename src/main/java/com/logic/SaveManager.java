@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
-
-//TODO unstatic this class
-
 /**
  * Sizable class that contains all the logic for reading and writing saves
  */
