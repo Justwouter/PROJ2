@@ -36,6 +36,5 @@ public class TestPoint {
         String expected = "1000";
         String actual = user.getPoint().getPointsString();
         Assertions.assertEquals(expected, actual);
-
     }
 }

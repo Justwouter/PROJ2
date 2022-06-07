@@ -1,6 +1,6 @@
-Groep A
-Klas 4
+[![BCH compliance](https://bettercodehub.com/edge/badge/hhs-semester-se-s2/2122-Projectgroep-4a?branch=master&token=99410942d5588050cb9a9298de233e86880343da)](https://bettercodehub.com/)  
 
+Groep A Klas 4:  
 Eric Bull  
 Burton Braam  
 Wouter Swijnenburg  
