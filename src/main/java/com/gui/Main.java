@@ -65,7 +65,6 @@ public class Main extends Application {
         AController controller = loader.getController();
         controller.setUser(user);
         controller.setPoints(user);
-        controller.setPresets(user);
 
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);

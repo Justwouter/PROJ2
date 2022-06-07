@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ReisGegevensController extends AController implements Initializable {
+public class ReisGegevensController extends AController {
 
     @FXML
     private Label points;
@@ -189,10 +189,12 @@ public class ReisGegevensController extends AController implements Initializable
 
     /**
      * Deze methode geeft een user mee aan de controller die de reisgegevens invoert.
-     * @param u De gebruiker die zijn reisgegevens invoert.
+     * @param user De gebruiker die zijn reisgegevens invoert.
      */
-    public void setUser(User u){
-        this.user = u;
+    @Override
+    public void setUser(User user){
+        this.user = user;
+        setPresets(user);
     }
 
     /**
@@ -272,8 +274,7 @@ public class ReisGegevensController extends AController implements Initializable
         pre_set.getSelectionModel().clearSelection();
     }
 
-    @Override
-    public void setPresets(User user){
+    private void setPresets(User user){
         int tellerPreSet = 1;
         preSets = user.getReizen();
         for (Reis r : preSets) {

@@ -85,8 +85,6 @@ public class LoginController extends AController implements Initializable {
     @Override
     public void setPoints(User user) {} //just here because of the implementation
 
-    @Override
-
     public void setPresets(User user){
         
     }

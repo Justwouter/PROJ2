@@ -11,9 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 
-public class ShopController extends AController  implements Initializable {
-
-    private User user;
+public class ShopController extends AController {
 
     @FXML
     private Label points;
@@ -42,20 +40,10 @@ public class ShopController extends AController  implements Initializable {
     public void switchToShop() throws IOException {
         Main.show("shop", user);
     }
-    
-    @Override
-    void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     void setPoints(User user) {
         //points.setText(user.getPoint().getPointsString());
-    }
-
-    @Override
-    void setPresets(User user) {
-        
     }
 
     @Override

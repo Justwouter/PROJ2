@@ -1,18 +1,14 @@
 package com.gui;
 
+import com.logic.User;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.logic.User;
-
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-
-public class AdminSettingsController extends AController implements Initializable {
-
-    private User user;
+public class AdminSettingsController extends AController {
 
     @FXML
     private Label points;
@@ -46,21 +42,12 @@ public class AdminSettingsController extends AController implements Initializabl
     public void switchToAdminActions() throws IOException{
         Main.show("adminaction", user);
     } //er moet dus nog een adminaction.fxml komen
-    
-    @Override
-    void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     void setPoints(User user) {
         
     }
 
-    @Override
-    void setPresets(User user) {
-        
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
