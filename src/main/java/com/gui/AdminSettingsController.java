@@ -22,7 +22,7 @@ public class AdminSettingsController extends AController implements Initializabl
     private ArrayList<User> users;
 
     @FXML
-    private TableView<User> bestMonthlyUsers;
+    private TableView<User> bestMonthlyUsers = new TableView<>();
 
     @FXML
     private final TableColumn<Object, Object> rankBestMonthlyUsers = new TableColumn<>();
