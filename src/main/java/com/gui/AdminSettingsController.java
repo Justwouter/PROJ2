@@ -48,8 +48,17 @@ public class AdminSettingsController extends AController implements Initializabl
         bestMonthlyUsers.setItems(data);
     }
 
-
-
     @Override
     void setPoints(User user) {}
+
+    //TODO moet nog weg is tijdelijk voor functie testen
+    @FXML
+    public void makeUser() throws IOException {
+       new User("Test", false, "Test", "Horsthuis"/*, "Den Haag"*/);
+    }
+    //TODO moet nog weg is tijdelijk voor functie testen
+    @FXML
+    public void makeAdmin() throws IOException {
+       new User("Test", true, "Test", "Horsthuis"/*, "Amsterdam"*/);
+    }
 }
