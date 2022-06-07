@@ -3,7 +3,6 @@ package com.gui;
 import com.logic.Filiaal;
 import com.logic.Leaderboard;
 import com.logic.User;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.skin.TableHeaderRow;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
