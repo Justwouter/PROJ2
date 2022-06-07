@@ -2,16 +2,10 @@ package com.gui;
 
 import com.logic.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class InstellingenController extends AController {
-
-    @FXML
-    private Label points;
 
     @FXML
     private void switchToReisGegevens() throws IOException {
@@ -42,11 +36,4 @@ public class InstellingenController extends AController {
     void setPoints(User user) {
         
     }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        
-    }
-    
 }

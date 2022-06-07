@@ -1,9 +1,8 @@
 package com.gui;
 
 import com.logic.User;
-import javafx.fxml.Initializable;
 
-public abstract class AController implements Initializable {
+public abstract class AController {
 
     protected User user;
 

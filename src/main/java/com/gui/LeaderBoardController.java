@@ -5,6 +5,7 @@ import com.logic.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LeaderBoardController extends AController {
+public class LeaderBoardController extends AController implements Initializable {
 
     @FXML
     private TableView<User> leaderboard;

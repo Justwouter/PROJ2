@@ -4,6 +4,7 @@ import com.logic.SaveManager;
 import com.logic.User;
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.chart.XYChart.Data;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class DashController extends AController {
+public class DashController extends AController implements Initializable {
 
     private MediaPlayer jukebox;
     private List<Long> avList;
