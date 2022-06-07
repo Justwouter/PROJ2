@@ -93,5 +93,17 @@ public class AdminSettingsController extends AController implements Initializabl
         ObservableList<User> data = FXCollections.observableArrayList(users);
         bestMonthlyUsers.setItems(data);
     }
+
+    //hier staam de filialen al bij
+    //TODO moet nog weg is tijdelijk voor functie testen
+    @FXML
+    public void makeUser() throws IOException {
+       new User("Test", false, "Test", "Horsthuis"/*, "Den Haag"*/);
+    }
+    //TODO moet nog weg is tijdelijk voor functie testen
+    @FXML
+    public void makeAdmin() throws IOException {
+       new User("Test", true, "Test", "Horsthuis"/*, "Amsterdam"*/);
+    }
     
 }
