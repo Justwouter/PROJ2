@@ -62,6 +62,4 @@ public class InstellingenController extends AController implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
         
     }
-    
-    
 }
