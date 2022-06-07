@@ -4,9 +4,6 @@ import com.logic.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import java.io.IOException;
-
-
 public class ShopController extends AController {
 
     @FXML
