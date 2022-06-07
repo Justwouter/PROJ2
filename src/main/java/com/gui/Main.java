@@ -21,11 +21,11 @@ public class Main extends Application {
     private static AnchorPane mainLayout;
   
        public static void seed(){
-        // new User("Testnaam Eric", "Eric", "Bull").getPoint().setPoints(2000);
-        // new User("Testnaam Burton", "Burton","Braam").getPoint().setPoints(20);
-        // new User("Testnaam Damnn...Daniël", "Wessel", "Horsthuis");
-        // new User("Testnaam Wouter", "jyn", "test").getPoint().setPoints(2500);
-        // new User("Testnaam Lucas", "Lucas", "Clavel").getPoint().setPoints(1500);
+        // new User("Testnaam Eric", false, "Eric","Bull", "Den Haag").getPoint().setPoints(2000);
+        // new User("Testnaam Burton", false,"Burton","Braam", "Rotterdam HQ").getPoint().setPoints(20);
+        // new User("Testnaam Damnn...Daniël", false,"Wessel", "Horsthuis", "Eindhoven");
+        // new User("Testnaam Wouter", false,"jyn", "test", "Apeldoorn").getPoint().setPoints(2500);
+        // new User("Testnaam Lucas", false,"Lucas", "Clavel", "Utrecht").getPoint().setPoints(1500);
         // new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
         // new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
         // new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
