@@ -11,7 +11,7 @@ public class Admin extends User{
 
     //made by BarmanTurbo
     public ArrayList<User> duurzaamsteUsers(){
-        ArrayList<User> allUsers = Leaderboard.getUsers();
+        ArrayList<User> allUsers = Leaderboard.getUsers("");
         ArrayList<User> topUsers= new ArrayList<User>();
         if(getIsAdmin()){
             Integer maxPoints = allUsers.get(0).getPoints();
@@ -31,7 +31,7 @@ public class Admin extends User{
     }
 
     public ArrayList<User> BesteUsersVanDeMaand(){
-        ArrayList<User> allUsers = Leaderboard.getUsers();
+        ArrayList<User> allUsers = Leaderboard.getUsers("");
         Comparator<User> vergelijker = Comparator.comparing(User::getPuntMutatiesAsInteger);
         Collections.sort(allUsers, vergelijker);
         return allUsers;

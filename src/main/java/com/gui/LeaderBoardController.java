@@ -42,7 +42,7 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillBoard();
+        fillBoard("");
         colourBoard();
         preventRearranging();
         addFilialen();
@@ -61,11 +61,11 @@ public class LeaderBoardController extends AController implements Initializable 
     /**
      * Vult het boord met de data.
      */
-    private void fillBoard(){
+    private void fillBoard(String userFilter){
         rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
         namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
         puntenKolom.setCellValueFactory(new PropertyValueFactory<>("points"));
-        ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers());
+        ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers(userFilter));
         leaderboard.setItems(data);
     }
 
@@ -137,6 +137,7 @@ public class LeaderBoardController extends AController implements Initializable 
         Main.show("shop", user);
     }
     
+    @Override
     public void setUser(User user){
         this.user = user;
     }
@@ -146,4 +147,13 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @Override
     public void setPresets(User user){} //just here because of the implementation
+
+    @FXML
+    public void filterLeaderboard(){
+        // herlaad het leaderboard en vult het met de gefilterde users
+        leaderboard.getItems().clear();
+        leaderboard.refresh();
+        String s = filiaal.getValue();
+        fillBoard(s);
+    }
 }

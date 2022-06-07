@@ -24,6 +24,4 @@
       </Button>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="70.0" prefWidth="70.0" text="Shop" />
    </AnchorPane>
-   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="116.0" layoutY="230.0" mnemonicParsing="false" onAction="#makeUser" prefHeight="80.0" prefWidth="80.0" text="make user" />
-   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="258.0" layoutY="230.0" mnemonicParsing="false" onAction="#makeAdmin" prefHeight="80.0" prefWidth="106.0" text="make admin" />
 </AnchorPane>
