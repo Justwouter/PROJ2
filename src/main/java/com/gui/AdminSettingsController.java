@@ -51,8 +51,5 @@ public class AdminSettingsController extends AController implements Initializabl
 
 
     @Override
-    void setPoints(User user) {
-        // TODO Auto-generated method stub
-        
-    }
+    void setPoints(User user) {}
 }
