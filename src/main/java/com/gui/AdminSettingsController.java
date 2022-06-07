@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -45,5 +46,13 @@ public class AdminSettingsController extends AController implements Initializabl
         newpointsBestMonthlyUsers.setCellValueFactory(new PropertyValueFactory<>("PuntMutatiesAsInteger"));
         ObservableList<User> data = FXCollections.observableArrayList(users);
         bestMonthlyUsers.setItems(data);
+    }
+
+
+
+    @Override
+    void setPoints(User user) {
+        // TODO Auto-generated method stub
+        
     }
 }

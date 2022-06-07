@@ -1,6 +1,11 @@
 package com.gui;
 
+import java.io.IOException;
+import javafx.fxml.FXML;
+
 import com.logic.User;
+
+
 
 public abstract class AController {
     protected User user;
@@ -9,7 +14,6 @@ public abstract class AController {
         this.user = user;
     }
     abstract void setPoints(User user);
-}
 
     @FXML
     private void switchToReisGegevens() throws IOException {
