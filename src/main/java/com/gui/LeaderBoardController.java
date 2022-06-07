@@ -3,6 +3,7 @@ package com.gui;
 import com.logic.Filiaal;
 import com.logic.Leaderboard;
 import com.logic.User;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -109,32 +110,7 @@ public class LeaderBoardController extends AController implements Initializable 
         leaderboard.refresh();
         colourBoard();
     }
-
-    @FXML
-    private void switchToReisGegevens() throws IOException {
-        Main.show("reisgegevens", user);
-    }
-
-    @FXML
-    private void switchToLeaderboard() throws IOException {
-        Main.show("leaderboard", user);
-    }
-
-    @FXML
-    public void switchToDashboard() throws IOException {
-        Main.show("dashboard", user);
-    }
-
-    @FXML
-    public void switchToInstellingen() throws IOException {
-        Main.show("instellingen", user);
-    }
-
-    @FXML
-    public void switchToShop() throws IOException {
-        Main.show("shop", user);
-    }
-
+  
     @FXML
     public void filterLeaderboard(){
         // herlaad het leaderboard en vult het met de gefilterde users
@@ -144,7 +120,7 @@ public class LeaderBoardController extends AController implements Initializable 
         fillBoard(s);
     }
 
+    //just here because of the implementation
     @Override
     void setPoints(User user) {}
-
 }

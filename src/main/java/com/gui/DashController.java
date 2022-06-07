@@ -68,7 +68,7 @@ public class DashController extends AController implements Initializable {
     public void setPoints(User user) {
         pointsDash.setText(user.getPoint().getPointsString());
     }
- 
+
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
@@ -111,7 +111,7 @@ public class DashController extends AController implements Initializable {
         jukebox.stop();
         jukebox.play();
     }
- 
+
     /**
      * Loads the average lines if they are enabled in the GUI.
      * @param averageList List containing the barchart rng values. Can be removed when switching to stored userdata.
@@ -215,7 +215,7 @@ public class DashController extends AController implements Initializable {
             }
         }
         average = average/averageList.size();
-        
+
         //Debug
         System.out.println("Average: "+average);
         System.out.println("Highest: " +highest);

@@ -41,11 +41,8 @@ public class Main extends Application {
         // new Filiaal("Eindhoven");
         // new Filiaal("Rotterdan HQ");
         // new Filiaal("Utrecht");
-
         SaveManager.loadAllFiles();
     }
-
-
 
     public static void main(String[] args) {
         launch(args);
