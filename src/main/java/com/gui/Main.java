@@ -57,8 +57,7 @@ public class Main extends Application {
         primaryStage = ps;
         primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo.jpg"));
         seed();
-        User user = null;
-        show("login", user);
+        show("login", null);
     }
 
     public static void show(String fxml, User user) throws IOException {
