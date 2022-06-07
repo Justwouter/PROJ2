@@ -49,7 +49,7 @@ public class LeaderBoardController extends AController implements Initializable 
      * Deze methode voegt alle aanwezige fililalen toe aan de ComboBox zodat deze geselecteerd kunnen worden.
      */
     private void addFilialen() {
-        filialen = Filiaal.getFilialen();
+        filialen = Filiaal.filialen;
         for (Filiaal f : filialen) {
             filiaal.getItems().add(f.getNaam());
         }

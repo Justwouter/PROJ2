@@ -43,7 +43,7 @@ public class SaveManager {
         for(Transportmiddel t : Transportmiddel.getTransportmiddelen()){
             SaveManager.writeToSave(t);
         }
-        for(Filiaal f : Filiaal.getFilialen()){
+        for(Filiaal f : Filiaal.filialen){
             SaveManager.writeToSave(f);
         }
     }

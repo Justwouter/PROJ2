@@ -15,15 +15,15 @@ public class TestFiliaal {
     
     @Test
     public void testFilialenArray(){
-        Filiaal expected = Filiaal.getFiliaal(0);
-        Filiaal actual = Filiaal.getFilialen().get(0);
+        Filiaal expected = testFiliaal.getFilialen().get(0);
+        Filiaal actual = testFiliaal.getFilialen().get(0);
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void testCheckFiliaalNaam(){
         String expected = "Amsterdam";
-        String actual = Filiaal.getNaamFiliaal(0);
+        String actual = testFiliaal.getFilialen().get(0).getNaam();
         Assertions.assertEquals(expected, actual);
     }
 }
