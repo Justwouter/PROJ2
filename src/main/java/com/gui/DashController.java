@@ -1,5 +1,19 @@
 package com.gui;
 
+import com.logic.SaveManager;
+import com.logic.User;
+import javafx.beans.binding.ObjectExpression;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.chart.*;
+import javafx.scene.chart.XYChart.Data;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -7,34 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.logic.SaveManager;
-import com.logic.User;
 
-import javafx.beans.binding.ObjectExpression;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+public class DashController extends AController implements Initializable {
 
-//Charts
-//import javafx.scene.chart.StackedBarChart;
-import javafx.scene.Node;
-import javafx.scene.chart.BarChart;                     
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.Data;
-
-//Sound
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
-
-public class DashController extends AController implements Initializable{
-
-    private User user;
     private MediaPlayer jukebox;
     private List<Long> avList;
 
@@ -96,9 +85,6 @@ public class DashController extends AController implements Initializable{
     }
 
     @Override
-    public void setPresets(User user){} 
-    
-    @Override
     public void setUser(User u){
         this.user = u;
     }
@@ -111,7 +97,6 @@ public class DashController extends AController implements Initializable{
 
     
     
-    //TODO setVergelijking() weer functioneel weten te krijgen
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());

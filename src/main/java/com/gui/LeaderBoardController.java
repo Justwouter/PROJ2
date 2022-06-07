@@ -13,15 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class LeaderBoardController extends AController implements Initializable {
-
-    private List<User> users = new ArrayList<>();
-
-    private User user;
 
     @FXML
     private TableView<User> leaderboard;
@@ -37,11 +31,10 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        users = Leaderboard.getUsers();
         rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
         namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
         puntenKolom.setCellValueFactory(new PropertyValueFactory<>("points"));
-        ObservableList<User> data = FXCollections.observableArrayList(users);
+        ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers());
         leaderboard.setItems(data);
         namesKolom.setSortable(false);
             leaderboard.setRowFactory(tv -> new TableRow<>() {
@@ -86,14 +79,8 @@ public class LeaderBoardController extends AController implements Initializable 
     public void switchToShop() throws IOException {
         Main.show("shop", user);
     }
-    
-    public void setUser(User user){
-        this.user = user;
-    }
 
     @Override
     public void setPoints(User user){} //just here because of the implementation
 
-    @Override
-    public void setPresets(User user){} //just here because of the implementation
 }

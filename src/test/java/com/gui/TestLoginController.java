@@ -12,7 +12,7 @@ public class TestLoginController{
     LoginController controller = new LoginController();
 
     @BeforeAll
-    static void seed(){
+    public static void seed(){
         new User("Test Eric", false, "Eric", "Bull");
     }
 
@@ -34,7 +34,7 @@ public class TestLoginController{
     public void testLoginCheckerFalseUsername() throws IOException {
         String username = "Erik";
         String password = "Bull";
-        Assertions.assertFalse(controller.loginChecker(username, password));
+       Assertions.assertFalse(controller.loginChecker(username, password));
     }
 
 

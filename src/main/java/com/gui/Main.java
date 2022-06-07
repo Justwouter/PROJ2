@@ -1,11 +1,7 @@
 package com.gui;
 
-import com.logic.Leaderboard;
-import com.logic.Reis;
 import com.logic.SaveManager;
-import com.logic.Transportmiddel;
 import com.logic.User;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -53,8 +49,7 @@ public class Main extends Application {
         primaryStage = ps;
         primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo.jpg"));
         seed();
-        User user = null;
-        show("login", user);
+        show("login", null);
     }
 
     public static void show(String fxml, User user) throws IOException {
@@ -65,7 +60,6 @@ public class Main extends Application {
         AController controller = loader.getController();
         controller.setUser(user);
         controller.setPoints(user);
-        controller.setPresets(user);
 
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);
