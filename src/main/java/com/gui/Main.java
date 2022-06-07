@@ -1,7 +1,6 @@
 package com.gui;
 
 import com.logic.SaveManager;
-import com.logic.Transportmiddel;
 import com.logic.User;
 
 import javafx.application.Application;

@@ -69,4 +69,5 @@
    <AnchorPane layoutX="7.0" layoutY="506.0" prefHeight="49.0" prefWidth="480.0">
       <Label fx:id="uitstootVergelijk" layoutX="5.0" prefHeight="50.0" prefWidth="470.0" text="hallo" textAlignment="CENTER" wrapText="true" />
    </AnchorPane>
+   </children>
 </AnchorPane>

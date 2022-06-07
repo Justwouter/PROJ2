@@ -135,7 +135,16 @@ public class LeaderBoardController extends AController implements Initializable 
         Main.show("shop", user);
     }
 
+    @FXML
+    public void filterLeaderboard(){
+        // herlaad het leaderboard en vult het met de gefilterde users
+        leaderboard.getItems().clear();
+        leaderboard.refresh();
+        String s = filiaal.getValue();
+        fillBoard(s);
+    }
+
     @Override
-    public void setPoints(User user){} //just here because of the implementation
+    void setPoints(User user) {}
 
 }
