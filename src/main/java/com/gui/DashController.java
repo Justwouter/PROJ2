@@ -68,7 +68,7 @@ public class DashController extends AController implements Initializable {
     public void setPoints(User user) {
         pointsDash.setText(user.getPoint().getPointsString());
     }
-  
+
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());

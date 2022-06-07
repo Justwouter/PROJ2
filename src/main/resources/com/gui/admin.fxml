@@ -42,12 +42,12 @@
                   </TableColumn>
                   <TableColumn id="naamBestMonthlyUsers" prefWidth="233.60003662109375" text="Naam">
                      <cellValueFactory>
-                        <PropertyValueFactory property="rank" />
+                        <PropertyValueFactory property="naam" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn id="newpointsBestMonthlyUsers" prefWidth="130.4000244140625" text="UserPuntMutatiesAsInteger">
+                  <TableColumn id="newpointsBestMonthlyUsers" prefWidth="130.4000244140625" text="Punten">
                      <cellValueFactory>
-                        <PropertyValueFactory property="rank" />
+                        <PropertyValueFactory property="UserPuntMutatiesAsInteger" />
                      </cellValueFactory>
                   </TableColumn>
 
