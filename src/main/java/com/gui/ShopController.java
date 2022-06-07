@@ -1,19 +1,13 @@
 package com.gui;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.logic.User;
-
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
 
-public class ShopController extends AController  implements Initializable {
 
-    private User user;
+public class ShopController extends AController {
 
     @FXML
     private Label points;
@@ -42,25 +36,9 @@ public class ShopController extends AController  implements Initializable {
     public void switchToShop() throws IOException {
         Main.show("shop", user);
     }
-    
-    @Override
-    void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     void setPoints(User user) {
-        //points.setText(user.getPoint().getPointsString());
+        points.setText(user.getPoint().getPointsString());
     }
-
-    @Override
-    void setPresets(User user) {
-        
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-                
-    }
-    
 }

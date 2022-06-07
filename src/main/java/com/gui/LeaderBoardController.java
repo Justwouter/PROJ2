@@ -1,27 +1,25 @@
 package com.gui;
 
+import com.logic.Filiaal;
 import com.logic.Leaderboard;
 import com.logic.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.skin.TableHeaderRow;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class LeaderBoardController extends AController implements Initializable {
-
-    private List<User> users = new ArrayList<>();
-
-    private User user;
 
     @FXML
     private TableView<User> leaderboard;
@@ -35,31 +33,81 @@ public class LeaderBoardController extends AController implements Initializable 
     @FXML
     private final TableColumn<Object, Object> puntenKolom = new TableColumn<>();
 
+    @FXML
+    private ComboBox<String> filiaal;
+
+    private ArrayList<Filiaal> filialen;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        users = Leaderboard.getUsers();
+        fillBoard("");
+        colourBoard();
+        preventRearranging();
+        addFilialen();
+    }
+
+    /**
+     * Deze methode voegt alle aanwezige fililalen toe aan de ComboBox zodat deze geselecteerd kunnen worden.
+     */
+    private void addFilialen() {
+        filialen = Filiaal.getFilialen();
+        for (Filiaal f : filialen) {
+            filiaal.getItems().add(f.getNaam());
+        }
+    }
+
+    /**
+     * Vult het boord met de data.
+     */
+    private void fillBoard(String userFilter){
         rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
         namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
         puntenKolom.setCellValueFactory(new PropertyValueFactory<>("points"));
-        ObservableList<User> data = FXCollections.observableArrayList(users);
+        ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers(userFilter));
         leaderboard.setItems(data);
-        namesKolom.setSortable(false);
-            leaderboard.setRowFactory(tv -> new TableRow<>() {
+    }
+
+    /**
+     * Voorkomt dat de gebruiker de kolommen kan verplaatsen.
+     */
+    private void preventRearranging(){
+        leaderboard.widthProperty().addListener((ov, t, t1) -> {
+            // Get the table header
+            TableHeaderRow header = (TableHeaderRow) leaderboard.lookup("TableHeaderRow");
+            header.reorderingProperty().addListener((observable, oldValue, newValue) -> header.setReordering(false));
+        });
+    }
+
+    /**
+     * Geeft de kleuren aan het leaderboard afhankelijk van het aantal punten per rij.
+     */
+    private void colourBoard(){
+        leaderboard.setRowFactory(tv -> new TableRow<>() {
             @Override
             protected void updateItem(User item, boolean empty) {
                 super.updateItem(item, empty);
+                getStyleClass().removeAll();
                 if (item == null || item.getPoints() == null)
-                    setStyle("");
+                    getStyleClass().add("");
                 else if (item.getPoints() > 500)
-                    setStyle("-fx-background-color: green;");
+                    getStyleClass().add("good");
                 else if (item.getPoints() > 0)
-                    setStyle("-fx-background-color: orange;");
+                    getStyleClass().add("warning");
                 else if (item.getPoints() < 0)
-                    setStyle("-fx-background-color: red;");
+                    getStyleClass().add("bad");
                 else
-                    setStyle("-fx-background-color: blue");
+                    getStyleClass().add("error");
             }
         });
+    }
+
+    /**
+     * Als een kolom gesorteerd wordt, zorgt dit ervoor dat de kleuren opnieuw komen.
+     */
+    @FXML
+    private void onSort(){
+        leaderboard.refresh();
+        colourBoard();
     }
 
     @FXML
@@ -86,14 +134,17 @@ public class LeaderBoardController extends AController implements Initializable 
     public void switchToShop() throws IOException {
         Main.show("shop", user);
     }
-    
-    public void setUser(User user){
-        this.user = user;
+
+    @FXML
+    public void filterLeaderboard(){
+        // herlaad het leaderboard en vult het met de gefilterde users
+        leaderboard.getItems().clear();
+        leaderboard.refresh();
+        String s = filiaal.getValue();
+        fillBoard(s);
     }
 
     @Override
-    public void setPoints(User user){} //just here because of the implementation
+    void setPoints(User user) {}
 
-    @Override
-    public void setPresets(User user){} //just here because of the implementation
 }

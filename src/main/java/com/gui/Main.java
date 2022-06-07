@@ -1,9 +1,6 @@
 package com.gui;
 
-import com.logic.Leaderboard;
-import com.logic.Reis;
 import com.logic.SaveManager;
-import com.logic.Transportmiddel;
 import com.logic.User;
 
 import javafx.application.Application;
@@ -20,11 +17,11 @@ public class Main extends Application {
     private static AnchorPane mainLayout;
   
        public static void seed(){
-        // new User("Testnaam Eric", "Eric", "Bull").getPoint().setPoints(2000);
-        // new User("Testnaam Burton", "Burton","Braam").getPoint().setPoints(20);
-        // new User("Testnaam Damnn...Daniël", "Wessel", "Horsthuis");
-        // new User("Testnaam Wouter", "jyn", "test").getPoint().setPoints(2500);
-        // new User("Testnaam Lucas", "Lucas", "Clavel").getPoint().setPoints(1500);
+        // new User("Testnaam Eric", false, "Eric","Bull", "Den Haag").getPoint().setPoints(2000);
+        // new User("Testnaam Burton", false,"Burton","Braam", "Rotterdam HQ").getPoint().setPoints(20);
+        // new User("Testnaam Damnn...Daniël", false,"Wessel", "Horsthuis", "Eindhoven");
+        // new User("Testnaam Wouter", false,"jyn", "test", "Apeldoorn").getPoint().setPoints(2500);
+        // new User("Testnaam Lucas", false,"Lucas", "Clavel", "Utrecht").getPoint().setPoints(1500);
         // new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
         // new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
         // new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
@@ -38,6 +35,12 @@ public class Main extends Application {
 //        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
 //        user.setReis(3, new Reis(null, null, null));
 //        user.setReis(4, new Reis(null, null, null));
+        // new Filiaal("Amsterdam");
+        // new Filiaal("Apeldoorn");
+        // new Filiaal("Den Haag");
+        // new Filiaal("Eindhoven");
+        // new Filiaal("Rotterdan HQ");
+        // new Filiaal("Utrecht");
 
         SaveManager.loadAllFiles();
     }
@@ -53,8 +56,7 @@ public class Main extends Application {
         primaryStage = ps;
         primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo.jpg"));
         seed();
-        User user = null;
-        show("login", user);
+        show("login", null);
     }
 
     public static void show(String fxml, User user) throws IOException {
@@ -65,7 +67,6 @@ public class Main extends Application {
         AController controller = loader.getController();
         controller.setUser(user);
         controller.setPoints(user);
-        controller.setPresets(user);
 
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);
