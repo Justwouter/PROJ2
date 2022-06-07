@@ -2,6 +2,7 @@ package com.gui;
 
 import com.logic.Leaderboard;
 import com.logic.User;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -50,50 +51,25 @@ public class LeaderBoardController extends AController implements Initializable 
                 super.updateItem(item, empty);
                 if (item == null || item.getPoints() == null)
                     setStyle("");
-                else if (item.getPoints() > 500)
+                else if (item.getPoints() == 270)
                     setStyle("-fx-background-color: green;");
-                else if (item.getPoints() > 0)
+                else if (item.getPoints() == 180)
                     setStyle("-fx-background-color: orange;");
-                else if (item.getPoints() < 0)
+                else if (item.getPoints() == 0)
                     setStyle("-fx-background-color: red;");
                 else
                     setStyle("-fx-background-color: blue");
             }
         });
     }
-
-    @FXML
-    private void switchToReisGegevens() throws IOException {
-        Main.show("reisgegevens", user);
-    }
-
-    @FXML
-    private void switchToLeaderboard() throws IOException {
-        Main.show("leaderboard", user);
-    }
-
-    @FXML
-    public void switchToDashboard() throws IOException {
-        Main.show("dashboard", user);
-    }
-
-    @FXML
-    public void switchToInstellingen() throws IOException {
-        Main.show("instellingen", user);
-    }
-
-    @FXML
-    public void switchToShop() throws IOException {
-        Main.show("shop", user);
-    }
     
     public void setUser(User user){
         this.user = user;
     }
 
+    //just here because of the implementation
     @Override
-    public void setPoints(User user){} //just here because of the implementation
-
+    public void setPoints(User user){} 
     @Override
-    public void setPresets(User user){} //just here because of the implementation
+    public void setPresets(User user){} 
 }

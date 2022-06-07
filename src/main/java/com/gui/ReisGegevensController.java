@@ -57,15 +57,6 @@ public class ReisGegevensController extends AController implements Initializable
 
     @FXML
     private Button checkReis;
-
-    /**
-     * Gaat terug naar het dashboard en past de punten NIET aan.
-     * @throws IOException
-     */
-    @FXML
-    public void switchToDashboard() throws IOException {
-        Main.show("dashboard", user);
-    }
     
     /**
      * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
@@ -75,26 +66,6 @@ public class ReisGegevensController extends AController implements Initializable
     private void switchToDashboardWithCO2() throws IOException {
         opslaanUitstoot();
         Main.show("dashboard", user);
-    }
-
-    @FXML
-    private void switchToReisGegevens() throws IOException {
-        Main.show("reisgegevens", user);
-    }
-
-    @FXML
-    private void switchToLeaderboard() throws IOException {
-        Main.show("leaderboard", user);
-    }
-
-    @FXML
-    public void switchToInstellingen() throws IOException {
-        Main.show("instellingen", user);
-    }
-
-    @FXML
-    public void switchToShop() throws IOException {
-        Main.show("shop", user);
     }
 
     private void opslaanUitstoot(){

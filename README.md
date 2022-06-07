@@ -24,3 +24,24 @@ https://dehaagsehogeschool-my.sharepoint.com/:x:/r/personal/21093830_student_hhs
 
 Laatst aangepast op 16-5-2022 15:36
 Link ziet er gek uit maar werkt wel. Github verandert de visuals van sommige lettercombinaties
+
+
+legacy code:
+        new User("Testnaam Eric", "Eric", "Bull").getPoint().setPoints(2000);
+        new User("Testnaam Burton", "Burton","Braam").getPoint().setPoints(20);
+        new User("Testnaam Damnn...Daniël", "Wessel", "Horsthuis");
+        new User("Testnaam Wouter", "jyn", "test").getPoint().setPoints(2500);
+        new User("Testnaam Lucas", "Lucas", "Clavel").getPoint().setPoints(1500);
+        new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
+        new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
+        new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
+        new Transportmiddel("Openbaar Vervoer", 50, 10);    //50 g/km
+        new Transportmiddel("Fiets/Lopen", 5, 0);           //5 g/km
+
+        voorbeeld inlog
+        User user = new User("Main man");
+        user.setReis(0, new Reis("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
+        user.setReis(1, new Reis("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
+        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
+        user.setReis(3, new Reis(null, null, null));
+        user.setReis(4, new Reis(null, null, null));

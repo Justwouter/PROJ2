@@ -1,6 +1,5 @@
 package com.gui;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -34,54 +33,12 @@ public class AdminSettingsController extends AController implements Initializabl
     @FXML
     private final TableColumn<Object, Object> newpointsBestMonthlyUsers = new TableColumn<>();
 
-
-
     @FXML
     private Label points;
 
-    @FXML
-    private void switchToReisGegevens() throws IOException {
-        Main.show("reisgegevens", user);
-    }
-
-    @FXML
-    private void switchToLeaderboard() throws IOException {
-        Main.show("leaderboard", user);
-    }
-
-    @FXML
-    public void switchToDashboard() throws IOException {
-        Main.show("dashboard", user);
-    }
-
-    @FXML
-    public void switchToInstellingen() throws IOException {
-        Main.show("instellingen", user);
-    }
-
-    @FXML
-    public void switchToShop() throws IOException {
-        Main.show("shop", user);
-    }
-
-    @FXML //TODO: kan iemand die goed is in fxml hier ff extra naar kijken?!
-    public void switchToAdminActions() throws IOException{
-        Main.show("adminaction", user);
-    } //er moet dus nog een adminaction.fxml komen
-    
     @Override
     void setUser(User user) {
         this.user = user;
-    }
-
-    @Override
-    void setPoints(User user) {
-        
-    }
-
-    @Override
-    void setPresets(User user) {
-        
     }
 
     @Override
@@ -93,5 +50,12 @@ public class AdminSettingsController extends AController implements Initializabl
         ObservableList<User> data = FXCollections.observableArrayList(users);
         bestMonthlyUsers.setItems(data);
     }
-    
+
+    //just here because of the implementation
+    @Override
+    void setPoints(User user) {     
+    }
+    @Override
+    void setPresets(User user) {  
+    }
 }
