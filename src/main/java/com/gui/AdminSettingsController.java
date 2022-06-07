@@ -5,6 +5,7 @@ import com.logic.Filiaal;
 import com.logic.Leaderboard;
 import com.logic.SaveManager;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -69,7 +70,7 @@ public class AdminSettingsController extends AController implements Initializabl
      * Deze methode voegt alle aanwezige fililalen toe aan de ComboBox zodat deze geselecteerd kunnen worden.
      */
     private void addFilialen() {
-        filialen = Filiaal.getFilialen();
+        filialen = Filiaal.filialen;
         for (Filiaal f : filialen) {
             filiaal.getItems().add(f.getNaam());
         }
