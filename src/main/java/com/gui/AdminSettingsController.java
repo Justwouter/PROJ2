@@ -3,7 +3,6 @@ package com.gui;
 import com.logic.User;
 import com.logic.Leaderboard;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -36,8 +35,6 @@ public class AdminSettingsController extends AController implements Initializabl
     @FXML
     private Label points;
 
-    
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         users = Leaderboard.getUsers("");
@@ -48,8 +45,7 @@ public class AdminSettingsController extends AController implements Initializabl
         bestMonthlyUsers.setItems(data);
     }
 
-
-
+    //just here because implementations
     @Override
     void setPoints(User user) {}
 }
