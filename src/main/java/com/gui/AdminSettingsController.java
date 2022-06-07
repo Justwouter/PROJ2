@@ -69,11 +69,6 @@ public class AdminSettingsController extends AController implements Initializabl
     void setPoints(User user) {
         
     }
-  
-    @Override
-    void setPresets(User user) {
-        
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

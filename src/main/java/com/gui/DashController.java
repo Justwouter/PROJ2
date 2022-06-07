@@ -97,7 +97,6 @@ public class DashController extends AController implements Initializable {
 
     
     
-    // TODO setVergelijking() weer functioneel weten te krijgen
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
