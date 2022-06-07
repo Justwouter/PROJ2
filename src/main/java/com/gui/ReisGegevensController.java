@@ -3,9 +3,6 @@ package com.gui;
 import com.logic.Reis;
 import com.logic.Transportmiddel;
 import com.logic.User;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,7 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ReisGegevensController extends AController implements Initializable {
+public class ReisGegevensController extends AController implements Initializable{
 
     @FXML
     private Label points;
@@ -60,7 +57,7 @@ public class ReisGegevensController extends AController implements Initializable
 
     /**
      * Gaat terug naar het dashboard en past de punten NIET aan.
-     * @throws IOException
+     * @throws IOException Exception komt vanuit main.
      */
     @FXML
     public void switchToDashboard() throws IOException {
@@ -69,7 +66,7 @@ public class ReisGegevensController extends AController implements Initializable
     
     /**
      * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
-     * @throws IOException
+     * @throws IOException Exception komt vanuit main.
      */
     @FXML
     private void switchToDashboardWithCO2() throws IOException {
@@ -77,33 +74,20 @@ public class ReisGegevensController extends AController implements Initializable
         Main.show("dashboard", user);
     }
 
-    @FXML
-    private void switchToReisGegevens() throws IOException {
-        Main.show("reisgegevens", user);
-    }
-
-    @FXML
-    private void switchToLeaderboard() throws IOException {
-        Main.show("leaderboard", user);
-    }
-
-    @FXML
-    public void switchToInstellingen() throws IOException {
-        Main.show("instellingen", user);
-    }
-
-    @FXML
-    public void switchToShop() throws IOException {
-        Main.show("shop", user);
-    }
-
     private void opslaanUitstoot(){
         berekenPunten();
-        user.getPoint().subtractPoints(puntenVerlies);
+            //was: user.getPoint.substractPoints(puntenVerlies).
+            //maar door de variabele negatief mee te geven kan je
+            //ook addPoints daarvoor gebruiken zodat je niet twee
+            //dezelfde methoden gebruikt.
+        user.getPoint().addPoints(-puntenVerlies);
+        user.userAddPuntMutatie(-puntenVerlies);
+            //waarde into userAddPuntMutatie is negatief omdat
+            //er ook de wekelijkse punten in verwerkt worden.
     }
 
     /**
-     * Berekent en slaat de uitstoot op in punten en CO2 uitstoot.
+     * Berekent en slaat de uitstoot op in punten en CO2-uitstoot.
      */
     private void berekenPunten(){
         if(kilometers.getText().isBlank()){
@@ -130,7 +114,6 @@ public class ReisGegevensController extends AController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addVehicles();
-        // Only allows numeric value's in Textfield
         addNumberLimiter();
         addTextLimiter(5);
     }
@@ -161,13 +144,10 @@ public class ReisGegevensController extends AController implements Initializable
      * @param maxLength aantal maximale tekens
      */
     public void addTextLimiter(int maxLength) {
-        kilometers.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
-                if (kilometers.getText().length() > maxLength) {
-                    String s = kilometers.getText().substring(0, maxLength);
-                    kilometers.setText(s);
-                }
+        kilometers.textProperty().addListener((ov, oldValue, newValue) -> {
+            if (kilometers.getText().length() > maxLength) {
+                String s = kilometers.getText().substring(0, maxLength);
+                kilometers.setText(s);
             }
         });
     }
@@ -189,10 +169,12 @@ public class ReisGegevensController extends AController implements Initializable
 
     /**
      * Deze methode geeft een user mee aan de controller die de reisgegevens invoert.
-     * @param u De gebruiker die zijn reisgegevens invoert.
+     * @param user De gebruiker die zijn reisgegevens invoert.
      */
-    public void setUser(User u){
-        this.user = u;
+    @Override
+    public void setUser(User user){
+        this.user = user;
+        setPresets(user);
     }
 
     /**
@@ -272,8 +254,7 @@ public class ReisGegevensController extends AController implements Initializable
         pre_set.getSelectionModel().clearSelection();
     }
 
-    @Override
-    public void setPresets(User user){
+    private void setPresets(User user){
         int tellerPreSet = 1;
         preSets = user.getReizen();
         for (Reis r : preSets) {

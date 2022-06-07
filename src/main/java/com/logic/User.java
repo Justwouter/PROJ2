@@ -21,15 +21,14 @@ public class User {
 
     public String username;
     public String password;
+    public String filiaal;
 
-    public User(String naam, String username, String password) {
-        this(naam, false, username, password);
-    }
-
-    public User(String naam, boolean isAdmin, String username, String password) {
+    public User(String naam, boolean isAdmin, String username, String password, String filiaal){
         this.naam = naam;
         this.username = username;
         this.password = password;
+        this.filiaal = filiaal;
+        this.isAdmin = isAdmin;
         point.setPoints(1000);
         Leaderboard.addUser(this);
         for (int i = 0; i < 5; i++) {
@@ -37,53 +36,57 @@ public class User {
         }
     }
 
-    public User(String naam, Point point) {
-        this.naam = naam;
-        this.point = point;
-    }
-
-    public void setReis(int index, Reis reis) {
+    public void setReis(int index, Reis reis){
         PreSets.set(index, reis);
     }
 
-    public ArrayList<Reis> getReizen() {
+    public ArrayList<Reis> getReizen(){
         return PreSets;
     }
 
-    public Reis getReis(int index) {
+    public Reis getReis(int index){
         return PreSets.get(index);
     }
 
-    public String getNaam() {
+    public String getNaam(){
         return naam;
     }
 
-    public Integer getPoints() {
+    public Integer getPoints(){
         return point.getPoints();
     }
 
-    public Point getPoint() {
+    public Point getPoint(){
         return point;
     }
 
-    public void setRank(int rank) {
+    public void setRank(int rank){
         this.rank = rank;
     }
 
-    public int getRank() {
+    public int getRank(){
         return this.rank;
     }
 
-    public boolean getIsAdmin() {
-        return isAdmin;
+    public boolean getIsAdmin(){
+        return this.isAdmin;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUsername(){
+        return this.username;
     }
 
-    public void userAddPuntMutatie(int amount) {
-        puntVerandering.add(new PuntMutatie(amount));
+    public String getFiliaal() {
+        return this.filiaal;
+    }
+
+    public void setFiliaal(String filiaal) {
+        this.filiaal = filiaal;
+    }
+
+    public void userAddPuntMutatie(int amount){
+        PuntMutatie p = new PuntMutatie(amount);
+        puntVerandering.add(p);
     }
 
     public void userAddPuntMutatie(int amount, Calendar datum) {
@@ -151,7 +154,7 @@ public class User {
         // Daarna wordt boolean weeklyPointsObtained op True gezet zodat je niet nog een keer
         // de punten kan krijgen. Op zondag wordt je weeklyPoitnsObtained op false gezet.
         if (!weeklyPointsObtained) {
-            if (day == 1) {         
+            if (day == 1) {
                 point.addPoints(1000);
                 weeklyPointsObtained = true;
             }
@@ -196,7 +199,7 @@ public class User {
     // Admin methods hieronder
     // made by BarmanTurbo
     public ArrayList<User> duurzaamsteUsers() {
-        ArrayList<User> allUsers = Leaderboard.getUsers();
+        ArrayList<User> allUsers = Leaderboard.getUsers("");
         ArrayList<User> topUsers = new ArrayList<User>();
         if (this.isAdmin) {
             Integer maxPoints = allUsers.get(0).getPoints();
@@ -212,14 +215,14 @@ public class User {
                     "Error in User.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");
         }
         return topUsers;
-        
+
     }
 
-    
+
     // made by BarmanTurbo
     public Comparator<User> BesteUsersVanDeMaand() {
         if(this.isAdmin){
-            ArrayList<User> allUsers = Leaderboard.getUsers();
+            ArrayList<User> allUsers = Leaderboard.getUsers("");
             Comparator<User> vergelijker = Comparator.comparing(User::getUserPuntMutatiesAsInteger);
             Collections.sort(allUsers, vergelijker);
             return vergelijker;

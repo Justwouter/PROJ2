@@ -9,7 +9,7 @@ public class TestPoint {
 
     @BeforeEach
     public void before(){
-        user = new User("Testnaam", "Username", "Password");
+        user = new User("Testnaam", false, "Username", "Password", null);
     }
 
     // Test of de punten goed toegevoegd worden.
@@ -19,15 +19,6 @@ public class TestPoint {
         user.getPoint().addPoints(50);
         int actual = user.getPoints();
         Assertions.assertEquals(expected,actual);
-    }
-
-    // Test of de punten goed afgetrokken worden.
-    @Test
-    public void testSubtractPoints(){
-        int expected = 950;
-        user.getPoint().subtractPoints(50);
-        int actual = user.getPoints();
-        Assertions.assertEquals(expected, actual);
     }
 
     // Test of de punten juist opgehaald worden als String.

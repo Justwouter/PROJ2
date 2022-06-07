@@ -63,16 +63,17 @@
             </StackPane>
          </children>
       </AnchorPane>
-   <AnchorPane layoutX="356.0" layoutY="4.0" prefHeight="49.0" prefWidth="117.0" style="-fx-background-color: f8da32; -fx-background-radius: 18 18 18 18;">
-         <children>
-         <Label fx:id="pointsDash" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="117.0" style="-fx-font-size: 20px;" text="punten aantal" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-         </children>
+   <AnchorPane layoutX="349.0" layoutY="14.0" prefHeight="49.0" prefWidth="117.0" style="-fx-background-color: f8da32; -fx-background-radius: 18 18 18 18;">
+      <Label fx:id="pointsDash" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="117.0" style="-fx-font-size: 20px;" text="punten aantal" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane layoutX="7.0" layoutY="506.0" prefHeight="49.0" prefWidth="480.0">
+      <Label fx:id="uitstootVergelijk" layoutX="5.0" prefHeight="50.0" prefWidth="470.0" text="hallo" textAlignment="CENTER" wrapText="true" />
    </AnchorPane>
       <AnchorPane layoutX="7.0" layoutY="506.0" prefHeight="49.0" prefWidth="480.0">
          <children>
             <Label fx:id="uitstootVergelijk" layoutX="5.0" prefHeight="50.0" prefWidth="470.0" text="hallo" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
-      <Button id="adminToolbutton" layoutX="371.0" layoutY="58.0" mnemonicParsing="false" onAction="#switchToAdmin" text="Admin tools" />
+      <Button id="adminToolbutton" layoutX="371.0" layoutY="58.0" mnemonicParsing="false" onAction="#switchToAdminPage" text="Admin tools" />
    </children>
 </AnchorPane>

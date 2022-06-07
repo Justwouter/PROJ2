@@ -25,6 +25,7 @@ public class SaveManager {
         fileList.add(new File(dir+"Verhicles.json"));
         fileList.add(new File(dir+"Travels.json"));
         fileList.add(new File(dir+"Points.json")); 
+        fileList.add(new File(dir+"Filialen.json")); 
         return fileList;
     }
 
@@ -36,11 +37,14 @@ public class SaveManager {
         System.out.println("================");//Debug
         System.out.println("Making savestate");//Debug
         cleanAllFiles();
-        for(User u : Leaderboard.getUsers()){
+        for(User u : Leaderboard.getUsers("")){
             SaveManager.writeToSave(u);
         }
         for(Transportmiddel t : Transportmiddel.getTransportmiddelen()){
             SaveManager.writeToSave(t);
+        }
+        for(Filiaal f : Filiaal.getFilialen()){
+            SaveManager.writeToSave(f);
         }
     }
 
@@ -67,6 +71,9 @@ public class SaveManager {
                 }
                 else if(f.getName().contains("Points")){
                     gson.fromJson(s, Point.class);
+                }
+                else if(f.getName().contains("Filialen")){
+                    Filiaal.filialen.add(gson.fromJson(s, Filiaal.class));
                 }
             }
         }
@@ -101,6 +108,15 @@ public class SaveManager {
     public static void writeToSave(Point point) {
         File savefile = new File(dir+"Points.json");
         write(savefile, point);
+    }
+
+    /**
+     * Writes the given {@link Filiaal} in JSON format to the Filialen file.
+     * @param filialen the to be written Filiaal object
+     */
+    public static void writeToSave(Filiaal filiaal) {
+        File savefile = new File(dir+"Filialen.json");
+        write(savefile, filiaal);
     }
 
     /**
