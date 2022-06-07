@@ -18,7 +18,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminSettingsController extends AController implements Initializable {
 
-    private User user;
     private ArrayList<User> users;
 
     @FXML
@@ -34,39 +33,9 @@ public class AdminSettingsController extends AController implements Initializabl
     private final TableColumn<Object, Object> newpointsBestMonthlyUsers = new TableColumn<>();
 
     @FXML
-    private void switchToReisGegevens() throws IOException {
-        Main.show("reisgegevens", user);
-    }
+    private Label points;
 
-    @FXML
-    private void switchToLeaderboard() throws IOException {
-        Main.show("leaderboard", user);
-    }
-
-    @FXML
-    public void switchToDashboard() throws IOException {
-        Main.show("dashboard", user);
-    }
-
-    @FXML
-    public void switchToInstellingen() throws IOException {
-        Main.show("instellingen", user);
-    }
-
-    @FXML
-    public void switchToShop() throws IOException {
-        Main.show("shop", user);
-    }
-
-    @FXML //TODO: kan iemand die goed is in fxml hier ff extra naar kijken?!
-    public void switchToAdminActions() throws IOException{
-        Main.show("adminaction", user);
-    } //er moet dus nog een adminaction.fxml komen
-
-    @Override
-    void setPoints(User user) {
-        
-    }
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

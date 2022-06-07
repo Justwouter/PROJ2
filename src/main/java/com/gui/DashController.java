@@ -51,31 +51,6 @@ public class DashController extends AController implements Initializable {
     @FXML
     private CategoryAxis weekChartX = new CategoryAxis();
 
-    @FXML
-    private void switchToReisGegevens() throws IOException {
-        Main.show("reisgegevens", user);
-    }
-
-    @FXML
-    private void switchToLeaderboard() throws IOException {
-        Main.show("leaderboard", user);
-    }
-
-    @FXML
-    public void switchToDashboard() throws IOException {
-        Main.show("dashboard", user);
-    }
-
-    @FXML
-    public void switchToInstellingen() throws IOException {
-        Main.show("instellingen", user);
-    }
-
-    @FXML
-    public void switchToShop() throws IOException {
-        Main.show("shop", user);
-    }
-
     //Parent methods overrides
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -93,10 +68,7 @@ public class DashController extends AController implements Initializable {
     public void setPoints(User user) {
         pointsDash.setText(user.getPoint().getPointsString());
     }
-
-
-    
-    
+  
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
@@ -140,8 +112,6 @@ public class DashController extends AController implements Initializable {
         jukebox.play();
     }
 
-
-    
     /**
      * Loads the average lines if they are enabled in the GUI.
      * @param averageList List containing the barchart rng values. Can be removed when switching to stored userdata.
@@ -212,7 +182,6 @@ public class DashController extends AController implements Initializable {
         
     }
 
-
     /**
      *Updates the Bar Graph on the dashboard with the weekly values of the currently logged in user
      *<p>
@@ -246,7 +215,6 @@ public class DashController extends AController implements Initializable {
             }
         }
         average = average/averageList.size();
-
 
         //Debug
         System.out.println("Average: "+average);

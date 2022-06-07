@@ -76,10 +76,5 @@ public class LoginController extends AController implements Initializable {
     }
 
     @Override
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
     public void setPoints(User user) {} //just here because of the implementation
 }
