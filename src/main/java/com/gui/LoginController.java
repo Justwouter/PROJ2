@@ -2,8 +2,6 @@ package com.gui;
 
 import com.logic.Leaderboard;
 import com.logic.User;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -73,7 +71,7 @@ public class LoginController extends AController implements Initializable {
     }
 
     @FXML
-    private void onEnterPressed(ActionEvent event) throws IOException{
+    private void onEnterPressed() throws IOException{
         attemptLogin();
     }
 
@@ -84,10 +82,4 @@ public class LoginController extends AController implements Initializable {
 
     @Override
     public void setPoints(User user) {} //just here because of the implementation
-
-    @Override
-
-    public void setPresets(User user){
-        
-    }
 }

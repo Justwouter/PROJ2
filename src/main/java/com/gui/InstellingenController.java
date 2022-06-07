@@ -1,21 +1,11 @@
 package com.gui;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.logic.User;
-
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
-public class InstellingenController extends AController implements Initializable {
+import java.io.IOException;
 
-    private User user;
-
-    @FXML
-    private Label points;
+public class InstellingenController extends AController {
 
     @FXML
     private void switchToReisGegevens() throws IOException {
@@ -41,24 +31,9 @@ public class InstellingenController extends AController implements Initializable
     public void switchToShop() throws IOException {
         Main.show("shop", user);
     }
-    
-    @Override
-    void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     void setPoints(User user) {
-        
-    }
-
-    @Override
-    void setPresets(User user) {
-        
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
         
     }
 }

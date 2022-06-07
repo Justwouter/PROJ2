@@ -21,8 +21,6 @@ import java.util.ResourceBundle;
 
 public class LeaderBoardController extends AController implements Initializable {
 
-    private User user;
-
     @FXML
     private TableView<User> leaderboard;
 
@@ -136,24 +134,8 @@ public class LeaderBoardController extends AController implements Initializable 
     public void switchToShop() throws IOException {
         Main.show("shop", user);
     }
-    
-    @Override
-    public void setUser(User user){
-        this.user = user;
-    }
 
     @Override
     public void setPoints(User user){} //just here because of the implementation
 
-    @Override
-    public void setPresets(User user){} //just here because of the implementation
-
-    @FXML
-    public void filterLeaderboard(){
-        // herlaad het leaderboard en vult het met de gefilterde users
-        leaderboard.getItems().clear();
-        leaderboard.refresh();
-        String s = filiaal.getValue();
-        fillBoard(s);
-    }
 }

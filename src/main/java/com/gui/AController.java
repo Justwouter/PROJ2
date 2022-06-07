@@ -1,18 +1,16 @@
 package com.gui;
 
-import java.io.IOException;
-
 import com.logic.User;
-
-import javafx.fxml.FXML;
 
 public abstract class AController {
 
-    private User user;
+    protected User user;
 
-    abstract void setUser(User user);
+    public void setUser(User user){
+        this.user = user;
+    }
     abstract void setPoints(User user);
-    abstract void setPresets(User user);
+}
 
     //laat dit even staan gaat mogelijk anders zodat het makkelijker wordt
     // @FXML
@@ -29,4 +27,3 @@ public abstract class AController {
     // public void onDBButtonClick() throws IOException {
     //     Main.show("dashboard", user);
     // }
-}

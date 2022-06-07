@@ -1,18 +1,17 @@
 package com.gui;
 
+import com.logic.User;
+import com.logic.Leaderboard;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import com.logic.Leaderboard;
-import com.logic.User;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,11 +32,6 @@ public class AdminSettingsController extends AController implements Initializabl
 
     @FXML
     private final TableColumn<Object, Object> newpointsBestMonthlyUsers = new TableColumn<>();
-
-
-
-    @FXML
-    private Label points;
 
     @FXML
     private void switchToReisGegevens() throws IOException {
@@ -68,19 +62,9 @@ public class AdminSettingsController extends AController implements Initializabl
     public void switchToAdminActions() throws IOException{
         Main.show("adminaction", user);
     } //er moet dus nog een adminaction.fxml komen
-    
-    @Override
-    void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     void setPoints(User user) {
-        
-    }
-
-    @Override
-    void setPresets(User user) {
         
     }
 
@@ -93,5 +77,4 @@ public class AdminSettingsController extends AController implements Initializabl
         ObservableList<User> data = FXCollections.observableArrayList(users);
         bestMonthlyUsers.setItems(data);
     }
-    
 }
