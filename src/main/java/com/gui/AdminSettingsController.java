@@ -1,7 +1,6 @@
 package com.gui;
 
 import com.logic.User;
-import javafx.fxml.FXML;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
