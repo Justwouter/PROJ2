@@ -83,7 +83,7 @@ public class User {
         this.filiaal = filiaal;
     }
 
-    public void addPuntMutatie(int amount){
+    public void userAddPuntMutatie(int amount){
         PuntMutatie p = new PuntMutatie(amount);
         puntVerandering.add(p);
     }
