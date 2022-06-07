@@ -28,6 +28,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.filiaal = filiaal;
+        this.isAdmin = isAdmin;
         point.setPoints(1000);
         Leaderboard.addUser(this);
         for (int i = 0; i < 5; i++) {
@@ -68,15 +69,15 @@ public class User {
     }
 
     public boolean getIsAdmin(){
-        return isAdmin;
+        return this.isAdmin;
     }
 
     public String getUsername(){
-        return username;
+        return this.username;
     }
 
     public String getFiliaal() {
-        return filiaal;
+        return this.filiaal;
     }
 
     public void setFiliaal(String filiaal) {

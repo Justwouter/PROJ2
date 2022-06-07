@@ -14,8 +14,6 @@ import java.util.ResourceBundle;
 
 public class LoginController extends AController implements Initializable {
 
-    private User user;
-
     @FXML
     public TextField usernameField;
 
