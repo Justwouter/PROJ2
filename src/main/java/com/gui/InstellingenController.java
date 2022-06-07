@@ -2,8 +2,7 @@ package com.gui;
 
 import com.logic.User;
 import javafx.fxml.FXML;
-
-import java.io.IOException;
+import javafx.scene.control.Label;
 
 public class InstellingenController extends AController {
     @FXML
