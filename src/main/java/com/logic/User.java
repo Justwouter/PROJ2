@@ -33,7 +33,6 @@ public class User {
         for (int i = 0; i < 5; i++) {
             PreSets.add(new Reis(null, null, null));
         }
-        SaveManager.writeToSave(this);
     }
 
     public void setReis(int index, Reis reis){
