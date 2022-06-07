@@ -70,7 +70,7 @@ public class AdminSettingsController extends AController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        users = Leaderboard.getUsers();
+        users = Leaderboard.getUsers("");
         rankBestMonthlyUsers.setCellValueFactory(new PropertyValueFactory<>("rank"));
         naamBestMonthlyUsers.setCellValueFactory(new PropertyValueFactory<>("naam"));
         newpointsBestMonthlyUsers.setCellValueFactory(new PropertyValueFactory<>("PuntMutatiesAsInteger"));
