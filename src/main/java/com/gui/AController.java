@@ -15,6 +15,7 @@ public abstract class AController {
     }
     abstract void setPoints(User user);
 
+    //All switch statements (if you want a new fxml file add the switch method here!)
     @FXML
     private void switchToReisGegevens() throws IOException {
         Main.show("reisgegevens", user);

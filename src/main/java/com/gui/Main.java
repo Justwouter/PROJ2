@@ -17,30 +17,8 @@ public class Main extends Application {
     private static AnchorPane mainLayout;
   
        public static void seed(){
-        // new User("Testnaam Eric", false, "Eric","Bull", "Den Haag").getPoint().setPoints(2000);
-        // new User("Testnaam Burton", false,"Burton","Braam", "Rotterdam HQ").getPoint().setPoints(20);
-        // new User("Testnaam Damnn...Daniël", false,"Wessel", "Horsthuis", "Eindhoven");
-        // new User("Testnaam Wouter", false,"jyn", "test", "Apeldoorn").getPoint().setPoints(2500);
-        // new User("Testnaam Lucas", false,"Lucas", "Clavel", "Utrecht").getPoint().setPoints(1500);
-        // new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
-        // new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
-        // new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
-        // new Transportmiddel("Openbaar Vervoer", 50, 10);    //50 g/km
-        // new Transportmiddel("Fiets/Lopen", 5, 0);           //5
-
-        //voorbeeld inlog
-//        User user = new User("Main man");
-//        user.setReis(0, new Reis("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
-//        user.setReis(1, new Reis("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
-//        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
-//        user.setReis(3, new Reis(null, null, null));
-//        user.setReis(4, new Reis(null, null, null));
-        // new Filiaal("Amsterdam");
-        // new Filiaal("Apeldoorn");
-        // new Filiaal("Den Haag");
-        // new Filiaal("Eindhoven");
-        // new Filiaal("Rotterdan HQ");
-        // new Filiaal("Utrecht");
+        //just here incase users and transportmiddelen gets corrupted
+        //in that case copy the setup from the README
         SaveManager.loadAllFiles();
     }
 
