@@ -16,11 +16,11 @@ public class Filiaal {
         return naam;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public ArrayList<Filiaal> getFilialen(){
+        return filialen;
     }
 
-    public static ArrayList<Filiaal> getFilialen(){
-        return filialen;
+    public void setNaam(String naam) {
+        this.naam = naam;
     }
 }

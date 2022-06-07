@@ -5,7 +5,6 @@ import com.logic.Filiaal;
 import com.logic.Leaderboard;
 import com.logic.SaveManager;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -76,6 +75,7 @@ public class AdminSettingsController extends AController implements Initializabl
         }
     }
 
+    //just here because implementations
     @Override
     void setPoints(User user) {}
 

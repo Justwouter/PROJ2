@@ -94,8 +94,7 @@ public class User {
     }
 
     public void user4weekPuntMutatieCleanUp() {
-        // Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen
-        // blijven.
+        // Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen blijven.
         Integer puntenOuderDan4Weken = 0;
         int monthOfPuntenOuderDan4Weken = 13;
 
@@ -159,7 +158,6 @@ public class User {
                 weeklyPointsObtained = true;
             }
         }
-
         if (day == 0) {
             weeklyPointsObtained = false;
         }
@@ -215,7 +213,6 @@ public class User {
                     "Error in User.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");
         }
         return topUsers;
-
     }
 
 
@@ -231,5 +228,4 @@ public class User {
                 "Error in User.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");
         }
     }
-
 }

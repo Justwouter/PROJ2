@@ -122,7 +122,6 @@ public class DashController extends AController implements Initializable {
             System.out.println("Hiding chart"); //Debug
         }
         else{
-            
             medianLineChart.setTitle("Weekly CO2 Values");
             medianLineChart.getXAxis().setLabel("Day");
             medianLineChart.getYAxis().setLabel("Value");
@@ -154,8 +153,7 @@ public class DashController extends AController implements Initializable {
                     averageLine.getData().add(vars);
                 }
                 medianLineChart.getData().add(averageLine);
-            }
-            
+            } 
             medianLineChart.setVisible(true);
         }
     }
@@ -178,7 +176,6 @@ public class DashController extends AController implements Initializable {
             }
         }
         return average/(days+1);
-        
     }
 
     /**
