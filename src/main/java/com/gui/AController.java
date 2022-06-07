@@ -35,10 +35,8 @@ public abstract class AController {
     public void switchToShop() throws IOException {
         Main.show("shop", user);
     }
-    
-    //idk what this is
-    @FXML //TODO: kan iemand die goed is in fxml hier ff extra naar kijken?!
-    public void switchToAdminActions() throws IOException{
-        Main.show("adminaction", user);
-    } //er moet dus nog een adminaction.fxml komen
+    @FXML 
+    public void switchToAdmin() throws IOException{
+        Main.show("admin", user);
+    } 
 }
