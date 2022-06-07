@@ -2,8 +2,6 @@ package com.gui;
 
 import com.logic.Leaderboard;
 import com.logic.User;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -61,7 +59,7 @@ public class LoginController extends AController implements Initializable {
      * @return True/False
      */
     public boolean loginChecker(String username, String password) {
-        for (User user : Leaderboard.getUsers()){
+        for (User user : Leaderboard.getUsers("")){
             if (user.getUsername().equals(username)){
                 if (user.checkPassword(password)){
                     setUser(user);
@@ -73,18 +71,10 @@ public class LoginController extends AController implements Initializable {
     }
 
     @FXML
-    private void onEnterPressed(ActionEvent event) throws IOException{
+    private void onEnterPressed() throws IOException{
         attemptLogin();
     }
 
     @Override
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    //just here because of the implementation
-    @Override
-    public void setPoints(User user) {} 
-    @Override
-    public void setPresets(User user){}
+    public void setPoints(User user) {} //just here because of the implementation
 }

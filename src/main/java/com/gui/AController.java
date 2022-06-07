@@ -1,18 +1,15 @@
 package com.gui;
 
-import java.io.IOException;
-
 import com.logic.User;
 
-import javafx.fxml.FXML;
-
 public abstract class AController {
+    protected User user;
 
-    public User user;
-
-    abstract void setUser(User user);
+    public void setUser(User user){
+        this.user = user;
+    }
     abstract void setPoints(User user);
-    abstract void setPresets(User user);
+}
 
     @FXML
     private void switchToReisGegevens() throws IOException {
