@@ -7,10 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.skin.TableHeaderRow;
 
@@ -117,8 +114,4 @@ public class LeaderBoardController extends AController implements Initializable 
         String s = filiaal.getValue();
         fillBoard(s);
     }
-
-    //just here because of the implementation
-    @Override
-    void setPoints(User user) {}
 }
