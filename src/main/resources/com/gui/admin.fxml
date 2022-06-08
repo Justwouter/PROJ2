@@ -5,12 +5,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <!--Dit FXML bestand is nog niet helemaal af-->
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.AdminSettingsController">
     <children>
       <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0">
@@ -61,10 +61,10 @@
          <children>
             <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="210.0" mnemonicParsing="false" onAction="#makeUser" prefHeight="80.0" prefWidth="80.0" text="make user" />
             <Button alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="210.0" mnemonicParsing="false" onAction="#makeAdmin" prefHeight="80.0" prefWidth="106.0" text="make admin" />
-            <TextField layoutX="73.0" layoutY="46.0" promptText="voer naam in" />
-            <ComboBox layoutX="74.0" layoutY="83.0" prefWidth="150.0" promptText="kies filiaal" />
-            <TextField layoutX="75.0" layoutY="133.0" promptText="voer gebruikers naam in" />
-            <TextField layoutX="73.0" layoutY="178.0" promptText="voer wachtwoord in" />
+            <TextField fx:id="naam" layoutX="73.0" layoutY="46.0" promptText="voer naam in" />
+            <ComboBox fx:id="filiaal" layoutX="74.0" layoutY="83.0" prefWidth="150.0" promptText="kies filiaal" />
+            <TextField fx:id="username" layoutX="75.0" layoutY="133.0" promptText="voer gebruikers naam in" />
+            <TextField fx:id="password" layoutX="73.0" layoutY="178.0" promptText="voer wachtwoord in" />
          </children>
       </AnchorPane>
     </children>

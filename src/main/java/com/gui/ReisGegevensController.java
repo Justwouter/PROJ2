@@ -26,8 +26,6 @@ public class ReisGegevensController extends AController implements Initializable
     @FXML
     private Label kostenCO2;
 
-    private User user;
-
     public int kostenVanVoertuig;
 
     private int uitstootVanVoertuig;
