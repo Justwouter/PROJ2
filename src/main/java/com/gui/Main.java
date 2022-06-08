@@ -1,5 +1,6 @@
 package com.gui;
 
+import com.logic.Item;
 import com.logic.SaveManager;
 import com.logic.User;
 
@@ -20,6 +21,11 @@ public class Main extends Application {
         //just here incase users and transportmiddelen gets corrupted
         //in that case copy the setup from the README
         SaveManager.loadAllFiles();
+        ShopController.itemList.add(new Item());
+        ShopController.itemList.add(new Item());
+        ShopController.itemList.add(new Item());
+        ShopController.itemList.add(new Item());
+        ShopController.itemList.add(new Item());
     }
 
     public static void main(String[] args) {
