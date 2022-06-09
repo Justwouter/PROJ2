@@ -47,13 +47,6 @@ public class PuntMutatie{
     public boolean isFromLastYear(){ 
         //Geld ook voor deze. Tf is dit
         Calendar datumCheck = Calendar.getInstance();
-        if(
-        (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR))
-        ||
-        (datum.get(Calendar.MONTH)-datumCheck.get(Calendar.MONTH)<=12&&datumCheck.get(Calendar.YEAR)-datum.get(Calendar.YEAR)==1)){
-            return true;
-        }else{
-            return false;
-        }
+        return (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR)) || (datum.get(Calendar.MONTH)-datumCheck.get(Calendar.MONTH)<=12 && datumCheck.get(Calendar.YEAR)-datum.get(Calendar.YEAR)==1);
     }
 }
