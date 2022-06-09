@@ -4,16 +4,22 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 
 import com.logic.User;
-
+import javafx.scene.control.Label;
 
 
 public abstract class AController {
+
+    @FXML
+    protected Label points = new Label();
+
     protected User user;
 
     public void setUser(User user){
         this.user = user;
     }
-    abstract void setPoints(User user);
+    public void setPoints(User user){
+        points.setText(user.getPoint().getPointsString());
+    }
 
     //All switch statements (if you want a new fxml file add the switch method here!)
     @FXML

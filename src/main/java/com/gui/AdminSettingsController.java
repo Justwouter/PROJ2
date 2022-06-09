@@ -76,10 +76,6 @@ public class AdminSettingsController extends AController implements Initializabl
         }
     }
 
-    //just here because implementations
-    @Override
-    void setPoints(User user) {}
-
     @FXML
     public void makeUser() throws IOException {
        new User(naam.getText(), false, username.getText(), password.getText(), filiaal.getValue());

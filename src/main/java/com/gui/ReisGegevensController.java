@@ -5,7 +5,6 @@ import com.logic.Transportmiddel;
 import com.logic.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -50,8 +49,6 @@ public class ReisGegevensController extends AController implements Initializable
     @FXML
     private TextField hernoemen;
 
-    @FXML
-    private Button checkReis;
 
     /**
      * Gaat terug naar het dashboard en past de punten NIET aan.
@@ -75,7 +72,7 @@ public class ReisGegevensController extends AController implements Initializable
     private void opslaanUitstoot(){
         berekenPunten();
             //was: user.getPoint.substractPoints(puntenVerlies).
-            //maar door de variabele negatief mee te geven kan je
+            //Maar door de variabele negatief mee te geven kan je
             //ook addPoints daarvoor gebruiken zodat je niet twee
             //dezelfde methoden gebruikt.
         user.getPoint().addPoints(-puntenVerlies);
