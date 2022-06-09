@@ -15,7 +15,6 @@ public class SaveManager {
     Gson gson = new Gson();
     String dir = System.getProperty("user.dir")+"\\data\\";
     ArrayList<File> fileList = new ArrayList<>(seedSaveFiles());
-    Class<?> currentClass;
 
 
     //Temp solution
@@ -55,7 +54,6 @@ public class SaveManager {
             ArrayList<String> readLines = readFile(f);
 
             for(String s : readLines){
-                //TODO Not clean or efficient in the slightest but afaik its impossible to store Class.class. edit: it is possible, rewrite incoming.
                 if(isUsersFile(f.getName())){
                     Leaderboard.addUser(gson.fromJson(s, User.class));
                 }
@@ -75,25 +73,20 @@ public class SaveManager {
     //Solution to long method/Switch smell
 
     public boolean isUsersFile(String s){
-        currentClass = User.class;
         return s.contains("Users");
     }
 
     public boolean isVerhiclesFile(String s){
-        currentClass = Transportmiddel.class;
         return s.contains("Verhicles");
     }
 
     public boolean isTravelsFile(String s){
-        currentClass = Reis.class;
         return s.contains("Travels");
         
     }
 
     public boolean isPointsFile(String s){
-        currentClass = Point.class;
         return s.contains("Points");
-
     }
 
 
