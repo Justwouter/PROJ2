@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
+import com.gui.ShopController;
 
 /**
  * Sizable class that contains all the logic for reading and writing saves
@@ -26,6 +27,7 @@ public class SaveManager {
         fileList.add(new File(dir+"Travels.json"));
         fileList.add(new File(dir+"Points.json")); 
         fileList.add(new File(dir+"Filialen.json")); 
+        fileList.add(new File(dir+"Items.json"));
         return fileList;
     }
 
@@ -45,6 +47,9 @@ public class SaveManager {
         }
         for(Filiaal f : Filiaal.filialen){
             SaveManager.writeToSave(f);
+        }
+        for (Item i : ShopController.itemList){
+            SaveManager.writeToSave(i);
         }
     }
 
@@ -74,6 +79,9 @@ public class SaveManager {
                 }
                 else if(f.getName().contains("Filialen")){
                     Filiaal.filialen.add(gson.fromJson(s, Filiaal.class));
+                }
+                else if(f.getName().contains("Items")){
+                    ShopController.itemList.add(gson.fromJson(s, Item.class));
                 }
             }
         }
@@ -112,11 +120,16 @@ public class SaveManager {
 
     /**
      * Writes the given {@link Filiaal} in JSON format to the Filialen file.
-     * @param filialen the to be written Filiaal object
+     * @param filiaal the to be written Filiaal object
      */
     public static void writeToSave(Filiaal filiaal) {
         File savefile = new File(dir+"Filialen.json");
         write(savefile, filiaal);
+    }
+
+    public static void writeToSave(Item item) {
+        File savefile = new File(dir+"Items.json");
+        write(savefile, item);
     }
 
     /**
@@ -150,7 +163,7 @@ public class SaveManager {
 
     /**
      * Reads the lines of an JSON file located in ~\data\ and returns them as entries in an ArrayList
-     * @param file
+     * @param savefile
      * @return {@link ArrayList<String>}
      */
     private static ArrayList<String> readFile(File savefile) {

@@ -1,5 +1,6 @@
 package com.gui;
 
+import com.logic.Item;
 import com.logic.SaveManager;
 import com.logic.User;
 

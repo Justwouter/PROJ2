@@ -19,4 +19,8 @@ public class Point {
     public String getPointsString(){
         return "" + points;
     }
+
+    public boolean enoughBalance(int amount){
+        return amount <= points;
+    }
 }
