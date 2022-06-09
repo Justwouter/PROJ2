@@ -15,7 +15,7 @@ public class TestFiliaal {
     
     @AfterEach
     public void end(){
-        filialen.remove(0);   
+        filialen.clear();   
     }
     
     @Test
