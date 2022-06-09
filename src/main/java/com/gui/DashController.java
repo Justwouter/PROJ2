@@ -1,7 +1,6 @@
 package com.gui;
 
 import com.logic.SaveManager;
-import com.logic.User;
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,9 +35,6 @@ public class DashController extends AController implements Initializable {
     private LineChart<String,Number> medianLineChart;
 
     @FXML
-    private Label pointsDash;
-
-    @FXML
     private CheckBox dynAverage;
 
     @FXML
@@ -56,16 +52,6 @@ public class DashController extends AController implements Initializable {
         SaveManager.saveState();
         LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
         updateMedianLine(updateWeeklyChart());
-    }
-
-    @Override
-    public void setUser(User u){
-        this.user = u;
-    }
-
-    @Override
-    public void setPoints(User user) {
-        pointsDash.setText(user.getPoint().getPointsString());
     }
 
     @FXML
