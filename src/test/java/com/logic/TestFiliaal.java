@@ -9,9 +9,14 @@ public class TestFiliaal {
     public Filiaal testFiliaal;
 
     @BeforeEach
-    public void before(){
+    public void start(){
         testFiliaal = new Filiaal("Amsterdam");
-    }    
+    }  
+    
+    @AfterEach
+    public void end(){
+        filialen.clear();   
+    }
     
     @Test
     public void testFilialenArray(){
