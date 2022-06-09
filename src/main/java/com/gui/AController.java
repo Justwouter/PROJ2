@@ -1,10 +1,10 @@
 package com.gui;
 
-import java.io.IOException;
-import javafx.fxml.FXML;
-
 import com.logic.User;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+
+import java.io.IOException;
 
 
 public abstract class AController {
