@@ -262,11 +262,5 @@ public class ReisGegevensController extends AController implements Initializable
             tellerPreSet++;
         }
     }
-
-    @Override
-    void setMessage(User user) {
-        // TODO Auto-generated method stub
-        
-    }
 }
 

@@ -1,6 +1,7 @@
 package com.gui;
 
 import com.logic.SaveManager;
+import com.logic.User;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -21,6 +22,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +67,13 @@ public class DashController extends AController implements Initializable {
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
         Timeline timeline = new Timeline(keyFrame);
         timeline.play();
-        timeline.setOnFinished(e -> {try {Main.show(fxml, user);}catch(IOException e1){}
+        timeline.setOnFinished(e -> {
+            try {
+                Main.show(fxml, user);
+            }
+            catch(IOException e2){
+                System.out.println(e2);
+            }
         });
     }
   
