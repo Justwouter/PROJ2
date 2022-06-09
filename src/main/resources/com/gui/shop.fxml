@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.ShopController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/shop.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.ShopController">
     <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0">
         <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToReisGegevens" prefHeight="70.0" prefWidth="70.0" text="Gegevens">
         </Button>
@@ -34,10 +34,11 @@
          <Label fx:id="points" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="117.0" style="-fx-font-size: 20px;" text="punten aantal" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
       </children>
    </Pane>
-   <TableView fx:id="tableView" layoutX="129.0" layoutY="184.0" prefHeight="200.0" prefWidth="200.0">
+   <TableView fx:id="tableView" layoutX="25.0" layoutY="100.0" prefHeight="400.0" prefWidth="430.0">
      <columns>
-       <TableColumn fx:id="imageColumn" prefWidth="75.0" text="C1" />
-       <TableColumn fx:id="priceColumn" prefWidth="75.0" text="C2" />
+       <TableColumn fx:id="imageColumn" prefWidth="75.0" text="Afbeelding" />
+       <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Naam" />
+       <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Prijs" />
      </columns>
       <columnResizePolicy>
          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
