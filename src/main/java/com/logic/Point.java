@@ -1,6 +1,7 @@
 package com.logic;
+
 public class Point {
-    private Integer points;
+    public Integer points;
 
     public void setPoints(int amount){
         points = amount;
@@ -11,11 +12,8 @@ public class Point {
     }
 
     public void addPoints(int amount){
+        //is able to handle negative values for int amount
         points += amount;
-    }
-
-    public void subtractPoints(int amount){
-        points -= amount;
     }
 
     public String getPointsString(){

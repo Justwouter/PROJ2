@@ -3,11 +3,8 @@ package com.gui;
 import com.logic.Reis;
 import com.logic.Transportmiddel;
 import com.logic.User;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,7 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ReisGegevensController implements Initializable, IController {
+public class ReisGegevensController extends AController implements Initializable{
 
     @FXML
     private Label points;
@@ -26,9 +23,7 @@ public class ReisGegevensController implements Initializable, IController {
     private Label kostenPunten; 
 
     @FXML
-    private Label kostenCO2; 
-    
-    private User user;
+    private Label kostenCO2;
 
     public int kostenVanVoertuig;
 
@@ -54,57 +49,66 @@ public class ReisGegevensController implements Initializable, IController {
     @FXML
     private TextField hernoemen;
 
-    @FXML
-    private Button checkReis;
-    
+
     /**
-     * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
-     * @throws IOException
+     * Gaat terug naar het dashboard en past de punten NIET aan.
+     * @throws IOException Exception komt vanuit main.
      */
     @FXML
-    private void switchToDash() throws IOException {
-        opslaanUitstoot();
+    public void switchToDashboard() throws IOException {
         Main.show("dashboard", user);
     }
     
     /**
-     * Gaat terug naar het dashboard en past de punten NIET aan.
-     * @throws IOException
+     * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
+     * @throws IOException Exception komt vanuit main.
      */
     @FXML
-    private void switchToDash2() throws IOException {
+    private void switchToDashboardWithCO2() throws IOException {
+        opslaanUitstoot();
         Main.show("dashboard", user);
     }
 
     private void opslaanUitstoot(){
         berekenPunten();
-        user.getPoint().subtractPoints(puntenVerlies);
+            //was: user.getPoint.substractPoints(puntenVerlies).
+            //Maar door de variabele negatief mee te geven kan je
+            //ook addPoints daarvoor gebruiken zodat je niet twee
+            //dezelfde methoden gebruikt.
+        user.getPoint().addPoints(-puntenVerlies);
+        user.userAddPuntMutatie(-puntenVerlies);
+            //waarde into userAddPuntMutatie is negatief omdat
+            //er ook de wekelijkse punten in verwerkt worden.
     }
 
     /**
-     * Berekent en slaat de uitstoot op.
+     * Berekent en slaat de uitstoot op in punten en CO2-uitstoot.
      */
     private void berekenPunten(){
         if(kilometers.getText().isBlank()){
             puntenVerlies = 0;
+            uitstootCO2 = 0;
         }
         if (!kilometers.getText().isBlank()){
             int km = Integer.parseInt(kilometers.getText());
             puntenVerlies = (km* uitstootVanVoertuig) / 89;
+            uitstootCO2 = (km* uitstootVanVoertuig);
         }
     }
 
-    private void berekenUitstoot(){
-        if (!kilometers.getText().isBlank()){
-            int km = Integer.parseInt(kilometers.getText());
-            uitstootCO2 = (km* uitstootVanVoertuig);
-        }
+    /**
+     * Zorgt ervoor dat de kosten worden uitgeprint (zowel punten als CO2)
+     */
+    @FXML
+    public void setTotaalAndCO2(){
+        berekenPunten();
+        kostenCO2.setText(uitstootCO2 + "g CO2");
+        kostenPunten.setText("- " + puntenVerlies);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addVehicles();
-        // Only allows numeric value's in Textfield
         addNumberLimiter();
         addTextLimiter(5);
     }
@@ -134,15 +138,11 @@ public class ReisGegevensController implements Initializable, IController {
      * Deze methode zorgt voor een maximaal aantal tekens die het invoerveld van de kilometers kan bevatten.
      * @param maxLength aantal maximale tekens
      */
-
     public void addTextLimiter(int maxLength) {
-        kilometers.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
-                if (kilometers.getText().length() > maxLength) {
-                    String s = kilometers.getText().substring(0, maxLength);
-                    kilometers.setText(s);
-                }
+        kilometers.textProperty().addListener((ov, oldValue, newValue) -> {
+            if (kilometers.getText().length() > maxLength) {
+                String s = kilometers.getText().substring(0, maxLength);
+                kilometers.setText(s);
             }
         });
     }
@@ -157,18 +157,19 @@ public class ReisGegevensController implements Initializable, IController {
             if (t.getNaam().equals(s)){
                 uitstootVanVoertuig = t.getUitstoot();
                 kostenVanVoertuig = t.getKosten();
-                setKostenTotaal();
-                setKostenCO2();
+                setTotaalAndCO2();
             }
         }
     }
 
     /**
      * Deze methode geeft een user mee aan de controller die de reisgegevens invoert.
-     * @param u De gebruiker die zijn reisgegevens invoert.
+     * @param user De gebruiker die zijn reisgegevens invoert.
      */
-    public void setUser(User u){
-        this.user = u;
+    @Override
+    public void setUser(User user){
+        this.user = user;
+        setPresets(user);
     }
 
     /**
@@ -181,28 +182,7 @@ public class ReisGegevensController implements Initializable, IController {
     }
 
     /**
-     * Wrapper method to call both methods. thx javafx
-     */
-    @FXML
-    public void setTotaalAndCO2(){
-        setKostenCO2();
-        setKostenTotaal();
-    }
-    //Zorgt ervoor dat de reiskosten in punten worden uitgeprint
-    @FXML
-    public void setKostenTotaal(){
-        berekenPunten();
-        kostenPunten.setText("- " + puntenVerlies);
-    }
-    /**Zorgt ervoor dat de reiskosten in gram CO2 wordt uitgeprint
-    */
-    @FXML
-    public void setKostenCO2(){
-        berekenUitstoot();
-        kostenCO2.setText(uitstootCO2 + "g CO2");
-    }
-
-    /**Geven de knoppen 1,2,3,4 en 5 een functie
+     * Geven de knoppen 1,2,3,4 en 5 een functie
     */
     @FXML
     public void buttonOne(){
@@ -229,7 +209,8 @@ public class ReisGegevensController implements Initializable, IController {
         invullenPreSet(4);
     }
 
-    /**zet de opgeslagen waarde in de juiste vakken voor de berekening
+    /**
+     * zet de opgeslagen waarde in de juiste vakken voor de berekening
     */
     public void invullenPreSet(Integer button){
         if(preSets.get(button).getNaamReis() != null){
@@ -268,8 +249,7 @@ public class ReisGegevensController implements Initializable, IController {
         pre_set.getSelectionModel().clearSelection();
     }
 
-    @Override
-    public void setPresets(User user){
+    private void setPresets(User user){
         int tellerPreSet = 1;
         preSets = user.getReizen();
         for (Reis r : preSets) {

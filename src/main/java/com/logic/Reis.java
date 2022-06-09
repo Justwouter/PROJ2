@@ -2,9 +2,9 @@ package com.logic;
 
 public class Reis {
 
-    private String naam;
-    private Transportmiddel transportmiddel;
-    private Integer kilometers;
+    public String naam;
+    public Transportmiddel transportmiddel;
+    public Integer kilometers;
 
     public Reis(String naam, Transportmiddel transportmiddel, Integer kilometers) {
         this.naam = naam;

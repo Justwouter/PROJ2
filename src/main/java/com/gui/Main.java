@@ -1,7 +1,6 @@
 package com.gui;
 
-import com.logic.Reis;
-import com.logic.Transportmiddel;
+import com.logic.SaveManager;
 import com.logic.User;
 
 import javafx.application.Application;
@@ -16,28 +15,11 @@ import java.io.IOException;
 public class Main extends Application {
     private static Stage primaryStage;
     private static AnchorPane mainLayout;
-
-        public static User seed(){
-        new User("Testnaam Eric").getPoint().setPoints(2000);
-        new User("Testnaam Burton").getPoint().setPoints(20);
-        new User("Testnaam Damnn...Daniël");
-        new User("Wouter").getPoint().setPoints(2500);
-        new User("Lucas").getPoint().setPoints(1500);
-        new Transportmiddel("Benzine auto", 147, 50);       //147 g/km
-        new Transportmiddel("Diesel auto", 179, 75);        //179 g/km
-        new Transportmiddel("Elektrische auto", 87, 25);    //87 g/km
-        new Transportmiddel("Openbaar Vervoer", 50, 10);    //50 g/km
-        new Transportmiddel("Fiets/Lopen", 5, 0);           //5
-
-        //voorbeeld inlog
-        User user = new User("Main man");
-        user.setReis(0, new Reis("Thuis", Transportmiddel.getTransportmiddelen().get(1), 25));
-        user.setReis(1, new Reis("Werk", Transportmiddel.getTransportmiddelen().get(3), 50));
-        user.setReis(2, new Reis("School", Transportmiddel.getTransportmiddelen().get(4), 75));
-        user.setReis(3, new Reis(null, null, null));
-        user.setReis(4, new Reis(null, null, null));
-
-        return user;
+  
+       public static void seed(){
+        //just here incase users and transportmiddelen gets corrupted
+        //in that case copy the setup from the README
+        SaveManager.loadAllFiles();
     }
 
     public static void main(String[] args) {
@@ -48,8 +30,8 @@ public class Main extends Application {
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
         primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo.jpg"));
-        User user = seed();
-        show("login", user);
+        seed();
+        show("login", null);
     }
 
     public static void show(String fxml, User user) throws IOException {
@@ -57,10 +39,9 @@ public class Main extends Application {
         loader.setLocation(Main.class.getResource(fxml + ".fxml"));
         mainLayout = loader.load();
 
-        IController controller = loader.getController();
+        AController controller = loader.getController();
         controller.setUser(user);
         controller.setPoints(user);
-        controller.setPresets(user);
 
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);
