@@ -20,7 +20,7 @@ public class Main extends Application {
        public static void seed(){
         //just here incase users and transportmiddelen gets corrupted
         //in that case copy the setup from the README
-        SaveManager.loadAllFiles();
+         new SaveManager().loadAllFiles();
     }
 
     public static void main(String[] args) {

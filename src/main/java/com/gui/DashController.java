@@ -1,6 +1,11 @@
 package com.gui;
 
 import com.logic.SaveManager;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,9 +14,11 @@ import javafx.scene.chart.*;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -24,6 +31,10 @@ public class DashController extends AController implements Initializable {
 
     private MediaPlayer jukebox;
     private List<Long> avList;
+    private SaveManager saveManager = new SaveManager();
+
+    @FXML
+    private AnchorPane dashMainPane;
 
     @FXML
     private Label uitstootVergelijk;
@@ -46,13 +57,26 @@ public class DashController extends AController implements Initializable {
     @FXML
     private CategoryAxis weekChartX = new CategoryAxis();
 
+
+    //Animation
+    private void exitAnim(String fxml, User user) {
+        KeyValue keyValue = new KeyValue(dashMainPane.rotateProperty(), 360);
+        // over the course of 5 seconds
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+        Timeline timeline = new Timeline(keyFrame);
+        timeline.play();
+        timeline.setOnFinished(e -> {try {Main.show(fxml, user);}catch(IOException e1){}
+        });
+    }
+  
     //Parent methods overrides
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SaveManager.saveState();
+        saveManager.saveState();
         LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
         updateMedianLine(updateWeeklyChart());
     }
+
 
     @FXML
     public void setVergelijking(){
