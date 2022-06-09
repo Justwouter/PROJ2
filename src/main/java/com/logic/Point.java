@@ -12,14 +12,15 @@ public class Point {
     }
 
     public void addPoints(int amount){
+        //is able to handle negative values for int amount
         points += amount;
-    }
-
-    public void subtractPoints(int amount){
-        points -= amount;
     }
 
     public String getPointsString(){
         return "" + points;
+    }
+
+    public boolean enoughBalance(int amount){
+        return amount <= points;
     }
 }

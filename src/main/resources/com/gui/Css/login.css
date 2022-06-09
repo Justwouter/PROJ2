@@ -20,6 +20,6 @@
     -fx-cursor: hand;
 }
 
-.anchorpane {
+.root {
     -fx-background-color: #74F180;
 }

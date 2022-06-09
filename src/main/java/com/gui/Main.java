@@ -1,9 +1,7 @@
 package com.gui;
 
-import com.logic.Leaderboard;
-import com.logic.Reis;
+import com.logic.Item;
 import com.logic.SaveManager;
-import com.logic.Transportmiddel;
 import com.logic.User;
 
 import javafx.application.Application;
@@ -20,7 +18,9 @@ public class Main extends Application {
     private static AnchorPane mainLayout;
   
        public static void seed(){
-        new SaveManager().loadAllFiles();
+        //just here incase users and transportmiddelen gets corrupted
+        //in that case copy the setup from the README
+         new SaveManager().loadAllFiles();
     }
 
     public static void main(String[] args) {
@@ -32,8 +32,7 @@ public class Main extends Application {
         primaryStage = ps;
         primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo.jpg"));
         seed();
-        User user = null;
-        show("login", user);
+        show("login", null);
     }
 
     public static void show(String fxml, User user) throws IOException {
@@ -44,8 +43,6 @@ public class Main extends Application {
         AController controller = loader.getController();
         controller.setUser(user);
         controller.setPoints(user);
-        controller.setPresets(user);
-        controller.setMessage(user);
 
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);

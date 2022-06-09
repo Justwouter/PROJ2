@@ -37,3 +37,7 @@ target/surefire-reports
 target/jacoco.exec
 target/site/jacoco/*
 target
+
+#Database files#
+data
+data/*.json

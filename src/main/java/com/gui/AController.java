@@ -1,33 +1,49 @@
 package com.gui;
 
 import java.io.IOException;
+import javafx.fxml.FXML;
 
 import com.logic.User;
+import javafx.scene.control.Label;
 
-import javafx.fxml.FXML;
 
 public abstract class AController {
 
-    private User user;
+    @FXML
+    protected Label points = new Label();
 
-    abstract void setUser(User user);
-    abstract void setPoints(User user);
-    abstract void setPresets(User user);
-    abstract void setMessage(User user);
+    protected User user;
 
-    //laat dit even staan gaat mogelijk anders zodat het makkelijker wordt
-    // @FXML
-    // private void switchToReisGegevens() throws IOException {
-    //     Main.show("reisgegevens", user);
-    // }
+    public void setUser(User user){
+        this.user = user;
+    }
+    public void setPoints(User user){
+        points.setText(user.getPoint().getPointsString());
+    }
 
-    // @FXML
-    // private void switchToLeaderboard() throws IOException {
-    //     Main.show("leaderboard", user);
-    // }
-
-    // @FXML
-    // public void onDBButtonClick() throws IOException {
-    //     Main.show("dashboard", user);
-    // }
+    //All switch statements (if you want a new fxml file add the switch method here!)
+    @FXML
+    private void switchToReisGegevens() throws IOException {
+        Main.show("reisgegevens", user);
+    }
+    @FXML
+    private void switchToLeaderboard() throws IOException {
+        Main.show("leaderboard", user);
+    }
+    @FXML
+    public void switchToDashboard() throws IOException {
+        Main.show("dashboard", user);
+    }
+    @FXML
+    public void switchToInstellingen() throws IOException {
+        Main.show("instellingen", user);
+    }
+    @FXML
+    public void switchToShop() throws IOException {
+        Main.show("shop", user);
+    }
+    @FXML 
+    public void switchToAdmin() throws IOException{
+        Main.show("admin", user);
+    } 
 }

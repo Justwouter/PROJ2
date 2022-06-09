@@ -1,45 +1,34 @@
 package com.gui;
 
+import com.logic.SaveManager;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+
+import javafx.beans.binding.ObjectExpression;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.chart.*;
+import javafx.scene.chart.XYChart.Data;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.logic.SaveManager;
-import com.logic.User;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.beans.binding.ObjectExpression;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+public class DashController extends AController implements Initializable {
 
-//Charts
-//import javafx.scene.chart.StackedBarChart;
-import javafx.scene.Node;
-import javafx.scene.chart.BarChart;                     
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.Data;
-
-//Sound
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
-
-
-public class DashController extends AController implements Initializable{
-
-    private User user;
     private MediaPlayer jukebox;
     private List<Long> avList;
     private SaveManager saveManager = new SaveManager();
@@ -57,9 +46,6 @@ public class DashController extends AController implements Initializable{
     private LineChart<String,Number> medianLineChart;
 
     @FXML
-    private Label pointsDash;
-
-    @FXML
     private CheckBox dynAverage;
 
     @FXML
@@ -70,32 +56,6 @@ public class DashController extends AController implements Initializable{
 
     @FXML
     private CategoryAxis weekChartX = new CategoryAxis();
-
-    @FXML
-    private void switchToReisGegevens() throws IOException {
-        exitAnim("reisgegevens", user);
-    }
-
-    @FXML
-    private void switchToLeaderboard() throws IOException {
-        Main.show("leaderboard", user);
-    }
-
-    @FXML
-    public void switchToDashboard() throws IOException {
-        exitAnim("dashboard", user);
-    }
-
-    @FXML
-    public void switchToInstellingen() throws IOException {
-        Main.show("instellingen", user);
-    }
-
-    @FXML
-    public void switchToShop() throws IOException {
-        Main.show("shop", user);
-    }
-
 
 
     //Animation
@@ -108,7 +68,7 @@ public class DashController extends AController implements Initializable{
         timeline.setOnFinished(e -> {try {Main.show(fxml, user);}catch(IOException e1){}
         });
     }
-
+  
     //Parent methods overrides
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -117,24 +77,8 @@ public class DashController extends AController implements Initializable{
         updateMedianLine(updateWeeklyChart());
     }
 
-    @Override
-    public void setPresets(User user){} 
-    
-    @Override
-    public void setUser(User u){
-        this.user = u;
-    }
 
-    @Override
-    public void setPoints(User user) {
-        pointsDash.setText(user.getPoint().getPointsString());
-    }
-
-    @Override
-    public void setMessage(User user){
-        uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
-    }
-
+    @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
     }
@@ -177,8 +121,6 @@ public class DashController extends AController implements Initializable{
         jukebox.play();
     }
 
-
-    
     /**
      * Loads the average lines if they are enabled in the GUI.
      * @param averageList List containing the barchart rng values. Can be removed when switching to stored userdata.
@@ -190,7 +132,6 @@ public class DashController extends AController implements Initializable{
             System.out.println("Hiding chart"); //Debug
         }
         else{
-            
             medianLineChart.setTitle("Weekly CO2 Values");
             medianLineChart.getXAxis().setLabel("Day");
             medianLineChart.getYAxis().setLabel("Value");
@@ -222,8 +163,7 @@ public class DashController extends AController implements Initializable{
                     averageLine.getData().add(vars);
                 }
                 medianLineChart.getData().add(averageLine);
-            }
-            
+            } 
             medianLineChart.setVisible(true);
         }
     }
@@ -246,9 +186,7 @@ public class DashController extends AController implements Initializable{
             }
         }
         return average/(days+1);
-        
     }
-
 
     /**
      *Updates the Bar Graph on the dashboard with the weekly values of the currently logged in user
@@ -283,7 +221,6 @@ public class DashController extends AController implements Initializable{
             }
         }
         average = average/averageList.size();
-
 
         //Debug
         System.out.println("Average: "+average);

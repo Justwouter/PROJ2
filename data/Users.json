@@ -1,5 +1,6 @@
-{"naam":"Testnaam Wouter","rank":1,"point":{"points":2500},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"jyn","password":"test"}
-{"naam":"Testnaam Eric","rank":2,"point":{"points":2000},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Eric","password":"Bull"}
-{"naam":"Testnaam Lucas","rank":3,"point":{"points":1500},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Lucas","password":"Clavel"}
-{"naam":"Testnaam Damnn...Daniël","rank":4,"point":{"points":1000},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Wessel","password":"Horsthuis"}
-{"naam":"Testnaam Burton","rank":5,"point":{"points":20},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Burton","password":"Braam"}
+{"naam":"Testnaam Test","rank":1,"point":{"points":10000},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Test","password":"Test","filiaal":"Utrecht"}
+{"naam":"Testnaam Wouter","rank":2,"point":{"points":2500},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"jyn","password":"test","filiaal":"Apeldoorn"}
+{"naam":"Testnaam Eric","rank":3,"point":{"points":2000},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Eric","password":"Bull","filiaal":"Den Haag"}
+{"naam":"Testnaam Lucas","rank":4,"point":{"points":1500},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Lucas","password":"Clavel","filiaal":"Utrecht"}
+{"naam":"Testnaam Damnn...Daniël","rank":5,"point":{"points":1000},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Wessel","password":"Horsthuis","filiaal":"Eindhoven"}
+{"naam":"Testnaam Burton","rank":6,"point":{"points":20},"isAdmin":false,"puntVerandering":[],"weeklyPointsObtained":false,"PreSets":[{},{},{},{},{}],"username":"Burton","password":"Braam","filiaal":"Rotterdam HQ"}

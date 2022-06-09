@@ -1,5 +1,7 @@
 package com.logic;
 
+import com.gui.ShopController;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
+
+
 /**
  * Sizable class that contains all the logic for reading and writing saves
  */
@@ -24,6 +28,8 @@ public class SaveManager {
         fileList.add(new File(dir+"Verhicles.json"));
         fileList.add(new File(dir+"Travels.json"));
         fileList.add(new File(dir+"Points.json")); 
+        fileList.add(new File(dir+"Filialen.json")); 
+        fileList.add(new File(dir+"Items.json"));
         return fileList;
     }
 
@@ -35,11 +41,18 @@ public class SaveManager {
         System.out.println("================");//Debug
         System.out.println("Making savestate");//Debug
         cleanAllFiles();
-        for(User u : Leaderboard.getUsers()){
+      
+        for(User u : Leaderboard.getUsers("")){
             this.writeToSave(u);
         }
         for(Transportmiddel t : Transportmiddel.getTransportmiddelen()){
             this.writeToSave(t);
+        }
+        for(Filiaal f : Filiaal.filialen){
+            SaveManager.writeToSave(f);
+        }
+        for (Item i : ShopController.itemList){
+            SaveManager.writeToSave(i);
         }
     }
 
@@ -65,6 +78,12 @@ public class SaveManager {
                 }
                 else if(isPointsFile(f.getName())){
                     gson.fromJson(s, Point.class);
+                }
+                else if(f.getName().contains("Filialen")){
+                    Filiaal.filialen.add(gson.fromJson(s, Filiaal.class));
+                }
+                else if(f.getName().contains("Items")){
+                    ShopController.itemList.add(gson.fromJson(s, Item.class));
                 }
             }
         }
@@ -126,6 +145,20 @@ public class SaveManager {
     }
 
     /**
+     * Writes the given {@link Filiaal} in JSON format to the Filialen file.
+     * @param filiaal the to be written Filiaal object
+     */
+    public static void writeToSave(Filiaal filiaal) {
+        File savefile = new File(dir+"Filialen.json");
+        write(savefile, filiaal);
+    }
+
+    public static void writeToSave(Item item) {
+        File savefile = new File(dir+"Items.json");
+        write(savefile, item);
+    }
+
+    /**
      * Support method
      * <p>
      * Writes any given object in JSON format to the given file.
@@ -156,7 +189,7 @@ public class SaveManager {
 
     /**
      * Reads the lines of an JSON file located in ~\data\ and returns them as entries in an ArrayList
-     * @param file
+     * @param savefile
      * @return {@link ArrayList<String>}
      */
     private ArrayList<String> readFile(File savefile) {
