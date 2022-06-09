@@ -49,10 +49,10 @@ public class SaveManager {
             this.writeToSave(t);
         }
         for(Filiaal f : Filiaal.filialen){
-            SaveManager.writeToSave(f);
+            this.writeToSave(f);
         }
         for (Item i : ShopController.itemList){
-            SaveManager.writeToSave(i);
+            this.writeToSave(i);
         }
     }
 
@@ -148,12 +148,12 @@ public class SaveManager {
      * Writes the given {@link Filiaal} in JSON format to the Filialen file.
      * @param filiaal the to be written Filiaal object
      */
-    public static void writeToSave(Filiaal filiaal) {
+    public void writeToSave(Filiaal filiaal) {
         File savefile = new File(dir+"Filialen.json");
         write(savefile, filiaal);
     }
 
-    public static void writeToSave(Item item) {
+    public void writeToSave(Item item) {
         File savefile = new File(dir+"Items.json");
         write(savefile, item);
     }

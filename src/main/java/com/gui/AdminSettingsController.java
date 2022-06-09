@@ -23,6 +23,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminSettingsController extends AController implements Initializable {
 
+    private SaveManager saveManager = new SaveManager();
+
     private ArrayList<User> users;
 
     @FXML
@@ -79,12 +81,12 @@ public class AdminSettingsController extends AController implements Initializabl
     @FXML
     public void makeUser() throws IOException {
        new User(naam.getText(), false, username.getText(), password.getText(), filiaal.getValue());
-       SaveManager.saveState();
+       saveManager.saveState();
     }
     
     @FXML
     public void makeAdmin() throws IOException {
         new User(naam.getText(), true, username.getText(), password.getText(), filiaal.getValue());
-       SaveManager.saveState();
+       saveManager.saveState();
     }
 }
