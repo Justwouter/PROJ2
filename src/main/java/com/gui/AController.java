@@ -6,7 +6,10 @@ import javafx.fxml.FXML;
 import com.logic.User;
 import javafx.scene.control.Label;
 
-
+/*
+ * Hoofd controller, wordt gebruikt om alle switch statements te implementeren.
+ * De setUser, setPoint zijn er zodat elke controller een vaste start method heeft.
+ */
 public abstract class AController {
 
     @FXML
