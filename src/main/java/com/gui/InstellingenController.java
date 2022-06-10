@@ -1,4 +1,3 @@
 package com.gui;
 
-public class InstellingenController extends AController {
-}
+public class InstellingenController extends AController {}

@@ -1,5 +1,7 @@
 package com.logic;
 
+import com.gui.ShopController;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,24 +10,26 @@ import java.util.Scanner;
 
 import com.google.gson.Gson;
 
+
 /**
  * Sizable class that contains all the logic for reading and writing saves
  */
 public class SaveManager {
     //Methods for points/reis may be unneccesary
-    public static Gson gson = new Gson();
-    static String dir = System.getProperty("user.dir")+"\\data\\";
-    static ArrayList<File> fileList = new ArrayList<>(seedSaveFiles());
+    Gson gson = new Gson();
+    String dir = System.getProperty("user.dir")+"\\data\\";
+    ArrayList<File> fileList = new ArrayList<>(seedSaveFiles());
 
 
     //Temp solution
-    public static ArrayList<File> seedSaveFiles() {
+    public ArrayList<File> seedSaveFiles() {
         ArrayList<File> fileList = new ArrayList<>();
         fileList.add(new File(dir+"Users.json"));
         fileList.add(new File(dir+"Verhicles.json"));
         fileList.add(new File(dir+"Travels.json"));
         fileList.add(new File(dir+"Points.json")); 
         fileList.add(new File(dir+"Filialen.json")); 
+        fileList.add(new File(dir+"Items.json"));
         return fileList;
     }
 
@@ -33,57 +37,87 @@ public class SaveManager {
     /**
      * Saves the currently existing Users & Transportmidddelen to their resective files
      */
-    public static void saveState() {
+    public void saveState() {
         System.out.println("================");//Debug
         System.out.println("Making savestate");//Debug
         cleanAllFiles();
+      
         for(User u : Leaderboard.getUsers("")){
-            SaveManager.writeToSave(u);
+            this.writeToSave(u);
         }
         for(Transportmiddel t : Transportmiddel.getTransportmiddelen()){
-            SaveManager.writeToSave(t);
+            this.writeToSave(t);
         }
         for(Filiaal f : Filiaal.filialen){
-            SaveManager.writeToSave(f);
+            this.writeToSave(f);
+        }
+        for (Item i : ShopController.itemList){
+            this.writeToSave(i);
         }
     }
 
     /**
      * Loads the saved data from the respective savefiles
      */
-    public static void loadAllFiles() {
-        System.out.println("================");
-        System.out.println("Loading files");
+    public void loadAllFiles() {
+        System.out.println("================");//Debug
+        System.out.println("Loading files");//Debug
         
         for(File f : fileList){
             ArrayList<String> readLines = readFile(f);
 
             for(String s : readLines){
-                //Not clean or efficient in the slightest but afaik its impossible to store Class.class .
-                if(f.getName().contains("Users")){
+                if(isUsersFile(f.getName())){
                     Leaderboard.addUser(gson.fromJson(s, User.class));
                 }
-                else if(f.getName().contains("Verhicles")){
+                else if(isVerhiclesFile(f.getName())){
                     Transportmiddel.transportmiddelen.add(gson.fromJson(s, Transportmiddel.class));                    
                 }
-                else if(f.getName().contains("Travels")){
+                else if(isTravelsFile(f.getName())){
                     gson.fromJson(s, Reis.class);                    
                 }
-                else if(f.getName().contains("Points")){
+                else if(isPointsFile(f.getName())){
                     gson.fromJson(s, Point.class);
                 }
                 else if(f.getName().contains("Filialen")){
                     Filiaal.filialen.add(gson.fromJson(s, Filiaal.class));
                 }
+                else if(f.getName().contains("Items")){
+                    ShopController.itemList.add(gson.fromJson(s, Item.class));
+                }
             }
         }
     }
+
+    //Solution to long method/Switch smell
+
+    public boolean isUsersFile(String s){
+        return s.contains("Users");
+    }
+
+    public boolean isVerhiclesFile(String s){
+        return s.contains("Verhicles");
+    }
+
+    public boolean isTravelsFile(String s){
+        return s.contains("Travels");
+        
+    }
+
+    public boolean isPointsFile(String s){
+        return s.contains("Points");
+    }
+
+
+
+
+
 
     /**
      * Writes the given {@link User} in JSON format to the Users file.
      * @param user the to be written User object
      */
-    public static void writeToSave(User user) {
+    public void writeToSave(User user) {
         File savefile = new File(dir+"Users.json");
         write(savefile, user);
     }
@@ -92,7 +126,7 @@ public class SaveManager {
      * Writes the given {@link Reis} in JSON format to the Travels file.
      * @param reis the to be written Reis object
      */
-    public static void writeToSave(Reis reis) {
+    public void writeToSave(Reis reis) {
         File savefile = new File(dir+"Travels.json");
         write(savefile, reis);
     }
@@ -100,23 +134,28 @@ public class SaveManager {
      * Writes the given {@link Transportmiddel} in JSON format to the Verhicles file.
      * @param transportmiddel the to be written Transportmiddel object
      */
-    public static void writeToSave(Transportmiddel transportmiddel) {
+    public void writeToSave(Transportmiddel transportmiddel) {
         File savefile = new File(dir+"Verhicles.json");
         write(savefile, transportmiddel);
     }
 
-    public static void writeToSave(Point point) {
+    public void writeToSave(Point point) {
         File savefile = new File(dir+"Points.json");
         write(savefile, point);
     }
 
     /**
      * Writes the given {@link Filiaal} in JSON format to the Filialen file.
-     * @param filialen the to be written Filiaal object
+     * @param filiaal the to be written Filiaal object
      */
-    public static void writeToSave(Filiaal filiaal) {
+    public void writeToSave(Filiaal filiaal) {
         File savefile = new File(dir+"Filialen.json");
         write(savefile, filiaal);
+    }
+
+    public void writeToSave(Item item) {
+        File savefile = new File(dir+"Items.json");
+        write(savefile, item);
     }
 
     /**
@@ -126,7 +165,7 @@ public class SaveManager {
      * @param  savefile The {@link File} where the data is saved to.
      * @param object Any {@link Object} will do.
      */
-    private static void write(File savefile, Object object) {
+    private void write(File savefile, Object object) {
         try{
             checkFS(savefile);
             FileWriter writer = new FileWriter(savefile,true);
@@ -144,16 +183,16 @@ public class SaveManager {
      * @param object
      * @return String
      */
-    public static String makeString(Object object) {
+    public String makeString(Object object) {
         return gson.toJson(object);
     }
 
     /**
      * Reads the lines of an JSON file located in ~\data\ and returns them as entries in an ArrayList
-     * @param file
+     * @param savefile
      * @return {@link ArrayList<String>}
      */
-    private static ArrayList<String> readFile(File savefile) {
+    private ArrayList<String> readFile(File savefile) {
         ArrayList<String> saveFileContents = new ArrayList<>();
         try {
             Scanner james = new Scanner(savefile);
@@ -178,7 +217,7 @@ public class SaveManager {
      * @return boolean true if successfull, false if not.
      * @throws IOException If the file does not exist
      */
-    public static boolean cleanFile(File savefile,boolean makefile) {
+    public boolean cleanFile(File savefile,boolean makefile) {
         try{
             if(savefile.delete()){
                 return savefile.createNewFile();
@@ -199,7 +238,7 @@ public class SaveManager {
      * @return {@code True} if succesfull.<p>
      *         {@code False} if not.
      */
-    public static boolean cleanAllFiles() {
+    public boolean cleanAllFiles() {
         try{
             for(File f : fileList){
                 f.delete();
@@ -217,7 +256,7 @@ public class SaveManager {
      * @return {@code true} if the filesystem was succesfully created or already exists.<p>
      *         {@code false} if the filesystem couldn't be made.
      */
-    public static boolean checkFS(File file){
+    public boolean checkFS(File file){
         try{
             if(file.exists()){
                 return true;
@@ -239,11 +278,11 @@ public class SaveManager {
      * @return {@code true} if the filesystem was succesfully created.<p>
      *         {@code false} if the filesystem couldn't be made.
      */
-    public static boolean generateFS(File file) {
+    public boolean generateFS(File file) {
         //Split the actual file from the dirs
         String path = file.getAbsolutePath();
         String[] splitPath = path.split("\\\\");
-        //Recombine the split string, leaving the last object in the path
+        //Recombine the split string, discarding the last object in the path
         String newPath = "";
         for(int i=0;i<splitPath.length-1;i++){
             newPath += splitPath[i]+"\\";

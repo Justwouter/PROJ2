@@ -1,6 +1,8 @@
 package com.gui;
 
 import com.logic.SaveManager;
+
+
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +11,7 @@ import javafx.scene.chart.*;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -24,6 +27,10 @@ public class DashController extends AController implements Initializable {
 
     private MediaPlayer jukebox;
     private List<Long> avList;
+    private SaveManager saveManager = new SaveManager();
+
+    @FXML
+    private AnchorPane dashMainPane;
 
     @FXML
     private Label uitstootVergelijk;
@@ -46,13 +53,15 @@ public class DashController extends AController implements Initializable {
     @FXML
     private CategoryAxis weekChartX = new CategoryAxis();
 
+  
     //Parent methods overrides
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SaveManager.saveState();
+        saveManager.saveState();
         LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
         updateMedianLine(updateWeeklyChart());
     }
+
 
     @FXML
     public void setVergelijking(){

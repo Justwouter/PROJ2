@@ -1,0 +1,41 @@
+.button{
+    -fx-background-color:
+            linear-gradient(#f0ff35, #a9ff00),
+            radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #395306;
+}
+
+
+.button:hover{
+    -fx-background-color:
+            linear-gradient(#d9e72f, #94de02),
+            radial-gradient(center 50% -40%, radius 200%, #95c02c 45%, #67a101 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #395306;
+    -fx-cursor: hand;
+}
+
+.current:hover{
+    -fx-background-color:
+            linear-gradient(#7e7e7e, #737272),
+            radial-gradient(center 50% -40%, radius 200%, #676666 45%, #3d3d3d 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #ffffff;
+}
+
+.current{
+    -fx-background-color:
+            linear-gradient(#949493, #8c8c8c),
+            radial-gradient(center 50% -40%, radius 200%, #817f7f 45%, #5b5b5b 50%);
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #ffffff;
+}

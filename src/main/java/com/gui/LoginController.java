@@ -70,5 +70,4 @@ public class LoginController extends AController {
     public void setPoints(User user){
 
     }
-
 }
