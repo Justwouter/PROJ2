@@ -1,7 +1,8 @@
 package com.gui;
 
+import com.logic.PuntMutatie;
 import com.logic.SaveManager;
-
+import com.logic.User;
 
 import javafx.beans.binding.ObjectExpression;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ import javafx.scene.media.MediaPlayer;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -59,7 +62,7 @@ public class DashController extends AController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         saveManager.saveState();
         LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
-        updateMedianLine(updateWeeklyChart());
+        
     }
 
 
@@ -182,13 +185,14 @@ public class DashController extends AController implements Initializable {
         //ArrayList<Object> historicUserData = new ArrayList<>();
         List<Long> averageList = new ArrayList<>();
         String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
+        int[] intsOfTheWeek = {Calendar.SUNDAY,Calendar.MONDAY,Calendar.TUESDAY,Calendar.WEDNESDAY,Calendar.THURSDAY,Calendar.FRIDAY,Calendar.SATURDAY};
         XYChart.Series<String,Number> series = new XYChart.Series<String, Number>();
-
         System.out.println("Parsing data");//Debug
 
         //Populate the XYchart with random value nodes & add floating lables to said nodes 
         for(int i=0;i< daysOfTheWeek.length;i++){
-            Long userDataValue = Math.round(Math.random()*100);
+            //Long userDataValue = Math.round(Math.random()*100);
+            Long userDataValue = calculateDailyUsage(i+1);//Calendar week start at index 1
             averageList.add(userDataValue);
             Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],userDataValue);
             vars.setNode(createValueLabel(vars.YValueProperty()));
@@ -227,11 +231,33 @@ public class DashController extends AController implements Initializable {
         return averageList;
     }
 
+
+    private Long calculateDailyUsage(int day){
+        ArrayList<PuntMutatie> allPointMutations = user.puntVerandering;
+        Calendar currentDate = Calendar.getInstance();
+        Long output = (long)0;
+        
+        for(PuntMutatie mutation : allPointMutations){
+            if(mutation.datum.getWeekYear() == currentDate.getWeekYear()){
+                if(mutation.datum.get(Calendar.DAY_OF_WEEK) == day){
+                    output +=mutation.puntVerandering;
+                }
+            }
+
+        }
+        return output*output;
+    }
+
+
+
+
+
+
     /**
      * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart 
      * @param value
      */
-    private static Node createValueLabel(ObjectExpression<Number> value) {
+    private Node createValueLabel(ObjectExpression<Number> value) {
         var label = new Label();
         label.textProperty().bind(value.asString());
         var pane = new Pane(label);
@@ -254,5 +280,11 @@ public class DashController extends AController implements Initializable {
         else {
             node.setStyle("-fx-bar-fill: green");
         }
+    }
+
+    @Override
+    public void setUser(User user) {
+        super.setUser(user);
+        updateMedianLine(updateWeeklyChart());
     }
 }
