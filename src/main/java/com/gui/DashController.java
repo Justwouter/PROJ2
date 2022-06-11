@@ -56,6 +56,9 @@ public class DashController extends AController implements Initializable {
     @FXML
     private CategoryAxis weekChartX = new CategoryAxis();
 
+    @FXML
+    private NumberAxis averageChartY = new NumberAxis(0,150,10);
+
   
     //Parent methods overrides
     @Override
@@ -210,6 +213,9 @@ public class DashController extends AController implements Initializable {
             }
         }
         average = average/averageList.size();
+        weekChartY.setUpperBound((double)highest+20);
+        averageChartY.setUpperBound(weekChartY.getUpperBound());
+
 
         //Debug
         System.out.println("Average: "+average);
@@ -241,11 +247,12 @@ public class DashController extends AController implements Initializable {
             if(mutation.datum.getWeekYear() == currentDate.getWeekYear()){
                 if(mutation.datum.get(Calendar.DAY_OF_WEEK) == day){
                     output +=mutation.puntVerandering;
+                    System.out.println(output);
                 }
             }
 
         }
-        return output*output;
+        return Math.abs(output);
     }
 
 
