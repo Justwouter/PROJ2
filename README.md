@@ -27,6 +27,7 @@ Link ziet er gek uit maar werkt wel. Github verandert de visuals van sommige let
 
 
 legacy code:
+
         new User("Testnaam Eric", "Eric", "Bull").getPoint().setPoints(2000);
         new User("Testnaam Burton", "Burton","Braam").getPoint().setPoints(20);
         new User("Testnaam Damnn...Daniël", "Wessel", "Horsthuis");
