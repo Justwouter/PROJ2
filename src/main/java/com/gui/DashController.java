@@ -213,6 +213,8 @@ public class DashController extends AController implements Initializable {
             }
         }
         average = average/averageList.size();
+
+        //Adjust the max amount of values the charts can contain. Always keep the linechart equal to the barchart.
         weekChartY.setUpperBound((double)highest+20);
         averageChartY.setUpperBound(weekChartY.getUpperBound());
 
@@ -220,7 +222,7 @@ public class DashController extends AController implements Initializable {
         //Debug
         System.out.println("Average: "+average);
         System.out.println("Highest: " +highest);
-        System.out.println("Displaying bar"); //Debug
+        System.out.println("Displaying bar");
 
         //Assign lables 
         co2ThisWeekChart.setTitle("Weekly CO2 Values");
@@ -232,12 +234,18 @@ public class DashController extends AController implements Initializable {
         co2ThisWeekChart.setAnimated(false);
         co2ThisWeekChart.getData().clear();
         co2ThisWeekChart.getData().add(series);
-        //co2ThisWeekChart.setAnimated(true);
+        co2ThisWeekChart.setAnimated(true);
         this.avList = averageList;
         return averageList;
     }
 
 
+    /**
+     * Loops trough a User's point mutations & returns the values for the selected day in the current week.<p>
+     * This method uses the Calendar date index e.g. Sunday = 1 and Saturday = 7.
+     * @param day
+     * @return Long containing the added (positive) values of the selected day.
+     */
     private Long calculateDailyUsage(int day){
         ArrayList<PuntMutatie> allPointMutations = user.puntVerandering;
         Calendar currentDate = Calendar.getInstance();
