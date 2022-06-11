@@ -1,12 +1,15 @@
 package com.gui;
 
+import java.io.IOException;
+
 import com.logic.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import java.io.IOException;
-
-
+/*
+ * Hoofd controller, wordt gebruikt om alle switch statements te implementeren.
+ * De setUser, setPoint zijn er zodat elke controller een vaste start method heeft.
+ */
 public abstract class AController {
 
     @FXML
