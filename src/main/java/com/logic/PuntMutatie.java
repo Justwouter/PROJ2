@@ -29,7 +29,7 @@ public class PuntMutatie{
     * Er hoeft hier niks meegegeven te worden omdat hij de datum opvraagt van het meegegeven object
     */
     public boolean isFromLast4Weeks(){
-        //Burton ik weet niet waar je deze formatting opgepikt hebt, maak het is absoluut onleesbaar.
+        //Burton ik weet niet waar je deze formatting opgepikt hebt, maak het is irritant om te lezen.
         //Split zulke if's uit in kleine methods graag
         Calendar datumCheck = Calendar.getInstance();
         //check for last month date
