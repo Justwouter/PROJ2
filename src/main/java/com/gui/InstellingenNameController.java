@@ -27,23 +27,22 @@ public class InstellingenNameController extends AController implements Initializ
     @FXML
     private Label naamLabel;
 
-    //its a bit weird because username is actually the name
     @FXML
     public void usernameButton(){
         if(!gebruikersnaam.getText().isBlank()){
-            user.naam = gebruikersnaam.getText();
+            user.username = gebruikersnaam.getText();
             saveManager.saveState();
-            gebruikersnaamLabel.setText("Gebruikersnaam aangepast naar " + user.getNaam() + ".");
+            gebruikersnaamLabel.setText("Gebruikersnaam aangepast naar " + user.getUsername() + ".");
             gebruikersnaam.clear();
         }
     }
-    //its a bit weird because name is actually the username
+
     @FXML
     public void nameButton(){
         if(!naam.getText().isBlank()){
-            user.username = naam.getText();
+            user.naam = naam.getText();
             saveManager.saveState();
-            naamLabel.setText("Naam aangepast naar " + user.getUsername() + ".");
+            naamLabel.setText("Naam aangepast naar " + user.getNaam() + ".");
             naam.clear();
         }
     }

@@ -2,6 +2,7 @@ package com.gui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -9,12 +10,16 @@ import com.logic.User;
 
 public class testInstellingenPasswordController {
 
-    User testUser;
+    static User testUser;
     InstellingenPasswordController testController = new InstellingenPasswordController();
 
     @BeforeAll
-    public void start(){
+    public static void start(){
         testUser = new User("TestGebruiker", false, "Username", "Password", null);
+    }    
+    @AfterAll
+    public static void end(){
+        //idfk of userList moet public of er moet een methode voor de clear komen wat jullie willen
     }
 
     @Test
