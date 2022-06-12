@@ -48,7 +48,6 @@ public class User {
         return this.password;
     }
 
-
     public ArrayList<Reis> getReizen(){
         return PreSets;
     }
