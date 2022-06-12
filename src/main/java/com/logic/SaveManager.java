@@ -25,7 +25,9 @@ public class SaveManager {
     String dir = System.getProperty("user.dir")+"/data/";
     ArrayList<String> fileList = new ArrayList<>();
 
-
+    public SaveManager(){
+        this(false);
+    }
 
     public SaveManager(boolean fancy){
         if(fancy){
@@ -35,10 +37,11 @@ public class SaveManager {
         }
         else{
             this.gson = new Gson();
+            this.dir +="Legacy/";
             this.fileList = seedStandardSaveFiles();
+            
         }
     }
-
 
     private ArrayList<String> seedStandardSaveFiles() {
         ArrayList<String> fileList = new ArrayList<>();
@@ -46,7 +49,7 @@ public class SaveManager {
         fileList.add(dir+"Verhicles.json");
         fileList.add(dir+"Travels.json");
         fileList.add(dir+"Points.json"); 
-        fileList.add(dir+"Filialen.json"); 
+        fileList.add(dir+"Locations.json"); 
         fileList.add(dir+"Items.json");
         return fileList;
     }
@@ -55,12 +58,10 @@ public class SaveManager {
         ArrayList<String> fileList = new ArrayList<>();
         fileList.add(dir+"Users/");
         fileList.add(dir+"Verhicles/");
+        fileList.add(dir+"Locations/");
         fileList.add(dir+"Items/");
-        fileList.add(dir+"Filialen/");
         return fileList;
     }
-
-
 
     /**
      * Saves the currently existing Users & Transportmidddelen to their resective files
@@ -72,12 +73,10 @@ public class SaveManager {
 
         if(fancy){
             fancySave();
-
         }
         else{
             standardSave();
         }
-        
     }
 
     private void standardSave(){
@@ -111,41 +110,6 @@ public class SaveManager {
 
     }
 
-
-
-
-
-    private Reader readFilev2(File savefile){
-        try{
-            Reader reader = Files.newBufferedReader(savefile.toPath());
-            return reader;
-        }
-        catch(IOException e){System.out.println(e); return null;}
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Loads the saved data from the respective savefiles
      */
@@ -166,18 +130,21 @@ public class SaveManager {
         
         for(String s : fileList){
             for(File f : findFancySaves(s)){
-                if(isUsersFile(s)){
-                    Leaderboard.addUser(gson.fromJson(readFilev2(f), User.class));
+                if(f.exists()){
+                    if(isUsersFile(s)){
+                        Leaderboard.addUser(gson.fromJson(readFancyFile(f), User.class));
+                    }
+                    else if(isVerhiclesFile(s)){
+                        Transportmiddel.transportmiddelen.add(gson.fromJson(readFancyFile(f), Transportmiddel.class));                    
+                    }
+                    else if(isShopFile(s)){
+                        Filiaal.filialen.add(gson.fromJson(readFancyFile(f), Filiaal.class));
+                    }
+                    else if(isItemsFile(s)){
+                        ShopController.itemList.add(gson.fromJson(readFancyFile(f), Item.class));
+                    }
                 }
-                else if(isVerhiclesFile(s)){
-                    Transportmiddel.transportmiddelen.add(gson.fromJson(readFilev2(f), Transportmiddel.class));                    
-                }
-                else if(isShopFile(s)){
-                    Filiaal.filialen.add(gson.fromJson(readFilev2(f), Filiaal.class));
-                }
-                else if(isItemsFile(s)){
-                    ShopController.itemList.add(gson.fromJson(readFilev2(f), Item.class));
-                }
+                
             }
         }
     }
@@ -186,11 +153,22 @@ public class SaveManager {
     private File[] findFancySaves(String dir) {
         File f = new File(dir);
         File[] dataFiles = f.listFiles(new FilenameFilter() {
+
+            @Override
             public boolean accept(File dir, String name) {
-                return name.endsWith("json");
+                return name.endsWith(".json");
             }
+            
         });
-        return dataFiles;
+        if(dataFiles != null){
+            return dataFiles;
+        }
+        else {
+            File nonexist = new File("C:/con");
+            File[] toArray = {nonexist};
+            return toArray;
+        }
+        
     }
 
 
@@ -231,13 +209,8 @@ public class SaveManager {
     }
 
     private boolean isShopFile(String s){
-        return s.contains("Filialen");
+        return s.contains("Locations");
     }
-
-
-
-
-
 
     /**
      * Writes the given {@link User} in JSON format to the Users file.
@@ -276,33 +249,38 @@ public class SaveManager {
     }
 
 
-
+    /**
+     * Writes the given {@link User} in JSON format to a file in the ~/data/Users/ dir
+     * @param user
+     */
     private void writeToFancySave(User user) {
-        File savefile = new File(dir+"Users/"+"user"+filesInDir("Users", "user"));
+        File savefile = new File(dir+"Users/"+"user"+filesInDir("Users", "user")+".json");
         write(savefile, user);
     }
-
+    /**
+     * Writes the given {@link Transportmiddel} in JSON format to a file in the ~/data/Verhicles/ dir
+     * @param transportmiddel
+     */
     private void writeToFancySave(Transportmiddel transportmiddel) {
-        File savefile = new File(dir+"Verhicles/"+"vehicle"+filesInDir("Verhicles", "vehicle"));
+        File savefile = new File(dir+"Verhicles/"+"vehicle"+filesInDir("Verhicles", "vehicle")+".json");
         write(savefile, transportmiddel);
     }
-
+    /**
+     * Writes the given {@link Filiaal} in JSON format to a file in the ~/data/Loactions/ dir
+     * @param filiaal
+     */
     private void writeToFancySave(Filiaal filiaal) {
-        File savefile = new File(dir+"Locations/"+"filiaal"+filesInDir("Locations", "filiaal"));
+        File savefile = new File(dir+"Locations/"+"filiaal"+filesInDir("Locations", "filiaal")+".json");
         write(savefile, filiaal);
     }
-
+    /**
+     * Writes the given {@link Item} in JSON format to a file in the ~/data/Items/ dir
+     * @param item
+     */
     private void writeToFancySave(Item item) {
-        File savefile = new File(dir+"Items/"+"item"+filesInDir("Items", "item"));
+        File savefile = new File(dir+"Items/"+"item"+filesInDir("Items", "item")+".json");
         write(savefile, item);
     }
-
-
-
-
-
-
-
 
 
     /**
@@ -334,7 +312,7 @@ public class SaveManager {
     }
 
     /**
-     * Reads the lines of an JSON file located in ~\data\ and returns them as entries in an ArrayList
+     * Reads the lines of an JSON file located in ~\data\ and returns them as entries in an ArrayList.
      * @param savefile
      * @return {@link ArrayList<String>}
      */
@@ -356,7 +334,18 @@ public class SaveManager {
     }
 
 
-
+    /**
+     * Reads an JSON file and returns the read data.
+     * @param savefile
+     * @return {@link Reader}
+     */
+    private Reader readFancyFile(File savefile){
+        try{
+            Reader reader = Files.newBufferedReader(savefile.toPath());
+            return reader;
+        }
+        catch(IOException e){System.out.println(e); return null;}
+    }
 
     //FileSystem checks
 
@@ -391,22 +380,37 @@ public class SaveManager {
     public boolean cleanAllFiles() {
         try{
             File currentDir = new File(dir);
-            currentDir.delete();
+            rmDir(currentDir);
             currentDir.mkdir();
-            /* 
-            for(String s : fileList){
-                File f = new File(s);
-                f.delete();
-                f.createNewFile();
-                f = null;
-            }
-            */
             return true;
         }
         catch(Exception e){System.out.println(e);}
         return false;        
     }
 
+    /**
+     * Recursively deletes every file/folder till relative ~ for the given dir.
+     * @param file
+     */
+    private void rmDir(File file){
+        File[] contents = file.listFiles();
+        if (contents != null) {
+            
+            for (File f : contents) {
+                try{
+                    if(!f.getPath().contains("Legacy")){
+                        rmDir(f);
+                    }
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
+            }
+            
+            
+        }
+        file.delete();
+    }
 
     /**
      * 
@@ -415,14 +419,20 @@ public class SaveManager {
      * @return int amount of files corresponding to the filter in the dir
      */
     private int filesInDir(String subdir, String filter){
-        return new File(dir+subdir+"/").list(new FilenameFilter() {
+        try{
+            return new File(dir+subdir+"/").list(new FilenameFilter() {
 
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.contains(filter) && name.endsWith(".json");
-            }
-            
-        }).length;
+                @Override
+                public boolean accept(File dir, String name) {
+                    return name.contains(filter) && name.endsWith(".json");
+                }
+                
+            }).length;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
     }
 
     /**

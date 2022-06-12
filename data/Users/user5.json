@@ -1,0 +1,20 @@
+{
+  "naam": "Testnaam Burton",
+  "rank": 6,
+  "point": {
+    "points": 20
+  },
+  "isAdmin": false,
+  "puntVerandering": [],
+  "weeklyPointsObtained": false,
+  "PreSets": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "username": "Burton",
+  "password": "Braam",
+  "filiaal": "Rotterdam HQ"
+}

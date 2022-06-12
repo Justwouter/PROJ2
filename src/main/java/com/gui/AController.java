@@ -2,6 +2,7 @@ package com.gui;
 
 import java.io.IOException;
 
+import com.logic.SaveManager;
 import com.logic.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,6 +15,8 @@ public abstract class AController {
 
     @FXML
     public Label points = new Label();
+
+    public SaveManager saveManager = new SaveManager(true);
 
     public User user;
 

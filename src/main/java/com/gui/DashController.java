@@ -1,7 +1,6 @@
 package com.gui;
 
 import com.logic.PuntMutatie;
-import com.logic.SaveManager;
 import com.logic.User;
 
 import javafx.beans.binding.ObjectExpression;
@@ -29,7 +28,6 @@ public class DashController extends AController implements Initializable {
 
     private MediaPlayer jukebox;
     private List<Long> avList;
-    private SaveManager saveManager = new SaveManager();
 
     @FXML
     private AnchorPane dashMainPane;
