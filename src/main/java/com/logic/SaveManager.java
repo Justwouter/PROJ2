@@ -72,9 +72,11 @@ public class SaveManager {
         cleanAllFiles();
 
         if(fancy){
+            System.out.println("Using fancy Save");//Debug
             fancySave();
         }
         else{
+            System.out.println("Using Standard Save");//Debug
             standardSave();
         }
     }
@@ -438,14 +440,19 @@ public class SaveManager {
      */
     private int filesInDir(String subdir, String filter){
         try{
-            return new File(dir+subdir+"/").list(new FilenameFilter() {
+            String[] jsonInDir =  new File(dir+subdir+"/").list(new FilenameFilter() {
 
                 @Override
                 public boolean accept(File dir, String name) {
                     return name.contains(filter) && name.endsWith(".json");
                 }
                 
-            }).length;
+            });
+            if(jsonInDir != null){
+                return jsonInDir.length;
+            }
+            return 0;
+                
         }
         catch(Exception e){
             System.out.println(e);
