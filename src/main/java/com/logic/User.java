@@ -40,8 +40,8 @@ public class User {
         PreSets.set(index, reis);
     }
 
-    public void setPassword(String ww){
-        this.password = ww;
+    public void setPassword(String Password){
+        this.password = Password;
     }
 
     public String getPassword(){
