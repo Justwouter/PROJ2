@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import com.logic.User;
 
-public class testInstellingenController {
+public class testInstellingenPasswordController {
 
     User testUser;
-    InstellingenController testController = new InstellingenController();
+    InstellingenPasswordController testController = new InstellingenPasswordController();
 
     @BeforeAll
     public void start(){

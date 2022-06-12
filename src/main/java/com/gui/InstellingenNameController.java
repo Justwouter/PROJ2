@@ -32,7 +32,8 @@ public class InstellingenNameController extends AController implements Initializ
         if(!gebruikersnaam.getText().isBlank()){
             user.username = gebruikersnaam.getText();
             saveManager.saveState();
-            gebruikersnaamLabel.setText("Gebruikersnaam aangepast.");
+            gebruikersnaamLabel.setText("Gebruikersnaam aangepast " + user.getUsername() + ".");
+            gebruikersnaam.clear();
         }
     }
 
@@ -41,7 +42,8 @@ public class InstellingenNameController extends AController implements Initializ
         if(!naam.getText().isBlank()){
             user.username = naam.getText();
             saveManager.saveState();
-            naamLabel.setText("Naam aangepast.");
+            naamLabel.setText("Naam aangepast naar " + user.getNaam() + ".");
+            naam.clear();
         }
     }
 
