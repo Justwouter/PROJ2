@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 
 public class InstellingenController extends AController implements Initializable {
 
-    boolean passwordHide = true;
+    boolean passwordHide = false;
 
     @FXML
     private Label name;
