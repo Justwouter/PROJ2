@@ -69,7 +69,18 @@ public class SaveManager {
         System.out.println("================");//Debug
         System.out.println("Making savestate");//Debug
         cleanAllFiles();
-      
+
+        if(fancy){
+            fancySave();
+
+        }
+        else{
+            standardSave();
+        }
+        
+    }
+
+    private void standardSave(){
         for(User u : Leaderboard.getUsers("")){
             this.writeToSave(u);
         }
@@ -82,6 +93,22 @@ public class SaveManager {
         for (Item i : ShopController.itemList){
             this.writeToSave(i);
         }
+    }
+
+    private void fancySave(){
+        for(User u : Leaderboard.getUsers("")){
+            this.writeToFancySave(u);
+        }
+        for(Transportmiddel t : Transportmiddel.getTransportmiddelen()){
+            this.writeToFancySave(t);
+        }
+        for(Filiaal f : Filiaal.filialen){
+            this.writeToFancySave(f);
+        }
+        for (Item i : ShopController.itemList){
+            this.writeToFancySave(i);
+        }
+
     }
 
 
@@ -136,19 +163,23 @@ public class SaveManager {
     }
 
     private void loadFancyFiles(){
-        Class<?> currentClass = User.class;
+        
         for(String s : fileList){
-
-            if(isUsersFile(s)){currentClass = User.class;}
-            else if (isVerhiclesFile(s)){currentClass = Transportmiddel.class;}
-            else if(isItemsFile(s)){currentClass = Item.class;}
-            else if(isShopFile(s)){currentClass = Filiaal.class;}
-
             for(File f : findFancySaves(s)){
-                gson.fromJson(readFilev2(f), currentClass);
+                if(isUsersFile(s)){
+                    Leaderboard.addUser(gson.fromJson(readFilev2(f), User.class));
+                }
+                else if(isVerhiclesFile(s)){
+                    Transportmiddel.transportmiddelen.add(gson.fromJson(readFilev2(f), Transportmiddel.class));                    
+                }
+                else if(isShopFile(s)){
+                    Filiaal.filialen.add(gson.fromJson(readFilev2(f), Filiaal.class));
+                }
+                else if(isItemsFile(s)){
+                    ShopController.itemList.add(gson.fromJson(readFilev2(f), Item.class));
+                }
             }
         }
-
     }
 
 
@@ -244,6 +275,27 @@ public class SaveManager {
         write(savefile, item);
     }
 
+
+
+    private void writeToFancySave(User user) {
+        File savefile = new File(dir+"Users/"+"user"+filesInDir("Users", "user"));
+        write(savefile, user);
+    }
+
+    private void writeToFancySave(Transportmiddel transportmiddel) {
+        File savefile = new File(dir+"Verhicles/"+"vehicle"+filesInDir("Verhicles", "vehicle"));
+        write(savefile, transportmiddel);
+    }
+
+    private void writeToFancySave(Filiaal filiaal) {
+        File savefile = new File(dir+"Locations/"+"filiaal"+filesInDir("Locations", "filiaal"));
+        write(savefile, filiaal);
+    }
+
+    private void writeToFancySave(Item item) {
+        File savefile = new File(dir+"Items/"+"item"+filesInDir("Items", "item"));
+        write(savefile, item);
+    }
 
 
 
@@ -353,6 +405,24 @@ public class SaveManager {
         }
         catch(Exception e){System.out.println(e);}
         return false;        
+    }
+
+
+    /**
+     * 
+     * @param subdir the directory under project root where the data is stored.
+     * @param filter Filenames contain this string.
+     * @return int amount of files corresponding to the filter in the dir
+     */
+    private int filesInDir(String subdir, String filter){
+        return new File(dir+subdir+"/").list(new FilenameFilter() {
+
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.contains(filter) && name.endsWith(".json");
+            }
+            
+        }).length;
     }
 
     /**
