@@ -28,7 +28,7 @@ public class InstellingenPasswordController extends AController implements Initi
     private TextField HerhalingWW;
 
     @FXML
-    public void setLabel(){
+    private void setLabel(){
         if (!checkPasswordDubbel(NieuweWW.getText(), HerhalingWW.getText()) || !checkPasswordCorrect(HuidigeWW.getText(), user.getPassword())){
             ErrorLabel.setText("Wachtwoorden komen niet overeen.");
         }
@@ -38,7 +38,7 @@ public class InstellingenPasswordController extends AController implements Initi
     }
 
     @FXML
-    public void passwordButton(){
+    private void passwordButton(){
         String huidig = HuidigeWW.getText();
         String nieuw = NieuweWW.getText();
         String herhaling = HerhalingWW.getText();  
@@ -56,21 +56,13 @@ public class InstellingenPasswordController extends AController implements Initi
 
     //checks if the two passwords match
     public boolean checkPasswordDubbel(String nieuw, String herhaling){
-        if (nieuw.equals(herhaling) && !nieuw.equals("")){
-            return true;
-        }else{
-            return false;
-        }
+        return (nieuw.equals(herhaling) && !nieuw.equals("") && !herhaling.equals(""));
     }
 
     //checks if the correct password has been given
     public boolean checkPasswordCorrect(String huidig, String user){
-        if (huidig.equals(user) && !huidig.equals("")){
-            return true;
-        }else{
-            return false;
+        return (huidig.equals(user) && !huidig.equals(""));
         }
-    }
 
     public boolean checkNewPassword(String nieuw){
         return (nieuw.equals(user.getPassword()));
