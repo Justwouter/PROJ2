@@ -12,11 +12,6 @@ public class TestLoginController extends AGUITests{
 
     LoginController controller = new LoginController();
 
-    
-
-    
-
-
     @BeforeAll
     public static void seed(){
         new User("Test Eric", false, "Eric", "Bull", null);
