@@ -4,11 +4,15 @@ import com.gui.ShopController;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 /**
@@ -16,22 +20,46 @@ import com.google.gson.Gson;
  */
 public class SaveManager {
     //Methods for points/reis may be unneccesary
-    Gson gson = new Gson();
-    String dir = System.getProperty("user.dir")+"\\data\\";
-    ArrayList<File> fileList = new ArrayList<>(seedSaveFiles());
+    Gson gson;
+    boolean fancy = false;
+    String dir = System.getProperty("user.dir")+"/data/";
+    ArrayList<String> fileList = new ArrayList<>();
 
 
-    //Temp solution
-    public ArrayList<File> seedSaveFiles() {
-        ArrayList<File> fileList = new ArrayList<>();
-        fileList.add(new File(dir+"Users.json"));
-        fileList.add(new File(dir+"Verhicles.json"));
-        fileList.add(new File(dir+"Travels.json"));
-        fileList.add(new File(dir+"Points.json")); 
-        fileList.add(new File(dir+"Filialen.json")); 
-        fileList.add(new File(dir+"Items.json"));
+
+    public SaveManager(boolean fancy){
+        if(fancy){
+            this.fancy = fancy;
+            this.gson = new GsonBuilder().setPrettyPrinting().create();
+            this.fileList = seedFancySaveFiles();
+        }
+        else{
+            this.gson = new Gson();
+            this.fileList = seedStandardSaveFiles();
+        }
+    }
+
+
+    private ArrayList<String> seedStandardSaveFiles() {
+        ArrayList<String> fileList = new ArrayList<>();
+        fileList.add(dir+"Users.json");
+        fileList.add(dir+"Verhicles.json");
+        fileList.add(dir+"Travels.json");
+        fileList.add(dir+"Points.json"); 
+        fileList.add(dir+"Filialen.json"); 
+        fileList.add(dir+"Items.json");
         return fileList;
     }
+
+    private ArrayList<String> seedFancySaveFiles(){
+        ArrayList<String> fileList = new ArrayList<>();
+        fileList.add(dir+"Users/");
+        fileList.add(dir+"Verhicles/");
+        fileList.add(dir+"Items/");
+        fileList.add(dir+"Filialen/");
+        return fileList;
+    }
+
 
 
     /**
@@ -56,14 +84,88 @@ public class SaveManager {
         }
     }
 
+
+
+
+
+    private Reader readFilev2(File savefile){
+        try{
+            Reader reader = Files.newBufferedReader(savefile.toPath());
+            return reader;
+        }
+        catch(IOException e){System.out.println(e); return null;}
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Loads the saved data from the respective savefiles
      */
     public void loadAllFiles() {
         System.out.println("================");//Debug
         System.out.println("Loading files");//Debug
+        if(fancy){
+            loadFancyFiles();
+        }
+        else{
+            loadStandardFiles();
+        }
         
-        for(File f : fileList){
+        
+    }
+
+    private void loadFancyFiles(){
+        Class<?> currentClass = User.class;
+        for(String s : fileList){
+
+            if(isUsersFile(s)){currentClass = User.class;}
+            else if (isVerhiclesFile(s)){currentClass = Transportmiddel.class;}
+            else if(isItemsFile(s)){currentClass = Item.class;}
+            else if(isShopFile(s)){currentClass = Filiaal.class;}
+
+            for(File f : findFancySaves(s)){
+                gson.fromJson(readFilev2(f), currentClass);
+            }
+        }
+
+    }
+
+
+    private File[] findFancySaves(String dir) {
+        File f = new File(dir);
+        File[] dataFiles = f.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.endsWith("json");
+            }
+        });
+        return dataFiles;
+    }
+
+
+    private void loadStandardFiles(){
+        for(String st : fileList){
+            File f = new File(st);
             ArrayList<String> readLines = readFile(f);
 
             for(String s : readLines){
@@ -73,16 +175,10 @@ public class SaveManager {
                 else if(isVerhiclesFile(f.getName())){
                     Transportmiddel.transportmiddelen.add(gson.fromJson(s, Transportmiddel.class));                    
                 }
-                else if(isTravelsFile(f.getName())){
-                    gson.fromJson(s, Reis.class);                    
-                }
-                else if(isPointsFile(f.getName())){
-                    gson.fromJson(s, Point.class);
-                }
-                else if(f.getName().contains("Filialen")){
+                else if(isShopFile(f.getName())){
                     Filiaal.filialen.add(gson.fromJson(s, Filiaal.class));
                 }
-                else if(f.getName().contains("Items")){
+                else if(isItemsFile(f.getName())){
                     ShopController.itemList.add(gson.fromJson(s, Item.class));
                 }
             }
@@ -91,21 +187,20 @@ public class SaveManager {
 
     //Solution to long method/Switch smell
 
-    public boolean isUsersFile(String s){
+    private boolean isUsersFile(String s){
         return s.contains("Users");
     }
 
-    public boolean isVerhiclesFile(String s){
+    private boolean isVerhiclesFile(String s){
         return s.contains("Verhicles");
     }
 
-    public boolean isTravelsFile(String s){
-        return s.contains("Travels");
-        
+    private boolean isItemsFile(String s){
+        return s.contains("Items");
     }
 
-    public boolean isPointsFile(String s){
-        return s.contains("Points");
+    private boolean isShopFile(String s){
+        return s.contains("Filialen");
     }
 
 
@@ -115,52 +210,51 @@ public class SaveManager {
 
     /**
      * Writes the given {@link User} in JSON format to the Users file.
-     * @param user the to be written User object
+     * @param user the to be written User object.
      */
-    public void writeToSave(User user) {
+    private void writeToSave(User user) {
         File savefile = new File(dir+"Users.json");
         write(savefile, user);
     }
 
     /**
-     * Writes the given {@link Reis} in JSON format to the Travels file.
-     * @param reis the to be written Reis object
-     */
-    public void writeToSave(Reis reis) {
-        File savefile = new File(dir+"Travels.json");
-        write(savefile, reis);
-    }
-    /**
      * Writes the given {@link Transportmiddel} in JSON format to the Verhicles file.
-     * @param transportmiddel the to be written Transportmiddel object
+     * @param transportmiddel the to be written Transportmiddel object.
      */
-    public void writeToSave(Transportmiddel transportmiddel) {
+    private void writeToSave(Transportmiddel transportmiddel) {
         File savefile = new File(dir+"Verhicles.json");
         write(savefile, transportmiddel);
     }
 
-    public void writeToSave(Point point) {
-        File savefile = new File(dir+"Points.json");
-        write(savefile, point);
-    }
-
     /**
      * Writes the given {@link Filiaal} in JSON format to the Filialen file.
-     * @param filiaal the to be written Filiaal object
+     * @param filiaal the to be written Filiaal object.
      */
-    public void writeToSave(Filiaal filiaal) {
+    private void writeToSave(Filiaal filiaal) {
         File savefile = new File(dir+"Filialen.json");
         write(savefile, filiaal);
     }
 
-    public void writeToSave(Item item) {
+    /**
+     * Writes the given {@link Item} in JSON format to the Filialen file.
+     * @param item the to be written item object.
+     */
+    private void writeToSave(Item item) {
         File savefile = new File(dir+"Items.json");
         write(savefile, item);
     }
 
+
+
+
+
+
+
+
+
+
     /**
-     * Support method
-     * <p>
+     *
      * Writes any given object in JSON format to the given file.
      * @param  savefile The {@link File} where the data is saved to.
      * @param object Any {@link Object} will do.
@@ -192,6 +286,7 @@ public class SaveManager {
      * @param savefile
      * @return {@link ArrayList<String>}
      */
+    @Deprecated
     private ArrayList<String> readFile(File savefile) {
         ArrayList<String> saveFileContents = new ArrayList<>();
         try {
@@ -207,6 +302,9 @@ public class SaveManager {
         catch(Exception e){}
         return saveFileContents;
     }
+
+
+
 
     //FileSystem checks
 
@@ -240,10 +338,17 @@ public class SaveManager {
      */
     public boolean cleanAllFiles() {
         try{
-            for(File f : fileList){
+            File currentDir = new File(dir);
+            currentDir.delete();
+            currentDir.mkdir();
+            /* 
+            for(String s : fileList){
+                File f = new File(s);
                 f.delete();
                 f.createNewFile();
+                f = null;
             }
+            */
             return true;
         }
         catch(Exception e){System.out.println(e);}
