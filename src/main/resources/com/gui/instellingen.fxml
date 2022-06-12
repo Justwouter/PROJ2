@@ -33,6 +33,7 @@
          <Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="100.0" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 17;" text="Username" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
          <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="26.0" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 17;" text="Name" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
          <Label fx:id="password" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="173.0" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 17;" text="Password" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#showPassword" prefHeight="40.0" prefWidth="122.0" text="Wachtwoord tonen" />
       </children>
    </AnchorPane>
 </AnchorPane>

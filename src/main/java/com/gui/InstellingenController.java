@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 
 public class InstellingenController extends AController implements Initializable {
 
+    boolean passwordHide = true;
+
     @FXML
     private Label name;
 
@@ -20,11 +22,30 @@ public class InstellingenController extends AController implements Initializable
     @FXML
     private Label username;
 
+    @FXML
+    void showPassword() {
+        if (passwordHide){
+            password.setText(passwordSet(user.getPassword()));
+            passwordHide = false;
+        }else{
+            password.setText(user.getPassword());
+            passwordHide = true;
+        }
+    }
+
     //sets the right values according to the given user
-    public void start(){
+    private void start(){
         name.setText(user.getUsername());
         username.setText(user.getNaam());
-        password.setText(user.getPassword());
+        password.setText(passwordSet(user.getPassword()));
+    }
+
+    public String passwordSet(String password) {
+        String encryptedpassword = "";
+        for (int i = 0; i < password.length(); i++){
+            encryptedpassword += "x";
+        }
+        return encryptedpassword;
     }
 
     @Override
