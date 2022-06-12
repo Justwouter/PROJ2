@@ -20,6 +20,7 @@ public class InstellingenController extends AController implements Initializable
     @FXML
     private Label username;
 
+    //sets the right values according to the given user
     public void start(){
         name.setText(user.getUsername());
         username.setText(user.getNaam());
@@ -29,6 +30,7 @@ public class InstellingenController extends AController implements Initializable
     @Override
     public void setUser(User user){
         this.user = user;
+        //labels need a value before they can be changed idk why
         name.setText("value");
         username.setText("value");
         password.setText("value");

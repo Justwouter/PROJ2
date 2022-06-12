@@ -27,6 +27,7 @@ public class InstellingenNameController extends AController implements Initializ
     @FXML
     private Label naamLabel;
 
+    //its a bit weird because username is actually the name
     @FXML
     public void usernameButton(){
         if(!gebruikersnaam.getText().isBlank()){
@@ -36,7 +37,7 @@ public class InstellingenNameController extends AController implements Initializ
             gebruikersnaam.clear();
         }
     }
-
+    //its a bit weird because name is actually the username
     @FXML
     public void nameButton(){
         if(!naam.getText().isBlank()){
