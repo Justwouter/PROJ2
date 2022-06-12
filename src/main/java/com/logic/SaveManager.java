@@ -64,7 +64,7 @@ public class SaveManager {
     }
 
     /**
-     * Saves the currently existing Users & Transportmidddelen to their resective files
+     * Saves the currently existing Users & Transportmidddelen to their resective files.
      */
     public void saveState() {
         System.out.println("================");//Debug
@@ -79,6 +79,9 @@ public class SaveManager {
         }
     }
 
+    /**
+     * Saves the currently loaded objects to their respective savefiles in the old or "Standard" JSON format.
+     */
     private void standardSave(){
         for(User u : Leaderboard.getUsers("")){
             this.writeToSave(u);
@@ -94,6 +97,9 @@ public class SaveManager {
         }
     }
 
+    /**
+     * Saves the currently loaded objects to their respective savefiles in the "Fancy" JSON format.
+     */
     private void fancySave(){
         for(User u : Leaderboard.getUsers("")){
             this.writeToFancySave(u);
@@ -111,7 +117,7 @@ public class SaveManager {
     }
 
     /**
-     * Loads the saved data from the respective savefiles
+     * Loads the saved data from the respective savefiles.
      */
     public void loadAllFiles() {
         System.out.println("================");//Debug
@@ -126,6 +132,10 @@ public class SaveManager {
         
     }
 
+
+    /**
+     * Loads the SaveManager Savefiles written in "Fancy" JSON format.
+     */
     private void loadFancyFiles(){
         
         for(String s : fileList){
@@ -149,7 +159,12 @@ public class SaveManager {
         }
     }
 
-
+    /**
+     * Searches the given directory for .json files.<p>
+     * If no files are found, returns a non-existing file.
+     * @param dir
+     * @return Array of files in directory.
+     */
     private File[] findFancySaves(String dir) {
         File f = new File(dir);
         File[] dataFiles = f.listFiles(new FilenameFilter() {
@@ -164,6 +179,7 @@ public class SaveManager {
             return dataFiles;
         }
         else {
+            //On Windows it is impossible to name a file "con" and on linux the C:\ drive (Usally) doesn't exist.
             File nonexist = new File("C:/con");
             File[] toArray = {nonexist};
             return toArray;
@@ -171,7 +187,9 @@ public class SaveManager {
         
     }
 
-
+    /**
+     * Loads the SaveManager savefiles written in the old or "Standard" JSON format.
+     */
     private void loadStandardFiles(){
         for(String st : fileList){
             File f = new File(st);
@@ -250,7 +268,7 @@ public class SaveManager {
 
 
     /**
-     * Writes the given {@link User} in JSON format to a file in the ~/data/Users/ dir
+     * Writes the given {@link User} in JSON format to a file in the ~/data/Users/ dir.
      * @param user
      */
     private void writeToFancySave(User user) {
@@ -258,7 +276,7 @@ public class SaveManager {
         write(savefile, user);
     }
     /**
-     * Writes the given {@link Transportmiddel} in JSON format to a file in the ~/data/Verhicles/ dir
+     * Writes the given {@link Transportmiddel} in JSON format to a file in the ~/data/Verhicles/ dir.
      * @param transportmiddel
      */
     private void writeToFancySave(Transportmiddel transportmiddel) {
@@ -266,7 +284,7 @@ public class SaveManager {
         write(savefile, transportmiddel);
     }
     /**
-     * Writes the given {@link Filiaal} in JSON format to a file in the ~/data/Loactions/ dir
+     * Writes the given {@link Filiaal} in JSON format to a file in the ~/data/Loactions/ dir.
      * @param filiaal
      */
     private void writeToFancySave(Filiaal filiaal) {
@@ -274,7 +292,7 @@ public class SaveManager {
         write(savefile, filiaal);
     }
     /**
-     * Writes the given {@link Item} in JSON format to a file in the ~/data/Items/ dir
+     * Writes the given {@link Item} in JSON format to a file in the ~/data/Items/ dir.
      * @param item
      */
     private void writeToFancySave(Item item) {
@@ -293,7 +311,7 @@ public class SaveManager {
         try{
             checkFS(savefile);
             FileWriter writer = new FileWriter(savefile,true);
-            try{savefile.createNewFile();}catch(Exception e){} //Simple Onliners good?
+            try{savefile.createNewFile();}catch(Exception e){}
             writer.append(makeString(object)+"\n");
             writer.close();
         }
@@ -303,7 +321,7 @@ public class SaveManager {
     }
 
     /**
-     * Returns an object as a JSON-formatted string
+     * Returns an object as a JSON-formatted string.
      * @param object
      * @return String
      */
