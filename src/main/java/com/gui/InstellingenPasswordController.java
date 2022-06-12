@@ -32,6 +32,9 @@ public class InstellingenPasswordController extends AController implements Initi
         if (!checkPasswordDubbel(NieuweWW.getText(), HerhalingWW.getText()) || !checkPasswordCorrect(HuidigeWW.getText(), user.getPassword())){
             ErrorLabel.setText("Wachtwoorden komen niet overeen.");
         }
+        else{
+            ErrorLabel.setText("Het nieuw wachtwoord is hetzelfde als het oude wachtwoord");
+        }
     }
 
     @FXML
@@ -39,7 +42,7 @@ public class InstellingenPasswordController extends AController implements Initi
         String huidig = HuidigeWW.getText();
         String nieuw = NieuweWW.getText();
         String herhaling = HerhalingWW.getText();  
-        if (checkPasswordDubbel(nieuw, herhaling) && checkPasswordCorrect(huidig, user.getPassword())){
+        if (checkPasswordDubbel(nieuw, herhaling) && checkPasswordCorrect(huidig, user.getPassword()) && checkNewPassword(nieuw)){
             user.setPassword(nieuw);
             saveManager.saveState();
             ErrorLabel.setText("Wachtwoord is aangepast.");
@@ -67,6 +70,10 @@ public class InstellingenPasswordController extends AController implements Initi
         }else{
             return false;
         }
+    }
+
+    public boolean checkNewPassword(String nieuw){
+        return (nieuw.equals(user.getPassword()));
     }
 
     @Override
