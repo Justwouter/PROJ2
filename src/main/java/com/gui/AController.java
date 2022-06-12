@@ -13,9 +13,9 @@ import javafx.scene.control.Label;
 public abstract class AController {
 
     @FXML
-    protected Label points = new Label();
+    public Label points = new Label();
 
-    protected User user;
+    public User user;
 
     public void setUser(User user){
         this.user = user;
