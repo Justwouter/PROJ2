@@ -3,10 +3,7 @@ package com.gui;
 import com.logic.Item;
 import com.logic.User;
 
-import javafx.application.Platform;
-
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,25 +12,6 @@ public class TestShopController extends AGUITests{
     ShopController controller = new ShopController();
     User user;
     Item item;
-
-    /**Ensures the JavaFX runtime is loaded before running tests */
-    @BeforeAll
-    public static void init(){
-        try{
-            Platform.startup(new Runnable() {
-
-                @Override
-                public void run() {
-                    System.out.println("Im working =]");
-                }
-            });
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
-
-   
 
     @BeforeEach
     public void start(){
