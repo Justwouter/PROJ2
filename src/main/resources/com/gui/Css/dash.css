@@ -4,6 +4,8 @@
 
 /*Fancy wallpaper */
 .root{
+    -fx-background-color: lightblue;    
+        background-color: lightblue;
     -fx-background-size: contain, contain, contain, contain, contain, contain;
         background-size: contain, contain, contain, contain, contain, contain;
     -fx-background-position: bottom, bottom, bottom, bottom, bottom, bottom;
@@ -24,6 +26,7 @@
         url("file:src/main/resources/com/gui/Images/layer_03.png"),
         url("file:src/main/resources/com/gui/Images/layer_02.png"),
         url("file:src/main/resources/com/gui/Images/layer_01.png");
+        
 }
 
 
@@ -34,5 +37,5 @@
 
 /*Linechart Styling*/
 .chart-series-line{ -fx-stroke-width: 2px;}
-.default-color0.chart-series-line{ -fx-stroke: blue; }
+.default-color0.chart-series-line{ -fx-stroke: blue}
 .default-color1.chart-series-line{ -fx-stroke: purple }

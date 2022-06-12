@@ -14,36 +14,36 @@
       <Pane layoutX="349.0" layoutY="14.0" prefHeight="49.0" prefWidth="117.0" style="-fx-background-color: f8da32; -fx-background-radius: 18 18 18 18;">
          <Label fx:id="points" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="117.0" style="-fx-font-size: 20px;" text="punten aantal" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
       </Pane>
-      <AnchorPane layoutX="77.0" layoutY="83.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="83.0">
+      <AnchorPane layoutX="50.0" layoutY="83.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="83.0">
          <children>
-              <Pane layoutX="218.0" layoutY="187.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="24.0">
+              <Pane layoutX="219.0" layoutY="150.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="23.0">
                <children>
                   <Label fx:id="kostenPunten" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                </children></Pane>
-            <Pane layoutY="187.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: #FF0000; -fx-background-radius: 18 18 18 18;" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="218.0">
+            <Pane layoutX="21.0" layoutY="151.0" prefHeight="49.0" prefWidth="138.0" style="-fx-background-color: #FF0000; -fx-background-radius: 18 18 18 18;" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="221.0">
                <children>
                   <Label fx:id="kostenCO2" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Uitstoot" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                </children>
             </Pane>
-            <Button alignment="CENTER" layoutX="121.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToDashboardWithCO2" prefHeight="56.0" prefWidth="138.0" text="Opslaan" />
-            <TextField fx:id="kilometers" alignment="CENTER" layoutX="50.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setTotaalAndCO2" onKeyPressed="#setTotaalAndCO2" onKeyReleased="#setTotaalAndCO2" onKeyTyped="#setTotaalAndCO2" prefHeight="49.0" prefWidth="280.0" promptText="Voer uw aantal gereden kilometers in">
+            <Button alignment="CENTER" layoutX="121.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToDashboardWithCO2" prefHeight="56.0" prefWidth="138.0" text="Opslaan" />
+            <TextField fx:id="kilometers" alignment="CENTER" layoutX="50.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setTotaalAndCO2" onKeyPressed="#setTotaalAndCO2" onKeyReleased="#setTotaalAndCO2" onKeyTyped="#setTotaalAndCO2" prefHeight="49.0" prefWidth="280.0" promptText="Voer uw aantal gereden kilometers in">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="transportmiddel" layoutX="60.0" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#printItem" prefHeight="49.0" prefWidth="260.0" promptText="Selecteer uw transportmethode" />
-            <Label alignment="CENTER" layoutX="331.0" layoutY="50.0" prefHeight="49.0" prefWidth="51.0" text="Km" textAlignment="CENTER">
+            <ComboBox fx:id="transportmiddel" layoutX="60.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#printItem" prefHeight="49.0" prefWidth="260.0" promptText="Selecteer uw transportmethode" />
+            <Label alignment="CENTER" layoutX="331.0" layoutY="22.0" prefHeight="49.0" prefWidth="51.0" text="Km" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="90.0" layoutY="402.0" prefHeight="60.0" prefWidth="150.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0">
+      <AnchorPane layoutX="75.0" layoutY="409.0" prefHeight="94.0" prefWidth="330.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0">
          <children>
-             <Button fx:id="pre_set_toevoegen" layoutX="99.0" layoutY="2.0" mnemonicParsing="false" onAction="#toevoegenPreSet" text="Voeg pre-set toe" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" />
-             <ComboBox fx:id="pre_set" layoutX="94.0" layoutY="69.0" prefHeight="25.0" prefWidth="117.0" promptText="Kies pre-set " AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="92.0" />
-             <TextField fx:id="hernoemen" alignment="CENTER" layoutX="78.0" layoutY="35.0" promptText="Nieuwe naam per-set" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" />
+             <Button fx:id="pre_set_toevoegen" layoutX="95.0" layoutY="47.0" mnemonicParsing="false" onAction="#toevoegenPreSet" prefHeight="34.0" prefWidth="140.0" text="Voeg pre-set toe" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" />
+             <ComboBox fx:id="pre_set" layoutX="202.0" layoutY="6.0" prefHeight="34.0" prefWidth="117.0" promptText="Kies pre-set " AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="11.0" />
+             <TextField fx:id="hernoemen" alignment="CENTER" layoutX="17.0" layoutY="6.0" prefHeight="34.0" prefWidth="168.0" promptText="Nieuwe naam pre-set" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="145.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="60.0" layoutY="514.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="90.0">
@@ -58,7 +58,7 @@
       </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0" stylesheets="@Css/menubuttons.css">
          <children>
-            <Button styleClass="current" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="Gegevens">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" styleClass="current" text="Gegevens">
             </Button>
             <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLeaderboard" prefHeight="70.0" prefWidth="70.0" text="Leaderboard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                <font>
