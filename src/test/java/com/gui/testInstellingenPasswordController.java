@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
+import com.logic.Leaderboard;
 import com.logic.User;
 
 public class testInstellingenPasswordController {
@@ -20,11 +21,7 @@ public class testInstellingenPasswordController {
     }    
     @AfterAll
     public static void end(){
-        //idfk of userList moet public of er moet een methode voor de clear komen wat jullie willen
-    }
-    @AfterAll
-    public static void end(){
-        //idfk of userList moet public of er moet een methode voor de clear komen wat jullie willen
+        Leaderboard.users.clear();
     }
 
     @Test

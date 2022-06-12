@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 public abstract class Leaderboard {
 
-    private static ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<User> users = new ArrayList<>();
     //heb een tijdelijke arraylist voor filters gemaakt zodat die het leaderboard gefilterd kan vullen
     private static ArrayList<User> usersFilterd = new ArrayList<>();
 
