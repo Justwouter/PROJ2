@@ -21,8 +21,8 @@ public class InstellingenController extends AController implements Initializable
     private Label username;
 
     public void start(){
-        name.setText(user.getNaam());
-        username.setText(user.getUsername());
+        name.setText(user.getUsername());
+        username.setText(user.getNaam());
         password.setText(user.getPassword());
     }
 

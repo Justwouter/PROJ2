@@ -61,7 +61,7 @@
                <font>
                   <Font size="10.0" />
                </font></Button>
-            <Button styleClass="current" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="70.0" text="Dashboard">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="70.0" styleClass="current" text="Dashboard">
                <font>
                   <Font size="11.0" />
                </font></Button>

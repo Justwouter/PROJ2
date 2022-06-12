@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.InstellingenNameController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/instellingen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.InstellingenNameController">
    <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0" stylesheets="@Css/menubuttons.css">
       <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToReisGegevens" prefHeight="70.0" prefWidth="70.0" text="Gegevens" />
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLeaderboard" prefHeight="70.0" prefWidth="70.0" text="Leaderboard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
@@ -28,24 +28,24 @@
    </AnchorPane>
    <AnchorPane layoutX="52.0" layoutY="46.0" prefHeight="342.0" prefWidth="376.0" stylesheets="@Css/menubuttons.css">
       <children>
-         <TextField fx:id="naam" alignment="CENTER" layoutX="48.0" layoutY="214.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#nameButton" prefHeight="49.0" prefWidth="280.0" promptText="Geef uw nieuwe naam">
+         <TextField fx:id="gebruikersnaam" alignment="CENTER" layoutX="48.0" layoutY="214.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#nameButton" prefHeight="49.0" prefWidth="280.0" promptText="Geef uw nieuwe gebruikersnaam">
             <font>
                <Font size="15.0" />
             </font>
          </TextField>
-         <Button alignment="CENTER" layoutX="100.0" layoutY="279.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#nameButton" prefHeight="54.0" prefWidth="162.0" text="Naam aanpassen" />
-         <Label fx:id="naamLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="344.0" prefHeight="30.0" prefWidth="280.0" style="-fx-font-size: 15;" textAlignment="CENTER" textFill="#ff2727" textOverrun="CLIP" wrapText="true">
+         <Button alignment="CENTER" layoutX="100.0" layoutY="279.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#usernameButton" prefHeight="54.0" prefWidth="162.0" text="Gebruikersnaam aanpassen" />
+         <Label fx:id="gebruikersnaamLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="344.0" prefHeight="30.0" prefWidth="280.0" style="-fx-font-size: 15;" textAlignment="CENTER" textFill="#ff2727" textOverrun="CLIP" wrapText="true">
             <font>
                <Font name="System Bold" size="10.0" />
             </font>
          </Label>
-         <TextField fx:id="gebruikersnaam" alignment="CENTER" layoutX="48.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="280.0" promptText="Geef uw nieuwe gebruikersnaam">
+         <TextField fx:id="naam" alignment="CENTER" layoutX="48.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="280.0" promptText="Geef uw nieuwe naam">
             <font>
                <Font size="15.0" />
             </font>
          </TextField>
-         <Button alignment="CENTER" layoutX="100.0" layoutY="83.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#usernameButton" prefHeight="54.0" prefWidth="162.0" text="Gebruikersnaam aanpassen" />
-         <Label fx:id="gebruikersnaamLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="144.0" prefHeight="30.0" prefWidth="280.0" style="-fx-font-size: 15;" textAlignment="CENTER" textFill="#ff2727" textOverrun="CLIP" wrapText="true">
+         <Button alignment="CENTER" layoutX="100.0" layoutY="83.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#nameButton" prefHeight="54.0" prefWidth="162.0" text="Naam aanpassen" />
+         <Label fx:id="naamLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="137.0" prefHeight="30.0" prefWidth="382.0" style="-fx-font-size: 15;" textAlignment="CENTER" textFill="#ff2727" textOverrun="CLIP" wrapText="true">
             <font>
                <Font name="System Bold" size="10.0" />
             </font>

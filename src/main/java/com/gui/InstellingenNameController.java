@@ -30,9 +30,9 @@ public class InstellingenNameController extends AController implements Initializ
     @FXML
     public void usernameButton(){
         if(!gebruikersnaam.getText().isBlank()){
-            user.username = gebruikersnaam.getText();
+            user.naam = gebruikersnaam.getText();
             saveManager.saveState();
-            gebruikersnaamLabel.setText("Gebruikersnaam aangepast " + user.getUsername() + ".");
+            gebruikersnaamLabel.setText("Gebruikersnaam aangepast naar " + user.getNaam() + ".");
             gebruikersnaam.clear();
         }
     }
@@ -42,7 +42,7 @@ public class InstellingenNameController extends AController implements Initializ
         if(!naam.getText().isBlank()){
             user.username = naam.getText();
             saveManager.saveState();
-            naamLabel.setText("Naam aangepast naar " + user.getNaam() + ".");
+            naamLabel.setText("Naam aangepast naar " + user.getUsername() + ".");
             naam.clear();
         }
     }
