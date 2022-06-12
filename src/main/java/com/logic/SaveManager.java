@@ -39,7 +39,6 @@ public class SaveManager {
             this.gson = new Gson();
             this.dir +="Legacy/";
             this.fileList = seedStandardSaveFiles();
-            
         }
     }
 
@@ -130,8 +129,6 @@ public class SaveManager {
         else{
             loadStandardFiles();
         }
-        
-        
     }
 
 
@@ -175,7 +172,6 @@ public class SaveManager {
             public boolean accept(File dir, String name) {
                 return name.endsWith(".json");
             }
-            
         });
         if(dataFiles != null){
             return dataFiles;
@@ -426,8 +422,6 @@ public class SaveManager {
                     System.out.println(e);
                 }
             }
-            
-            
         }
         file.delete();
     }
@@ -446,13 +440,11 @@ public class SaveManager {
                 public boolean accept(File dir, String name) {
                     return name.contains(filter) && name.endsWith(".json");
                 }
-                
             });
             if(jsonInDir != null){
                 return jsonInDir.length;
             }
             return 0;
-                
         }
         catch(Exception e){
             System.out.println(e);
