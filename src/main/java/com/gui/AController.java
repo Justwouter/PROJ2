@@ -48,5 +48,13 @@ public abstract class AController {
     @FXML 
     public void switchToAdmin() throws IOException{
         Main.show("admin", user);
+    }
+    @FXML 
+    public void switchToInstellingenPassword() throws IOException{
+        Main.show("instellingenPassword", user);
+    }
+    @FXML 
+    public void switchToInstellingenName() throws IOException{
+        Main.show("instellingenName", user);
     } 
 }

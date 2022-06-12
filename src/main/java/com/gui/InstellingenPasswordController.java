@@ -11,7 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class InstellingenController extends AController implements Initializable {
+public class InstellingenPasswordController extends AController implements Initializable {
 
     private SaveManager saveManager = new SaveManager();
 
