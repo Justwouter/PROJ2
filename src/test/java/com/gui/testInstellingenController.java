@@ -22,6 +22,6 @@ public class testInstellingenController extends AGUITests{
     public void testPasswordSet() {
         assertEquals("", testController.passwordSet(""));
         assertEquals("xxxx", testController.passwordSet("test"));
-        assertEquals("xxxxxxx", testController.passwordSet(testUser.getPassword()));
+        assertEquals("xxxxxxxx", testController.passwordSet(testUser.getPassword()));
     }
 }
