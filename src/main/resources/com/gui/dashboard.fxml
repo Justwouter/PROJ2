@@ -38,7 +38,7 @@
                         <CategoryAxis animated="false" cache="true" side="BOTTOM" visible="false" />
                       </xAxis>
                       <yAxis>
-                        <NumberAxis animated="false" autoRanging="false" minorTickCount="10" minorTickLength="10.0" minorTickVisible="false" side="LEFT" tickUnit="10.0" upperBound="110.0" />
+                        <NumberAxis fx:id="averageChartY" animated="false" autoRanging="false" minorTickCount="10" minorTickLength="10.0" minorTickVisible="false" side="LEFT" tickUnit="10.0" upperBound="110.0" />
                       </yAxis>
                   </LineChart>
                </children>
@@ -61,7 +61,7 @@
                <font>
                   <Font size="10.0" />
                </font></Button>
-            <Button styleClass="current" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="70.0" text="Dashboard">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="70.0" styleClass="current" text="Dashboard">
                <font>
                   <Font size="11.0" />
                </font></Button>
