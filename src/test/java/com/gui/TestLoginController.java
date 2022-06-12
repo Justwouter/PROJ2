@@ -10,27 +10,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class TestLoginController{
+public class TestLoginController extends AGUITests{
 
     LoginController controller = new LoginController();
 
-    /**Ensures the JavaFX runtime is loaded before running tests */
-    @BeforeAll
-    public static void init(){
-        try{
-            Platform.startup(new Runnable() {
-
-                @Override
-                public void run() {
-                    System.out.println("Im working =]");
-                }
-                
-            });
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
+    
 
     
 

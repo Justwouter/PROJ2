@@ -1,13 +1,15 @@
 package com.gui;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
 import javafx.application.Platform;
 
-public class TestInit {
+/*
+ * A abstract class used to enforce a BeforeAll in all GUI tests.<P>
+ * Loads JavaFX Runtime 
+ */
+public abstract class AGUITests {
+
     /**Ensures the JavaFX runtime is loaded before running tests */
     @BeforeAll
     public static void init(){
@@ -24,13 +26,6 @@ public class TestInit {
         catch(Exception e){
             System.out.println(e);
         }
-    }
-
-    
-
-    @Test
-    public void testDummey(){
-        assertEquals(true, true);
     }
     
 }
