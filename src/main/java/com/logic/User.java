@@ -40,6 +40,15 @@ public class User {
         PreSets.set(index, reis);
     }
 
+    public void setPassword(String ww){
+        this.password = ww;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+
+
     public ArrayList<Reis> getReizen(){
         return PreSets;
     }
