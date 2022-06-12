@@ -114,7 +114,6 @@ public class SaveManager {
         for (Item i : ShopController.itemList){
             this.writeToFancySave(i);
         }
-
     }
 
     /**
@@ -130,7 +129,6 @@ public class SaveManager {
             loadStandardFiles();
         }
     }
-
 
     /**
      * Loads the SaveManager Savefiles written in "Fancy" JSON format.
