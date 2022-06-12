@@ -18,7 +18,7 @@ public abstract class AGUITests {
 
                 @Override
                 public void run() {
-                    System.out.println("Im working =]");
+                    System.out.println("JavaFX toolkit is running =]");
                 }
                 
             });

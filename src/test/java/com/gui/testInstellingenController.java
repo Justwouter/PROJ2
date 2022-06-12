@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import com.logic.User;
 
-public class testInstellingenController {
+public class testInstellingenController extends AGUITests{
 
     static User testUser;
     InstellingenController testController = new InstellingenController();
@@ -22,6 +22,6 @@ public class testInstellingenController {
     public void testPasswordSet() {
         assertEquals("", testController.passwordSet(""));
         assertEquals("xxxx", testController.passwordSet("test"));
-        assertEquals("xxxxxxx", testController.passwordSet(testUser.getPassword()));
+        assertEquals("xxxxxxxx", testController.passwordSet(testUser.getPassword()));
     }
 }
