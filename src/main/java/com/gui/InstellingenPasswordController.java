@@ -62,8 +62,9 @@ public class InstellingenPasswordController extends AController implements Initi
     //checks if the correct password has been given
     public boolean checkPasswordCorrect(String huidig, String user){
         return (huidig.equals(user) && !huidig.equals(""));
-        }
-
+    }
+    
+    /*Checks if the new password is not the old password */
     public boolean checkNewPassword(String nieuw){
         return (nieuw.equals(user.getPassword()));
     }

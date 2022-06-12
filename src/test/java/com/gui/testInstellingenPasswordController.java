@@ -2,12 +2,9 @@ package com.gui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
-import com.logic.Leaderboard;
 import com.logic.User;
 
 public class testInstellingenPasswordController {
@@ -19,10 +16,6 @@ public class testInstellingenPasswordController {
     public static void start(){
         testUser = new User("TestGebruiker", false, "Username", "Password", null);
     }    
-    @AfterAll
-    public static void end(){
-        Leaderboard.users.clear();
-    }
 
     @Test
     public void testCheckPasswordCorrect() {
