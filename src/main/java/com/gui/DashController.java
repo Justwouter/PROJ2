@@ -1,7 +1,6 @@
 package com.gui;
 
 import com.logic.PuntMutatie;
-import com.logic.SaveManager;
 import com.logic.User;
 
 import javafx.beans.binding.ObjectExpression;
@@ -24,7 +23,6 @@ import java.util.ResourceBundle;
 public class DashController extends AController implements Initializable {
 
     private List<Long> avList;
-    private SaveManager saveManager = new SaveManager();
 
     @FXML
     private AnchorPane dashMainPane;
@@ -149,7 +147,6 @@ public class DashController extends AController implements Initializable {
         //ArrayList<Object> historicUserData = new ArrayList<>();
         List<Long> averageList = new ArrayList<>();
         String[] daysOfTheWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
-        int[] intsOfTheWeek = {Calendar.SUNDAY,Calendar.MONDAY,Calendar.TUESDAY,Calendar.WEDNESDAY,Calendar.THURSDAY,Calendar.FRIDAY,Calendar.SATURDAY};
         XYChart.Series<String,Number> series = new XYChart.Series<String, Number>();
         System.out.println("Parsing data");//Debug
 
@@ -207,12 +204,13 @@ public class DashController extends AController implements Initializable {
      * @return Long containing the added (positive) values of the selected day.
      */
     private Long calculateDailyUsage(int day){
-        ArrayList<PuntMutatie> allPointMutations = user.puntVerandering;
+        ArrayList<PuntMutatie> allPointMutations = user.getUserPuntMutaties();
         Calendar currentDate = Calendar.getInstance();
         Long output = (long)0;
-        
         for(PuntMutatie mutation : allPointMutations){
-            if(mutation.datum.getWeekYear() == currentDate.getWeekYear()){
+            int mutationWeek = mutation.datum.get(Calendar.WEEK_OF_YEAR);
+            int currentWeek = currentDate.get(Calendar.WEEK_OF_YEAR);
+            if(mutationWeek == currentWeek || (day==1) && mutationWeek == currentWeek-1){
                 if(mutation.datum.get(Calendar.DAY_OF_WEEK) == day){
                     output +=mutation.puntVerandering;
                     System.out.println(output);

@@ -3,7 +3,6 @@ package com.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.logic.SaveManager;
 import com.logic.User;
 
 import javafx.fxml.FXML;
@@ -12,8 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class InstellingenNameController extends AController implements Initializable {
-
-    private SaveManager saveManager = new SaveManager();
 
     @FXML
     private TextField gebruikersnaam;

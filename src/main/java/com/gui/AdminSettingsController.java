@@ -3,7 +3,6 @@ package com.gui;
 import com.logic.User;
 import com.logic.Filiaal;
 import com.logic.Leaderboard;
-import com.logic.SaveManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,8 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminSettingsController extends AController implements Initializable {
-
-    private SaveManager saveManager = new SaveManager();
 
     private ArrayList<User> users;
 

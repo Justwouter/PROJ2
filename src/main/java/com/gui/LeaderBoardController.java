@@ -3,6 +3,7 @@ package com.gui;
 import com.logic.Filiaal;
 import com.logic.Leaderboard;
 import com.logic.User;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
