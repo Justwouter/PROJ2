@@ -18,9 +18,6 @@ import java.util.ResourceBundle;
 public class ReisGegevensController extends AController implements Initializable{
 
     @FXML
-    private Label points;
-
-    @FXML
     private Label kostenPunten; 
 
     @FXML
@@ -171,15 +168,6 @@ public class ReisGegevensController extends AController implements Initializable
     public void setUser(User user){
         this.user = user;
         setPresets(user);
-    }
-
-    /**
-     * Deze methode geeft een user mee aan de controller waarvan punten opgehaald worden.
-     * @param user De gebruiker die zijn reisgegevens invoert.
-     */
-    @Override
-    public void setPoints(User user) {
-        points.setText(user.getPoint().getPointsString());
     }
 
     /**
