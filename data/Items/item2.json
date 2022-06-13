@@ -1,0 +1,5 @@
+{
+  "name": "Televisie",
+  "price": 5000,
+  "imageURL": "file:src/main/resources/com/gui/Images/items/tv.png"
+}
