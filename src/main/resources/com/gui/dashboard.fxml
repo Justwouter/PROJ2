@@ -71,6 +71,6 @@
             <Label fx:id="uitstootVergelijk" layoutX="5.0" prefHeight="50.0" prefWidth="470.0" text="hallo" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
-      <Button id="adminToolbutton" layoutX="371.0" layoutY="58.0" mnemonicParsing="false" onAction="#switchToAdmin" text="Admin tools" />
+      <Button id="adminToolbutton" layoutX="368.0" layoutY="67.0" mnemonicParsing="false" onAction="#switchToAdmin" text="Admin tools" />
    </children>
 </AnchorPane>
