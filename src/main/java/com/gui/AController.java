@@ -57,4 +57,8 @@ public abstract class AController {
     public void switchToInstellingenName() throws IOException{
         Main.show("instellingenName", user);
     } 
+    @FXML
+    private void switchToLogin() throws IOException {
+        Main.show("login", user);
+    }
 }
