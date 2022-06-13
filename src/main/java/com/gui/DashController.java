@@ -60,7 +60,6 @@ public class DashController extends AController implements Initializable {
         saveManager.saveState();        
     }
 
-
     @FXML
     public void setVergelijking(){
         uitstootVergelijk.setText(user.vergelijkPuntMetUitstoot());
@@ -201,7 +200,6 @@ public class DashController extends AController implements Initializable {
         return averageList;
     }
 
-
     /**
      * Loops trough a User's point mutations & returns the values for the selected day in the current week.<p>
      * This method uses the Calendar date index e.g. Sunday = 1 and Saturday = 7.
@@ -220,7 +218,6 @@ public class DashController extends AController implements Initializable {
                     System.out.println(output);
                 }
             }
-
         }
         return Math.abs(output);
     }
