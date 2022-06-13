@@ -28,4 +28,28 @@ public class TestPoint {
         String actual = user.getPoint().getPointsString();
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testEnoughBalanceTrue(){
+        int price = 100;
+        Assertions.assertTrue(user.getPoint().enoughBalance(price));
+    }
+
+    @Test
+    public void testEnoughBalanceBarelyTrue(){
+        int price = 1000;
+        Assertions.assertTrue(user.getPoint().enoughBalance(price));
+    }
+
+    @Test
+    public void testEnoughBalanceBarelyFalse(){
+        int price = 1001;
+        Assertions.assertFalse(user.getPoint().enoughBalance(price));
+    }
+
+    @Test
+    public void testEnoughBalanceFalse(){
+        int price = 5000;
+        Assertions.assertFalse(user.getPoint().enoughBalance(price));
+    }
 }

@@ -7,6 +7,7 @@ module com.gui {
     requires transitive com.google.gson;
 
     opens com.gui to javafx.fxml;
+    opens com.logic;
     exports com.gui;
     exports com.logic;
 }

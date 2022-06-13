@@ -3,7 +3,6 @@ package com.gui;
 import com.logic.User;
 import com.logic.Filiaal;
 import com.logic.Leaderboard;
-import com.logic.SaveManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -53,7 +53,7 @@ public class AdminSettingsController extends AController implements Initializabl
     private TextField username;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,12 +79,12 @@ public class AdminSettingsController extends AController implements Initializabl
     @FXML
     public void makeUser() throws IOException {
        new User(naam.getText(), false, username.getText(), password.getText(), filiaal.getValue());
-       SaveManager.saveState();
+       saveManager.saveState();
     }
     
     @FXML
     public void makeAdmin() throws IOException {
         new User(naam.getText(), true, username.getText(), password.getText(), filiaal.getValue());
-       SaveManager.saveState();
+       saveManager.saveState();
     }
 }
