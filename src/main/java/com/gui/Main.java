@@ -29,7 +29,7 @@ public class Main extends Application {
     @Override
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
-        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/co2wegermeePictogram"));
+        primaryStage.getIcons().add(new Image("file:src\\main\\resources\\com\\gui\\Images\\co2wegermeePictogram.png"));
         seed();
         show("login", null);
     }
