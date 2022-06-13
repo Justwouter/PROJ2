@@ -243,7 +243,7 @@ public class DashController extends AController implements Initializable {
      * @return Long containing the added (positive) values of the selected day.
      */
     private Long calculateDailyUsage(int day){
-        ArrayList<PuntMutatie> allPointMutations = user.puntVerandering;
+        ArrayList<PuntMutatie> allPointMutations = user.getUserPuntMutaties();
         Calendar currentDate = Calendar.getInstance();
         Long output = (long)0;
         for(PuntMutatie mutation : allPointMutations){
