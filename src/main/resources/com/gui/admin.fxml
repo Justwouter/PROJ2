@@ -13,27 +13,8 @@
 
 <!--Dit FXML bestand is nog niet helemaal af-->
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.AdminSettingsController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/admin.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.AdminSettingsController">
     <children>
-      <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0">
-         <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToReisGegevens" prefHeight="70.0" prefWidth="70.0" text="Gegevens">
-            </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLeaderboard" prefHeight="70.0" prefWidth="70.0" text="Leaderboard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
-               <font>
-                  <Font size="10.0" />
-               </font></Button>
-            <Button fx:id="dbButton1" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="70.0" text="Dashboard">
-               <font>
-                  <Font size="11.0" />
-               </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToInstellingen" prefHeight="70.0" prefWidth="70.0" text="Instellingen">
-               <font>
-                  <Font size="11.0" />
-               </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="70.0" prefWidth="70.0" text="Shop" />
-         </children>
-      </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="30.0" prefHeight="200.0" prefWidth="418.0">
          <children>
          <!--TABEL BEGINT HIER, ERIC-->
@@ -59,7 +40,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="44.0" layoutY="245.0" prefHeight="310.0" prefWidth="280.0">
+      <AnchorPane layoutX="69.0" layoutY="247.0" prefHeight="301.0" prefWidth="344.0" stylesheets="@Css/menubuttons.css">
          <children>
             <Button fx:id="makeUser" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="220.0" mnemonicParsing="false" onAction="#makeUser" prefHeight="40.0" prefWidth="100.0" text="make user" />
             <Button fx:id="makeAdmin" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="265.0" mnemonicParsing="false" onAction="#makeAdmin" prefHeight="40.0" prefWidth="100.0" text="make admin" />
@@ -74,6 +55,28 @@
                </font>
             </Label>
             <Button fx:id="medewerkerDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#showToevoegOpties" prefWidth="150.0" text="Medewerker toevoegen" />
+          </children>
+      </AnchorPane>
+      <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0" stylesheets="@Css/menubuttons.css">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToReisGegevens" prefHeight="46.0" prefWidth="70.0" text="Gegevens">
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLeaderboard" prefHeight="46.0" prefWidth="70.0" text="Leaderboard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="dbButton1" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="46.0" prefWidth="70.0" text="Dashboard">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="348.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToInstellingen" prefHeight="46.0" prefWidth="70.0" text="Instellingen">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="46.0" prefWidth="70.0" text="Shop" />
          </children>
       </AnchorPane>
     </children>

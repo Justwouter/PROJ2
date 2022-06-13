@@ -29,36 +29,24 @@ public class PuntMutatie{
     * Er hoeft hier niks meegegeven te worden omdat hij de datum opvraagt van het meegegeven object
     */
     public boolean isFromLast4Weeks(){
+        //Burton ik weet niet waar je deze formatting opgepikt hebt, maak het is irritant om te lezen.
+        //Split zulke if's uit in kleine methods graag
         Calendar datumCheck = Calendar.getInstance();
         //check for last month date
-        if(
-            (
-            (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR))
-            &&
-            (datumCheck.get(Calendar.DAY_OF_YEAR)-datum.get(Calendar.DAY_OF_YEAR)<28)
-            )
-        ||
-            (
-            datum.get(Calendar.DAY_OF_YEAR)-datumCheck.get(Calendar.DAY_OF_YEAR)>328&&datumCheck.get(Calendar.YEAR)-datum.get(Calendar.YEAR)==1
-            )
-        )
-        {
-            return true;
-        } else{
-            return false;
-        }
+        return (checkDateFourWeeks1(datumCheck) || checkDateFourWeeks2(datumCheck));
     }
 
-    public boolean isFromLastYear(){
+    private boolean checkDateFourWeeks1(Calendar datumCheck){
+        return (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR)) && (datumCheck.get(Calendar.DAY_OF_YEAR)-datum.get(Calendar.DAY_OF_YEAR)<28);
+    }
+
+    private boolean checkDateFourWeeks2(Calendar datumCheck){
+        return (datum.get(Calendar.DAY_OF_YEAR)-datumCheck.get(Calendar.DAY_OF_YEAR)>328 && datumCheck.get(Calendar.YEAR)-datum.get(Calendar.YEAR)==1);
+    }
+
+    public boolean isFromLastYear(){ 
+        //Geld ook voor deze. Tf is dit
         Calendar datumCheck = Calendar.getInstance();
-        if(
-        (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR))
-        ||
-        (datum.get(Calendar.MONTH)-datumCheck.get(Calendar.MONTH)<=12&&datumCheck.get(Calendar.YEAR)-datum.get(Calendar.YEAR)==1)){
-            return true;
-        }else{
-            return false;
-        }
+        return (datumCheck.get(Calendar.YEAR)==datum.get(Calendar.YEAR)) || (datum.get(Calendar.MONTH)-datumCheck.get(Calendar.MONTH)<=12 && datumCheck.get(Calendar.YEAR)-datum.get(Calendar.YEAR)==1);
     }
-
 }

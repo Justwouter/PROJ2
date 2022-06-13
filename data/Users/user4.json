@@ -1,0 +1,20 @@
+{
+  "naam": "Testnaam Damnn...Daniël",
+  "rank": 5,
+  "point": {
+    "points": 1000
+  },
+  "isAdmin": false,
+  "puntVerandering": [],
+  "weeklyPointsObtained": false,
+  "PreSets": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "username": "Wessel",
+  "password": "Horsthuis",
+  "filiaal": "Eindhoven"
+}

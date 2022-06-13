@@ -1,13 +1,14 @@
 package com.gui;
 
 import com.logic.User;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class TestLoginController{
+public class TestLoginController extends AGUITests{
 
     LoginController controller = new LoginController();
 

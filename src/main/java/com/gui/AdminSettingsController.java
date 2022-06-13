@@ -3,7 +3,6 @@ package com.gui;
 import com.logic.User;
 import com.logic.Filiaal;
 import com.logic.Leaderboard;
-import com.logic.SaveManager;
 
 import java.io.IOException;
 import java.net.URL;

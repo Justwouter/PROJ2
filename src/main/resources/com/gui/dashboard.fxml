@@ -11,32 +11,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/dash.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.DashController">
+<AnchorPane fx:id="dashMainPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" stylesheets="@Css/dash.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.DashController">
    <children>
-      <Label alignment="CENTER" layoutY="4.0" minWidth="454.0" prefHeight="18.0" prefWidth="480.0" text="Dashboard" />
-      <AnchorPane layoutX="7.0" layoutY="16.0" prefHeight="83.0" prefWidth="119.0">
+      <AnchorPane layoutX="7.0" layoutY="32.0" prefHeight="70.0" prefWidth="126.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#triggerChartUpdate" text="Force Chart Update" />
             <CheckBox fx:id="staticAverage" layoutX="7.0" layoutY="42.0" mnemonicParsing="false" onAction="#loadAverageLines" text="Static average" />
             <CheckBox fx:id="dynAverage" layoutX="7.0" layoutY="57.0" mnemonicParsing="false" onAction="#loadAverageLines" prefHeight="25.0" prefWidth="117.0" text="Dynamic Average" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0">
-         <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToReisGegevens" prefHeight="70.0" prefWidth="70.0" text="Gegevens" />
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLeaderboard" prefHeight="70.0" prefWidth="70.0" text="Leaderboard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
-               <font>
-                  <Font size="10.0" />
-               </font></Button>
-            <Button fx:id="dbButton1" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="70.0" text="Dashboard">
-               <font>
-                  <Font size="11.0" />
-               </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToInstellingen" prefHeight="70.0" prefWidth="70.0" text="Instellingen">
-               <font>
-                  <Font size="11.0" />
-               </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="70.0" prefWidth="70.0" text="Shop" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="110.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="31.0">
@@ -56,7 +36,7 @@
                         <CategoryAxis animated="false" cache="true" side="BOTTOM" visible="false" />
                       </xAxis>
                       <yAxis>
-                        <NumberAxis animated="false" autoRanging="false" minorTickCount="10" minorTickLength="10.0" minorTickVisible="false" side="LEFT" tickUnit="10.0" upperBound="110.0" />
+                        <NumberAxis fx:id="averageChartY" animated="false" autoRanging="false" minorTickCount="10" minorTickLength="10.0" minorTickVisible="false" side="LEFT" tickUnit="10.0" upperBound="110.0" />
                       </yAxis>
                   </LineChart>
                </children>
@@ -71,6 +51,23 @@
             <Label fx:id="uitstootVergelijk" layoutX="5.0" prefHeight="50.0" prefWidth="470.0" text="hallo" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
-      <Button id="adminToolbutton" layoutX="368.0" layoutY="67.0" mnemonicParsing="false" onAction="#switchToAdmin" text="Admin tools" />
+      <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0" stylesheets="@Css/menubuttons.css">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToReisGegevens" prefHeight="46.0" prefWidth="70.0" text="Gegevens" />
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLeaderboard" prefHeight="46.0" prefWidth="70.0" text="Leaderboard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="10.0" />
+               </font></Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="46.0" prefWidth="70.0" styleClass="current" text="Dashboard">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="347.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToInstellingen" prefHeight="46.0" prefWidth="70.0" text="Instellingen">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="46.0" prefWidth="70.0" text="Shop" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

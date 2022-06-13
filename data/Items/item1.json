@@ -1,0 +1,5 @@
+{
+  "name": "Fiets",
+  "price": 900,
+  "imageURL": "file:src/main/resources/com/gui/Images/items/fiets.png"
+}

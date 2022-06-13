@@ -1,18 +1,24 @@
 package com.gui;
 
 import java.io.IOException;
-import javafx.fxml.FXML;
 
+import com.logic.SaveManager;
 import com.logic.User;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-
+/*
+ * Hoofd controller, wordt gebruikt om alle switch statements te implementeren.
+ * De setUser, setPoint zijn er zodat elke controller een vaste start method heeft.
+ */
 public abstract class AController {
 
     @FXML
-    protected Label points = new Label();
+    public Label points = new Label();
 
-    protected User user;
+    public SaveManager saveManager = new SaveManager(true);
+
+    public User user;
 
     public void setUser(User user){
         this.user = user;
@@ -45,5 +51,17 @@ public abstract class AController {
     @FXML 
     public void switchToAdmin() throws IOException{
         Main.show("admin", user);
+    }
+    @FXML 
+    public void switchToInstellingenPassword() throws IOException{
+        Main.show("instellingenPassword", user);
+    }
+    @FXML 
+    public void switchToInstellingenName() throws IOException{
+        Main.show("instellingenName", user);
     } 
+    @FXML
+    private void switchToLogin() throws IOException {
+        Main.show("login", user);
+    }
 }
