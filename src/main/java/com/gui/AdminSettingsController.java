@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -46,14 +47,23 @@ public class AdminSettingsController extends AController implements Initializabl
     @FXML
     private ComboBox<String> filiaal;
     
-    private ArrayList<Filiaal> filialen;
-
-    
     @FXML
     private TextField username;
 
     @FXML
     private PasswordField password;
+
+    @FXML
+    private PasswordField passwordRepeat;
+
+    @FXML
+    private Label foutmeldingWW;
+
+    @FXML
+    private Button makeUser;
+
+    @FXML
+    private Button makeAdmin;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,27 +74,50 @@ public class AdminSettingsController extends AController implements Initializabl
         ObservableList<User> data = FXCollections.observableArrayList(users);
         bestMonthlyUsers.setItems(data);
         addFilialen();
+        ToevoegenOpties(false);
+    }
+
+    private void ToevoegenOpties(boolean setVisible) {
+        naam.setVisible(setVisible);
+        filiaal.setVisible(setVisible);
+        username.setVisible(setVisible);
+        password.setVisible(setVisible);
+        passwordRepeat.setVisible(setVisible);
+        makeUser.setVisible(setVisible);
+        makeAdmin.setVisible(setVisible);
     }
 
     /**
      * Deze methode voegt alle aanwezige fililalen toe aan de ComboBox zodat deze geselecteerd kunnen worden.
      */
     private void addFilialen() {
-        filialen = Filiaal.filialen;
-        for (Filiaal f : filialen) {
+        for (Filiaal f : Filiaal.filialen) {
             filiaal.getItems().add(f.getNaam());
         }
     }
 
+    public void showToevoegOpties(){
+        ToevoegenOpties(true);
+    }
+
     @FXML
     public void makeUser() throws IOException {
-       new User(naam.getText(), false, username.getText(), password.getText(), filiaal.getValue());
-       saveManager.saveState();
+        if(password.getText().equals(passwordRepeat.getText())){
+            new User(naam.getText(), false, username.getText(), password.getText(), filiaal.getValue());
+            SaveManager.saveState();
+            foutmeldingWW.setVisible(true);
+        }else{
+            foutmeldingWW.setVisible(false);
+        }
     }
-    
+
     @FXML
     public void makeAdmin() throws IOException {
-        new User(naam.getText(), true, username.getText(), password.getText(), filiaal.getValue());
-       saveManager.saveState();
+        if (password.getText().equals(passwordRepeat.getText())) {
+            new User(naam.getText(), true, username.getText(), password.getText(), filiaal.getValue());
+            SaveManager.saveState();
+        } else {
+            foutmeldingWW.setVisible(false);
+        }
     }
 }

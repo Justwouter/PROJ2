@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -41,13 +42,20 @@
       </AnchorPane>
       <AnchorPane layoutX="69.0" layoutY="247.0" prefHeight="301.0" prefWidth="344.0" stylesheets="@Css/menubuttons.css">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="180.0" mnemonicParsing="false" onAction="#makeUser" prefHeight="46.0" prefWidth="106.0" text="make user" />
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="180.0" mnemonicParsing="false" onAction="#makeAdmin" prefHeight="46.0" prefWidth="106.0" text="make admin" />
-            <TextField fx:id="naam" layoutX="96.0" layoutY="14.0" promptText="voer naam in" />
-            <ComboBox fx:id="filiaal" layoutX="97.0" layoutY="51.0" prefWidth="150.0" promptText="kies filiaal" />
-            <TextField fx:id="username" layoutX="98.0" layoutY="101.0" promptText="voer gebruikers naam in" />
-            <PasswordField fx:id="password" layoutX="97.0" layoutY="137.0" promptText="password" />
-         </children>
+            <Button fx:id="makeUser" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="220.0" mnemonicParsing="false" onAction="#makeUser" prefHeight="40.0" prefWidth="100.0" text="make user" />
+            <Button fx:id="makeAdmin" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="265.0" mnemonicParsing="false" onAction="#makeAdmin" prefHeight="40.0" prefWidth="100.0" text="make admin" />
+            <TextField fx:id="naam" layoutX="14.0" layoutY="46.0" prefWidth="150.0" promptText="voer naam in" />
+            <ComboBox fx:id="filiaal" layoutX="14.0" layoutY="83.0" prefWidth="150.0" promptText="kies filiaal" />
+            <TextField fx:id="username" layoutX="14.0" layoutY="120.0" prefWidth="150.0" promptText="voer gebruikers naam in" />
+            <PasswordField fx:id="password" layoutX="14.0" layoutY="158.0" prefWidth="150.0" promptText="Voer Wachtwoord in" />
+            <PasswordField fx:id="passwordRepeat" layoutX="14.0" layoutY="185.0" prefWidth="150.0" promptText="Herhaal wachtwoord" />
+            <Label fx:id="foutmeldingWW" alignment="CENTER" contentDisplay="CENTER" layoutY="240.0" prefHeight="59.0" prefWidth="392.0" text="Wachtwoord komt niet overeen." textFill="#ff2727" visible="false">
+               <font>
+                  <Font name="Comic Sans MS" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="medewerkerDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#showToevoegOpties" prefWidth="150.0" text="Medewerker toevoegen" />
+          </children>
       </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="418.0" stylesheets="@Css/menubuttons.css">
          <children>
