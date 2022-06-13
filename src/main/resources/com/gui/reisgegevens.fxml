@@ -31,7 +31,7 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="transportmiddel" layoutX="60.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#printItem" prefHeight="49.0" prefWidth="260.0" promptText="Selecteer uw transportmethode" stylesheets="@Css/combobox.css" />
+            <ComboBox fx:id="transportmiddel" layoutX="60.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#printItem" prefHeight="49.0" prefWidth="260.0" promptText="Selecteer uw transportmethode" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="75.0" layoutY="409.0" prefHeight="94.0" prefWidth="330.0" stylesheets="@Css/menubuttons.css" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0">
