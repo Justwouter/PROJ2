@@ -60,7 +60,4 @@ public class LoginController extends AController {
     private void onEnterPressed() throws IOException{
         attemptLogin();
     }
-
-//    @Override
-//    public void setPoints(User user){}
 }
