@@ -1,5 +1,6 @@
 package com.gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,6 +15,9 @@ public class InstellingenController extends AController implements Initializable
     boolean passwordHide = false;
 
     @FXML
+    private Label adminLabel;
+
+    @FXML
     private Label name;
 
     @FXML
@@ -23,13 +27,23 @@ public class InstellingenController extends AController implements Initializable
     private Label username;
 
     @FXML
-    void showPassword() {
+    private void showPassword() {
         if (passwordHide){
             password.setText(passwordSet(user.getPassword()));
             passwordHide = false;
         }else{
             password.setText(user.getPassword());
             passwordHide = true;
+        }
+    }
+
+    
+    @FXML
+    private void checkAdmin() throws IOException {
+        if (user.getIsAdmin()){
+            Main.show("admin", user);
+        }else{
+            adminLabel.setText("U bent geen admin.");
         }
     }
 

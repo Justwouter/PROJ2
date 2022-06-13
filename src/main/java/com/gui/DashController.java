@@ -14,21 +14,15 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
 public class DashController extends AController implements Initializable {
 
-    private MediaPlayer jukebox;
     private List<Long> avList;
     private SaveManager saveManager = new SaveManager();
 
@@ -63,11 +57,8 @@ public class DashController extends AController implements Initializable {
     //Parent methods overrides
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        saveManager.saveState();
-        LoadMusic(new File("src/main/resources/com/gui/Sounds/ding.wav"));
-        
+        saveManager.saveState();        
     }
-
 
     @FXML
     public void setVergelijking(){
@@ -80,36 +71,6 @@ public class DashController extends AController implements Initializable {
     @FXML
     private void loadAverageLines(){
         updateMedianLine(avList);
-    }
-
-    /**
-     * Wrapper method to update the barchart on the dashboard.
-     */
-    @FXML
-    public void triggerChartUpdate(){
-        playMusic();
-        updateMedianLine(updateWeeklyChart());
-        setVergelijking();
-    }
-
-    /**
-     * Loads a file into the jukebox.
-     * @param file the file to be loaded.
-     * @return Media object containing the given file.
-     */
-    private Media LoadMusic(File file){
-        Media media = new Media(file.toURI().toString());
-        this.jukebox = new MediaPlayer(media);
-        return media;
-    }
-
-    /**
-     * Plays the file stored in jukebox & resets if called again.
-     */
-    private void playMusic(){
-        jukebox.play();
-        jukebox.stop();
-        jukebox.play();
     }
 
     /**
@@ -239,7 +200,6 @@ public class DashController extends AController implements Initializable {
         return averageList;
     }
 
-
     /**
      * Loops trough a User's point mutations & returns the values for the selected day in the current week.<p>
      * This method uses the Calendar date index e.g. Sunday = 1 and Saturday = 7.
@@ -258,15 +218,9 @@ public class DashController extends AController implements Initializable {
                     System.out.println(output);
                 }
             }
-
         }
         return Math.abs(output);
     }
-
-
-
-
-
 
     /**
      * Creates floating lables containing the bar values for the Dashboard co2ThisWeek Chart 

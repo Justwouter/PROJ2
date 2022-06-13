@@ -21,9 +21,8 @@ public class LoginController extends AController {
     public Label foutmelding;
 
     /**
-     * Zodra er op de login knop gedrukt wordt, zoekt checkt het de inlog bij LoginChecker.
-     * Ook checkt dit of het een admin is, indien admin gaat dit naar admin-page.
-     * Geen admin dan naar normale dashboard.
+     * Zodra er op de login knop gedrukt wordt of als er op enter wordt gedrukt, 
+     * checkt de LoginChecker of de juiste gegevens zijn meegegeven.
      * Indien LoginChecker false returned, wordt er op het scherm voor de gebruiker getoond dat er iets fout was.
      * @throws IOException <- Vangt problemen op!
      */
@@ -31,12 +30,8 @@ public class LoginController extends AController {
     private void attemptLogin() throws IOException {
         if (loginChecker(usernameField.getText(), passwordField.getText())){
             foutmelding.setVisible(false);
-            if (user.getIsAdmin()){
-                switchToAdmin();
-            } else {
                 Main.show("Dashboard", user);
-            }
-        } else {
+        }else{
             foutmelding.setVisible(true);
         }
     }
@@ -67,7 +62,5 @@ public class LoginController extends AController {
     }
 
     @Override
-    public void setPoints(User user){
-
-    }
+    public void setPoints(User user){}
 }

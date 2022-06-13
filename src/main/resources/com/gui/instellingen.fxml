@@ -25,7 +25,7 @@
       </Button>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="46.0" prefWidth="70.0" text="Shop" />
    </AnchorPane>
-   <AnchorPane layoutX="52.0" layoutY="36.0" prefHeight="342.0" prefWidth="376.0" stylesheets="@Css/menubuttons.css">
+   <AnchorPane layoutX="52.0" layoutY="36.0" prefHeight="487.0" prefWidth="376.0" stylesheets="@Css/menubuttons.css">
       <children>
          <Button alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToInstellingenName" prefHeight="54.0" prefWidth="162.0" text="Naam aanpassen" />
          <Button alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="171.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToInstellingenPassword" prefHeight="54.0" prefWidth="162.0" text="Wachtwoord aanpassen" />
@@ -34,6 +34,12 @@
          <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="26.0" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 17;" text="Name" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
          <Label fx:id="password" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="173.0" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 17;" text="Password" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
          <Button alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#showPassword" prefHeight="40.0" prefWidth="122.0" text="Wachtwoord tonen" />
+         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#checkAdmin" prefHeight="54.0" prefWidth="162.0" text="Admin tools" />
+         <Label fx:id="adminLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="177.0" layoutY="312.0" prefHeight="30.0" prefWidth="183.0" style="-fx-font-size: 15;" textAlignment="CENTER" textFill="#ff2727" textOverrun="CLIP" wrapText="true">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font>
+         </Label>
       </children>
    </AnchorPane>
 </AnchorPane>
