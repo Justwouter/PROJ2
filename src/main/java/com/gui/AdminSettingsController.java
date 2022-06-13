@@ -104,7 +104,7 @@ public class AdminSettingsController extends AController implements Initializabl
     public void makeUser() throws IOException {
         if(password.getText().equals(passwordRepeat.getText())){
             new User(naam.getText(), false, username.getText(), password.getText(), filiaal.getValue());
-            SaveManager.saveState();
+            saveManager.saveState();
             foutmeldingWW.setVisible(true);
         }else{
             foutmeldingWW.setVisible(false);
@@ -115,7 +115,7 @@ public class AdminSettingsController extends AController implements Initializabl
     public void makeAdmin() throws IOException {
         if (password.getText().equals(passwordRepeat.getText())) {
             new User(naam.getText(), true, username.getText(), password.getText(), filiaal.getValue());
-            SaveManager.saveState();
+            saveManager.saveState();
         } else {
             foutmeldingWW.setVisible(false);
         }
