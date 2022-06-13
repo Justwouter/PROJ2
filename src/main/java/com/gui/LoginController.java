@@ -61,6 +61,6 @@ public class LoginController extends AController {
         attemptLogin();
     }
 
-    @Override
-    public void setPoints(User user){}
+//    @Override
+//    public void setPoints(User user){}
 }

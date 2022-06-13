@@ -1,5 +1,7 @@
 package com.gui;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 import com.logic.SaveManager;
@@ -11,7 +13,7 @@ import javafx.scene.control.Label;
  * Hoofd controller, wordt gebruikt om alle switch statements te implementeren.
  * De setUser, setPoint zijn er zodat elke controller een vaste start method heeft.
  */
-public abstract class AController {
+public abstract class AController implements PropertyChangeListener {
 
     @FXML
     public Label points = new Label();
@@ -22,9 +24,6 @@ public abstract class AController {
 
     public void setUser(User user){
         this.user = user;
-    }
-    public void setPoints(User user){
-        points.setText(user.getPoint().getPointsString());
     }
 
     //All switch statements (if you want a new fxml file add the switch method here!)
@@ -63,5 +62,10 @@ public abstract class AController {
     @FXML
     private void switchToLogin() throws IOException {
         Main.show("login", user);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        points.setText(user.getPoint().getPointsString());
     }
 }
