@@ -1,0 +1,5 @@
+{"name":"Radio","price":400,"imageURL":"file:src/main/resources/com/gui/Images/items/radio-image.png"}
+{"name":"Fiets","price":900,"imageURL":"file:src/main/resources/com/gui/Images/items/fiets.png"}
+{"name":"Televisie","price":5000,"imageURL":"file:src/main/resources/com/gui/Images/items/tv.png"}
+{"name":"1 gratis vrije dag","price":2500,"imageURL":"file:src/main/resources/com/gui/Images/items/free-day.png"}
+{"name":"1 gratis diner voor twoo","price":1000,"imageURL":"file:src/main/resources/com/gui/Images/items/diner-voor-2.png"}
