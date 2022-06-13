@@ -246,9 +246,10 @@ public class DashController extends AController implements Initializable {
         ArrayList<PuntMutatie> allPointMutations = user.puntVerandering;
         Calendar currentDate = Calendar.getInstance();
         Long output = (long)0;
-        
         for(PuntMutatie mutation : allPointMutations){
-            if(mutation.datum.getWeekYear() == currentDate.getWeekYear()){
+            int mutationWeek = mutation.datum.get(Calendar.WEEK_OF_YEAR);
+            int currentWeek = currentDate.get(Calendar.WEEK_OF_YEAR);
+            if(mutationWeek == currentWeek || (day==1) && mutationWeek == currentWeek-1){
                 if(mutation.datum.get(Calendar.DAY_OF_WEEK) == day){
                     output +=mutation.puntVerandering;
                     System.out.println(output);
