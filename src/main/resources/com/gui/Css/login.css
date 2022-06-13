@@ -21,5 +21,6 @@
 }
 
 .root {
-    -fx-background-color: #74F180;
+    -fx-background-color: lightblue;    
+        background-color: lightblue;
 }
