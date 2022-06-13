@@ -29,7 +29,7 @@ public class Main extends Application {
     @Override
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
-        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo.jpg"));
+        primaryStage.getIcons().add(new Image("file:src\\main\\resources\\com\\gui\\Images\\co2wegermeePictogram.png"));
         seed();
         show("login", null);
     }
@@ -41,8 +41,9 @@ public class Main extends Application {
 
         AController controller = loader.getController();
         controller.setUser(user);
-        controller.setPoints(user);
-
+        if (user != null){
+            user.getPoint().addObserver(controller);
+        }
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);
         String c = fxml.substring(0, 1).toUpperCase();

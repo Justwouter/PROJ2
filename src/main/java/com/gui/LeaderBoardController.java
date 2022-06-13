@@ -13,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.skin.TableHeaderRow;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LeaderBoardController extends AController implements Initializable {
@@ -33,8 +32,6 @@ public class LeaderBoardController extends AController implements Initializable 
     @FXML
     private ComboBox<String> filiaal;
 
-    private ArrayList<Filiaal> filialen;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillBoard("");
@@ -47,8 +44,7 @@ public class LeaderBoardController extends AController implements Initializable 
      * Deze methode voegt alle aanwezige fililalen toe aan de ComboBox zodat deze geselecteerd kunnen worden.
      */
     private void addFilialen() {
-        filialen = Filiaal.filialen;
-        for (Filiaal f : filialen) {
+        for (Filiaal f : Filiaal.filialen) {
             filiaal.getItems().add(f.getNaam());
         }
     }

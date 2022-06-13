@@ -13,19 +13,6 @@ public abstract class AGUITests {
     /**Ensures the JavaFX runtime is loaded before running tests */
     @BeforeAll
     public static void init(){
-        try{
-            Platform.startup(new Runnable() {
-
-                @Override
-                public void run() {
-                    System.out.println("JavaFX toolkit is running =]");
-                }
-                
-            });
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
+        new SingleletonToolkit().getInstance().start();
     }
-    
 }

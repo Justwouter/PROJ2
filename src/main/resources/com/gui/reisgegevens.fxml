@@ -14,39 +14,34 @@
       <Pane layoutX="349.0" layoutY="14.0" prefHeight="49.0" prefWidth="117.0" style="-fx-background-color: f8da32; -fx-background-radius: 18 18 18 18;">
          <Label fx:id="points" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="117.0" style="-fx-font-size: 20px;" text="punten aantal" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
       </Pane>
-      <AnchorPane layoutX="50.0" layoutY="83.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="83.0">
+      <AnchorPane layoutX="50.0" layoutY="83.0" prefHeight="294.0" prefWidth="380.0" stylesheets="@Css/menubuttons.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="83.0">
          <children>
-              <Pane layoutX="219.0" layoutY="150.0" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="23.0">
+              <Pane layoutX="203.0" layoutY="149.0" prefHeight="50.0" prefWidth="125.0" style="-fx-background-color: a8da30; -fx-background-radius: 18 18 18 18;" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="52.0">
                <children>
-                  <Label fx:id="kostenPunten" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+                  <Label fx:id="kostenPunten" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="125.0" style="-fx-font-size: 18;" text="Kosten" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                </children></Pane>
-            <Pane layoutX="21.0" layoutY="151.0" prefHeight="49.0" prefWidth="138.0" style="-fx-background-color: #FF0000; -fx-background-radius: 18 18 18 18;" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="221.0">
+            <Pane layoutX="52.0" layoutY="150.0" prefHeight="50.0" prefWidth="125.0" style="-fx-background-color: #FF0000; -fx-background-radius: 18 18 18 18;" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="203.0">
                <children>
-                  <Label fx:id="kostenCO2" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="138.0" style="-fx-font-size: 20px;" text="Uitstoot" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+                  <Label fx:id="kostenCO2" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="125.0" style="-fx-font-size: 18px;" text="Uitstoot" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
                </children>
             </Pane>
             <Button alignment="CENTER" layoutX="121.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchToDashboardWithCO2" prefHeight="56.0" prefWidth="138.0" text="Opslaan" />
-            <TextField fx:id="kilometers" alignment="CENTER" layoutX="50.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setTotaalAndCO2" onKeyPressed="#setTotaalAndCO2" onKeyReleased="#setTotaalAndCO2" onKeyTyped="#setTotaalAndCO2" prefHeight="49.0" prefWidth="280.0" promptText="Voer uw aantal gereden kilometers in">
+            <TextField fx:id="kilometers" alignment="CENTER" layoutX="60.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setTotaalAndCO2" onKeyPressed="#setTotaalAndCO2" onKeyReleased="#setTotaalAndCO2" onKeyTyped="#setTotaalAndCO2" prefHeight="50.0" prefWidth="260.0" promptText="Voer uw kilometers in">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
             <ComboBox fx:id="transportmiddel" layoutX="60.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#printItem" prefHeight="49.0" prefWidth="260.0" promptText="Selecteer uw transportmethode" />
-            <Label alignment="CENTER" layoutX="331.0" layoutY="22.0" prefHeight="49.0" prefWidth="51.0" text="Km" textAlignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="75.0" layoutY="409.0" prefHeight="94.0" prefWidth="330.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0">
+      <AnchorPane layoutX="75.0" layoutY="409.0" prefHeight="94.0" prefWidth="330.0" stylesheets="@Css/menubuttons.css" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0">
          <children>
              <Button fx:id="pre_set_toevoegen" layoutX="95.0" layoutY="47.0" mnemonicParsing="false" onAction="#toevoegenPreSet" prefHeight="34.0" prefWidth="140.0" text="Voeg pre-set toe" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="95.0" />
-             <ComboBox fx:id="pre_set" layoutX="202.0" layoutY="6.0" prefHeight="34.0" prefWidth="117.0" promptText="Kies pre-set " AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="11.0" />
-             <TextField fx:id="hernoemen" alignment="CENTER" layoutX="17.0" layoutY="6.0" prefHeight="34.0" prefWidth="168.0" promptText="Nieuwe naam pre-set" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="145.0" />
+             <ComboBox fx:id="pre_set" layoutX="194.0" layoutY="6.0" prefHeight="34.0" prefWidth="111.0" promptText="Kies pre-set " AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="25.0" />
+             <TextField fx:id="hernoemen" alignment="CENTER" layoutX="25.0" layoutY="6.0" prefHeight="34.0" prefWidth="154.0" promptText="Nieuwe naam pre-set" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="151.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="60.0" layoutY="514.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="90.0">
+      <AnchorPane layoutX="60.0" layoutY="514.0" stylesheets="@Css/menubuttons.css" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="90.0">
          <children>
              <Button fx:id="Pre_set_1" layoutX="70.0" mnemonicParsing="false" onAction="#buttonOne" text="1" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="238.0" />
              <Button fx:id="Pre_set_2" layoutX="120.0" mnemonicParsing="false" onAction="#buttonTwo" text="2" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="188.0" />
