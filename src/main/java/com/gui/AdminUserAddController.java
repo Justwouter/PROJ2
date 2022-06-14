@@ -15,8 +15,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class AdminUserAddController extends AController implements Initializable {
-
-    //boolean isAdmin = false;
     
     @FXML
     private Label ErrorLabel;
