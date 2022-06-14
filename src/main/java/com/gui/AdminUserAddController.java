@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 
 public class AdminUserAddController extends AController implements Initializable {
 
-    boolean isAdmin = false;
+    //boolean isAdmin = false;
     
     @FXML
     private Label ErrorLabel;
@@ -42,7 +42,7 @@ public class AdminUserAddController extends AController implements Initializable
     @FXML
     void AddUser() {
         if (!naam.getText().isBlank() && !password.getText().isBlank() && !passwordRepeat.getText().isBlank() && !username.getText().isBlank() && !filiaal.getValue().isBlank()){
-            if (isAdmin){
+            if (Admin.selectedProperty().get()){
                 new User(naam.getText(), true, username.getText(), password.getText(), filiaal.getValue());
             }else{
                 new User(naam.getText(), false, username.getText(), password.getText(), filiaal.getValue());
@@ -58,10 +58,6 @@ public class AdminUserAddController extends AController implements Initializable
         }
     }
 
-    @FXML
-    void SetAdmin() {
-        isAdmin = true;
-    }
 
      //Deze methode voegt alle aanwezige fililalen toe aan de ComboBox zodat deze geselecteerd kunnen worden.
     private void addFilialen() {
@@ -73,6 +69,5 @@ public class AdminUserAddController extends AController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addFilialen();
-        isAdmin = false;
     }
 }

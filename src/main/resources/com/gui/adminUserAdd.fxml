@@ -21,7 +21,7 @@
             <TextField fx:id="username" layoutX="12.0" layoutY="80.0" prefWidth="150.0" promptText="voer gebruikersnaam in" />
             <PasswordField fx:id="password" layoutX="13.0" layoutY="115.0" prefWidth="150.0" promptText="Voer Wachtwoord in" />
             <PasswordField fx:id="passwordRepeat" layoutX="13.0" layoutY="150.0" prefWidth="150.0" promptText="Herhaal wachtwoord" />
-            <CheckBox fx:id="Admin" layoutX="58.0" layoutY="185.0" mnemonicParsing="false" onAction="#SetAdmin" text="Admin" />
+            <CheckBox fx:id="Admin" layoutX="58.0" layoutY="185.0" mnemonicParsing="false" text="Admin" />
             <Label fx:id="ErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="268.0" prefHeight="40.0" prefWidth="150.0" textAlignment="CENTER" textFill="#fc1717">
                <font>
                   <Font name="System Bold" size="12.0" />
