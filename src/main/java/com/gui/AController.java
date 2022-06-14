@@ -51,6 +51,9 @@ public abstract class AController implements PropertyChangeListener {
     public void switchToAdmin() throws IOException{
         Main.show("admin", user);
     }
+    public void switchToAdminUserAdd() throws IOException {
+        Main.show("adminUserAdd", user);
+    }
     @FXML 
     public void switchToInstellingenPassword() throws IOException{
         Main.show("instellingenPassword", user);
