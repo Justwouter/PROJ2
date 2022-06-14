@@ -56,7 +56,7 @@ public class LeaderBoardController extends AController implements Initializable 
      * Vult het boord met de data.
      */
     private void fillBoard(String userFilter){
-        if(bestuserbutton.isSelected()){
+        if(bestuserbutton.selectedProperty().get()){
             fillBoardBestUsers(userFilter);
         }else{
             fillBoardNormaal(userFilter);
