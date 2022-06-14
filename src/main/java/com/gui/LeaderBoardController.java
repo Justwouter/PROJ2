@@ -32,6 +32,9 @@ public class LeaderBoardController extends AController implements Initializable 
     @FXML
     private ComboBox<String> filiaal;
 
+    @FXML
+    private CheckBox bestuserbutton; //Gaat checken of er punten van de beste users van laatste maand moet worden laten zien
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillBoard("");
@@ -53,9 +56,25 @@ public class LeaderBoardController extends AController implements Initializable 
      * Vult het boord met de data.
      */
     private void fillBoard(String userFilter){
+        if(bestuserbutton.selectedProperty().get()){
+            fillBoardBestUsers(userFilter);
+        }else{
+            fillBoardNormaal(userFilter);
+        }
+    }
+
+    private void fillBoardNormaal(String userFilter){
         rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
         namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
         puntenKolom.setCellValueFactory(new PropertyValueFactory<>("points"));
+        ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers(userFilter));
+        leaderboard.setItems(data);
+    }
+
+    private void fillBoardBestUsers(String userFilter){
+        rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
+        namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
+        puntenKolom.setCellValueFactory(new PropertyValueFactory<>("UserPuntMutatiesAsInteger()"));
         ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers(userFilter));
         leaderboard.setItems(data);
     }
@@ -84,7 +103,7 @@ public class LeaderBoardController extends AController implements Initializable 
                     getStyleClass().add("");
                 else if (item.getPoints() > 500)
                     getStyleClass().add("good");
-                else if (item.getPoints() > 0)
+                else if (item.getPoints() >= 0)
                     getStyleClass().add("warning");
                 else if (item.getPoints() < 0)
                     getStyleClass().add("bad");
@@ -110,5 +129,10 @@ public class LeaderBoardController extends AController implements Initializable 
         leaderboard.refresh();
         String s = filiaal.getValue();
         fillBoard(s);
+    }
+
+    @FXML
+    public void onButtonSelect(){
+        leaderboard.refresh();
     }
 }
