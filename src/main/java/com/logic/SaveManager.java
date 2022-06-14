@@ -44,7 +44,7 @@ public class SaveManager {
 
     private ArrayList<String> seedStandardSaveFiles() {
         ArrayList<String> fileList = new ArrayList<>();
-        fileList.add(dir+"Users.json");
+        fileList.add(dir+"AppUsers.json");
         fileList.add(dir+"Verhicles.json");
         fileList.add(dir+"Travels.json");
         fileList.add(dir+"Points.json"); 
@@ -55,7 +55,7 @@ public class SaveManager {
 
     private ArrayList<String> seedFancySaveFiles(){
         ArrayList<String> fileList = new ArrayList<>();
-        fileList.add(dir+"Users/");
+        fileList.add(dir+"AppUsers/");
         fileList.add(dir+"Verhicles/");
         fileList.add(dir+"Locations/");
         fileList.add(dir+"Items/");
@@ -63,7 +63,7 @@ public class SaveManager {
     }
 
     /**
-     * Saves the currently existing Users & Transportmidddelen to their resective files.
+     * Saves the currently existing AppUsers & Transportmidddelen to their resective files.
      */
     public void saveState() {
         System.out.println("================");//Debug
@@ -211,7 +211,7 @@ public class SaveManager {
     //Solution to long method/Switch smell
 
     private boolean isUsersFile(String s){
-        return s.contains("Users");
+        return s.contains("AppUsers");
     }
 
     private boolean isVerhiclesFile(String s){
@@ -227,11 +227,11 @@ public class SaveManager {
     }
 
     /**
-     * Writes the given {@link User} in JSON format to the Users file.
+     * Writes the given {@link User} in JSON format to the AppUsers file.
      * @param user the to be written User object.
      */
     private void writeToSave(User user) {
-        File savefile = new File(dir+"Users.json");
+        File savefile = new File(dir+"AppUsers.json");
         write(savefile, user);
     }
 
@@ -264,11 +264,11 @@ public class SaveManager {
 
 
     /**
-     * Writes the given {@link User} in JSON format to a file in the ~/data/Users/ dir.
+     * Writes the given {@link User} in JSON format to a file in the ~/data/AppUsers/ dir.
      * @param user
      */
     private void writeToFancySave(User user) {
-        File savefile = new File(dir+"Users/"+"user"+filesInDir("Users", "user")+".json");
+        File savefile = new File(dir+"AppUsers/"+"user"+filesInDir("AppUsers", "user")+".json");
         write(savefile, user);
     }
     /**
