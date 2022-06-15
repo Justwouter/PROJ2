@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.Observable;
 
+@SuppressWarnings("deprecation")
 public class LoginController extends AController {
 
     @FXML

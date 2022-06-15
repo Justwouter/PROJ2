@@ -13,6 +13,7 @@ import java.util.Observer;
  * Hoofd controller, wordt gebruikt om alle switch statements te implementeren.
  * De setUser, setPoint zijn er zodat elke controller een vaste start method heeft.
  */
+@SuppressWarnings("deprecation")
 public abstract class AController implements Observer {
 
     @FXML
