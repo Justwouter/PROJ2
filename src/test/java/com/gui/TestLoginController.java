@@ -1,7 +1,7 @@
 package com.gui;
 
-import com.logic.SaveManagerForTests;
 import com.logic.User;
+import com.save.SaveManagerForTests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

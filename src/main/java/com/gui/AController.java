@@ -1,8 +1,9 @@
 package com.gui;
 
-import com.logic.ISave;
-import com.logic.SaveManager;
 import com.logic.User;
+import com.save.ISave;
+import com.save.SaveManager;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

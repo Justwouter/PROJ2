@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.logic.SaveManagerForTests;
 import com.logic.User;
+import com.save.SaveManagerForTests;
 
 public class testInstellingenController extends AGUITests{
 

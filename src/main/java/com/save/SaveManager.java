@@ -1,6 +1,11 @@
-package com.logic;
+package com.save;
 
 import com.gui.ShopController;
+import com.logic.Filiaal;
+import com.logic.Item;
+import com.logic.Leaderboard;
+import com.logic.Transportmiddel;
+import com.logic.User;
 
 import java.io.File;
 import java.io.FileWriter;
