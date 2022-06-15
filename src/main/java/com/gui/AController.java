@@ -1,5 +1,6 @@
 package com.gui;
 
+import com.logic.ISave;
 import com.logic.SaveManager;
 import com.logic.User;
 import javafx.fxml.FXML;
@@ -19,7 +20,7 @@ public abstract class AController implements Observer {
     @FXML
     public Label points = new Label();
 
-    public SaveManager saveManager = new SaveManager(true);
+    public ISave saveManager = new SaveManager(true);
 
     public User user;
 

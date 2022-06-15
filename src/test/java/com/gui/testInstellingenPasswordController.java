@@ -5,12 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import com.logic.SaveManagerForTests;
 import com.logic.User;
 
 public class testInstellingenPasswordController {
 
     static User testUser;
-    InstellingenPasswordController testController = new InstellingenPasswordController();
+    static InstellingenPasswordController controller = new InstellingenPasswordController();
+
+    @BeforeAll
+    public static void spoofSaveManager(){
+        controller.saveManager = new SaveManagerForTests();
+    }
 
     @BeforeAll
     public static void start(){
@@ -19,16 +25,16 @@ public class testInstellingenPasswordController {
 
     @Test
     public void testCheckPasswordCorrect() {
-        boolean test = testController.checkPasswordCorrect(testUser.getPassword(), "Password");
-        boolean test2 = testController.checkPasswordCorrect(testUser.getPassword(), "FoutPassword");
+        boolean test = controller.checkPasswordCorrect(testUser.getPassword(), "Password");
+        boolean test2 = controller.checkPasswordCorrect(testUser.getPassword(), "FoutPassword");
         assertEquals(true, test);
         assertEquals(false, test2);
     }
 
     @Test
     public void testCheckPasswordDubbel() {
-        boolean test = testController.checkPasswordDubbel("Password", "Password");
-        boolean test2 = testController.checkPasswordDubbel("Password", "FoutPassword");
+        boolean test = controller.checkPasswordDubbel("Password", "Password");
+        boolean test2 = controller.checkPasswordDubbel("Password", "FoutPassword");
         assertEquals(true, test);
         assertEquals(false, test2);
     }

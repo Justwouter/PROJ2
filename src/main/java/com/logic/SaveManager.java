@@ -18,7 +18,7 @@ import com.google.gson.GsonBuilder;
 /**
  * Sizable class that contains all the logic for reading and writing saves
  */
-public class SaveManager {
+public class SaveManager implements ISave{
     //Methods for points/reis may be unneccesary
     Gson gson;
     boolean fancy = false;

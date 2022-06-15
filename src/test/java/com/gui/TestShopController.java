@@ -1,17 +1,23 @@
 package com.gui;
 
 import com.logic.Item;
+import com.logic.SaveManagerForTests;
 import com.logic.User;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestShopController extends AGUITests{
 
-    ShopController controller = new ShopController();
+    static ShopController controller = new ShopController();
     User user;
     Item item;
+    @BeforeAll
+    public static void spoofSaveManager(){
+        controller.saveManager = new SaveManagerForTests();
+    }
 
     @BeforeEach
     public void start(){

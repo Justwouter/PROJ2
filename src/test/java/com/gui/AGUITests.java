@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
  * Loads JavaFX Runtime 
  */
 public abstract class AGUITests {
-
+    
     /**Ensures the JavaFX runtime is loaded before running tests */
     @BeforeAll
     public static void init(){
