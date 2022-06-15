@@ -82,8 +82,8 @@ public class DashController extends AController implements Initializable {
             System.out.println("Hiding chart"); //Debug
         }
         else{
-            medianLineChart.setTitle("Weekly CO2 Values");
-            medianLineChart.getYAxis().setLabel("Discharge");
+            medianLineChart.setTitle(co2ThisWeekChart.getTitle());
+            medianLineChart.getYAxis().setLabel(co2ThisWeekChart.getYAxis().getLabel());
             medianLineChart.setCreateSymbols(false);
             medianLineChart.getData().clear();
 
