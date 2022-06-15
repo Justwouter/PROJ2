@@ -4,6 +4,7 @@ import javafx.application.Platform;
 
 public class SingleletonToolkit {
     private static SingleletonToolkit instance;
+    boolean isRunning = false;
 
     public SingleletonToolkit getInstance(){
         if (instance == null) {
@@ -13,19 +14,21 @@ public class SingleletonToolkit {
     }
 
     public void start(){
-        try{
-            Platform.startup(new Runnable() {
-
-                @Override
-                public void run() {
-                    System.out.println("JavaFX toolkit is running =]");
-                }
-                
-            });
-        }
-        catch(Exception e){
-            System.out.println(e);
+        if(!isRunning){
+            try{
+                Platform.startup(new Runnable() {
+    
+                    @Override
+                    public void run() {
+                        System.out.println("JavaFX toolkit is running =]");
+                    }
+                    
+                });
+                isRunning = true;
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
         }
     }
-    
 }

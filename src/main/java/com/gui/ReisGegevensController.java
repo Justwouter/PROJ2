@@ -74,7 +74,7 @@ public class ReisGegevensController extends AController implements Initializable
             //ook addPoints daarvoor gebruiken zodat je niet twee
             //dezelfde methoden gebruikt.
         user.getPoint().addPoints(-puntenVerlies);
-        user.userAddPuntMutatie(-puntenVerlies);
+        user.userAddPuntMutatie(-puntenVerlies, uitstootCO2);
             //waarde into userAddPuntMutatie is negatief omdat
             //er ook de wekelijkse punten in verwerkt worden.
     }
