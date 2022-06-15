@@ -101,6 +101,10 @@ public class User {
         puntVerandering.add(new PuntMutatie(amount, datum));
     }
 
+    public void userAddPuntMutatie(int amount, int uitstoot) {
+        puntVerandering.add(new PuntMutatie(amount, uitstoot));
+    }
+
     public void user4weekPuntMutatieCleanUp() {
         // Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen blijven.
         Integer puntenOuderDan4Weken = 0;

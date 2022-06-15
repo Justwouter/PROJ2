@@ -4,12 +4,18 @@ import java.util.Calendar;
 
 public class PuntMutatie{
     public Integer puntVerandering;
+    public Integer uitstootCO2;
     public Calendar datum;
 
     public PuntMutatie(Integer puntVerandering){
         //geeft datum van vandaag
         this.puntVerandering = puntVerandering;
         datum = Calendar.getInstance();   
+    }
+
+    public PuntMutatie(Integer puntVerandering, Integer uitstoot){
+        this(puntVerandering);
+        this.uitstootCO2 = uitstoot;
     }
 
     public PuntMutatie(Integer puntVerandering, Calendar datum){

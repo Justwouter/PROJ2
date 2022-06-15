@@ -2,7 +2,7 @@
   "naam": "Testnaam Wouter",
   "rank": 3,
   "point": {
-    "points": 1919
+    "points": 1845
   },
   "isAdmin": true,
   "puntVerandering": [
@@ -59,6 +59,29 @@
         "hourOfDay": 14,
         "minute": 10,
         "second": 30
+      }
+    },
+    {
+      "puntVerandering": -50,
+      "datum": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 15,
+        "hourOfDay": 14,
+        "minute": 25,
+        "second": 37
+      }
+    },
+    {
+      "puntVerandering": -24,
+      "uitstootCO2": 2175,
+      "datum": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 15,
+        "hourOfDay": 14,
+        "minute": 33,
+        "second": 5
       }
     }
   ],

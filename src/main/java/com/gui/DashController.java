@@ -83,8 +83,7 @@ public class DashController extends AController implements Initializable {
         }
         else{
             medianLineChart.setTitle("Weekly CO2 Values");
-            medianLineChart.getXAxis().setLabel("Day");
-            medianLineChart.getYAxis().setLabel("Value");
+            medianLineChart.getYAxis().setLabel("Discharge");
             medianLineChart.setCreateSymbols(false);
             medianLineChart.getData().clear();
 
@@ -173,7 +172,7 @@ public class DashController extends AController implements Initializable {
         average = average/averageList.size();
 
         //Adjust the max amount of values the charts can contain. Always keep the linechart equal to the barchart.
-        weekChartY.setUpperBound((double)highest+20);
+        weekChartY.setUpperBound(calculateUpperBound((double)highest));
         averageChartY.setUpperBound(weekChartY.getUpperBound());
 
 
@@ -184,8 +183,7 @@ public class DashController extends AController implements Initializable {
 
         //Assign lables 
         co2ThisWeekChart.setTitle("Weekly CO2 Values");
-        weekChartX.setLabel("Day");
-        weekChartY.setLabel("Value");
+        weekChartY.setLabel("Discharge");
         
         //Load the data & Toggle animations to avoid 'Issues'
         co2ThisWeekChart.setLegendVisible(false);
@@ -196,6 +194,23 @@ public class DashController extends AController implements Initializable {
         this.avList = averageList;
         return averageList;
     }
+
+
+    /**
+     * Calculates the upper bound for co2ThisWeekChart & averageChart.<P>
+     * Nearest multiple of 10 to  the Highest value in chart + 20;
+     * @param highest
+     * @return
+     */
+    private double calculateUpperBound(double highest){
+        double upperBound = highest+20;
+        while(upperBound % 10 !=0){
+            upperBound++;
+        }
+        return upperBound;
+
+    }
+
 
     /**
      * Loops trough a User's point mutations & returns the values for the selected day in the current week.<p>
