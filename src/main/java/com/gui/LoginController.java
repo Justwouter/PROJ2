@@ -8,7 +8,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.Observable;
 
+@SuppressWarnings("deprecation")
 public class LoginController extends AController {
 
     @FXML
@@ -59,5 +61,10 @@ public class LoginController extends AController {
     @FXML
     private void onEnterPressed() throws IOException{
         attemptLogin();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 }

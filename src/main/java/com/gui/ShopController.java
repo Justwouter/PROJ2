@@ -62,8 +62,6 @@ public class ShopController extends AController implements Initializable {
                         btn.setOnAction((ActionEvent event) -> {
                             Item data = getTableView().getItems().get(getIndex());
                             purchaseItem(data);
-                            // TODO Reminder to make the point label an observer?
-                            points.setText(user.getPoint().getPointsString());
                         });
                     }
 
@@ -90,5 +88,6 @@ public class ShopController extends AController implements Initializable {
         if (user.getPoint().enoughBalance(item.getPrice())){
             user.getPoint().addPoints(-item.getPrice());
         }
+        saveManager.saveState();
     }
 }
