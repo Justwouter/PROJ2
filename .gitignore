@@ -39,8 +39,8 @@ target/site/jacoco/*
 target
 
 #Database files#
-data
-data/*.json
+#data
+#data/*.json
 data/Filialen.json
 data/Users.json
 data/Verhicles.json
