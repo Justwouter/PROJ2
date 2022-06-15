@@ -14,8 +14,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     private static Stage primaryStage;
-    private static AnchorPane mainLayout;
-  
+
     public static void seed(){
         //just here incase users and transportmiddelen gets corrupted
         //in that case copy the setup from the README
@@ -37,12 +36,12 @@ public class Main extends Application {
     public static void show(String fxml, User user) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource(fxml + ".fxml"));
-        mainLayout = loader.load();
+        AnchorPane mainLayout = loader.load();
 
         AController controller = loader.getController();
         controller.setUser(user);
         if (user != null){
-            user.getPoint().addObserver(controller);
+            user.getPoint().getObservableAdapter().addObserver(controller);
         }
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);

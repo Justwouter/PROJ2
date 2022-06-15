@@ -1,19 +1,19 @@
 package com.gui;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.IOException;
-
 import com.logic.SaveManager;
 import com.logic.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
+
 /*
  * Hoofd controller, wordt gebruikt om alle switch statements te implementeren.
  * De setUser, setPoint zijn er zodat elke controller een vaste start method heeft.
  */
-public abstract class AController implements PropertyChangeListener {
+public abstract class AController implements Observer {
 
     @FXML
     public Label points = new Label();
@@ -68,7 +68,8 @@ public abstract class AController implements PropertyChangeListener {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void update(Observable o, Object arg) {
         points.setText(user.getPoint().getPointsString());
     }
+
 }

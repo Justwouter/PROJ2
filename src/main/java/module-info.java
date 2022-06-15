@@ -5,7 +5,6 @@ module com.gui {
     requires transitive javafx.media;
     requires transitive javafx.fxml;
     requires transitive com.google.gson;
-    requires transitive java.desktop;
 
     opens com.gui to javafx.fxml;
     opens com.logic;
