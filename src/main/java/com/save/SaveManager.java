@@ -24,7 +24,6 @@ import com.google.gson.GsonBuilder;
  * Sizable class that contains all the logic for reading and writing saves
  */
 public class SaveManager implements ISave{
-    //Methods for points/reis may be unneccesary
     Gson gson;
     boolean fancy = false;
     String dir = System.getProperty("user.dir")+"/data/";
@@ -51,8 +50,6 @@ public class SaveManager implements ISave{
         ArrayList<String> fileList = new ArrayList<>();
         fileList.add(dir+"AppUsers.json");
         fileList.add(dir+"Verhicles.json");
-        fileList.add(dir+"Travels.json");
-        fileList.add(dir+"Points.json"); 
         fileList.add(dir+"Locations.json"); 
         fileList.add(dir+"Items.json");
         return fileList;
