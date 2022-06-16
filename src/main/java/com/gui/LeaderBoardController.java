@@ -58,7 +58,7 @@ public class LeaderBoardController extends AController implements Initializable 
     private void fillBoard(String userFilter){
         rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
         namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
-        puntenKolom.setCellValueFactory(new PropertyValueFactory<>("points"));
+        puntenKolom.setCellValueFactory(new PropertyValueFactory<>("totalCO2"));
         ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers(userFilter));
         leaderboard.setItems(data);
     }
@@ -83,13 +83,13 @@ public class LeaderBoardController extends AController implements Initializable 
             protected void updateItem(User item, boolean empty) {
                 super.updateItem(item, empty);
                 getStyleClass().removeAll();
-                if (item == null || item.getPoints() == null)
+                if (item == null || item.getTotalCO2() == null)
                     getStyleClass().add("");
-                else if (item.getPoints() > 500)
+                else if (item.getTotalCO2() <= 20)
                     getStyleClass().add("good");
-                else if (item.getPoints() >= 0)
+                else if (item.getTotalCO2() <= 40)
                     getStyleClass().add("warning");
-                else if (item.getPoints() < 0)
+                else if (item.getTotalCO2() > 40)
                     getStyleClass().add("bad");
                 else
                     getStyleClass().add("error");

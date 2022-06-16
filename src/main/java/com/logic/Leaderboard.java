@@ -52,9 +52,9 @@ public abstract class Leaderboard {
     }
 
     private static void comparator(){
-        Comparator<User> userComparator = Comparator.comparing(User::getPoints);
+        Comparator<User> userComparator = Comparator.comparing(User::getTotalCO2);
         Collections.sort(users, userComparator);
-        Collections.reverse(users);
+        //Collections.reverse(users);
         updateRanking();
     }
 
@@ -66,9 +66,9 @@ public abstract class Leaderboard {
     
     //doet precies t zelfde als de normale versie alleen dan voor userFilterd
     private static void comparatorFilterd(){
-        Comparator<User> userComparator = Comparator.comparing(User::getPoints);
+        Comparator<User> userComparator = Comparator.comparing(User::getTotalCO2);
         Collections.sort(usersFilterd, userComparator);
-        Collections.reverse(usersFilterd);
+        //Collections.reverse(usersFilterd);
         updateRanking();
     }
 

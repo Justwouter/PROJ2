@@ -11,6 +11,7 @@ public class User {
     public Point point = new Point();
     public boolean isAdmin = false;
     public ArrayList<PuntMutatie> puntVerandering = new ArrayList<PuntMutatie>();
+    public Long totalCO2 = getTotalCO2();
     public Calendar c;
     public boolean weeklyPointsObtained = false;
     public ArrayList<PuntMutatie> userMonthlyPointStorage = new ArrayList<PuntMutatie>();
@@ -90,6 +91,28 @@ public class User {
         this.filiaal = filiaal;
     }
 
+    /**
+     * Loops trough all the PuntMutaties tied to the user and adds them together.
+     * @return all the CO2 values added together & divided by 1000 to convert G to KG.
+     */
+    public Long getTotalCO2(){
+        Long output = (long)0;
+        for(PuntMutatie pm : puntVerandering){
+            if(pm.getCO2() != null){
+                output += pm.getCO2()/1000;
+            }
+        }
+        if(userMonthlyPointStorage != null && userMonthlyPointStorage.size() > 0){
+            for(PuntMutatie pm : userMonthlyPointStorage){
+                if(pm.getCO2() != null){
+                    output += pm.getCO2()/1000;
+                }        
+            }
+        }
+        this.totalCO2 = output;
+        return output;
+    }
+
     public void userAddPuntMutatie(int amount){
         PuntMutatie p = new PuntMutatie(amount);
         puntVerandering.add(p);
@@ -103,32 +126,34 @@ public class User {
         puntVerandering.add(new PuntMutatie(amount, uitstoot));
     }
 
-    public void user4weekPuntMutatieCleanUp() {
+    protected void user4weekPuntMutatieCleanUp() {
         // Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen blijven.
         Integer puntenOuderDan4Weken = 0;
+        Integer Co2 = 0;
         int monthOfPuntenOuderDan4Weken = 13;
 
         for (PuntMutatie pm : puntVerandering) {
             if (!pm.isFromLast4Weeks()) {
                 puntenOuderDan4Weken += pm.getPuntVerandering();
+                Co2 = pm.getCO2();
                 monthOfPuntenOuderDan4Weken = pm.getDatum().get(Calendar.MONTH);
                 puntVerandering.remove(puntVerandering.indexOf(pm));
             }
         }
 
         if(monthOfPuntenOuderDan4Weken<13){
-            monthlyPuntStorageAdd(puntenOuderDan4Weken, monthOfPuntenOuderDan4Weken);
+            monthlyPuntStorageAdd(puntenOuderDan4Weken,Co2, monthOfPuntenOuderDan4Weken);
         }
     }
 
-    public void monthlyPuntStorageAdd(Integer punten, int maand){
+    protected void monthlyPuntStorageAdd(Integer punten,Integer CO2, int maand){
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, maand, 0);
-        userMonthlyPointStorage.add(new PuntMutatie(punten, calendar));
+        userMonthlyPointStorage.add(new PuntMutatie(punten,CO2, calendar));
     }
 
-    public void userMonthlyPuntMutatieCleanup(){
+    protected void userMonthlyPuntMutatieCleanup(){
         for (PuntMutatie pm : puntVerandering){
             if(!pm.isFromLastYear()){
                 userMonthlyPointStorage.remove(puntVerandering.indexOf(pm));
@@ -136,7 +161,7 @@ public class User {
         }
     }
 
-    public void userPuntMutatieCleanupALLES(){
+    protected void userPuntMutatieCleanupALLES(){
         user4weekPuntMutatieCleanUp();
         userMonthlyPuntMutatieCleanup();
     }
