@@ -2,8 +2,6 @@ package com.logic;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class User {
 
@@ -225,19 +223,5 @@ public class User {
                     "Error in User.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");
         }
         return topUsers;
-    }
-
-
-    // made by BarmanTurbo
-    public ArrayList<User> besteUsersVanDeMaand() {
-        if(this.isAdmin){
-            ArrayList<User> allUsers = Leaderboard.getUsers("");
-            Comparator<User> vergelijker = Comparator.comparing(User::getUserPuntMutatiesAsInteger);
-            Collections.sort(allUsers, vergelijker);
-            return allUsers;
-        } else{
-            throw new IllegalArgumentException(
-                "Error in User.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");
-        }
     }
 }

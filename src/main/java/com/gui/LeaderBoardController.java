@@ -119,6 +119,10 @@ public class LeaderBoardController extends AController implements Initializable 
     public void onButtonSelect(){
         leaderboard.getItems().clear();
         leaderboard.refresh();
-        fillBoard("beste4usersvandemaand");
+        if(bestuserbutton.isSelected()){
+            fillBoard("beste4usersvandemaand");
+        } else {
+            fillBoard("");
+        }
     }
 }

@@ -17,7 +17,8 @@ public abstract class Leaderboard {
 
     //heb een parameter filter toegevoegd zodat je users kan ophalen met welk filiaal filter dan ook
     public static ArrayList<User> getUsers(String filter){
-        usersFilterd.clear();        
+        usersFilterd.clear(); 
+        usersBest4.clear();       
         for (User user : users) {
             if(filter.equals("")){
                 comparator();
