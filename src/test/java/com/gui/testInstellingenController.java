@@ -6,11 +6,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.logic.User;
+import com.save.SaveManagerForTests;
 
 public class testInstellingenController extends AGUITests{
 
     static User testUser;
-    InstellingenController testController = new InstellingenController();
+    static InstellingenController controller = new InstellingenController();
+
+    @BeforeAll
+    public static void spoofSaveManager(){
+        controller.saveManager = new SaveManagerForTests();
+    }
 
 
     @BeforeAll
@@ -20,8 +26,8 @@ public class testInstellingenController extends AGUITests{
 
     @Test
     public void testPasswordSet() {
-        assertEquals("", testController.passwordSet(""));
-        assertEquals("xxxx", testController.passwordSet("test"));
-        assertEquals("xxxxxxxx", testController.passwordSet(testUser.getPassword()));
+        assertEquals("", controller.passwordSet(""));
+        assertEquals("xxxx", controller.passwordSet("test"));
+        assertEquals("xxxxxxxx", controller.passwordSet(testUser.getPassword()));
     }
 }

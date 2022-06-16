@@ -1,6 +1,11 @@
-package com.logic;
+package com.save;
 
 import com.gui.ShopController;
+import com.logic.Filiaal;
+import com.logic.Item;
+import com.logic.Leaderboard;
+import com.logic.Transportmiddel;
+import com.logic.User;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,8 +23,7 @@ import com.google.gson.GsonBuilder;
 /**
  * Sizable class that contains all the logic for reading and writing saves
  */
-public class SaveManager {
-    //Methods for points/reis may be unneccesary
+public class SaveManager implements ISave{
     Gson gson;
     boolean fancy = false;
     String dir = System.getProperty("user.dir")+"/data/";
@@ -46,8 +50,6 @@ public class SaveManager {
         ArrayList<String> fileList = new ArrayList<>();
         fileList.add(dir+"AppUsers.json");
         fileList.add(dir+"Verhicles.json");
-        fileList.add(dir+"Travels.json");
-        fileList.add(dir+"Points.json"); 
         fileList.add(dir+"Locations.json"); 
         fileList.add(dir+"Items.json");
         return fileList;

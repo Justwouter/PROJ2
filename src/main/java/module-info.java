@@ -8,6 +8,8 @@ module com.gui {
 
     opens com.gui to javafx.fxml;
     opens com.logic;
+    opens com.save;
     exports com.gui;
     exports com.logic;
+    exports com.save;
 }

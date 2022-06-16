@@ -8,11 +8,11 @@
     -fx-background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
         background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
     -fx-background-image:
-        url("file:src/main/resources/com/gui/Images/layer_02.png"),
-        url("file:src/main/resources/com/gui/Images/layer_01.png");
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_02.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_01.png");
         background-image: 
-        url("file:src/main/resources/com/gui/Images/layer_02.png"),
-        url("file:src/main/resources/com/gui/Images/layer_01.png");
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_02.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_01.png");
 }
 
 .table-view .table-column{

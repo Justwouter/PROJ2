@@ -1,7 +1,7 @@
 package com.gui;
 
-import com.logic.SaveManager;
 import com.logic.User;
+import com.save.SaveManager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +28,7 @@ public class Main extends Application {
     @Override
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
-        primaryStage.getIcons().add(new Image("file:src\\main\\resources\\com\\gui\\Images\\co2wegermeePictogram.png"));
+        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo/co2wegermeePictogram.png"));
         seed();
         show("login", null);
     }

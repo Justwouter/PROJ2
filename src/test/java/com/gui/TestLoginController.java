@@ -1,6 +1,7 @@
 package com.gui;
 
 import com.logic.User;
+import com.save.SaveManagerForTests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,7 +11,12 @@ import java.io.IOException;
 
 public class TestLoginController extends AGUITests{
 
-    LoginController controller = new LoginController();
+    static LoginController controller = new LoginController();
+
+    @BeforeAll
+    public static void spoofSaveManager(){
+        controller.saveManager = new SaveManagerForTests();
+    }
 
     @BeforeAll
     public static void seed(){
