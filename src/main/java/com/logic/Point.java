@@ -9,6 +9,7 @@ public class Point {
     public ObservableAdapter getObservableAdapter(){
         return observableAdapter;
     }
+    
     public void setPoints(int amount){
         this.points = amount;
         observableAdapter.alertAll();

@@ -23,7 +23,7 @@ public class User {
     public String username;
     public String password;
     public String filiaal;
-
+    
     public User(String naam, boolean isAdmin, String username, String password, String filiaal){
         this.naam = naam;
         this.username = username;

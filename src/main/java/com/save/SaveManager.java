@@ -121,7 +121,7 @@ public class SaveManager implements ISave{
     /**
      * Loads the saved data from the respective savefiles.
      */
-    public void loadAllFiles() {
+    public void loadAll() {
         System.out.println("================");//Debug
         System.out.println("Loading files");//Debug
         if(fancy){
@@ -323,7 +323,7 @@ public class SaveManager implements ISave{
      * @param object
      * @return String
      */
-    public String makeString(Object object) {
+    private String makeString(Object object) {
         return gson.toJson(object);
     }
 
@@ -372,7 +372,7 @@ public class SaveManager implements ISave{
      * @return boolean true if successfull, false if not.
      * @throws IOException If the file does not exist
      */
-    public boolean cleanFile(File savefile,boolean makefile) {
+    protected boolean cleanFile(File savefile,boolean makefile) {
         try{
             if(savefile.delete()){
                 return savefile.createNewFile();
@@ -393,7 +393,7 @@ public class SaveManager implements ISave{
      * @return {@code True} if succesfull.<p>
      *         {@code False} if not.
      */
-    public boolean cleanAllFiles() {
+    private boolean cleanAllFiles() {
         try{
             File currentDir = new File(dir);
             rmDir(currentDir);
@@ -458,7 +458,7 @@ public class SaveManager implements ISave{
      * @return {@code true} if the filesystem was succesfully created or already exists.<p>
      *         {@code false} if the filesystem couldn't be made.
      */
-    public boolean checkFS(File file){
+    private boolean checkFS(File file){
         try{
             if(file.exists()){
                 return true;
@@ -480,7 +480,7 @@ public class SaveManager implements ISave{
      * @return {@code true} if the filesystem was succesfully created.<p>
      *         {@code false} if the filesystem couldn't be made.
      */
-    public boolean generateFS(File file) {
+    private boolean generateFS(File file) {
         //Split the actual file from the dirs
         String path = file.getAbsolutePath();
         String[] splitPath = path.split("\\\\");

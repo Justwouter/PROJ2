@@ -53,6 +53,7 @@ public class LoginController extends AController {
                     setUser(user);
                     return true;
                 }
+                else return false; // <-
             }
         }
         return false;

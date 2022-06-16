@@ -6,6 +6,6 @@ public class SaveManagerForTests implements ISave{
     public void saveState() {}
 
     @Override
-    public void loadAllFiles() {  }
+    public void loadAll() {  }
     
 }
