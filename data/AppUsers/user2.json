@@ -1,90 +1,12 @@
 {
-  "naam": "Testnaam Wouter",
+  "naam": "Testnaam Lucas",
   "rank": 3,
   "point": {
-    "points": 1845
+    "points": 1500
   },
-  "isAdmin": true,
-  "puntVerandering": [
-    {
-      "puntVerandering": -330,
-      "datum": {
-        "year": 2022,
-        "month": 5,
-        "dayOfMonth": 11,
-        "hourOfDay": 13,
-        "minute": 28,
-        "second": 30
-      }
-    },
-    {
-      "puntVerandering": -19,
-      "datum": {
-        "year": 2022,
-        "month": 5,
-        "dayOfMonth": 12,
-        "hourOfDay": 17,
-        "minute": 58,
-        "second": 6
-      }
-    },
-    {
-      "puntVerandering": -50,
-      "datum": {
-        "year": 2022,
-        "month": 5,
-        "dayOfMonth": 12,
-        "hourOfDay": 17,
-        "minute": 58,
-        "second": 16
-      }
-    },
-    {
-      "puntVerandering": -110,
-      "datum": {
-        "year": 2022,
-        "month": 5,
-        "dayOfMonth": 12,
-        "hourOfDay": 22,
-        "minute": 21,
-        "second": 21
-      }
-    },
-    {
-      "puntVerandering": -72,
-      "datum": {
-        "year": 2022,
-        "month": 5,
-        "dayOfMonth": 13,
-        "hourOfDay": 14,
-        "minute": 10,
-        "second": 30
-      }
-    },
-    {
-      "puntVerandering": -50,
-      "datum": {
-        "year": 2022,
-        "month": 5,
-        "dayOfMonth": 15,
-        "hourOfDay": 14,
-        "minute": 25,
-        "second": 37
-      }
-    },
-    {
-      "puntVerandering": -24,
-      "uitstootCO2": 2175,
-      "datum": {
-        "year": 2022,
-        "month": 5,
-        "dayOfMonth": 15,
-        "hourOfDay": 14,
-        "minute": 33,
-        "second": 5
-      }
-    }
-  ],
+  "isAdmin": false,
+  "puntVerandering": [],
+  "totalCO2": 0,
   "weeklyPointsObtained": false,
   "PreSets": [
     {},
@@ -93,7 +15,7 @@
     {},
     {}
   ],
-  "username": "jyn",
-  "password": "test",
-  "filiaal": "Delft"
+  "username": "Lucas",
+  "password": "Clavel",
+  "filiaal": "Utrecht"
 }

@@ -23,12 +23,22 @@ public class PuntMutatie{
         this.datum = datum;   
     }
 
+    public PuntMutatie(Integer puntVerandering, Integer uitstoot, Calendar datum){
+        this.puntVerandering = puntVerandering;
+        this.datum = datum; 
+        this.uitstootCO2 = uitstoot;
+    }
+
     public Calendar getDatum(){
         return this.datum;
     }
 
     public Integer getPuntVerandering(){
         return this.puntVerandering;
+    }
+    
+    public Integer getCO2(){
+        return this.uitstootCO2;
     }
 
     /**
