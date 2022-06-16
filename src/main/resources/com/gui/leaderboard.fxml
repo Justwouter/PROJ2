@@ -58,7 +58,7 @@
         </Button>
         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToShop" prefHeight="46.0" prefWidth="70.0" text="Shop" />
     </AnchorPane>
-   <CheckBox id="bestusersSelected" fx:id="bestuserbutton" layoutX="215.0" layoutY="99.0" mnemonicParsing="false" onAction="#onButtonSelect" text="Beste users van laatste 4 weken" />
+   <CheckBox id="bestusersSelected" fx:id="bestuserbutton" layoutX="215.0" layoutY="99.0" mnemonicParsing="false" onMouseClicked="#onButtonSelect" text="Beste users van laatste 4 weken" />
    <Label layoutX="50.0" layoutY="481.0" text="*: Uitstoot wordt weergegeven in KG" textFill="#bfbfbf">
       <font>
          <Font size="8.0" />

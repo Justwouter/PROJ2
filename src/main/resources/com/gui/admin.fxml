@@ -14,19 +14,19 @@
       <AnchorPane layoutX="31.0" layoutY="30.0" prefHeight="200.0" prefWidth="418.0">
          <children>
          <!--TABEL BEGINT HIER, ERIC-->
-            <TableView id="bestMonthlyUsers" prefHeight="200.0" prefWidth="418.0">
+            <TableView id="bestMonthlyUsers" fx:id="bestMonthlyUsers" prefHeight="200.0" prefWidth="418.0">
               <columns>
-                  <TableColumn id="rankBestMonthlyUsers" prefWidth="53.5999755859375" text="Rank">
+                  <TableColumn id="rankBestMonthlyUsers" fx:id="rankBestMonthlyUsers" prefWidth="53.5999755859375" text="Rank">
                      <cellValueFactory>
                         <PropertyValueFactory property="rank" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn id="naamBestMonthlyUsers" prefWidth="233.60003662109375" text="Naam">
+                  <TableColumn id="naamBestMonthlyUsers" fx:id="naamBestMonthlyUsers" prefWidth="233.60003662109375" text="Naam">
                      <cellValueFactory>
                         <PropertyValueFactory property="naam" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn id="newpointsBestMonthlyUsers" prefWidth="130.4000244140625" text="Punten">
+                  <TableColumn id="newpointsBestMonthlyUsers" fx:id="newpointsBestMonthlyUsers" prefWidth="130.4000244140625" text="Punten">
                      <cellValueFactory>
                         <PropertyValueFactory property="UserPuntMutatiesAsInteger" />
                      </cellValueFactory>

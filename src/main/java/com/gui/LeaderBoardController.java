@@ -56,22 +56,6 @@ public class LeaderBoardController extends AController implements Initializable 
      * Vult het boord met de data.
      */
     private void fillBoard(String userFilter){
-        if(bestuserbutton.selectedProperty().get()){
-            fillBoardBestUsers(userFilter);
-        }else{
-            fillBoardNormaal(userFilter);
-        }
-    }
-
-    private void fillBoardNormaal(String userFilter){
-        rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
-        namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
-        puntenKolom.setCellValueFactory(new PropertyValueFactory<>("totalCO2"));
-        ObservableList<User> data = FXCollections.observableArrayList(Leaderboard.getUsers(userFilter));
-        leaderboard.setItems(data);
-    }
-
-    private void fillBoardBestUsers(String userFilter){
         rankKolom.setCellValueFactory(new PropertyValueFactory<>("rank"));
         namesKolom.setCellValueFactory(new PropertyValueFactory<>("naam"));
         puntenKolom.setCellValueFactory(new PropertyValueFactory<>("totalCO2"));
@@ -133,6 +117,12 @@ public class LeaderBoardController extends AController implements Initializable 
 
     @FXML
     public void onButtonSelect(){
+        leaderboard.getItems().clear();
         leaderboard.refresh();
+        if(bestuserbutton.isSelected()){
+            fillBoard("beste4usersvandemaand");
+        } else {
+            fillBoard("");
+        }
     }
 }
