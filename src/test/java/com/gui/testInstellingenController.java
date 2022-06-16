@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import com.logic.User;
 import com.save.SaveManagerForTests;
 
-public class testInstellingenController extends AGUITests{
+public class TestInstellingenController extends AGUITests{
 
     static User testUser;
     static InstellingenController controller = new InstellingenController();

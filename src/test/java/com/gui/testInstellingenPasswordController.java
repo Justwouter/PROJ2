@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import com.logic.User;
 import com.save.SaveManagerForTests;
 
-public class testInstellingenPasswordController {
+public class TestInstellingenPasswordController {
 
     static User testUser;
     static InstellingenPasswordController controller = new InstellingenPasswordController();
