@@ -27,7 +27,7 @@
    </PasswordField>
    <ImageView fitHeight="203.0" fitWidth="202.0" layoutX="139.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@Images/co2wegermee.png" />
+         <Image url="@Images/logo/co2wegermee.png" />
       </image>
    </ImageView>
    <Label fx:id="foutmelding" contentDisplay="CENTER" layoutX="45.0" layoutY="567.0" prefHeight="59.0" prefWidth="392.0" text="Gebruikersnaam of wachtwoord incorrect." textFill="#ff2727" visible="false">

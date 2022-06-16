@@ -14,6 +14,7 @@ public class TestShopController extends AGUITests{
     static ShopController controller = new ShopController();
     User user;
     Item item;
+    
     @BeforeAll
     public static void spoofSaveManager(){
         controller.saveManager = new SaveManagerForTests();
