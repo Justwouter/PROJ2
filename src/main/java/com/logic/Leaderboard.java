@@ -9,7 +9,7 @@ public abstract class Leaderboard {
     private static ArrayList<User> users = new ArrayList<>();
     //heb een tijdelijke arraylist voor filters gemaakt zodat die het leaderboard gefilterd kan vullen
     private static ArrayList<User> usersFilterd = new ArrayList<>();
-    private static ArrayList<User> usersBest4 = new ArrayList<>();
+    private static ArrayList<User> usersBest = new ArrayList<>();
 
     public static void addUser(User user){
         users.add(user);
@@ -18,7 +18,7 @@ public abstract class Leaderboard {
     //heb een parameter filter toegevoegd zodat je users kan ophalen met welk filiaal filter dan ook
     public static ArrayList<User> getUsers(String filter){
         usersFilterd.clear(); 
-        usersBest4.clear();       
+        usersBest.clear();       
         for (User user : users) {
             if(filter.equals("")){
                 comparator();
@@ -31,16 +31,24 @@ public abstract class Leaderboard {
                 updateRankingFilterd();
                 return usersFilterd;
             }
-            if (filter.equals("beste4usersvandemaand")){
-                if(users.lastIndexOf(user)<=3){
-                    usersBest4.add(user);
+            if(filter.substring(0,4).equals("best")){
+                if (filter.equals("beste4usersvandemaand")){
+                    if(users.lastIndexOf(user)<=3){
+                        best(user);
+                    }
+                }else{
+                    best(user);
                 }
             }
             
         }
-        comparatorBest4();
-        updateRankingBest4();
-        return usersBest4;
+        return usersBest;
+    }
+
+    private static void best(User user){
+        usersBest.add(user);
+        comparatorBest();
+        updateRankingBest(); 
     }
 
     private static void comparator(){
@@ -72,17 +80,17 @@ public abstract class Leaderboard {
     }
 
     //doet precies t zelfde als de normale versie alleen dan voor userBest4
-    private static void comparatorBest4(){
+    private static void comparatorBest(){
         Comparator<User> userComparator = Comparator.comparing(User::getUserPuntMutatiesAsInteger);
-        Collections.sort(usersBest4, userComparator);
-        Collections.reverse(usersBest4);
+        Collections.sort(usersBest, userComparator);
+        Collections.reverse(usersBest);
         updateRanking();
     }
 
     //doet precies t zelfde als de normale versie alleen dan voor userBest4
-    private static void updateRankingBest4(){
-        for (int i = 0; i < usersBest4.size(); i++) {
-            usersBest4.get(i).setRank(i+1);
+    private static void updateRankingBest(){
+        for (int i = 0; i < usersBest.size(); i++) {
+            usersBest.get(i).setRank(i+1);
         }
     }
 }
