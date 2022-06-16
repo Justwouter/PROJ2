@@ -229,12 +229,12 @@ public class User {
 
 
     // made by BarmanTurbo
-    public Comparator<User> BesteUsersVanDeMaand() {
+    public ArrayList<User> besteUsersVanDeMaand() {
         if(this.isAdmin){
             ArrayList<User> allUsers = Leaderboard.getUsers("");
             Comparator<User> vergelijker = Comparator.comparing(User::getUserPuntMutatiesAsInteger);
             Collections.sort(allUsers, vergelijker);
-            return vergelijker;
+            return allUsers;
         } else{
             throw new IllegalArgumentException(
                 "Error in User.duurzaamsteUsers: Niet de juiste rechten om dit te bekijken");

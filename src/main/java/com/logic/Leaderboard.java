@@ -9,6 +9,7 @@ public abstract class Leaderboard {
     private static ArrayList<User> users = new ArrayList<>();
     //heb een tijdelijke arraylist voor filters gemaakt zodat die het leaderboard gefilterd kan vullen
     private static ArrayList<User> usersFilterd = new ArrayList<>();
+    private static ArrayList<User> usersBest4 = new ArrayList<>();
 
     public static void addUser(User user){
         users.add(user);
@@ -22,14 +23,23 @@ public abstract class Leaderboard {
                 comparator();
                 updateRanking();
                 return users;
-            }else if(user.getFiliaal().equals(filter)){
+            }
+            if(user.getFiliaal().equals(filter)){
                 usersFilterd.add(user);
+                comparatorFilterd();
+                updateRankingFilterd();
+                return usersFilterd;
+            }
+            if (filter.equals("beste4usersvandemaand")){
+                if(users.lastIndexOf(user)<=3){
+                    usersBest4.add(user);
+                }
             }
             
         }
-        comparatorFilterd();
-        updateRankingFilterd();
-        return usersFilterd;
+        comparatorBest4();
+        updateRankingBest4();
+        return usersBest4;
     }
 
     private static void comparator(){
@@ -57,6 +67,21 @@ public abstract class Leaderboard {
     private static void updateRankingFilterd(){
         for (int i = 0; i < usersFilterd.size(); i++) {
             usersFilterd.get(i).setRank(i+1);
+        }
+    }
+
+    //doet precies t zelfde als de normale versie alleen dan voor userBest4
+    private static void comparatorBest4(){
+        Comparator<User> userComparator = Comparator.comparing(User::getUserPuntMutatiesAsInteger);
+        Collections.sort(usersBest4, userComparator);
+        Collections.reverse(usersBest4);
+        updateRanking();
+    }
+
+    //doet precies t zelfde als de normale versie alleen dan voor userBest4
+    private static void updateRankingBest4(){
+        for (int i = 0; i < usersBest4.size(); i++) {
+            usersBest4.get(i).setRank(i+1);
         }
     }
 }
