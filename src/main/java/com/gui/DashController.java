@@ -226,8 +226,8 @@ public class DashController extends AController implements Initializable {
             int mutationWeek = mutation.datum.get(Calendar.WEEK_OF_YEAR);
             int currentWeek = currentDate.get(Calendar.WEEK_OF_YEAR);
             if(mutationWeek == currentWeek || (day==1) && mutationWeek == currentWeek-1){
-                if(mutation.datum.get(Calendar.DAY_OF_WEEK) == day){
-                    output +=mutation.puntVerandering;
+                if(mutation.datum.get(Calendar.DAY_OF_WEEK) == day && mutation.uitstootCO2 != null){
+                    output +=(mutation.uitstootCO2)/1000;
                     System.out.println(output);
                 }
             }
