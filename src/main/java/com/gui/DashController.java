@@ -192,6 +192,11 @@ public class DashController extends AController implements Initializable {
         co2ThisWeekChart.getData().add(series);
         co2ThisWeekChart.setAnimated(true);
         this.avList = averageList;
+
+        //sets vergelijking
+        setVergelijking();
+
+        //returns averageList
         return averageList;
     }
 
