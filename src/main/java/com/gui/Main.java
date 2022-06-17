@@ -1,7 +1,7 @@
 package com.gui;
 
-import com.logic.SaveManager;
 import com.logic.User;
+import com.save.SaveManager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +14,11 @@ import java.io.IOException;
 
 public class Main extends Application {
     private static Stage primaryStage;
-    private static AnchorPane mainLayout;
-  
+
     public static void seed(){
         //just here incase users and transportmiddelen gets corrupted
         //in that case copy the setup from the README
-        new SaveManager(true).loadAllFiles();
+        new SaveManager(true).loadAll();
     }
 
     public static void main(String[] args) {
@@ -29,7 +28,7 @@ public class Main extends Application {
     @Override
     public void start(Stage ps) throws Exception {
         primaryStage = ps;
-        primaryStage.getIcons().add(new Image("file:src\\main\\resources\\com\\gui\\Images\\co2wegermeePictogram.png"));
+        primaryStage.getIcons().add(new Image("file:src/main/resources/com/gui/Images/logo/co2wegermeePictogram.png"));
         seed();
         show("login", null);
     }
@@ -37,12 +36,12 @@ public class Main extends Application {
     public static void show(String fxml, User user) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource(fxml + ".fxml"));
-        mainLayout = loader.load();
+        AnchorPane mainLayout = loader.load();
 
         AController controller = loader.getController();
         controller.setUser(user);
         if (user != null){
-            user.getPoint().addObserver(controller);
+            user.getPoint().getObservableAdapter().addObserver(controller);
         }
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);

@@ -47,15 +47,6 @@ public class ReisGegevensController extends AController implements Initializable
     @FXML
     private TextField hernoemen;
 
-
-    /**
-     * Gaat terug naar het dashboard en past de punten NIET aan.
-     * @throws IOException Exception komt vanuit main.
-     */
-    @FXML
-    public void switchToDashboard() throws IOException {
-        Main.show("dashboard", user);
-    }
     
     /**
      * Deze methode berekent en bewerkt de punten van de gebruiker a.h.v. de ingegeven waardes door de gebruiker.
@@ -74,7 +65,7 @@ public class ReisGegevensController extends AController implements Initializable
             //ook addPoints daarvoor gebruiken zodat je niet twee
             //dezelfde methoden gebruikt.
         user.getPoint().addPoints(-puntenVerlies);
-        user.userAddPuntMutatie(-puntenVerlies);
+        user.userAddPuntMutatie(-puntenVerlies, uitstootCO2);
             //waarde into userAddPuntMutatie is negatief omdat
             //er ook de wekelijkse punten in verwerkt worden.
     }

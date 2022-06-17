@@ -23,7 +23,7 @@
          <children>
             <StackPane>
                <children>
-                  <BarChart fx:id="co2ThisWeekChart" animated="false" categoryGap="5.0" legendVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="376.0">
+                  <BarChart fx:id="co2ThisWeekChart" alternativeRowFillVisible="false" animated="false" categoryGap="5.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="376.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
                       <CategoryAxis fx:id="weekChartX" side="BOTTOM" />
                     </xAxis>

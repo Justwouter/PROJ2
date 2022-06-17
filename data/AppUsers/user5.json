@@ -1,0 +1,82 @@
+{
+  "naam": "Testnaam Wouter",
+  "rank": 6,
+  "point": {
+    "points": 1907
+  },
+  "isAdmin": true,
+  "puntVerandering": [
+    {
+      "puntVerandering": -24,
+      "uitstootCO2": 2175,
+      "datum": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 15,
+        "hourOfDay": 14,
+        "minute": 33,
+        "second": 5
+      }
+    },
+    {
+      "puntVerandering": -165,
+      "uitstootCO2": 14700,
+      "datum": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 16,
+        "hourOfDay": 13,
+        "minute": 13,
+        "second": 42
+      }
+    },
+    {
+      "puntVerandering": -40,
+      "uitstootCO2": 3580,
+      "datum": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 16,
+        "hourOfDay": 13,
+        "minute": 43,
+        "second": 40
+      }
+    },
+    {
+      "puntVerandering": -20,
+      "uitstootCO2": 1790,
+      "datum": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 16,
+        "hourOfDay": 13,
+        "minute": 59,
+        "second": 25
+      }
+    },
+    {
+      "puntVerandering": -33,
+      "uitstootCO2": 2940,
+      "datum": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 16,
+        "hourOfDay": 13,
+        "minute": 59,
+        "second": 35
+      }
+    }
+  ],
+  "totalCO2": 22,
+  "weeklyPointsObtained": false,
+  "PreSets": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "username": "jyn",
+  "password": "test",
+  "filiaal": "Delft"
+}

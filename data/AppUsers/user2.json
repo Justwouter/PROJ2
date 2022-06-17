@@ -1,11 +1,12 @@
 {
-  "naam": "Testnaam Eric",
-  "rank": 2,
+  "naam": "Testnaam Lucas",
+  "rank": 3,
   "point": {
-    "points": 2000
+    "points": 1500
   },
   "isAdmin": false,
   "puntVerandering": [],
+  "totalCO2": 0,
   "weeklyPointsObtained": false,
   "PreSets": [
     {},
@@ -14,7 +15,7 @@
     {},
     {}
   ],
-  "username": "Eric",
-  "password": "Bull",
-  "filiaal": "Den Haag"
+  "username": "Lucas",
+  "password": "Clavel",
+  "filiaal": "Utrecht"
 }

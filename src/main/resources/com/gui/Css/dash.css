@@ -13,19 +13,19 @@
     -fx-background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
         background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
     -fx-background-image:
-        url("file:src/main/resources/com/gui/Images/layer_06.png"),
-        url("file:src/main/resources/com/gui/Images/layer_05.png"),
-        url("file:src/main/resources/com/gui/Images/layer_04.png"),
-        url("file:src/main/resources/com/gui/Images/layer_03.png"),
-        url("file:src/main/resources/com/gui/Images/layer_02.png"),
-        url("file:src/main/resources/com/gui/Images/layer_01.png");
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_06.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_05.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_04.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_03.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_02.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_01.png");
         background-image: 
-        url("file:src/main/resources/com/gui/Images/layer_06.png"),
-        url("file:src/main/resources/com/gui/Images/layer_05.png"),
-        url("file:src/main/resources/com/gui/Images/layer_04.png"),
-        url("file:src/main/resources/com/gui/Images/layer_03.png"),
-        url("file:src/main/resources/com/gui/Images/layer_02.png"),
-        url("file:src/main/resources/com/gui/Images/layer_01.png");
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_06.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_05.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_04.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_03.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_02.png"),
+        url("file:src/main/resources/com/gui/Images/wallpaper/layer_01.png");
         
 }
 

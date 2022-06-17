@@ -1,6 +1,11 @@
-package com.logic;
+package com.save;
 
 import com.gui.ShopController;
+import com.logic.Filiaal;
+import com.logic.Item;
+import com.logic.Leaderboard;
+import com.logic.Transportmiddel;
+import com.logic.User;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,8 +23,7 @@ import com.google.gson.GsonBuilder;
 /**
  * Sizable class that contains all the logic for reading and writing saves
  */
-public class SaveManager {
-    //Methods for points/reis may be unneccesary
+public class SaveManager implements ISave{
     Gson gson;
     boolean fancy = false;
     String dir = System.getProperty("user.dir")+"/data/";
@@ -44,10 +48,8 @@ public class SaveManager {
 
     private ArrayList<String> seedStandardSaveFiles() {
         ArrayList<String> fileList = new ArrayList<>();
-        fileList.add(dir+"Users.json");
+        fileList.add(dir+"AppUsers.json");
         fileList.add(dir+"Verhicles.json");
-        fileList.add(dir+"Travels.json");
-        fileList.add(dir+"Points.json"); 
         fileList.add(dir+"Locations.json"); 
         fileList.add(dir+"Items.json");
         return fileList;
@@ -55,7 +57,7 @@ public class SaveManager {
 
     private ArrayList<String> seedFancySaveFiles(){
         ArrayList<String> fileList = new ArrayList<>();
-        fileList.add(dir+"Users/");
+        fileList.add(dir+"AppUsers/");
         fileList.add(dir+"Verhicles/");
         fileList.add(dir+"Locations/");
         fileList.add(dir+"Items/");
@@ -63,7 +65,7 @@ public class SaveManager {
     }
 
     /**
-     * Saves the currently existing Users & Transportmidddelen to their resective files.
+     * Saves the currently existing AppUsers & Transportmidddelen to their resective files.
      */
     public void saveState() {
         System.out.println("================");//Debug
@@ -119,7 +121,7 @@ public class SaveManager {
     /**
      * Loads the saved data from the respective savefiles.
      */
-    public void loadAllFiles() {
+    public void loadAll() {
         System.out.println("================");//Debug
         System.out.println("Loading files");//Debug
         if(fancy){
@@ -211,7 +213,7 @@ public class SaveManager {
     //Solution to long method/Switch smell
 
     private boolean isUsersFile(String s){
-        return s.contains("Users");
+        return s.contains("AppUsers");
     }
 
     private boolean isVerhiclesFile(String s){
@@ -227,11 +229,11 @@ public class SaveManager {
     }
 
     /**
-     * Writes the given {@link User} in JSON format to the Users file.
+     * Writes the given {@link User} in JSON format to the AppUsers file.
      * @param user the to be written User object.
      */
     private void writeToSave(User user) {
-        File savefile = new File(dir+"Users.json");
+        File savefile = new File(dir+"AppUsers.json");
         write(savefile, user);
     }
 
@@ -264,11 +266,11 @@ public class SaveManager {
 
 
     /**
-     * Writes the given {@link User} in JSON format to a file in the ~/data/Users/ dir.
+     * Writes the given {@link User} in JSON format to a file in the ~/data/AppUsers/ dir.
      * @param user
      */
     private void writeToFancySave(User user) {
-        File savefile = new File(dir+"Users/"+"user"+filesInDir("Users", "user")+".json");
+        File savefile = new File(dir+"AppUsers/"+"user"+filesInDir("AppUsers", "user")+".json");
         write(savefile, user);
     }
     /**
@@ -321,7 +323,7 @@ public class SaveManager {
      * @param object
      * @return String
      */
-    public String makeString(Object object) {
+    private String makeString(Object object) {
         return gson.toJson(object);
     }
 
@@ -370,7 +372,7 @@ public class SaveManager {
      * @return boolean true if successfull, false if not.
      * @throws IOException If the file does not exist
      */
-    public boolean cleanFile(File savefile,boolean makefile) {
+    protected boolean cleanFile(File savefile,boolean makefile) {
         try{
             if(savefile.delete()){
                 return savefile.createNewFile();
@@ -391,7 +393,7 @@ public class SaveManager {
      * @return {@code True} if succesfull.<p>
      *         {@code False} if not.
      */
-    public boolean cleanAllFiles() {
+    private boolean cleanAllFiles() {
         try{
             File currentDir = new File(dir);
             rmDir(currentDir);
@@ -456,7 +458,7 @@ public class SaveManager {
      * @return {@code true} if the filesystem was succesfully created or already exists.<p>
      *         {@code false} if the filesystem couldn't be made.
      */
-    public boolean checkFS(File file){
+    private boolean checkFS(File file){
         try{
             if(file.exists()){
                 return true;
@@ -478,7 +480,7 @@ public class SaveManager {
      * @return {@code true} if the filesystem was succesfully created.<p>
      *         {@code false} if the filesystem couldn't be made.
      */
-    public boolean generateFS(File file) {
+    private boolean generateFS(File file) {
         //Split the actual file from the dirs
         String path = file.getAbsolutePath();
         String[] splitPath = path.split("\\\\");

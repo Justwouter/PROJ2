@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 public class PuntMutatie{
     public Integer puntVerandering;
+    public Integer uitstootCO2;
     public Calendar datum;
 
     public PuntMutatie(Integer puntVerandering){
@@ -12,9 +13,20 @@ public class PuntMutatie{
         datum = Calendar.getInstance();   
     }
 
+    public PuntMutatie(Integer puntVerandering, Integer uitstoot){
+        this(puntVerandering);
+        this.uitstootCO2 = uitstoot;
+    }
+
     public PuntMutatie(Integer puntVerandering, Calendar datum){
         this.puntVerandering = puntVerandering;
         this.datum = datum;   
+    }
+
+    public PuntMutatie(Integer puntVerandering, Integer uitstoot, Calendar datum){
+        this.puntVerandering = puntVerandering;
+        this.datum = datum; 
+        this.uitstootCO2 = uitstoot;
     }
 
     public Calendar getDatum(){
@@ -23,6 +35,10 @@ public class PuntMutatie{
 
     public Integer getPuntVerandering(){
         return this.puntVerandering;
+    }
+    
+    public Integer getCO2(){
+        return this.uitstootCO2;
     }
 
     /**
