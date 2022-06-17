@@ -200,30 +200,33 @@ public class User {
     }
 
     // Made By BarmanTurbo
-    public String vergelijkPuntMetUitstoot() {
+    public String vergelijkPuntMetUitstoot(){
         long uitstoot = 1000 - point.getPoints();
-        if (uitstoot <= 1) {
-            return "Je hebt nauwelijks CO2 uitgestoten!";
+        String prefix = "Je CO2 uitstoot komt overeen met ";
+        String output = "";
+        if (uitstoot >= 122000000){
+            output = prefix + (uitstoot / 122000000) + " keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
         }
-        String output = "Je CO2 uitstoot komt overeen met ";
-        if (uitstoot < 9) {
-            return output += "wat een vrachtwagen per km uitstoot";
-        }
-        if (uitstoot < 28) {
-            return output += "wat een vrachtwagen uitstoot per " + (uitstoot / 9) + " km";
+        if (uitstoot < 122000000) {
+            output = prefix + "wat de Ever Given uitstoot per " + (uitstoot / 20459) + " km";
         }
         if (uitstoot < 20459) {
             if (uitstoot / 28 == 1) {
-               return output += "wat 1 boom per jaar opneemt";
+               output = prefix + "wat 1 boom per jaar opneemt";
             } else {
-               return output += "wat " + (uitstoot / 28) + " bomen per jaar opnemen";
+               output = prefix + "wat " + (uitstoot / 28) + " bomen per jaar opnemen";
             }
         }
-        if (uitstoot < 122000000) {
-            return output += "wat de Ever Given uitstoot per " + (uitstoot / 20459) + " km";
-        } else {
-            return output += "" + (uitstoot / 122000000) + " keer zoveel dan wat de gemeente Amsterdam uitstootte in 2020";
+        if (uitstoot < 28) {
+            output = prefix + "wat een vrachtwagen uitstoot per " + (uitstoot / 9) + " km";
         }
+        if (uitstoot < 9) {
+             output = prefix + "wat een vrachtwagen per km uitstoot";
+        }
+        if (uitstoot <= 1) {
+            output = "Je hebt nauwelijks CO2 uitgestoten!";
+        }
+        return output;
     }
 
     public boolean checkPassword(String attempt) {
