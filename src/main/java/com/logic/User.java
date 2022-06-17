@@ -181,7 +181,7 @@ public class User {
     }
 
     // made by BarmanTurbo
-    protected void addWeeklyPoints() {
+    public void addWeeklyPoints() {
         c = Calendar.getInstance();
         int day = c.get(Calendar.DAY_OF_WEEK);
         // Elke maandag krijg je 1000 punten mits je inlogt. Dat is maar één keer in de week.
@@ -190,6 +190,7 @@ public class User {
         if (!weeklyPointsObtained) {
             if (day == 1) {
                 point.addPoints(1000);
+                userAddPuntMutatie(1000);
                 weeklyPointsObtained = true;
             }
         }

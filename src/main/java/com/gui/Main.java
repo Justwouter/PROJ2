@@ -42,6 +42,7 @@ public class Main extends Application {
         controller.setUser(user);
         if (user != null){
             user.getPoint().getObservableAdapter().addObserver(controller);
+            user.addWeeklyPoints();
         }
         Scene scene = new Scene(mainLayout, 480, 640);
         primaryStage.setScene(scene);
