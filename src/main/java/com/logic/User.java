@@ -133,46 +133,13 @@ public class User {
         userMonthlyPointStorage.add(new PuntMutatie(punten,CO2, calendar));
     }
 
-    protected void userMonthlyPuntMutatieCleanup(){
-        for (PuntMutatie pm : puntVerandering){
-            if(!pm.isFromLastYear()){
-                userMonthlyPointStorage.remove(puntVerandering.indexOf(pm));
-            }
-        }
-    }
-
-    protected void user4weekPuntMutatieCleanUp() {
-        // Zorgt ervoor dat alleen puntmutaties van de laatste 4 weken opgeslagen blijven.
-        Integer puntenOuderDan4Weken = 0;
-        Integer Co2 = 0;
-        int monthOfPuntenOuderDan4Weken = 13;
-
-        for (PuntMutatie pm : puntVerandering) {
-            if (!pm.isFromLast4Weeks()) {
-                puntenOuderDan4Weken += pm.getPuntVerandering();
-                Co2 = pm.getCO2();
-                monthOfPuntenOuderDan4Weken = pm.getDatum().get(Calendar.MONTH);
-                puntVerandering.remove(puntVerandering.indexOf(pm));
-            }
-        }
-
-        if(monthOfPuntenOuderDan4Weken<13){
-            monthlyPuntStorageAdd(puntenOuderDan4Weken,Co2, monthOfPuntenOuderDan4Weken);
-        }
-    }
-
-    protected void userPuntMutatieCleanupALLES(){
-        user4weekPuntMutatieCleanUp();
-        userMonthlyPuntMutatieCleanup();
-    }
-
     public ArrayList<PuntMutatie> getUserPuntMutaties() {
-        userPuntMutatieCleanupALLES();
+        MutatieCleanup.userPuntMutatieCleanupALLES();
         return this.puntVerandering;
     }
 
     public Integer getUserPuntMutatiesAsInteger() {
-        userPuntMutatieCleanupALLES();
+        MutatieCleanup.userPuntMutatieCleanupALLES();
         Integer addedMutations = 0;
         for (PuntMutatie pm : puntVerandering) {
             addedMutations += pm.getPuntVerandering();
