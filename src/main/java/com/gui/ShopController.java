@@ -46,7 +46,6 @@ public class ShopController extends AController implements Initializable {
     }
 
 
-    // TODO Make code readable.
     // It just works for now.
     private void addButtonToTable() {
         TableColumn<Item, Void> colBtn = new TableColumn<>("");

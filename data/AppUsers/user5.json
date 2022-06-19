@@ -2,7 +2,7 @@
   "naam": "Testnaam Wouter",
   "rank": 6,
   "point": {
-    "points": 1907
+    "points": 1692
   },
   "isAdmin": true,
   "puntVerandering": [
@@ -65,9 +65,21 @@
         "minute": 59,
         "second": 35
       }
+    },
+    {
+      "puntVerandering": -215,
+      "uitstootCO2": 19140,
+      "datum": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 17,
+        "hourOfDay": 19,
+        "minute": 30,
+        "second": 20
+      }
     }
   ],
-  "totalCO2": 22,
+  "totalCO2": 41,
   "weeklyPointsObtained": false,
   "PreSets": [
     {},

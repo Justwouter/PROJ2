@@ -4,7 +4,6 @@ import javafx.scene.image.ImageView;
 
 
 public class Item {
-    // TODO Check if there is a way to keep these private.
     public final String name;
     public int price;
 

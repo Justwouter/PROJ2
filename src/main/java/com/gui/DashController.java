@@ -105,7 +105,6 @@ public class DashController extends AController implements Initializable {
             //Static average line
             if(staticAverage.selectedProperty().get()){
                 System.out.println("Displaying staticAverage"); //Debug
-
                 XYChart.Series<String,Number> averageLine = new XYChart.Series<String, Number>();
                 for(int i=0;i< daysOfTheWeek.length;i++){
                     Data<String,Number> vars = new XYChart.Data<String, Number>(daysOfTheWeek[i],calculateRelativeAverage(averageList,daysOfTheWeek.length-1));
