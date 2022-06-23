@@ -53,7 +53,7 @@ public class InstellingenPasswordController extends AController implements Initi
 
     //checks if the two passwords match
     public boolean checkPasswordDubbel(String nieuw, String herhaling){
-        return (nieuw.equals(herhaling) && !nieuw.equals("") && !herhaling.equals(""));
+        return (!nieuw.equals(herhaling) && !nieuw.equals("") && !herhaling.equals(""));
     }
 
     //checks if the correct password has been given
